@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.*;
 
 @Entity
-public class Turist{
+public class Turisti {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
@@ -25,7 +25,7 @@ public class Turist{
     private String password;
 
 
-    public Turist(int turistID, String name, String surname, int age, char gender, String email, String password) {
+    public Turisti(int turistID, String name, String surname, int age, char gender, String email, String password) {
         this.turistID = turistID;
         this.name = name;
         this.surname = surname;
@@ -34,7 +34,7 @@ public class Turist{
         this.email = email;
         this.password = password;
     }
-    public Turist() {
+    public Turisti() {
 
     }
     public int getTuristID() {
