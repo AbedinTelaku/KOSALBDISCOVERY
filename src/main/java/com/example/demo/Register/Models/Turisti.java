@@ -34,7 +34,9 @@ public class Turist{
         this.email = email;
         this.password = password;
     }
+    public Turist() {
 
+    }
     public int getTuristID() {
         return turistID;
     }
