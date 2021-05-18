@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Configuration
 @EnableAutoConfiguration
@@ -43,6 +43,9 @@ public class Admin {
         this.password = password;
     }
 
+    public Admin(){
+        
+    }
     public int getAdminID() {
         return adminID;
     }
