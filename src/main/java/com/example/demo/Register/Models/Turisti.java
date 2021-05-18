@@ -5,10 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Turisti{
+public class Turist{
     @Id
     @Column
-    private int turistiID;
+    private int turistID;
     @Column
     private String name;
     @Column
@@ -23,8 +23,8 @@ public class Turisti{
     private String password;
 
 
-    public Turisti(int turistiID, String name, String surname, int age, char gender, String email, String password) {
-        this.turistiID = turistiID;
+    public Turist(int turistID, String name, String surname, int age, char gender, String email, String password) {
+        this.turistID = turistID;
         this.name = name;
         this.surname = surname;
         this.age = age;
@@ -33,12 +33,12 @@ public class Turisti{
         this.password = password;
     }
 
-    public int getTuristiID() {
-        return turistiID;
+    public int getTuristID() {
+        return turistID;
     }
 
-    public void setTuristiID(int turistiID) {
-        this.turistiID = turistiID;
+    public void setTuristID(int turistID) {
+        this.turistID = turistID;
     }
 
     public String getName() {
