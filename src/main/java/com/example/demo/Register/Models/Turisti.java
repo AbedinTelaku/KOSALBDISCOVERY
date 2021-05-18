@@ -3,10 +3,12 @@ package com.example.demo.Register.Models;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Turist{
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private int turistID;
     @Column
