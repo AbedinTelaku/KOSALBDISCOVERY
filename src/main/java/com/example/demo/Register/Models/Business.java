@@ -28,9 +28,11 @@ public class Business {
     private String business_Number;
     @Column
     private String business_Activity;
+    @Column
+    private String role;
 
 
-    public Business(int business_ID, String name, String email, String password, String username, String tel_Number, String owner_ID, String fiscal_Number, String business_Number, String business_Activity) {
+    public Business(int business_ID, String name, String email, String password, String username, String tel_Number, String owner_ID, String fiscal_Number, String business_Number, String business_Activity, String role ) {
         Business_ID = business_ID;
         this.name = name;
         this.email = email;
@@ -41,6 +43,7 @@ public class Business {
         this.fiscal_Number = fiscal_Number;
         this.business_Number = business_Number;
         this.business_Activity = business_Activity;
+        this.role=role;
     }
 
     public Business() {
@@ -125,5 +128,13 @@ public class Business {
 
     public void setBusiness_Activity(String business_Activity) {
         this.business_Activity = business_Activity;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
