@@ -11,11 +11,6 @@ public class TuristService implements ITuristService{
 @Autowired
 private TuristRepository turistRepository;
 
-public TuristService(TuristRepository turistRepository){
-    this.turistRepository=turistRepository;
-}
-
-
 
     @Override
     public void createTurist(Turist turist) {
@@ -23,8 +18,8 @@ public TuristService(TuristRepository turistRepository){
     }
 
     @Override
-    public void deleteTurist(int Id) {
-
+    public void deleteTurist(int id) {
+    this.turistRepository.deleteById(id);
     }
 
     @Override
