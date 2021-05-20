@@ -6,4 +6,5 @@ public interface IBusinessService {
     void createTurist(Turist turist);
     void deleteTurist(int Id);
     void editTurist(int id);
+    Turist login(String username,String password);
 }
