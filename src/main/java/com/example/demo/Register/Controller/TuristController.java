@@ -3,7 +3,7 @@ package com.example.Register.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.example.Register.Services.ITuristService;
+import com.example.Register.Service.ITuristService;
 
 
 
