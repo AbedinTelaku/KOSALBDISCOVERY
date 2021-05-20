@@ -4,8 +4,6 @@ package com.example.demo.Register.Models;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Configuration;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.*;
 
 @Configuration
@@ -31,8 +29,10 @@ public class Admin {
     private String email;
     @Column
     private String password;
+    @Column
+    private String role;
 
-    public Admin(int adminID, String name, String surname, int age, String username, char gender, String email, String password) {
+    public Admin(int adminID, String name, String surname, int age, String username, char gender, String email, String password,String role) {
         this.adminID = adminID;
         this.name = name;
         this.surname = surname;
@@ -41,11 +41,9 @@ public class Admin {
         this.gender = gender;
         this.email = email;
         this.password = password;
+        this.role = role;
     }
 
-    public Admin(){
-
-    }
     public int getAdminID() {
         return adminID;
     }
@@ -108,6 +106,13 @@ public class Admin {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
 

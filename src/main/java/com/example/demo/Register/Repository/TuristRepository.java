@@ -5,12 +5,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.Optional;
+
 @Repository
-public interface TuristRepository extends JpaRepository<Turisti, Integer> {
+public interface TuristRepository extends JpaRepository<Turist, Integer> {
     
     @Query("delete t from Turist t where t.id=?1")
     public void deleteById (int id);
 
     @Query("select t from Turist t where t.username=?1 and t.password=?2")
-    Optional <Turist> findTuristByUsernameAndPassword(String username, String pass);
+    Optional<Turist> findTuristByUsernameAndPassword(String username, String pass);
 }
