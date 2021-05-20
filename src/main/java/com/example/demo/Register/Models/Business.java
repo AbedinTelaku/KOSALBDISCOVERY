@@ -32,8 +32,7 @@ public class Business {
     private String role;
 
 
-    public Business(int business_ID, String name, String email, String password, String username, String tel_Number, String owner_ID, String fiscal_Number, String business_Number, String business_Activity, String role ) {
-        Business_ID = business_ID;
+    public Business(String name, String email, String password, String username, String tel_Number, String owner_ID, String fiscal_Number, String business_Number, String business_Activity, String role ) {
         this.name = name;
         this.email = email;
         this.password = password;
