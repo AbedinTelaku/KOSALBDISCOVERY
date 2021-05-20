@@ -26,4 +26,14 @@ private TuristRepository turistRepository;
     public void editTurist(int id) {
 
     }
+
+    @Override
+    public Turist login(String username, String pass) {
+        Optional<Turist> turistOptional=this.turistRepository.findTuristByUsernameAndPassword(username,pass);
+
+        if(turistOptional.isEmpty()){
+            return null;
+        }
+        return turistOptional.get();
+    }
 }
