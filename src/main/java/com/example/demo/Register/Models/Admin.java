@@ -44,6 +44,7 @@ public class Admin {
         this.role = role;
     }
 
+    public Admin(){}
     public int getAdminID() {
         return adminID;
     }

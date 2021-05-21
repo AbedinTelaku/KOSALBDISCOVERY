@@ -40,8 +40,8 @@ public BusinessService(BusinessRepository businessRepository){
 
     @Override
     public void editBusiness(int id, String businessId, String businessActivity, String businessNumber, String email, String fiscalNumber, String name, String ownerId, String password, String telNumber, String username, String role) {
-        this.businessRepository.updateBusiness(id,businessId,businessActivity,businessNumber,email,fiscalNumber,name,ownerId,password,telNumber,username,role
-        );
+       // this.businessRepository.updateBusiness(id,businessId,businessActivity,businessNumber,email,fiscalNumber,name,ownerId,password,telNumber,username,role
+      //  );
     }
 
 

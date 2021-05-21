@@ -5,13 +5,11 @@ import com.example.demo.Register.Repository.TouristRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
-public class TouristService implements ITouristService{
+public class TouristService implements ITouristService {
 
-@Autowired
-private TouristRepository touristRepository;
+    @Autowired
+    private TouristRepository touristRepository;
 
 
     @Override
@@ -21,7 +19,7 @@ private TouristRepository touristRepository;
 
     @Override
     public void deleteTourist(int id) {
-    this.touristRepository.deleteById(id);
+        this.touristRepository.deleteById(id);
     }
 
     @Override
@@ -31,11 +29,13 @@ private TouristRepository touristRepository;
 
     @Override
     public Tourist login(String username, String pass) {
-        Optional<Tourist> touristOptional=this.touristRepository.findTouristByUsernameAndPassword(username,pass);
+        // Optional<Tourist> touristOptional=this.touristRepository.findTouristByUsernameAndPassword(username,pass);
 
-        if(touristOptional.toString().isEmpty()){
-            return null;
-        }
-        return touristOptional.get();
+        //     if(touristOptional.toString().isEmpty()){
+        //    return null;
+        //  }
+        //  return touristOptional.get();
+
+        return null;
     }
 }
