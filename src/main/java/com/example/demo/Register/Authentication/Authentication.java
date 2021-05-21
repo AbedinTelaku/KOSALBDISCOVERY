@@ -2,11 +2,16 @@ package com.example.demo.Register.Authentication;
 
 import com.example.demo.Register.Models.Business;
 import com.example.demo.Register.Repository.BusinessRepository;
+import com.example.demo.Register.Controller.TouristController;
+import com.example.demo.Register.Models.Tourist;
+import com.example.demo.Register.Repository.TouristRepository;
 
 public class Authentication implements AuthenticationInterface {
 
 
     private BusinessRepository businessRepository;
+    private TouristController touristController;
+    private TouristRepository touristRepository;
 
 
 
@@ -17,12 +22,36 @@ public class Authentication implements AuthenticationInterface {
     @Override
     public boolean checkTouristPassword(String password) {
 
-        return false;
+         boolean usernameExist = checkTouristUsername(username);
+        Tourist tourist=null;
+        if(usernameExist == true){
+            tourist = this.touristRepository.findTouristByUsername(username);
+        }
+        if(tourist.getPassword().equals(password)){
+            return true;
+        }else{
+            return false;
     }
 
     @Override
     public boolean checkTouristUsername(String username) {
-        return false;
+        List<Tourist> tourists = this.touristRepository.findAll();
+        int result=0;
+
+        for (int i=0; i<tourists.size();i++){
+            Tourist tourist = tourists.get(i);
+            if(tourist.getEmail().equals(username) || tourist.getUsername().equals(username)){
+                result=1;
+                break;
+            }else{
+                result=-1;
+            }
+        }
+        if(result==1){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     @Override
