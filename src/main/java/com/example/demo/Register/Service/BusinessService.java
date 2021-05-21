@@ -25,6 +25,12 @@ public BusinessService(BusinessRepository businessRepository){
     }
 
     @Override
+    public Business getBusinessByUsernameAndPassword(String username, String password) {
+        Optional<Business> businessOptional = this.businessRepository.findBusinessByUsernameAndPassword(username,password);
+        return businessOptional.get();
+    }
+
+    @Override
     public void createBusiness(String name, String email, String password, String username, String tel_Number, String owner_ID, String fiscal_Number, String business_Number, String business_Activity, String role) {
         Business business = new Business(name,email,password,username,tel_Number,owner_ID,fiscal_Number,business_Number,business_Activity,role);
         this.businessRepository.save(business);

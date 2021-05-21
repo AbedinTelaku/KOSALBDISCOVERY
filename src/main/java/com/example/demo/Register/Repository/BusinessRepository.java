@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface BusinessRepository extends JpaRepository<Business,Integer> {
 
@@ -17,4 +19,7 @@ public interface BusinessRepository extends JpaRepository<Business,Integer> {
 
     @Query(value = "select * from business where username=:username", nativeQuery = true)
     public Business findBusinessByUsername(@Param("username") String username);
+
+    @Query(value = "select * from business where username=:username and password=:password", nativeQuery = true)
+    public Optional<Business> findBusinessByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
 }
