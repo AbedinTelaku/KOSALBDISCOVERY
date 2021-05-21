@@ -12,7 +12,7 @@ target/
 .settings
 .springBeans
 .sts4-cache
-
+.properties
 ### IntelliJ IDEA ###
 .idea
 *.iws
@@ -35,5 +35,6 @@ build/
 .vscode/
 
 ### Sensitive Data ###
-src/main/resources/application.properties
+
 application.properties
+.properties
