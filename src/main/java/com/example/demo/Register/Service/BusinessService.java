@@ -5,6 +5,7 @@ import com.example.demo.Register.Repository.BusinessRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -28,6 +29,11 @@ public BusinessService(BusinessRepository businessRepository){
     public Business getBusinessByUsernameAndPassword(String username, String password) {
         Optional<Business> businessOptional = this.businessRepository.findBusinessByUsernameAndPassword(username,password);
         return businessOptional.get();
+    }
+
+    @Override
+    public List<Business> getAllBusinesses() {
+        return this.businessRepository.findAll();
     }
 
     @Override

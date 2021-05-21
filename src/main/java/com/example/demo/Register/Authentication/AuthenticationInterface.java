@@ -2,7 +2,7 @@ package com.example.demo.Register.Authentication;
 
 public interface AuthenticationInterface {
 
-    boolean checkTouristPassword(String password);
+    boolean checkTouristPassword(String username,String password);
     boolean checkTouristUsername(String username);
 
     boolean checkIfBusinessExist(String username, String password);

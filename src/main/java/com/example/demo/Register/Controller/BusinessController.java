@@ -5,10 +5,9 @@ import com.example.demo.Register.Helper.BusinessHelper;
 import com.example.demo.Register.Helper.LoginHelper;
 import com.example.demo.Register.Models.Business;
 import com.example.demo.Register.Service.IBusinessService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/business")
@@ -43,5 +42,10 @@ public class BusinessController {
       boolean checkUsername = this.authenticationInterface.checkIfBusinessExist(username,password);
 
       return checkUsername;
+    }
+
+    @GetMapping("get/all/businesses")
+    public List<Business> getAllBusinesess(){
+        return this.interfaceBusinessService.getAllBusinesses();
     }
 }
