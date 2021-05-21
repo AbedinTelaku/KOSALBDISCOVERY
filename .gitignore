@@ -18,7 +18,8 @@ target/
 *.iws
 *.iml
 *.ipr
-.application.properties
+application.properties
+.properties
 
 ### NetBeans ###
 /nbproject/private/
@@ -35,3 +36,4 @@ build/
 
 ### Sensitive Data ###
 src/main/resources/application.properties
+application.properties

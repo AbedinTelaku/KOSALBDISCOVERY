@@ -33,7 +33,7 @@ private TouristRepository touristRepository;
     public Tourist login(String username, String pass) {
         Optional<Tourist> touristOptional=this.touristRepository.findTouristByUsernameAndPassword(username,pass);
 
-        if(touristOptional.isEmpty()){
+        if(touristOptional.toString().isEmpty()){
             return null;
         }
         return touristOptional.get();
