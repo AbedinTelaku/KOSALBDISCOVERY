@@ -5,16 +5,20 @@ import java.io.Serializable;
 
 public class RegisterHepler implements Serializable {
     private String name;
+    private String email;
     private String surname;
     private String username;
     private String password;
+    private char gender;
 
 
-    public RegisterHepler(String name,String surname, String username, String password) {
+    public RegisterHepler(String name,String email,String surname, String username, String password,char gender) {
         this.name = name;
+        this.email = email;
         this.surname = surname;
         this.username = username;
         this.password = password;
+        this.gender = gender;
     }
 
     public String getName() {
@@ -23,6 +27,14 @@ public class RegisterHepler implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getSurname() {
@@ -47,5 +59,13 @@ public class RegisterHepler implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public char getGender() {
+        return gender;
+    }
+
+    public void setGender(char gender) {
+        this.gender = gender;
     }
 }
