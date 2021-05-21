@@ -1,6 +1,6 @@
 package com.example.demo.Register.Authentication;
 
-import com.example.demo.Register.Controller.TouristController;
+//import com.example.demo.Register.Controller.TouristController;
 import com.example.demo.Register.Models.Business;
 import com.example.demo.Register.Models.Tourist;
 import com.example.demo.Register.Repository.BusinessRepository;
@@ -12,7 +12,7 @@ public class Authentication implements AuthenticationInterface {
 
 
     private BusinessRepository businessRepository;
-    private TouristController touristController;
+   // private TouristController touristController;
     private TouristRepository touristRepository;
 
 
