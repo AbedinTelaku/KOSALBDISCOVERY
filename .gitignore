@@ -18,8 +18,7 @@ target/
 *.iws
 *.iml
 *.ipr
-application.properties
-.properties
+
 
 ### NetBeans ###
 /nbproject/private/
@@ -34,7 +33,7 @@ build/
 ### VS Code ###
 .vscode/
 
-### Sensitive Data ###
 
-application.properties
+### Properties ###
 .properties
+application.properties
