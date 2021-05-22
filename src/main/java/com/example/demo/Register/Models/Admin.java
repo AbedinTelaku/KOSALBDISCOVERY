@@ -45,6 +45,7 @@ public class Admin {
     }
 
     public Admin(String name, String email, String surname, String username, String password, char gender){}
+    public Admin(){}
     public int getAdminID() {
         return adminID;
     }
