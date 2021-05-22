@@ -17,6 +17,6 @@ public interface AdminRepository extends JpaRepository<Admin, Integer> {
     public Business findAdminByUsername(@Param("username") String username);
 
     @Query(value = "select * from admin where username=:username and password=:password", nativeQuery = true)
-    public Optional<Business> findAdminByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
+    public Optional<Admin> findAdminByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
 
 }
