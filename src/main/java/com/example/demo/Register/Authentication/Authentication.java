@@ -18,24 +18,44 @@ public class Authentication implements AuthenticationInterface {
         this.businessRepository=businessRepository;
     }
 
+    public Authentication(TouristRepository touristRepository){ this.touristRepository=touristRepository;}
+
     @Override
     public boolean checkTouristPassword(String username, String password) {
 
         boolean usernameExist = checkTouristUsername(username);
-        Tourist tourist = null;
-        if (usernameExist == true) {
-           // tourist = this.touristRepository.findTouristByUsername(username);
+        Tourist tourist=null;
+        if(usernameExist == true){
+            tourist = this.touristRepository.findTouristByUsername(username);
         }
-        if (tourist.getPassword().equals(password)) {
+        if(tourist.getPassword().equals(password)){
             return true;
-        } else {
+        }else{
             return false;
         }
     }
     @Override
     public boolean checkTouristUsername(String username) {
-        return false;
+        Tourist tourist = this.touristRepository.findTouristByUsername(username);
+
+        if(tourist != null){
+            return true;
+        }else{
+            return false;
+        }
     }
+    @Override
+    public boolean checkIfTouristExist(String username, String password){
+        boolean usernameExist = checkTouristUsername(username);
+        boolean passwordExist = checkTouristPassword(username,password);
+
+        if(usernameExist == true && passwordExist == true){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 
     @Override
     public boolean checkBusinessPassword(String username, String password) {
@@ -74,6 +94,7 @@ public class Authentication implements AuthenticationInterface {
             return false;
         }
     }
+
     @Override
     public boolean checkAdminPassword(String password) {
         return false;

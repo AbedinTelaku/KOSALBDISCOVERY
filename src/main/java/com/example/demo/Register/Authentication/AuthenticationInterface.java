@@ -4,6 +4,7 @@ public interface AuthenticationInterface {
 
     boolean checkTouristPassword(String username,String password);
     boolean checkTouristUsername(String username);
+    boolean checkIfTouristExist(String username, String password);
 
     boolean checkIfBusinessExist(String username, String password);
     boolean checkBusinessPassword(String Username, String password);

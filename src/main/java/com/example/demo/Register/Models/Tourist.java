@@ -24,17 +24,20 @@ public class Tourist {
     @Column
     private String password;
     @Column
+    private String username;
+    @Column
     private String role;
 
 
-    public Tourist(int touristID, String name, String surname, int age, char gender, String email, String password, String role) {
-        this.touristID = touristID;
+    public Tourist( String name, String surname, int age, char gender, String email, String password,String username ,String role) {
+
         this.name = name;
         this.surname = surname;
         this.age = age;
         this.gender = gender;
         this.email = email;
         this.password = password;
+        this.username=username;
         this.role=role;
     }
     public Tourist() {
@@ -104,5 +107,12 @@ public class Tourist {
         this.role = role;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }
 
