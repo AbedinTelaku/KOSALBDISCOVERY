@@ -2,6 +2,7 @@ package com.example.demo.Register.Authentication;
 
 
 import com.example.demo.Register.Models.Business;
+import com.example.demo.Register.Repository.AdminRepository;
 import com.example.demo.Register.Repository.BusinessRepository;
 import com.example.demo.Register.Models.Tourist;
 import com.example.demo.Register.Repository.TouristRepository;
@@ -11,6 +12,7 @@ public class Authentication implements AuthenticationInterface {
 
     private BusinessRepository businessRepository;
     private TouristRepository touristRepository;
+    private AdminRepository adminRepository;
 
 
 
@@ -18,7 +20,13 @@ public class Authentication implements AuthenticationInterface {
         this.businessRepository=businessRepository;
     }
 
-    public Authentication(TouristRepository touristRepository){ this.touristRepository=touristRepository;}
+    public Authentication(TouristRepository touristRepository){
+        this.touristRepository=touristRepository;
+    }
+
+    public Authentication(AdminRepository adminRepository){
+        this.adminRepository=adminRepository;
+    }
 
     @Override
     public boolean checkTouristPassword(String username, String password) {

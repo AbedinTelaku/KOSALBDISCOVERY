@@ -3,7 +3,7 @@ package com.example.demo.Register.Helper;
 
 import java.io.Serializable;
 
-public class RegisterHepler implements Serializable {
+public class RegisterHelper implements Serializable {
     private String name;
     private String email;
     private String surname;
@@ -12,7 +12,7 @@ public class RegisterHepler implements Serializable {
     private char gender;
 
 
-    public RegisterHepler(String name,String email,String surname, String username, String password,char gender) {
+    public RegisterHelper(String name, String email, String surname, String username, String password, char gender) {
         this.name = name;
         this.email = email;
         this.surname = surname;

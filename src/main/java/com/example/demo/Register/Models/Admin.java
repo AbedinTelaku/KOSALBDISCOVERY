@@ -44,7 +44,7 @@ public class Admin {
         this.role = role;
     }
 
-    public Admin(){}
+    public Admin(String name, String email, String surname, String username, String password, char gender){}
     public int getAdminID() {
         return adminID;
     }
