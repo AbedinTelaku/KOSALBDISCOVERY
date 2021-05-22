@@ -10,6 +10,8 @@ public interface AuthenticationInterface {
     boolean checkBusinessPassword(String Username, String password);
     boolean checkBusinessUsername(String username);
 
+
+
     boolean checkAdminPassword(String password);
     boolean checkAdminUsername(String username);
 }
