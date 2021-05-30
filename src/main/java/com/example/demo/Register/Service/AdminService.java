@@ -51,7 +51,12 @@ public class AdminService implements IAdminService{
     @Override
     public void editAdmin(int id, String adminID,String name, String surname,int age,String username,String gender,String email,String password,String role) {
 
-    };
+    }
+
+    @Override
+    public Admin register(String name, String surname, String username, String password) {
+        return null;
+    }
 
 //    @Override
 //    public Admin register(String name, String surname, String username, String password) {
