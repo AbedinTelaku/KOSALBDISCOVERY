@@ -189,10 +189,47 @@ list-style: none;
     justify-content: space-between;
 }
 
+.bodyContentMain{
+    width: 100%;
+    height: 100%;
 
+}
+.usersStats{
+    width: 50%;
+    height: 60%;
+   
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 3%;
+    
+}
+.usersStatsChild{
+    width: 35%;
+    height: 45%;
+   
+    margin-top: 1.5%;
 
+    padding-top: 4%;
+    padding-right: 3%;
+    padding-left: 3%;
+    text-align:start;
+    color: #6c757d;
+    font-family: Verdana;
+    font-size: 24px;
+    background: white;
+    border-radius: 10%;
+}
+.usersStatsChild div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
-
+}
+.usersStatsChild p{
+    margin-top: 10%;
+}
 ::-webkit-scrollbar {
     width: 12px;
 }
