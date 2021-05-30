@@ -82,20 +82,9 @@
                           
     
     
-                            <p style="color: #6c757d; margin-left: 5%; margin-top: 10%; font-size: smaller;">CUSTOM</p>
+                            <p style="color: #6c757d; margin-left: 5%; margin-top: 10%; font-size: smaller;"></p>
 
-                            <li class="side-nav-item">
-                                <a href="">Pages</a>
-                    
-                                <div class="hide">
-                                    <ul class="list-group">
-                                        <li class="list-group-item" id="eventsButton">Manage Events</li>
-                                        <li class="list-group-item " id="editEvents">Edit Events</li>
-                                        <li class="list-group-item " id="newEvent">New Event</li>
-                                    </ul>
-                    
-                                </div>
-                                </li>
+                           
 
 
                                 <li class="side-nav-item">
@@ -147,20 +136,48 @@
 
         <div class="mainContent">
             <div class="headerContent">
+
                 <div class="settings">
-                     settings
+                   <ul class="list-group list-group-horizontal settingsItems">
+                    <li class="settings-button list-group-item">
+                        <img src="photos/settings-icon.png" alt="" data-toggle="collapse" href="#settingsMenu" role="button" aria-expanded="false" aria-controls="settingsMenu" >
+                         <p style="display: inline; font-size: larger; font-family:Verdana, Geneva, Tahoma, sans-serif;color: #6c757d; margin-left: 5%; letter-spacing: 0.5px;">settings</p>
+                        <div class="collapse p-3 mb-2 bg-dark text-white" id="settingsMenu">
+                            <ul class="list-group">  
+                                <li>                         
+                                  <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">Dark Mode</label>
+                                  </div>
+                                </li> 
+
+                                <li>
+                                  <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">Light Mode</label>
+                                  </div>
+                                </li> 
+                            </ul>
+            
+                        </div>
+                        </li> 
+
+                   </ul>
+                 
                 </div>
 
                 <div class="personalInformation">
-                    <div class="username">
-                        username - 
+                    <ul class="list-group list-group-horizontal">
 
-                    </div>
+                        <li class=" list-group-item">
+                            <p>USERNAME</p>
+                        </li> 
 
-                    <div class="profileImage">
-                        - img
-
-                    </div>
+                        <li class=" list-group-item">
+                           img
+                        </li> 
+    
+                       </ul>
 
                 </div>
 
@@ -170,12 +187,12 @@
 
                 <div class="bodyContentHeader">
                     <div class="bodyContentHeaderTitle">
-                        <p>Dashboard</p>
+                        
 
                     </div>
 
                     <div class="bodyContentHeaderData">
-                        <p>date</p>
+                        
 
                     </div>
 
