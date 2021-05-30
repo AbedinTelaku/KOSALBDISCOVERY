@@ -29,7 +29,7 @@
       var f = document.forms["my-form"]["ownerid"].value;
       var k = document.forms["my-form"]["fiscalnumber"].value;
       var l = document.forms["my-form"]["businessnumber"].value;
-      var m = document.forms["my-form"]["businessactivity"].value;
+
 
 
       if (a==null || a=="")
@@ -63,10 +63,6 @@
       }else if (l==null || l=="")
       {
         alert("Please Enter Business Number");
-        return false;
-      }else if (m==null || m=="")
-      {
-        alert("Please Enter BusinessActivity");
         return false;
       }
 
@@ -165,35 +161,39 @@
               </div>
 
               <div class="form-group row">
-                <label for="surname" class="col-md-4 col-form-label text-md-right">Business Activity</label>
+                <label for="gender" class="col-md-4 col-form-label text-md-right">Business Activity</label>
                 <div class="col-md-6">
-                  <input type="text" id="" class="form-control" name="businessactivity">
+                  <select  id="" class="form-control" name="businessactivity">
+                    <option value="barcafe">Bar Cafe</option>
+                    <option value="hotel">Hotel</option>
+                  </select>
                 </div>
-
-
               </div>
 
 
-
-
-
-
-
-
-
-
-
-
-              <div class="col-md-6 offset-md-4">
-                <button type="submit" class="btn btn-primary">
-                  Register
-                </button>
-              </div>
           </div>
-          </form>
+
+
+
+
+
+
+
+
+
+
+
+
+          <div class="col-md-6 offset-md-4">
+            <button type="submit" class="btn btn-primary">
+              Register
+            </button>
+          </div>
         </div>
+        </form>
       </div>
     </div>
+  </div>
   </div>
   </div>
 
