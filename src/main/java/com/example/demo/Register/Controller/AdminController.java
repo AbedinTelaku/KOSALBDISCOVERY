@@ -1,53 +1,30 @@
 package com.example.demo.Register.Controller;
 
-import com.example.demo.Register.Authentication.AuthenticationInterface;
-import com.example.demo.Register.Helper.AdminHelper;
-import com.example.demo.Register.Helper.LoginHelper;
+import com.example.demo.Register.Helper.RegisterHelper;
 import com.example.demo.Register.Models.Admin;
 import com.example.demo.Register.Service.IAdminService;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/admin")
+@RequestMapping("/api/admin")
 public class AdminController {
 
-    private IAdminService interfaceAdminService ;
-    private AuthenticationInterface authenticationInterface;
+    @Autowired
+    private IAdminService adminService;
 
-    public AdminController(IAdminService interfaceAdminService){
-        this.interfaceAdminService=interfaceAdminService;
-    }
+    @PostMapping("/register")
+    public ResponseEntity register(@RequestBody RegisterHelper register){
+        Admin admin=this.adminService.register(register.getName(),register.getSurname(),register.getUsername(),register.getPassword());
 
+        if(admin == null){
+            return ResponseEntity.notFound().build();
+        }
 
-    @PostMapping("create/admin")
-    public void registerAdmin(@RequestBody AdminHelper adminHelper){
-        this.interfaceAdminService.createAdmin(adminHelper.getName(),adminHelper.getEmail(), adminHelper.getSurname(), adminHelper.getUsername(), adminHelper.getPassword(), adminHelper.getGender());
-    }
-
-    @PostMapping("get/admin")
-    public Admin getAdmin(@RequestBody LoginHelper loginHelper){
-        String username = loginHelper.getUsername();
-        String password = loginHelper.getPassword();
-
-        return this.interfaceAdminService.getAdminByUsernameAndPassword(username,password);
-    }
-
-    @PostMapping("check/admin")
-    public boolean AdminExist(@RequestBody LoginHelper loginHelper){
-        String username = loginHelper.getUsername();
-        String password = loginHelper.getPassword();
-
-        boolean checkUsername = this.authenticationInterface.checkAdminUsername(username);
-        boolean checkPassword = this.authenticationInterface.checkAdminPassword(password);
-
-        return checkUsername;
-
-    }
-
-    @GetMapping("get/all/admin")
-    public List<Admin> getAllBusinesess(){
-        return this.interfaceAdminService.getAllAdmin();
+        return ResponseEntity.ok(admin);
     }
 }
