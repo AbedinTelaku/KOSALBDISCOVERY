@@ -79,9 +79,20 @@
                             </div>
                             </li>
     
-                          
+                            <li class="side-nav-item">
+                                <a data-toggle="collapse" href="#touristPlacesMenu" role="button" aria-expanded="false" aria-controls="touristPlacesMenu" id="eventsButton">Tourist Places</a>
+                    
+                                <div class="collapse" id="touristPlacesMenu">
+                                    <ul class="side-nav-second-level">
+                                        <li >History</li>
+                                        <li >Nature</li>
+                                        <li >New Place</li>
+                                    </ul>
+                    
+                                </div>
+                                </li>  
     
-    
+
                             <p style="color: #6c757d; margin-left: 5%; margin-top: 10%; font-size: smaller;"></p>
 
                            
@@ -90,11 +101,11 @@
                                 <li class="side-nav-item">
                                     <a href="">My Account</a>
                         
-                                    <div class="hide">
-                                        <ul class="list-group">
-                                            <li class="list-group-item" id="eventsButton">Manage Events</li>
-                                            <li class="list-group-item " id="editEvents">Edit Events</li>
-                                            <li class="list-group-item " id="newEvent">New Event</li>
+                                    <div class="collapse">
+                                        <ul class="side-nav-second-level">
+                                            <li >Manage Events</li>
+                                            <li >Edit Events</li>
+                                            <li >New Event</li>
                                         </ul>
                         
                                     </div>
@@ -103,30 +114,28 @@
                                     <li class="side-nav-item">
                                         <a href="">Mail</a>
                             
-                                        <div class="hide">
-                                            <ul class="list-group">
-                                                <li class="list-group-item" id="eventsButton">Manage Events</li>
-                                                <li class="list-group-item " id="editEvents">Edit Events</li>
-                                                <li class="list-group-item " id="newEvent">New Event</li>
+                                        <div class="collapse">
+                                            <ul class="side-nav-second-level">
+                                                <li >Manage Events</li>
+                                                <li >Edit Events</li>
+                                                <li >New Event</li>
                                             </ul>
                             
                                         </div>
                                         </li> 
-                                    
-                                    <li class="side-nav-item">
-                                        <a href="">Log Out</a>
-                            
-                                        <div class="hide">
-                                            <ul class="list-group">
-                                                <li class="list-group-item" id="eventsButton">Manage Events</li>
-                                                <li class="list-group-item " id="editEvents">Edit Events</li>
-                                                <li class="list-group-item " id="newEvent">New Event</li>
-                                            </ul>
-                            
-                                        </div>
-                                        </li>     
     
-                                                
+                                        <li class="side-nav-item">
+                                            <a href="">Log Out</a>
+                                
+                                            <div class="collapse">
+                                                <ul class="side-nav-second-level">
+                                                    <li >Manage Events</li>
+                                                    <li >Edit Events</li>
+                                                    <li >New Event</li>
+                                                </ul>
+                                
+                                            </div>
+                                            </li>              
 
             </div>
            
@@ -139,6 +148,7 @@
 
                 <div class="settings">
                    <ul class="list-group list-group-horizontal settingsItems">
+                       <li><p class="dashboardTitle">Dashboard</p></li>
                     <li class="settings-button list-group-item">
                         <img src="photos/settings-icon.png" alt="" data-toggle="collapse" href="#settingsMenu" role="button" aria-expanded="false" aria-controls="settingsMenu" >
                          <p style="display: inline; font-size: larger; font-family:Verdana, Geneva, Tahoma, sans-serif;color: #6c757d; margin-left: 5%; letter-spacing: 0.5px;">settings</p>
@@ -170,11 +180,11 @@
                     <ul class="list-group list-group-horizontal">
 
                         <li class=" list-group-item">
-                            <p>USERNAME</p>
+                            <p id="nameSurname">Name Surname</p>
                         </li> 
 
                         <li class=" list-group-item">
-                           img
+                           <img src="" alt="Profile Picture">
                         </li> 
     
                        </ul>
@@ -189,6 +199,7 @@
                     <div class="bodyContentHeaderTitle">
                         
 
+
                     </div>
 
                     <div class="bodyContentHeaderData">
@@ -200,7 +211,18 @@
 
                 <div class="bodyContentMain">
 
-                    <div>
+                    <div class="usersStats">
+
+                        <div class="allUsersStats">
+
+                        </div>
+                        <div class="TouristsStats">
+
+                        </div>
+                        <div class="BusinessesStats">
+
+                        </div>
+                       
 
                     </div>
 
