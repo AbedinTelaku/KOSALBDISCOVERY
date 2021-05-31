@@ -294,7 +294,7 @@
 
                 <div class="hide" id="allBusinessesTable">
                     <p style ="color: #6c757d; margin-left: 1%;  font-size: x-large;">Businesses</p>
-                    <table class="table table-bordered table-dark" id="table">
+                    <table class="table table-bordered table-dark" id="table" style="max-height: 70%; overflow: hidden;">
                         <thead>
                           <tr>
                             
@@ -307,6 +307,7 @@
                             <th scope="col">Fiscal Number</th>
                             <th scope="col">Business Number</th>
                             <th scope="col">Business Activity</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Role</th>
                             <th scope="col">#</th>
                        
@@ -316,6 +317,19 @@
                           
                         </tbody>
                       </table>
+
+                      <div class="businessesNavigation">
+
+                          <input type="text" id="idField" placeholder="business id">
+
+                          <div style="display: flex; flex-direction: row; justify-content: space-evenly; width: 30%;">
+                            <button class="btn btn-primary" id="editBusinessButton">Edit</button>
+                            <button class="btn btn-danger" id="deleteBusinessButton">Delete</button>
+                            <button class="btn btn-dark" id="blockBusinessButton">Block</button>
+                          </div>
+                         
+
+                      </div>
                 </div>
 
                 <div class="blockedUsersTable hide" id="blockedUsersTable">

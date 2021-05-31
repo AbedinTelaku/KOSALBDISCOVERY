@@ -29,10 +29,12 @@ public class Business {
     @Column
     private String business_Activity;
     @Column
+    private String status;
+    @Column
     private String role;
 
 
-    public Business(String name, String email, String password, String username, String tel_Number, String owner_ID, String fiscal_Number, String business_Number, String business_Activity, String role ) {
+    public Business(String name, String email, String password, String username, String tel_Number, String owner_ID, String fiscal_Number, String business_Number, String business_Activity, String status ,String role ) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -42,6 +44,7 @@ public class Business {
         this.fiscal_Number = fiscal_Number;
         this.business_Number = business_Number;
         this.business_Activity = business_Activity;
+        this.status=status;
         this.role=role;
     }
 
@@ -127,6 +130,14 @@ public class Business {
 
     public void setBusiness_Activity(String business_Activity) {
         this.business_Activity = business_Activity;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getRole() {
