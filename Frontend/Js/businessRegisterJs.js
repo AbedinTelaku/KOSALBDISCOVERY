@@ -11,6 +11,7 @@ $("#registerButton").click(function(event){
     var businessFiscalNumber = document.getElementById("fiscalnumber").value;
     var businessNum = document.getElementById("businessnumber").value;
     var businessActi = document.getElementById("businessactivity").value;
+    var statuss="activ"
     var rolee="business";
 
     business={
@@ -23,6 +24,7 @@ $("#registerButton").click(function(event){
         fiscal_Number:businessFiscalNumber,
         business_Number:businessNum,
         business_Activity:businessActi,
+        status:statuss,
         role:rolee
     }
 
@@ -74,5 +76,6 @@ var business={
     fiscal_Number:"",
     business_Number:"",
     business_Activity:"",
+    status:"",
     role:""
 }
