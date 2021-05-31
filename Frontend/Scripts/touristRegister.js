@@ -24,22 +24,22 @@ $(function(){
 
             },messages:{
                 username:{
-                    required: "Write username"
+                    required: "Username is required"
                 },
                 email:{
-                    required: "Write an email"
+                    required: "Email is required"
                 },
                 password:{
-                    required: "Write an password"
+                    required: "Passowrd is required"
                 },
                 age:{
-                    required:"Write your age"
+                    required:"Age is required"
                 },
                 fullname:{
-                    required:"Write your name"
+                    required:"Name is required"
                 },
                 surname:{
-                    required:"Write your surname"
+                    required:"Surname is required"
                 }
 
             }
