@@ -197,7 +197,7 @@
 
                 
 
-                <div class="bodyContentMain">
+                <div class="bodyContentMain" id="bodyContentMain">
 
                     <div class="usersStats">
 
@@ -279,8 +279,20 @@
                         
                 </div>
 
-                <div class="allUsersTable">
+                <div class="allUsersTable hide" id="allUsersTable">
 
+                  
+
+                </div>
+
+                <div class="allAdminsTable hide" id="allAdminsTable">
+
+                </div>
+                <div class="allTouristsTable hide" id="allTouristsTable">
+
+                </div>
+
+                <div class="allBusinessesTable hide" id="allBusinessesTable">
                     <p style ="color: #6c757d; margin-left: 1%;  font-size: x-large;">Businesses</p>
                     <table class="table table-bordered table-dark" id="table">
                         <thead>
@@ -297,30 +309,18 @@
                             <th scope="col">Business Activity</th>
                             <th scope="col">Role</th>
                             <th scope="col">#</th>
-                            <th scope="col">Edit</th>
-                            <th scope="col">Delete</th>
-                            <th scope="col">Block</th>
+                            <th scope="col" style=" color: rgb(0, 162, 184); ">Edit</th>
+                            <th scope="col" style=" color: red; ">Delete</th>
+                            <th scope="col" style=" color: rgb(233, 153, 34); ">Block</th>
                           </tr>
                         </thead>
                         <tbody id="tableBody">
                           
                         </tbody>
                       </table>
-
                 </div>
 
-                <div class="allAdminsTable">
-
-                </div>
-                <div class="allTouristsTable">
-
-                </div>
-
-                <div class="allBusinessesTable">
-
-                </div>
-
-                <div class="blockedUsersTable">
+                <div class="blockedUsersTable hide" id="blockedUsersTable">
 
                 </div>
 
@@ -335,7 +335,9 @@
    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="Js/adminDashboardJS.js"></script>
+    <script src="Js/dashboardHideParts.js"></script>
     <script src="Js/getBusinesses.js"></script>
+    
 
 </body>
 </html>

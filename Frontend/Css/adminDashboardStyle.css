@@ -245,6 +245,11 @@ background: rgb(22, 22, 22);
     height: 100%;
     border: 1px solid green;
 }
+.allBusinessesTable{
+    width: 100%;
+    height: 100%;
+    border: 1px solid green;
+}
 ::-webkit-scrollbar {
     width: 12px;
 }

@@ -1,4 +1,7 @@
 
+
+
+
 $("#businessesButton").click( function(event){
     getBusinesses();
     
@@ -37,7 +40,6 @@ function showBusinesses(businesses){
         for(j in business){
             var tableData = document.createElement("td");           
             var text = document.createTextNode(business[j]);
-
             tableData.appendChild(text);
             tableRow.appendChild(tableData);            
         }
