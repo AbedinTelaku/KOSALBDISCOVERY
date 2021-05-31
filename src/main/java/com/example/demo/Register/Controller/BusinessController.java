@@ -27,6 +27,11 @@ public class BusinessController {
 
     }
 
+    @GetMapping("/get/business/{id}")
+    public Business getBusiness(@PathVariable("id") int id){
+       return this.interfaceBusinessService.getBusiness(id);
+
+    }
     @GetMapping("/get/business")
     public Business getBusiness(@RequestBody LoginHelper loginHelper){
         String username = loginHelper.getUsername();

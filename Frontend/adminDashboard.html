@@ -319,6 +319,63 @@
                               
                             </tbody>
                           </table>
+
+
+                          <div class="businessEditForm">
+<!-- Button trigger modal 
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+    Launch demo modal
+  </button>
+  -->
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Edit Business</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" >
+          <label for="bid">Business Id</label>
+          <input type="text" id="bid" disabled>
+          <label for="bname">Name</label>
+          <input type="text" id="bname">
+
+          <label for="bemail">Email</label>
+          <input type="text" id="bemail">
+
+          <label for="bpassword">Password</label>
+          <input type="text" id="bpassword">
+
+          <label for="busername">Username</label>
+          <input type="text" id="busername">
+
+          <label for="bphoneNum">Phone Number</label>
+          <input type="text" id="bphoneNum">
+
+          <label for="bownerId">Owner Id</label>
+          <input type="text" id="bownerId">
+
+          <label for="bfiscalNum">Fiscal Number</label>
+          <input type="text" id="bfiscalNum">
+
+          <label for="bnumber">Business Number</label>
+          <input type="text" id="bnumber">
+
+          <label for="bactivity">Business Activity</label>
+          <input type="text" id="bactivity">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="saveChangesButton">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+                        </div>
                     </div>
                     
 
@@ -326,18 +383,20 @@
 
                         <div>
                             <label for="idField" style="font-family: 'Courier New', Courier, monospace; color: #6c757d;">Business Id:</label>
-                            <input type="text" id="idField" required>
+                            <input type="text" id="idField" >
                         </div>
                         
 
                           <div style="display: flex; flex-direction: row; justify-content: space-evenly; width: 30%;">
-                            <button class="btn btn-primary" id="editBusinessButton">Edit</button>
+                            <button class="btn btn-primary" id="editBusinessButton" data-toggle="modal" data-target="#exampleModalCenter" >Edit</button>
                             <button class="btn btn-danger" id="deleteBusinessButton">Delete</button>
                             <button class="btn btn-dark" id="blockBusinessButton">Block</button>
                           </div>
                          
 
                       </div>
+
+                      
                 </div>
 
                 <div class="blockedUsersTable hide" id="blockedUsersTable">
@@ -357,7 +416,7 @@
     <script src="Js/adminDashboardJS.js"></script>
     <script src="Js/dashboardHideParts.js"></script>
     <script src="Js/getBusinesses.js"></script>
-    
+    <script src="Js/editBusiness.js"></script>
 
 </body>
 </html>

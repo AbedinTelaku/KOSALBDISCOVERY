@@ -168,7 +168,7 @@ list-style: none;
     height: 90%;
 
     background-color: #f0f1f5;
-    overflow: scroll;
+    overflow: hidden;
 }
 .dashboardTitle{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -258,6 +258,15 @@ background: rgb(22, 22, 22);
     width: 100%;
     justify-content: space-evenly;
     margin-top: 2%;
+}
+
+.modal-body{
+    display: flex;
+    flex-direction: column;
+}
+.modal-body label{
+    font-size: smaller;
+    color: #6c757d;
 }
 ::-webkit-scrollbar {
     width: 12px;
