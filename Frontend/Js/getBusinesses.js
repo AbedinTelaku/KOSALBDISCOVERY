@@ -1,9 +1,10 @@
 
 $("#businessesButton").click( function(event){
-    getBusinesses()
+    getBusinesses();
+    
 });
 
-var businesses="";
+
 function getBusinesses() {
 
     $.ajax({
@@ -14,11 +15,8 @@ function getBusinesses() {
         //data: JSON.stringify(user),
         success: function (data) {
             var business = JSON.parse(JSON.stringify(data));
-            // var kursi=kurset.data;
-            //console.log("businesses: " + JSON.stringify(business))
-            console.log(business)
-            //console.log(JSON.parse(JSON.stringify(data)))
-            businesses=business;
+            
+            showBusinesses(business);
         },
         error: function (request, status, error) {
             console.log(error);
@@ -28,19 +26,24 @@ function getBusinesses() {
 
 }
 
-
-function showBusinesses(){
-    var table = document.getElementById("table");
+function showBusinesses(businesses){
+    //var table = document.getElementById("table");
     var tableBody = document.getElementById("tableBody");
 
-    var thead = document.createElement("thead"); //cjild of table
-    var headRow  =document.createElement("tr");
-    thead.appendChild(headRow);
-    var headHeads = document.createElement("th");
+    for(i in businesses){
+        var tableRow = document.createElement("tr");    
+        var business = businesses[i];
+       
+        for(j in business){
+            var tableData = document.createElement("td");           
+            var text = document.createTextNode(business[j]);
 
-    document.write(
-   
-        )
+            tableData.appendChild(text);
+            tableRow.appendChild(tableData);            
+        }
+        tableBody.appendChild(tableRow);
+    }
+    
 }
 
 
