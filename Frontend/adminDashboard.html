@@ -41,7 +41,7 @@
                             <li >Manage Users</li>
                             <li >Admins</li>
                             <li >Tourists</li>
-                            <li >Businesses</li>
+                            <li id="businessesButton">Businesses</li>
                             <li >Blocked User</li>
                         </ul>
         
@@ -152,7 +152,7 @@
                     <li class="settings-button list-group-item">
                         <img src="photos/settings-icon.png" alt="" data-toggle="collapse" href="#settingsMenu" role="button" aria-expanded="false" aria-controls="settingsMenu" >
                          <p style="display: inline; font-size: larger; font-family:Verdana, Geneva, Tahoma, sans-serif;color: #6c757d; margin-left: 5%; letter-spacing: 0.5px;">settings</p>
-                        <div class="collapse p-3 mb-2 bg-dark text-white" id="settingsMenu">
+                        <div class="collapse p-3 mb-2 bg-dark " id="settingsMenu">
                             <ul class="list-group">  
                                 <li>                         
                                   <div class="form-check form-switch">
@@ -195,25 +195,13 @@
 
             <div class="bodyContent" id="bodyContent">
 
-                <div class="bodyContentHeader">
-                    <div class="bodyContentHeaderTitle">
-                        
-
-
-                    </div>
-
-                    <div class="bodyContentHeaderData">
-                        
-
-                    </div>
-
-                </div>
+                
 
                 <div class="bodyContentMain">
 
                     <div class="usersStats">
 
-                        <div class="allUsersStats usersStatsChild">
+                        <div class="allUsersStats usersStatsChild" id="allUsersStats">
                             
                            
                             <div>
@@ -228,7 +216,7 @@
                          
 
                         </div>
-                        <div class="TouristsStats usersStatsChild">
+                        <div class="TouristsStats usersStatsChild" id="TouristsStats">
                           
 
                             <div>
@@ -244,7 +232,7 @@
                             </div>
                             
                         </div>
-                        <div class="BusinessesStats usersStatsChild">
+                        <div class="BusinessesStats usersStatsChild" id="BusinessesStats">
                             
                             <div>
                                 
@@ -259,23 +247,86 @@
                             </div>
                         </div>
                        
-                        <div class="viewsStats usersStatsChild">
+                        <div class="reservationsStats usersStatsChild" id="reservationsStatsChild">
                             <div>                       
-                                <p style="font-size: 14px;">Views</p>
-                                <img src="Photos/views.png" alt="">
+                                <p style="font-size: 14px;">Reservations</p>
+                                <img src="Photos/booking.png" alt="">
                             </div>
                         
                             <div>
-                                <p>132,000</p>
+                                <p>250</p>
                                 <p style="color: green; font-size: 14px; margin-top: 15%;">+32%</p>
                             </div>
                         </div>
+
+                        <div class="eventsStats usersStatsChild" id="eventsStatsChild">
+                            <div>                       
+                                <p style="font-size: 14px;">Events</p>
+                                <img src="Photos/event.png" alt="">
+                            </div>
+                        
+                            <div>
+                                <p>250</p>
+                                <p style="color: green; font-size: 14px; margin-top: 15%;">+32%</p>
+                            </div>
+                        </div>
+
 
                     </div>
 
                     
 
                         
+                </div>
+
+                <div class="allUsersTable">
+
+                    <table class="table table-bordered table-dark" id="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Handle</th>
+                          </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">3</th>
+                            <td >Larry </td>
+                            <td >Bird</td>
+                            <td>@twitter</td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                </div>
+
+                <div class="allAdminsTable">
+
+                </div>
+                <div class="allTouristsTable">
+
+                </div>
+
+                <div class="allBusinessesTable">
+
+                </div>
+
+                <div class="blockedUsersTable">
+
                 </div>
 
             </div>
@@ -289,6 +340,7 @@
    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="Js/adminDashboardJS.js"></script>
+    <script src="Js/getBusinesses.js"></script>
 
 </body>
 </html>

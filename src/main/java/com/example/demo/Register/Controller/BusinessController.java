@@ -26,7 +26,7 @@ public class BusinessController {
 
     }
 
-    @PostMapping("/get/business")
+    @GetMapping("/get/business")
     public Business getBusiness(@RequestBody LoginHelper loginHelper){
         String username = loginHelper.getUsername();
         String password = loginHelper.getPassword();
