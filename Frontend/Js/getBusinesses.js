@@ -28,24 +28,31 @@ function getBusinesses() {
     });
 
 }
+var executed = false;
+function showBusinesses(businesses) {
+    if (executed == false) {
+        //var table = document.getElementById("table");
+        var tableBody = document.getElementById("tableBody");
 
-function showBusinesses(businesses){
-    //var table = document.getElementById("table");
-    var tableBody = document.getElementById("tableBody");
+        for (i in businesses) {
+            var tableRow = document.createElement("tr");
+            var business = businesses[i];
 
-    for(i in businesses){
-        var tableRow = document.createElement("tr");    
-        var business = businesses[i];
-       
-        for(j in business){
-            var tableData = document.createElement("td");           
-            var text = document.createTextNode(business[j]);
-            tableData.appendChild(text);
-            tableRow.appendChild(tableData);            
+            for (j in business) {
+                var tableData = document.createElement("td");
+                var text = document.createTextNode(business[j]);
+                tableData.appendChild(text);
+                tableRow.appendChild(tableData);
+            }
+
+
+            tableBody.appendChild(tableRow);
         }
-        tableBody.appendChild(tableRow);
+        executed = true;
     }
-    
+
+
+
 }
 
 

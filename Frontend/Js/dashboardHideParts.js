@@ -6,11 +6,21 @@ var blockedUsersDiv = document.getElementById("blockedUsersTable");
 
 
 $("#businessesButton").click( function(event){
-    allBusinessesDiv.classList.remove("hide");
+    if(allBusinessesDiv.classList == "hide"){
+        allBusinessesDiv.classList.remove("hide");
 
-    statsDiv.classList.add("hide");
-    allUsersDiv.classList.add("hide");
-    allAdminsDiv.classList.add("hide");
-    blockedUsersDiv.classList.add("hide");
+        statsDiv.classList.add("hide");
+        allUsersDiv.classList.add("hide");
+        allAdminsDiv.classList.add("hide");
+        blockedUsersDiv.classList.add("hide");
+    }else{
+        allBusinessesDiv.classList.add("hide");
+
+        statsDiv.classList.remove("hide");
+        allUsersDiv.classList.add("hide");
+        allAdminsDiv.classList.add("hide");
+        blockedUsersDiv.classList.add("hide");
+    }
+    
     
 });
