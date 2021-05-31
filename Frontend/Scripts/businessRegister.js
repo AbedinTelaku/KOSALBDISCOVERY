@@ -26,34 +26,34 @@ $(function(){
                 },
                 businessnumber:{
                     required:true
-                },
+                }
 
 
             },messages:{
                 username:{
-                    required: "Write username"
+                    required: "Username is required"
                 },
                 email:{
-                    required: "Write an email"
+                    required: "Emal is required"
                 },
                 password:{
-                    required: "Write an password"
+                    required: "Password is required"
                 },
                 phonenumber:{
-                    required:"Write your phone number"
+                    required:"Phone number is required"
                 },
                 fullname:{
-                    required:"Write your name"
+                    required:"Name is required"
                 },
                 ownerid:{
-                    required:"Write  Owner Id"
+                    required:"Owner Id is required"
                 },
                 fiscalnumber:{
-                    required:"Write fiscal number"
+                    required:"Fiscal number is required"
                 },
                 businessnumber:{
-                    required:"Write business number"
-                },
+                    required:"Business number is required"
+                }
 
 
             }

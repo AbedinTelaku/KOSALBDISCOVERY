@@ -57,11 +57,11 @@
         <div class="card">
           <div class="card-header">Register</div>
           <div class="card-body">
-            <form name="my-form"  onsubmit="return validform()" action="success.php" method="">
+            <form name="myForm"   id="registration">
               <div class="form-group row">
                 <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
                 <div class="col-md-6">
-                  <input type="text" id="full_name" class="form-control" name="full-name">
+                  <input type="text" id="full_name" class="form-control" name="fullname">
                 </div>
               </div>
 
@@ -83,8 +83,8 @@
                 <label for="gender" class="col-md-4 col-form-label text-md-right">Gender</label>
                 <div class="col-md-6">
                   <select  id="" class="form-control" name="gender">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
+                    <option value="male">M</option>
+                    <option value="female">F</option>
                   </select>
                 </div>
               </div>
@@ -117,11 +117,11 @@
 
 
               <div class="col-md-6 offset-md-4">
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary" >
                   Register
                 </button>
               </div>
-          </div>
+
           </form>
         </div>
       </div>
