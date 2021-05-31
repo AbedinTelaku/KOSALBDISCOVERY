@@ -12,12 +12,13 @@ var lightModeCheck=document.getElementById("lightModeSwitchCheck");
       if ($(this).is(':checked')) {
           mainContent.classList.add("dark-Mode-One");
           headerContent.classList.add("dark-Mode-Zero");
-
+          lightModeCheck.checked=false;
          
       }
       else {
          mainContent.classList.remove("dark-Mode-One");
          headerContent.classList.remove("dark-Mode-Zero");
+         lightModeCheck.checked=true;
       }
   });
 
@@ -25,11 +26,13 @@ var lightModeCheck=document.getElementById("lightModeSwitchCheck");
     if ($(this).is(':checked')) {
         mainContent.classList.remove("dark-Mode-One");
         headerContent.classList.remove("dark-Mode-Zero");
-
+        darkModeCheck.checked=false;
        
     }
     else {
        mainContent.classList.add("dark-Mode-One");
        headerContent.classList.add("dark-Mode-Zero");
+       darkModeCheck.checked=true;
     }
 });
+

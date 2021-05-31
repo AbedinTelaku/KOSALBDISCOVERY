@@ -20,13 +20,13 @@ public class BusinessController {
     }
 
 
-    @PostMapping("create/business")
+    @PostMapping("/create/business")
     public void registerBusiness(@RequestBody BusinessHelper businessHelper){
         this.interfaceBusinessService.createBusiness(businessHelper.getName(),businessHelper.getEmail(), businessHelper.getPassword(), businessHelper.getUsername(), businessHelper.getTel_Number(), businessHelper.getOwner_ID(), businessHelper.getFiscal_Number(), businessHelper.getBusiness_Number(), businessHelper.getBusiness_Activity(), businessHelper.getRole());
 
     }
 
-    @PostMapping("get/business")
+    @PostMapping("/get/business")
     public Business getBusiness(@RequestBody LoginHelper loginHelper){
         String username = loginHelper.getUsername();
         String password = loginHelper.getPassword();
@@ -34,7 +34,7 @@ public class BusinessController {
        return this.interfaceBusinessService.getBusinessByUsernameAndPassword(username,password);
     }
 
-    @PostMapping("check/business")
+    @PostMapping("/check/business")
     public boolean businessExist(@RequestBody LoginHelper loginHelper){
         String username = loginHelper.getUsername();
         String password = loginHelper.getPassword();
@@ -44,8 +44,14 @@ public class BusinessController {
       return checkUsername;
     }
 
-    @GetMapping("get/all/businesses")
+    @GetMapping("/get/all/businesses")
     public List<Business> getAllBusinesess(){
         return this.interfaceBusinessService.getAllBusinesses();
+    }
+
+    @PostMapping("/delete/business/by/{id}")
+    public void deleteBusiness(@PathVariable("id") int id){
+
+        this.interfaceBusinessService.deleteBusiness(id);
     }
 }

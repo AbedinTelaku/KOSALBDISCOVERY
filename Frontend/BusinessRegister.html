@@ -11,7 +11,7 @@
 
 
 
-  <link rel="icon" href="Favicon.png">
+   <!-- <link rel="icon" href="Favicon.png">-->
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -102,7 +102,7 @@
         <div class="card">
           <div class="card-header">Register</div>
           <div class="card-body">
-            <form name="my-form"  onsubmit="return validform()" action="success.php" method="">
+            <form name="my-form"  onsubmit="return validform()" action="" method="">
               <div class="form-group row">
                 <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
                 <div class="col-md-6">
@@ -114,14 +114,14 @@
               <div class="form-group row">
                 <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
                 <div class="col-md-6">
-                  <input type="email" id="" class="form-control" name="email">
+                  <input type="email" id="email" class="form-control" name="email">
                 </div>
               </div>
 
               <div class="form-group row">
                 <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
                 <div class="col-md-6">
-                  <input type="password" id="" class="form-control" name="password">
+                  <input type="password" id="password" class="form-control" name="password">
                 </div>
               </div>
 
@@ -135,35 +135,35 @@
               <div class="form-group row">
                 <label for="surname" class="col-md-4 col-form-label text-md-right">Phone Number</label>
                 <div class="col-md-6">
-                  <input type="text" id="" class="form-control" name="phonenumber">
+                  <input type="text" id="phonenumber" class="form-control" name="phonenumber">
                 </div>
               </div>
 
               <div class="form-group row">
                 <label for="surname" class="col-md-4 col-form-label text-md-right">Owner Idr</label>
                 <div class="col-md-6">
-                  <input type="text" id="" class="form-control" name="ownerid">
+                  <input type="text" id="ownerid" class="form-control" name="ownerid">
                 </div>
               </div>
 
               <div class="form-group row">
                 <label for="surname" class="col-md-4 col-form-label text-md-right">Fiscal Number</label>
                 <div class="col-md-6">
-                  <input type="text" id="" class="form-control" name="fiscalnumber">
+                  <input type="text" id="fiscalnumber" class="form-control" name="fiscalnumber">
                 </div>
               </div>
 
               <div class="form-group row">
                 <label for="surname" class="col-md-4 col-form-label text-md-right">Business Number</label>
                 <div class="col-md-6">
-                  <input type="text" id="" class="form-control" name="businessnumber">
+                  <input type="text" id="businessnumber" class="form-control" name="businessnumber">
                 </div>
               </div>
 
               <div class="form-group row">
                 <label for="gender" class="col-md-4 col-form-label text-md-right">Business Activity</label>
                 <div class="col-md-6">
-                  <select  id="" class="form-control" name="businessactivity">
+                  <select  id="businessactivity" class="form-control" name="businessactivity">
                     <option value="barcafe">Restaurant</option>
                     <option value="hotel">Coffee Shop</option>
                     <option value="barcafe">Take Away</option>
@@ -192,7 +192,7 @@
 
 
           <div class="col-md-6 offset-md-4">
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary" id="registerButton" onclick="return false">
               Register
             </button>
           </div>
@@ -205,6 +205,7 @@
   </div>
 
 </main>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="Js/businessRegisterJs.js"></script>
 </body>
 </html>
