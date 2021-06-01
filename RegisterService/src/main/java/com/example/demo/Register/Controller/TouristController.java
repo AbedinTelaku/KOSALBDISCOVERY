@@ -1,14 +1,11 @@
 package com.example.demo.Register.Controller;
 
 import com.example.demo.Register.Authentication.AuthenticationInterface;
-
 import com.example.demo.Register.Helper.LoginHelper;
 import com.example.demo.Register.Helper.TouristHelper;
-
 import com.example.demo.Register.Models.Tourist;
 import com.example.demo.Register.Service.ITouristService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -50,5 +47,10 @@ public class TouristController{
     @GetMapping("get/all/tourists")
     public List<Tourist> getAllTourists() {
         return this.interfaceTouristService.getAllTourists();
+    }
+
+    @GetMapping("get/tourists/number")
+    public long getTouristsNumber() {
+        return this.interfaceTouristService.getTouristsNumber();
     }
 }

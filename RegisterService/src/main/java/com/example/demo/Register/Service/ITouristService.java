@@ -11,5 +11,6 @@ public interface ITouristService {
     List<Tourist> getAllTourists();
     void createTourist(String name, String surname, int age, char gender, String Email, String password, String username, String role);
     void deleteTourist(int id);
+    long getTouristsNumber();
 
 }

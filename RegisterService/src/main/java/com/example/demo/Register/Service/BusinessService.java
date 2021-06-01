@@ -63,5 +63,10 @@ public BusinessService(BusinessRepository businessRepository){
         businessOptional.get().setStatus(status);
     }
 
+    @Override
+    public long getBusinessesNumber() {
+        return this.businessRepository.count();
+    }
+
 
 }
