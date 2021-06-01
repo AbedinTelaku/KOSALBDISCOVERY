@@ -1,4 +1,4 @@
-var id = document.getElementById("bid");
+var idB = document.getElementById("bid");
 var namee = document.getElementById("bname");
 var email = document.getElementById("bemail");
 var password = document.getElementById("bpassword");
@@ -11,8 +11,8 @@ var businessActivity = document.getElementById("bactivity");
 
 $("#editBusinessButton").click(function(){
     var idField = document.getElementById("idField").value;
-         id.value=idField;
-         getBusiness(id.value)
+         idB.value=idField;
+         getBusiness(idB.value)
 });
 
 
@@ -72,6 +72,7 @@ function getBusiness(id) {
 
 
 var editedBusinessData={
+    idB:"",
     name:"",
     email:"",
     password:"",
@@ -88,6 +89,7 @@ var editedBusinessData={
 
 $("#saveChangesButton").click(function(event){
     editedBusinessData={
+        id:idB.value,
         name:namee.value,
         email:email.value,
         password:password.value,
@@ -110,15 +112,17 @@ $("#saveChangesButton").click(function(event){
 
 
 function editBusiness(business) {
+    console.log(business)
     $.ajax({
-        url: "http://localhost:8080/api/business/create/business",
+        url: "http://localhost:8080/api/business/edit/business",
         type: 'post',
         contentType: "application/json; charset=utf-8",
        // dataType: "json",
         data: JSON.stringify(business),
         success: function (res) {
            // localStorage.setItem('kuizi', JSON.stringify(res))
-           console.log(business)
+           location.reload();
+           alert("Business was editet successfully.")
         },
         error: function (request, status, error) {
             console.log(error);

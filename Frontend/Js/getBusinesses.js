@@ -77,7 +77,7 @@ function deleteBusiness(businessId){
         //   console.log(business)
           
         location.reload();
-         
+        
           
         },
         error: function (request, status, error) {

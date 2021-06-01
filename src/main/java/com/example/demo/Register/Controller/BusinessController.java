@@ -66,4 +66,9 @@ public class BusinessController {
         this.interfaceBusinessService.editBusinessStatus(statusHelper.getUserId(),statusHelper.getStatus());
 
     }
+
+    @PostMapping("/edit/business")
+    public void editBusiness(@RequestBody BusinessHelper businessHelper){
+           this.interfaceBusinessService.editBusiness(businessHelper.getId(), businessHelper.getBusiness_Activity(), businessHelper.getBusiness_Number(), businessHelper.getEmail(), businessHelper.getFiscal_Number(), businessHelper.getName(), businessHelper.getOwner_ID(), businessHelper.getPassword(), businessHelper.getTel_Number(), businessHelper.getUsername(), businessHelper.getStatus(), businessHelper.getRole());
+    }
 }
