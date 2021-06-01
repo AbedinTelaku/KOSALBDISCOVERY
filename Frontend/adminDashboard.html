@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="Css/adminDashboardStyle.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    
+ 
+
+  
+
+
+
+        <div class="dashboardMenu side-nav p-3 mb-2 bg-dark text-white">
+
+            <div class="title">
+                
+                <img src="Photos/logo.png" alt="" id="logo">
+                <p style="color:#cedce4; text-align: center; font-size: smaller; letter-spacing: 1.5px;">K O S A L B   D I S C O V E R Y</p>
+            </div>
+
+            
+
+            <div class="dashboardItems">
+
+                <p style="color: #6c757d; margin-left: 5%; font-size: smaller;">NAVIGATION</p>
+
+                <li class="side-nav-item">
+                    <a data-toggle="collapse" href="#usersMenu" role="button" aria-expanded="false" aria-controls="usersMenu" id="usersButton" >Users</a>
+        
+                    <div class="collapse" id="usersMenu">
+                        <ul class="side-nav-second-level">
+                            <li >Manage Users</li>
+                            <li >Admins</li>
+                            <li >Tourists</li>
+                            <li id="businessesButton">Businesses</li>
+                            <li >Blocked User</li>
+                        </ul>
+        
+                    </div>
+                    </li>
+        
+                    <li class="side-nav-item">
+                        <a  data-toggle="collapse" href="#reservationsMenu" role="button" aria-expanded="false" aria-controls="reservationsMenu" id="reservationsButton" >
+                           
+                            <span>Reservations</span>
+                        </a>
+            
+                     
+                        <div class="collapse" id="reservationsMenu">
+                            <ul class="side-nav-second-level">
+                                <li >Manage Reservations</li>
+                                <li >Edit Reservations</li>
+                                <li >New Reservation</li>
+                            </ul>
+            
+                        </div>
+                        </li>
+        
+        
+                        <li class="side-nav-item">
+                            <a  data-toggle="collapse" href="#eventsMenu" role="button" aria-expanded="false" aria-controls="eventsMenu" id="eventsButton">Events</a>
+                
+                            <div class="collapse" id="eventsMenu">
+                                <ul class="side-nav-second-level">
+                                    <li>Manage Events</li>
+                                    <li>Edit Events</li>
+                                    <li>New Event</li>
+                                </ul>
+                
+                            </div>
+                            </li>
+    
+                            <li class="side-nav-item">
+                                <a data-toggle="collapse" href="#touristPlacesMenu" role="button" aria-expanded="false" aria-controls="touristPlacesMenu" id="eventsButton">Tourist Places</a>
+                    
+                                <div class="collapse" id="touristPlacesMenu">
+                                    <ul class="side-nav-second-level">
+                                        <li >History</li>
+                                        <li >Nature</li>
+                                        <li >New Place</li>
+                                    </ul>
+                    
+                                </div>
+                                </li>  
+    
+
+                            <p style="color: #6c757d; margin-left: 5%; margin-top: 10%; font-size: smaller;"></p>
+
+                           
+
+
+                                <li class="side-nav-item">
+                                    <a href="">My Account</a>
+                        
+                                    <div class="collapse">
+                                        <ul class="side-nav-second-level">
+                                            <li >Manage Events</li>
+                                            <li >Edit Events</li>
+                                            <li >New Event</li>
+                                        </ul>
+                        
+                                    </div>
+                                    </li>  
+                                    
+                                    <li class="side-nav-item">
+                                        <a href="">Mail</a>
+                            
+                                        <div class="collapse">
+                                            <ul class="side-nav-second-level">
+                                                <li >Manage Events</li>
+                                                <li >Edit Events</li>
+                                                <li >New Event</li>
+                                            </ul>
+                            
+                                        </div>
+                                        </li> 
+    
+                                        <li class="side-nav-item">
+                                            <a href="">Log Out</a>
+                                
+                                            <div class="collapse">
+                                                <ul class="side-nav-second-level">
+                                                    <li >Manage Events</li>
+                                                    <li >Edit Events</li>
+                                                    <li >New Event</li>
+                                                </ul>
+                                
+                                            </div>
+                                            </li>              
+
+            </div>
+           
+
+        </div>
+
+
+        <div class="mainContent" >
+            <div class="headerContent" id="headerContent">
+
+                <div class="settings">
+                   <ul class="list-group list-group-horizontal settingsItems">
+                       <li><p class="dashboardTitle">Dashboard</p></li>
+                    <li class="settings-button list-group-item">
+                        <img src="photos/settings-icon.png" alt="" data-toggle="collapse" href="#settingsMenu" role="button" aria-expanded="false" aria-controls="settingsMenu" >
+                         <p style="display: inline; font-size: larger; font-family:Verdana, Geneva, Tahoma, sans-serif;color: #6c757d; margin-left: 5%; letter-spacing: 0.5px;">settings</p>
+                        <div class="collapse p-3 mb-2 bg-dark " id="settingsMenu">
+                            <ul class="list-group">  
+                                <li>                         
+                                  <div class="form-check form-switch">
+                                    <input class="form-check-input switch" type="checkbox" id="darkModeSwitchCheck" >
+                                    <label class="form-check-label" for="darkModeSwitchCheck">Dark Mode</label>
+                                  </div>
+                                </li> 
+
+                                <li>
+                                  <div class="form-check form-switch">
+                                    <input class="form-check-input switch" type="checkbox" id="lightModeSwitchCheck" checked >
+                                    <label class="form-check-label" for="lightModeSwitchCheck">Light Mode</label>
+                                  </div>    
+                                </li> 
+                            </ul>
+            
+                        </div>
+                        </li> 
+
+                   </ul>
+                 
+                </div>
+
+                <div class="personalInformation">
+                    <ul class="list-group list-group-horizontal">
+
+                        <li class=" list-group-item">
+                            <p id="nameSurname">Name Surname</p>
+                        </li> 
+
+                        <li class=" list-group-item">
+                           <img src="" alt="Profile Picture">
+                        </li> 
+    
+                       </ul>
+
+                </div>
+
+            </div>
+
+            <div class="bodyContent" id="bodyContent">
+
+                
+
+                <div class="bodyContentMain" id="bodyContentMain">
+
+                    <div class="usersStats">
+
+                        <div class="allUsersStats usersStatsChild" id="allUsersStats">
+                            
+                           
+                            <div>
+                                
+                                <p style="font-size: 14px;">Total Users</p>
+                                <img src="Photos/user.png" alt="">
+                            </div>
+                            <div>
+                                <p>23,600</p>
+                                <p style="color: green; font-size: 14px; margin-top: 15%;">+23%</p>
+                            </div>
+                         
+
+                        </div>
+                        <div class="TouristsStats usersStatsChild" id="TouristsStats">
+                          
+
+                            <div>
+                                
+                                <p style="font-size: 14px;">Tourists</p>
+                                <img src="Photos/tourist.png" alt="">
+                              
+                            </div>
+
+                            <div>
+                                <p>23,480</p>
+                                <p style="color: green; font-size: 14px; margin-top: 15%;">+18%</p>
+                            </div>
+                            
+                        </div>
+                        <div class="BusinessesStats usersStatsChild" id="BusinessesStats">
+                            
+                            <div>
+                                
+                                
+                                <p style="font-size: 14px;">Businesses</p>
+                                <img src="Photos/business.png" alt="">
+                            </div>
+                          
+                            <div>
+                                <p>112</p>
+                                <p style="color: green; font-size: 14px; margin-top: 15%;">+6%</p>
+                            </div>
+                        </div>
+                       
+                        <div class="reservationsStats usersStatsChild" id="reservationsStatsChild">
+                            <div>                       
+                                <p style="font-size: 14px;">Reservations</p>
+                                <img src="Photos/booking.png" alt="">
+                            </div>
+                        
+                            <div>
+                                <p>250</p>
+                                <p style="color: green; font-size: 14px; margin-top: 15%;">+32%</p>
+                            </div>
+                        </div>
+
+                        <div class="eventsStats usersStatsChild" id="eventsStatsChild">
+                            <div>                       
+                                <p style="font-size: 14px;">Events</p>
+                                <img src="Photos/event.png" alt="">
+                            </div>
+                        
+                            <div>
+                                <p>250</p>
+                                <p style="color: green; font-size: 14px; margin-top: 15%;">+32%</p>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    
+
+                        
+                </div>
+
+                <div class="allUsersTable hide" id="allUsersTable">
+
+                  
+
+                </div>
+
+                <div class="allAdminsTable hide" id="allAdminsTable">
+
+                </div>
+                <div class="allTouristsTable hide" id="allTouristsTable">
+
+                </div>
+
+                <div class="hide" id="allBusinessesTable">
+                    <p style ="color: #6c757d; margin-left: 1%;  font-size: x-large;">Businesses</p>
+
+                    <div style="width: 100%; height: 80%; overflow: scroll;">
+                        <table class="table table-bordered table-dark" id="table" style="width: 100%;">
+                            <thead style="font-family: 'Courier New', Courier, monospace;">
+                              <tr>
+                                
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Password</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Phone Number</th>
+                                <th scope="col">Owner Id</th>
+                                <th scope="col">Fiscal Number</th>
+                                <th scope="col">Business Number</th>
+                                <th scope="col">Business Activity</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Role</th>
+                                <th scope="col">#</th>
+                           
+                              </tr>
+                            </thead>
+                            <tbody id="tableBody" style="font-family: 'Courier New', Courier, monospace;">
+                              
+                            </tbody>
+                          </table>
+
+
+                          <div class="businessEditForm">
+<!-- Button trigger modal 
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+    Launch demo modal
+  </button>
+  -->
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Edit Business</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" >
+          <label for="bid">Business Id</label>
+          <input type="text" id="bid" disabled>
+          <label for="bname">Name</label>
+          <input type="text" id="bname">
+
+          <label for="bemail">Email</label>
+          <input type="text" id="bemail">
+
+          <label for="bpassword">Password</label>
+          <input type="text" id="bpassword">
+
+          <label for="busername">Username</label>
+          <input type="text" id="busername">
+
+          <label for="bphoneNum">Phone Number</label>
+          <input type="text" id="bphoneNum">
+
+          <label for="bownerId">Owner Id</label>
+          <input type="text" id="bownerId">
+
+          <label for="bfiscalNum">Fiscal Number</label>
+          <input type="text" id="bfiscalNum">
+
+          <label for="bnumber">Business Number</label>
+          <input type="text" id="bnumber">
+
+          <label for="bactivity">Business Activity</label>
+          <input type="text" id="bactivity">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="saveChangesButton">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+                        </div>
+                    </div>
+                    
+
+                      <div class="businessesNavigation" >
+
+                        <div>
+                            <label for="idField" style="font-family: 'Courier New', Courier, monospace; color: #6c757d;">Business Id:</label>
+                            <input type="text" id="idField" >
+                        </div>
+                        
+
+                          <div style="display: flex; flex-direction: row; justify-content: space-evenly; width: 30%;">
+                            <button class="btn btn-primary" id="editBusinessButton" data-toggle="modal" data-target="#exampleModalCenter" >Edit</button>
+                            <button class="btn btn-danger" id="deleteBusinessButton">Delete</button>
+                            <button class="btn btn-dark" id="blockBusinessButton">Block</button>
+                          </div>
+                         
+
+                      </div>
+
+                      
+                </div>
+
+                <div class="blockedUsersTable hide" id="blockedUsersTable">
+
+                </div>
+
+            </div>
+        </div>
+           
+        
+
+
+
+
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="Js/adminDashboardJS.js"></script>
+    <script src="Js/dashboardHideParts.js"></script>
+    <script src="Js/getBusinesses.js"></script>
+    <script src="Js/editBusiness.js"></script>
+
+</body>
+</html>
