@@ -12,6 +12,9 @@ $("#registerButton").click(function (event) {
     var statuss = "activ"
     var rolee = "business";
 
+
+// if (i madh qe i kqyr krejt me && nese nuk jan tzbrazta mrena qetij if shkojn qeto senet posht){
+
     business = {
         name: businessName,
         email: businessEmail,
@@ -29,7 +32,12 @@ $("#registerButton").click(function (event) {
     console.log(business)
 
     registerBusiness(business);
-
+//{else{
+           //i kontrollon me if secilin vec e vec
+           // if(input==""){
+        // label.write a qysh o metoda "name is required*"
+           //}
+//}
 });
 
 
