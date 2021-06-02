@@ -1,21 +1,21 @@
 function loginValidate(){
     if(document.myForm.username.value == ""){
-        alert("Shenoni usernamin");
+        alert("Email is required");
         document.myForm.username.focus();
         return false;
     }
     if(document.myForm.username.value.length < 6){
-        alert("Username duhet te permbaje se paku 6 karaktere");
+        alert("Username should contain at least 6 characters");
         document.myForm.username.focus();
         return false;
     }
     if(document.myForm.password.value == "" ){
-        alert("Shenoni Fjalkalimin");
+        alert("Password is required");
         document.myForm.password.focus();
         return false;
     }
     if(document.myForm.password.value.length < 6){
-        alert("Fjalkalimi duhet te permbaje se paku 6 karaktere");
+        alert("Password should contain at least 6 characters");
         document.myForm.password.focus();
         return false;
     }

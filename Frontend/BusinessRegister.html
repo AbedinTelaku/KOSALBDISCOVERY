@@ -99,11 +99,11 @@
         <div class="card">
           <div class="card-header">Register</div>
           <div class="card-body">
-            <form name="myForm"   id="registration"   onsubmit="return validform()" method="get">
+            <form name="myForm"   id="registration"   onsubmit="return loginValidate()" method="get">
               <div class="form-group row">
                 <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
                 <div class="col-md-6">
-                  <input type="text" id="full_name" class="form-control" name="full-name">
+                  <input type="text" id="full_name" class="form-control" name="fullname">
                 </div>
               </div>
 
@@ -189,7 +189,7 @@
 
 
           <div class="col-md-6 offset-md-4">
-            <button type="submit" class="btn btn-primary" id="registerButton"  >
+            <button type="submit" class="btn btn-primary" id="registerButton" >
               Register
             </button>
           </div>
@@ -211,6 +211,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script src="Js/businessRegisterJs.js"></script>
+
+<script src="Js/businessValidation.js"></script>
 
 </body>
 </html>
