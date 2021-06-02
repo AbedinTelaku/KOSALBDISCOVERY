@@ -13,67 +13,68 @@ import java.util.List;
 @RestController
 @RequestMapping("api/business")
 public class BusinessController {
-    private IBusinessService interfaceBusinessService ;
+    private IBusinessService interfaceBusinessService;
     private AuthenticationInterface authenticationInterface;
 
-    public BusinessController(IBusinessService interfaceBusinessService){
-        this.interfaceBusinessService=interfaceBusinessService;
+    public BusinessController(IBusinessService interfaceBusinessService) {
+        this.interfaceBusinessService = interfaceBusinessService;
     }
 
 
     @PostMapping("/create/business")
-    public void registerBusiness(@RequestBody BusinessHelper businessHelper){
-        this.interfaceBusinessService.createBusiness(businessHelper.getName(),businessHelper.getEmail(), businessHelper.getPassword(), businessHelper.getUsername(), businessHelper.getTel_Number(), businessHelper.getOwner_ID(), businessHelper.getFiscal_Number(), businessHelper.getBusiness_Number(), businessHelper.getBusiness_Activity(),businessHelper.getStatus() ,businessHelper.getRole());
+    public void registerBusiness(@RequestBody BusinessHelper businessHelper) {
+        this.interfaceBusinessService.createBusiness(businessHelper.getName(), businessHelper.getEmail(), businessHelper.getPassword(), businessHelper.getUsername(), businessHelper.getTel_Number(), businessHelper.getOwner_ID(), businessHelper.getFiscal_Number(), businessHelper.getBusiness_Number(), businessHelper.getBusiness_Activity(), businessHelper.getStatus(), businessHelper.getRole());
 
     }
 
     @GetMapping("/get/business/{id}")
-    public Business getBusiness(@PathVariable("id") int id){
-       return this.interfaceBusinessService.getBusiness(id);
+    public Business getBusiness(@PathVariable("id") int id) {
+        return this.interfaceBusinessService.getBusiness(id);
 
     }
+
     @GetMapping("/get/business")
-    public Business getBusiness(@RequestBody LoginHelper loginHelper){
+    public Business getBusiness(@RequestBody LoginHelper loginHelper) {
         String username = loginHelper.getUsername();
         String password = loginHelper.getPassword();
 
-       return this.interfaceBusinessService.getBusinessByUsernameAndPassword(username,password);
+        return this.interfaceBusinessService.getBusinessByUsernameAndPassword(username, password);
     }
 
     @GetMapping("/get/businesses/number")
-    public long getBusinessesNumber(){
+    public long getBusinessesNumber() {
         return this.interfaceBusinessService.getBusinessesNumber();
     }
 
     @PostMapping("/check/business")
-    public boolean businessExist(@RequestBody LoginHelper loginHelper){
+    public boolean businessExist(@RequestBody LoginHelper loginHelper) {
         String username = loginHelper.getUsername();
         String password = loginHelper.getPassword();
 
-      boolean checkUsername = this.authenticationInterface.checkIfBusinessExist(username,password);
+        boolean checkUsername = this.authenticationInterface.checkIfBusinessExist(username, password);
 
-      return checkUsername;
+        return checkUsername;
     }
 
     @GetMapping("/get/all/businesses")
-    public List<Business> getAllBusinesess(){
+    public List<Business> getAllBusinesess() {
         return this.interfaceBusinessService.getAllBusinesses();
     }
 
     @PostMapping("/delete/business/by/{id}")
-    public void deleteBusiness(@PathVariable("id") int id){
+    public void deleteBusiness(@PathVariable("id") int id) {
 
         this.interfaceBusinessService.deleteBusiness(id);
     }
 
     @PostMapping("/edit/business/status")
-    public void blockBusiness(@RequestBody StatusHelper statusHelper){
-        this.interfaceBusinessService.editBusinessStatus(statusHelper.getUserId(),statusHelper.getStatus());
+    public void blockBusiness(@RequestBody StatusHelper statusHelper) {
+        this.interfaceBusinessService.editBusinessStatus(statusHelper.getUserId(), statusHelper.getStatus());
 
     }
 
     @PostMapping("/edit/business")
-    public void editBusiness(@RequestBody BusinessHelper businessHelper){
-           this.interfaceBusinessService.editBusiness(businessHelper.getId(), businessHelper.getBusiness_Activity(), businessHelper.getBusiness_Number(), businessHelper.getEmail(), businessHelper.getFiscal_Number(), businessHelper.getName(), businessHelper.getOwner_ID(), businessHelper.getPassword(), businessHelper.getTel_Number(), businessHelper.getUsername(), businessHelper.getStatus(), businessHelper.getRole());
+    public void editBusiness(@RequestBody BusinessHelper businessHelper) {
+        this.interfaceBusinessService.editBusiness(businessHelper.getId(), businessHelper.getBusiness_Activity(), businessHelper.getBusiness_Number(), businessHelper.getEmail(), businessHelper.getFiscal_Number(), businessHelper.getName(), businessHelper.getOwner_ID(), businessHelper.getPassword(), businessHelper.getTel_Number(), businessHelper.getUsername(), businessHelper.getStatus(), businessHelper.getRole());
     }
 }

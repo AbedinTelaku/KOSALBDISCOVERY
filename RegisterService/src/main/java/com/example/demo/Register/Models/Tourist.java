@@ -29,7 +29,7 @@ public class Tourist {
     private String role;
 
 
-    public Tourist( String name, String surname, int age, char gender, String email, String password,String username ,String role) {
+    public Tourist(String name, String surname, int age, char gender, String email, String password, String username, String role) {
 
         this.name = name;
         this.surname = surname;
@@ -37,12 +37,14 @@ public class Tourist {
         this.gender = gender;
         this.email = email;
         this.password = password;
-        this.username=username;
-        this.role=role;
+        this.username = username;
+        this.role = role;
     }
+
     public Tourist() {
 
     }
+
     public int getTouristID() {
         return touristID;
     }
@@ -98,7 +100,7 @@ public class Tourist {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     public String getRole() {
         return role;
     }

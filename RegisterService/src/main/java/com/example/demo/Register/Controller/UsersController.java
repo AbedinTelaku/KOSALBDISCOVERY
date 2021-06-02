@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/user")
 public class UsersController {
 
-     private IBusinessService interfaceBusinessService ;
-    private ITouristService interfaceTouristService ;
+    private IBusinessService interfaceBusinessService;
+    private ITouristService interfaceTouristService;
 
     public UsersController(IBusinessService interfaceBusinessService, ITouristService interfaceTouristService) {
         this.interfaceBusinessService = interfaceBusinessService;
@@ -20,7 +20,7 @@ public class UsersController {
 
 
     @GetMapping("/get/users/number")
-    public long getUsersNumber(){
-        return this.interfaceBusinessService.getBusinessesNumber()+this.interfaceTouristService.getTouristsNumber();
+    public long getUsersNumber() {
+        return this.interfaceBusinessService.getBusinessesNumber() + this.interfaceTouristService.getTouristsNumber();
     }
 }

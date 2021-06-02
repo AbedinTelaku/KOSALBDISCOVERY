@@ -1,6 +1,4 @@
- 
-
-$("#registerButton").click(function(event){
+$("#registerButton").click(function (event) {
 
     var businessName = document.getElementById("full_name").value;
     var businessEmail = document.getElementById("email").value;
@@ -11,51 +9,45 @@ $("#registerButton").click(function(event){
     var businessFiscalNumber = document.getElementById("fiscalnumber").value;
     var businessNum = document.getElementById("businessnumber").value;
     var businessActi = document.getElementById("businessactivity").value;
-    var statuss="activ"
-    var rolee="business";
+    var statuss = "activ"
+    var rolee = "business";
 
-    business={
-        name:businessName,
-        email:businessEmail,
-        password:businessPassword,
-        username:businessUsername,
-        tel_Number:businessPhoneNumber,
-        owner_ID:businessOwnerId,
-        fiscal_Number:businessFiscalNumber,
-        business_Number:businessNum,
-        business_Activity:businessActi,
-        status:statuss,
-        role:rolee
+    business = {
+        name: businessName,
+        email: businessEmail,
+        password: businessPassword,
+        username: businessUsername,
+        tel_Number: businessPhoneNumber,
+        owner_ID: businessOwnerId,
+        fiscal_Number: businessFiscalNumber,
+        business_Number: businessNum,
+        business_Activity: businessActi,
+        status: statuss,
+        role: rolee
     }
 
     console.log(business)
-   
+
     registerBusiness(business);
-    
+
 });
 
 
-
-
-
 function registerBusiness(business) {
-   
-    
-    
+
+
     $.ajax({
         url: "http://localhost:8080/api/business/create/business",
         type: 'post',
         contentType: "application/json; charset=utf-8",
-       // dataType: "json",
+        // dataType: "json",
         data: JSON.stringify(business),
         success: function (res) {
-           // localStorage.setItem('kuizi', JSON.stringify(res))
+            // localStorage.setItem('kuizi', JSON.stringify(res))
 
-           console.log(business)
-          
+            console.log(business)
 
-         
-          
+
         },
         error: function (request, status, error) {
             console.log(error);
@@ -65,17 +57,16 @@ function registerBusiness(business) {
 }
 
 
-
-var business={
-    name:"",
-    email:"",
-    password:"",
-    username:"",
-    tel_Number:"",
-    owner_ID:"",
-    fiscal_Number:"",
-    business_Number:"",
-    business_Activity:"",
-    status:"",
-    role:""
+var business = {
+    name: "",
+    email: "",
+    password: "",
+    username: "",
+    tel_Number: "",
+    owner_ID: "",
+    fiscal_Number: "",
+    business_Number: "",
+    business_Activity: "",
+    status: "",
+    role: ""
 }

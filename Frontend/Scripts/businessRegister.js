@@ -1,58 +1,58 @@
-$(function(){
-    var $registerForm=$("#registration");
-    if($registerForm.length){
+$(function () {
+    var $registerForm = $("#registration");
+    if ($registerForm.length) {
         $registerForm.validate({
-            rules:{
-                fullname:{
+            rules: {
+                fullname: {
                     required: true
                 },
-                email:{
+                email: {
                     required: true
                 },
-                password:{
+                password: {
                     required: true
                 },
-                username:{
-                    required:true
+                username: {
+                    required: true
                 },
-                phonenumber:{
-                    required:true
+                phonenumber: {
+                    required: true
                 },
-                ownerid:{
-                    required:true
+                ownerid: {
+                    required: true
                 },
-                fiscalnumber:{
-                    required:true
+                fiscalnumber: {
+                    required: true
                 },
-                businessnumber:{
-                    required:true
+                businessnumber: {
+                    required: true
                 }
 
 
-            },messages:{
-                username:{
+            }, messages: {
+                username: {
                     required: "Username is required"
                 },
-                email:{
+                email: {
                     required: "Emal is required"
                 },
-                password:{
+                password: {
                     required: "Password is required"
                 },
-                phonenumber:{
-                    required:"Phone number is required"
+                phonenumber: {
+                    required: "Phone number is required"
                 },
-                fullname:{
-                    required:"Name is required"
+                fullname: {
+                    required: "Name is required"
                 },
-                ownerid:{
-                    required:"Owner Id is required"
+                ownerid: {
+                    required: "Owner Id is required"
                 },
-                fiscalnumber:{
-                    required:"Fiscal number is required"
+                fiscalnumber: {
+                    required: "Fiscal number is required"
                 },
-                businessnumber:{
-                    required:"Business number is required"
+                businessnumber: {
+                    required: "Business number is required"
                 }
 
 

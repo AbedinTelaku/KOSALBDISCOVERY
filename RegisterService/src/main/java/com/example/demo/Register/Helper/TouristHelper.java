@@ -23,7 +23,7 @@ public class TouristHelper implements Serializable {
         this.gender = gender;
         this.email = email;
         this.password = password;
-        this.username=username;
+        this.username = username;
         this.role = role;
     }
 

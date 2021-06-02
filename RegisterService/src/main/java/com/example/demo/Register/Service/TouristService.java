@@ -16,8 +16,8 @@ public class TouristService implements ITouristService {
     @Autowired
     private TouristRepository touristRepository;
 
-    public TouristService(TouristRepository touristRepository){
-        this.touristRepository=touristRepository;
+    public TouristService(TouristRepository touristRepository) {
+        this.touristRepository = touristRepository;
     }
 
     @Override
@@ -28,7 +28,7 @@ public class TouristService implements ITouristService {
 
     @Override
     public Tourist getTouristByUsernameAndPassword(String username, String password) {
-        Optional<Tourist> touristOptional = this.touristRepository.findTouristByUsernameAndPassword(username,password);
+        Optional<Tourist> touristOptional = this.touristRepository.findTouristByUsernameAndPassword(username, password);
         return touristOptional.get();
     }
 
@@ -39,10 +39,9 @@ public class TouristService implements ITouristService {
 
     @Override
     public void createTourist(String name, String surname, int age, char gender, String Email, String password, String username, String role) {
-        Tourist tourist = new Tourist(name,surname,age,gender,Email,password,username,role);
+        Tourist tourist = new Tourist(name, surname, age, gender, Email, password, username, role);
         this.touristRepository.save(tourist);
     }
-
 
 
     @Override

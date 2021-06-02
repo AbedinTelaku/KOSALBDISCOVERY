@@ -18,8 +18,8 @@ public class BusinessHelper implements Serializable {
     private String status;
     private String role;
 
-    public BusinessHelper(int id,String name, String email, String password, String username, String tel_Number, String owner_ID, String fiscal_Number, String business_Number, String business_Activity,String status ,String role) {
-        this.id=id;
+    public BusinessHelper(int id, String name, String email, String password, String username, String tel_Number, String owner_ID, String fiscal_Number, String business_Number, String business_Activity, String status, String role) {
+        this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
@@ -29,7 +29,7 @@ public class BusinessHelper implements Serializable {
         this.fiscal_Number = fiscal_Number;
         this.business_Number = business_Number;
         this.business_Activity = business_Activity;
-        this.status=status;
+        this.status = status;
         this.role = role;
     }
 

@@ -15,51 +15,52 @@ public class Authentication implements AuthenticationInterface {
     private AdminRepository adminRepository;
 
 
-
-    public Authentication(BusinessRepository businessRepository){
-        this.businessRepository=businessRepository;
+    public Authentication(BusinessRepository businessRepository) {
+        this.businessRepository = businessRepository;
     }
 
-    public Authentication(TouristRepository touristRepository){
-        this.touristRepository=touristRepository;
+    public Authentication(TouristRepository touristRepository) {
+        this.touristRepository = touristRepository;
     }
 
-    public Authentication(AdminRepository adminRepository){
-        this.adminRepository=adminRepository;
+    public Authentication(AdminRepository adminRepository) {
+        this.adminRepository = adminRepository;
     }
 
     @Override
     public boolean checkTouristPassword(String username, String password) {
 
         boolean usernameExist = checkTouristUsername(username);
-        Tourist tourist=null;
-        if(usernameExist == true){
+        Tourist tourist = null;
+        if (usernameExist == true) {
             tourist = this.touristRepository.findTouristByUsername(username);
         }
-        if(tourist.getPassword().equals(password)){
+        if (tourist.getPassword().equals(password)) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
+
     @Override
     public boolean checkTouristUsername(String username) {
         Tourist tourist = this.touristRepository.findTouristByUsername(username);
 
-        if(tourist != null){
+        if (tourist != null) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-    @Override
-    public boolean checkIfTouristExist(String username, String password){
-        boolean usernameExist = checkTouristUsername(username);
-        boolean passwordExist = checkTouristPassword(username,password);
 
-        if(usernameExist == true && passwordExist == true){
+    @Override
+    public boolean checkIfTouristExist(String username, String password) {
+        boolean usernameExist = checkTouristUsername(username);
+        boolean passwordExist = checkTouristPassword(username, password);
+
+        if (usernameExist == true && passwordExist == true) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -68,13 +69,13 @@ public class Authentication implements AuthenticationInterface {
     @Override
     public boolean checkBusinessPassword(String username, String password) {
         boolean usernameExist = checkBusinessUsername(username);
-        Business business=null;
-        if(usernameExist == true){
+        Business business = null;
+        if (usernameExist == true) {
             business = this.businessRepository.findBusinessByUsername(username);
         }
-        if(business.getPassword().equals(password)){
+        if (business.getPassword().equals(password)) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -84,21 +85,21 @@ public class Authentication implements AuthenticationInterface {
 
         Business business = this.businessRepository.findBusinessByUsername(username);
 
-        if(business != null){
+        if (business != null) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
     @Override
-    public boolean checkIfBusinessExist(String username, String password){
+    public boolean checkIfBusinessExist(String username, String password) {
         boolean usernameExist = checkBusinessUsername(username);
-        boolean passwordExist = checkBusinessPassword(username,password);
+        boolean passwordExist = checkBusinessPassword(username, password);
 
-        if(usernameExist == true && passwordExist == true){
+        if (usernameExist == true && passwordExist == true) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }

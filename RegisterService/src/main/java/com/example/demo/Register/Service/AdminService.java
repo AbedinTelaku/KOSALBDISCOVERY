@@ -11,13 +11,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AdminService implements IAdminService{
+public class AdminService implements IAdminService {
 
     @Autowired
     private AdminRepository adminRepository;
 
-    public AdminService(AdminRepository adminRepository){
-        this.adminRepository=adminRepository;
+    public AdminService(AdminRepository adminRepository) {
+        this.adminRepository = adminRepository;
     }
 
     @Override
@@ -28,7 +28,7 @@ public class AdminService implements IAdminService{
 
     @Override
     public Admin getAdminByUsernameAndPassword(String username, String password) {
-        Optional <Admin> adminOptional = this.adminRepository.findAdminByUsernameAndPassword(username,password);
+        Optional<Admin> adminOptional = this.adminRepository.findAdminByUsernameAndPassword(username, password);
         return adminOptional.get();
     }
 
@@ -39,17 +39,17 @@ public class AdminService implements IAdminService{
 
     @Override
     public void createAdmin(String name, String email, String surname, String username, String password, char gender) {
-        Admin admin = new Admin(name,email,surname,username,password,gender);
+        Admin admin = new Admin(name, email, surname, username, password, gender);
         this.adminRepository.save(admin);
     }
 
     @Override
     public void deleteAdmin(int id) {
-            this.adminRepository.deleteById(id);
+        this.adminRepository.deleteById(id);
     }
 
     @Override
-    public void editAdmin(int id, String adminID,String name, String surname,int age,String username,String gender,String email,String password,String role) {
+    public void editAdmin(int id, String adminID, String name, String surname, int age, String username, String gender, String email, String password, String role) {
 
     }
 

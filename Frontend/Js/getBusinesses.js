@@ -1,10 +1,6 @@
-
-
-
-
-$("#businessesButton").click( function(event){
+$("#businessesButton").click(function (event) {
     getBusinesses();
-    
+
 });
 
 
@@ -18,7 +14,7 @@ function getBusinesses() {
         //data: JSON.stringify(user),
         success: function (data) {
             var business = JSON.parse(JSON.stringify(data));
-            
+
             showBusinesses(business);
         },
         error: function (request, status, error) {
@@ -28,7 +24,9 @@ function getBusinesses() {
     });
 
 }
+
 var executed = false;
+
 function showBusinesses(businesses) {
     if (executed == false) {
         //var table = document.getElementById("table");
@@ -52,33 +50,32 @@ function showBusinesses(businesses) {
     }
 
 
-
 }
 
 
-$("#deleteBusinessButton").click( function(event){
+$("#deleteBusinessButton").click(function (event) {
 
     var businessId = document.getElementById("idField").value;
     deleteBusiness(businessId);
-    
+
 });
 
 
-function deleteBusiness(businessId){
+function deleteBusiness(businessId) {
     $.ajax({
         url: "http://localhost:8080/api/business/delete/business/by/" + businessId,
         type: 'post',
         contentType: "application/json; charset=utf-8",
-       // dataType: "json",
+        // dataType: "json",
         //data: JSON.stringify(business),
         success: function (res) {
-           // localStorage.setItem('kuizi', JSON.stringify(res))
+            // localStorage.setItem('kuizi', JSON.stringify(res))
 
-        //   console.log(business)
-          
-        location.reload();
-        
-          
+            //   console.log(business)
+
+            location.reload();
+
+
         },
         error: function (request, status, error) {
             console.log(error);

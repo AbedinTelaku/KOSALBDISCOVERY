@@ -1,45 +1,45 @@
-$(function(){
-    var $registerForm=$("#registration");
-    if($registerForm.length){
+$(function () {
+    var $registerForm = $("#registration");
+    if ($registerForm.length) {
         $registerForm.validate({
-            rules:{
-                fullname:{
+            rules: {
+                fullname: {
                     required: true
                 },
-                surname:{
+                surname: {
                     required: true
                 },
-                age:{
+                age: {
                     required: true
                 },
-                email:{
-                    required:true
+                email: {
+                    required: true
                 },
-                password:{
-                    required:true
+                password: {
+                    required: true
                 },
-                username:{
-                    required:true
+                username: {
+                    required: true
                 }
 
-            },messages:{
-                username:{
+            }, messages: {
+                username: {
                     required: "Username is required"
                 },
-                email:{
+                email: {
                     required: "Email is required"
                 },
-                password:{
+                password: {
                     required: "Passowrd is required"
                 },
-                age:{
-                    required:"Age is required"
+                age: {
+                    required: "Age is required"
                 },
-                fullname:{
-                    required:"Name is required"
+                fullname: {
+                    required: "Name is required"
                 },
-                surname:{
-                    required:"Surname is required"
+                surname: {
+                    required: "Surname is required"
                 }
 
             }

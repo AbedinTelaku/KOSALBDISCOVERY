@@ -18,10 +18,10 @@ public class AdminController {
     private IAdminService adminService;
 
     @PostMapping("/register")
-    public ResponseEntity register(@RequestBody RegisterHelper register){
-        Admin admin=this.adminService.register(register.getName(),register.getSurname(),register.getUsername(),register.getPassword());
+    public ResponseEntity register(@RequestBody RegisterHelper register) {
+        Admin admin = this.adminService.register(register.getName(), register.getSurname(), register.getUsername(), register.getPassword());
 
-        if(admin == null){
+        if (admin == null) {
             return ResponseEntity.notFound().build();
         }
 

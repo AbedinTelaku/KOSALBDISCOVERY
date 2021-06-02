@@ -1,6 +1,4 @@
-
-
-$("#registerButton").click(function(event){
+$("#registerButton").click(function (event) {
 
     var name = document.getElementById("name").value;
     var surname = document.getElementById("surname").value;
@@ -9,17 +7,17 @@ $("#registerButton").click(function(event){
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
     var username = document.getElementById("username").value;
-    var rolee="tourist";
+    var rolee = "tourist";
 
-    tourist={
-        name:name,
-        surname:surname,
-        age:age,
-        gender:gender,
-        email:email,
-        password:password,
-        username:username,
-        role:rolee
+    tourist = {
+        name: name,
+        surname: surname,
+        age: age,
+        gender: gender,
+        email: email,
+        password: password,
+        username: username,
+        role: rolee
     }
 
     console.log(tourist)
@@ -29,11 +27,7 @@ $("#registerButton").click(function(event){
 });
 
 
-
-
-
 function registerTourist(tourist) {
-
 
 
     $.ajax({
@@ -48,8 +42,6 @@ function registerTourist(tourist) {
             console.log(tourist)
 
 
-
-
         },
         error: function (request, status, error) {
             console.log(error);
@@ -59,14 +51,13 @@ function registerTourist(tourist) {
 }
 
 
-
-var tourist={
-    name:"",
-    surname:"",
-    age:"",
-    gender:"",
-    email:"",
-    password:"",
-    username:"",
-    role:""
+var tourist = {
+    name: "",
+    surname: "",
+    age: "",
+    gender: "",
+    email: "",
+    password: "",
+    username: "",
+    role: ""
 }

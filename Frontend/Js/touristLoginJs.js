@@ -1,15 +1,13 @@
-
-
-$("#loginButton").click(function(event){
+$("#loginButton").click(function (event) {
 
     var username = document.getElementById("touristUsername").value;
     var password = document.getElementById("touristPassword")
-    var rolee="tourist";
+    var rolee = "tourist";
 
-    tourist={
-        usernamee:username,
-        password1:password,
-        role:rolee
+    tourist = {
+        usernamee: username,
+        password1: password,
+        role: rolee
     }
 
     console.log(tourist)
@@ -19,11 +17,7 @@ $("#loginButton").click(function(event){
 });
 
 
-
-
-
 function touristLogin(tourist) {
-
 
 
     $.ajax({
@@ -38,8 +32,6 @@ function touristLogin(tourist) {
             console.log(tourist)
 
 
-
-
         },
         error: function (request, status, error) {
             console.log(error);
@@ -49,9 +41,8 @@ function touristLogin(tourist) {
 }
 
 
-
-var tourist={
-    usernamee:"",
-    password1:"",
-    role:""
+var tourist = {
+    usernamee: "",
+    password1: "",
+    role: ""
 }

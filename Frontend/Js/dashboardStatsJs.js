@@ -1,22 +1,22 @@
 window.onload = function WindowLoad(event) {
-   
+
     getBusinessNumber()
     getTouristsNumber()
     getAllUsersNumber()
 }
 
-var  totalUsersNumber=0;
+var totalUsersNumber = 0;
 
 
 //show businesses number
 var businessesNumberP = document.getElementById("businessesNumberP");
 
-function showBusinessesNum(num){
+function showBusinessesNum(num) {
     var businessesNumber = document.createTextNode(num);
     businessesNumberP.appendChild(businessesNumber);
 }
 
-function getBusinessNumber(){
+function getBusinessNumber() {
     $.ajax({
         url: "http://localhost:8080/api/business/get/businesses/number",
         type: 'GET',
@@ -40,11 +40,12 @@ function getBusinessNumber(){
 
 var touristsNumberP = document.getElementById("touristsNumberP");
 
-function showTouristsNum(num){
+function showTouristsNum(num) {
     var touristsNumber = document.createTextNode(num);
     touristsNumberP.appendChild(touristsNumber);
 }
- function getTouristsNumber(){
+
+function getTouristsNumber() {
     $.ajax({
         url: "http://localhost:8080/api/tourist/get/tourists/number",
         type: 'GET',
@@ -54,9 +55,9 @@ function showTouristsNum(num){
         success: function (data) {
             var touristsNumber = JSON.parse(JSON.stringify(data));
 
-            
+
             showTouristsNum(touristsNumber)
-            
+
         },
         error: function (request, status, error) {
             console.log(error);
@@ -67,17 +68,15 @@ function showTouristsNum(num){
 }
 
 
-
-
 //get all users numer
 var totalUsersNumberP = document.getElementById("totalUsersNumberP");
 
-function showAllUsersNumber(num){
+function showAllUsersNumber(num) {
     var totalUsersNum = document.createTextNode(num);
     totalUsersNumberP.appendChild(totalUsersNum);
 }
 
-function getAllUsersNumber(){
+function getAllUsersNumber() {
     $.ajax({
         url: "http://localhost:8080/api/user/get/users/number",
         type: 'GET',
@@ -88,7 +87,7 @@ function getAllUsersNumber(){
             var usersNumber = JSON.parse(JSON.stringify(data));
 
             showAllUsersNumber(usersNumber)
-            
+
         },
         error: function (request, status, error) {
             console.log(error);

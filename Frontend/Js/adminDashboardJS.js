@@ -1,11 +1,8 @@
-
-
-
 var mainContent = document.getElementById("bodyContent");
 var headerContent = document.getElementById("headerContent");
 
-var darkModeCheck=document.getElementById("darkModeSwitchCheck");
-var lightModeCheck=document.getElementById("lightModeSwitchCheck");
+var darkModeCheck = document.getElementById("darkModeSwitchCheck");
+var lightModeCheck = document.getElementById("lightModeSwitchCheck");
 
 var allUsersStats = document.getElementById("allUsersStats");
 var TouristsStats = document.getElementById("TouristsStats");
@@ -25,8 +22,7 @@ $("#darkModeSwitchCheck").on('change', function () {
 
         lightModeCheck.checked = false;
 
-    }
-    else {
+    } else {
         mainContent.classList.remove("dark-Mode-One");
         headerContent.classList.remove("dark-Mode-Zero");
         allUsersStats.classList.remove("dark-Mode-Zero");
@@ -51,8 +47,7 @@ $("#lightModeSwitchCheck").on('change', function () {
 
         darkModeCheck.checked = false;
 
-    }
-    else {
+    } else {
         mainContent.classList.add("dark-Mode-One");
         headerContent.classList.add("dark-Mode-Zero");
         allUsersStats.classList.add("dark-Mode-Zero");
@@ -60,7 +55,7 @@ $("#lightModeSwitchCheck").on('change', function () {
         BusinessesStats.classList.add("dark-Mode-Zero");
         reservationsStatsChild.classList.add("dark-Mode-Zero");
         eventsStatsChild.classList.add("dark-Mode-Zero");
-        
+
         darkModeCheck.checked = true;
     }
 });

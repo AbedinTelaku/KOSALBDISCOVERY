@@ -34,7 +34,7 @@ public class Business {
     private String role;
 
 
-    public Business(String name, String email, String password, String username, String tel_Number, String owner_ID, String fiscal_Number, String business_Number, String business_Activity, String status ,String role ) {
+    public Business(String name, String email, String password, String username, String tel_Number, String owner_ID, String fiscal_Number, String business_Number, String business_Activity, String status, String role) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -44,8 +44,8 @@ public class Business {
         this.fiscal_Number = fiscal_Number;
         this.business_Number = business_Number;
         this.business_Activity = business_Activity;
-        this.status=status;
-        this.role=role;
+        this.status = status;
+        this.role = role;
     }
 
     public Business() {

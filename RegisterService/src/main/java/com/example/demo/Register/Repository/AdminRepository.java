@@ -12,7 +12,6 @@ import java.util.Optional;
 public interface AdminRepository extends JpaRepository<Admin, Integer> {
 
 
-
     @Query(value = "select * from admin where username=:username", nativeQuery = true)
     public Business findAdminByUsername(@Param("username") String username);
 

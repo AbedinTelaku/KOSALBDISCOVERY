@@ -13,33 +13,32 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/tourist")
-public class TouristController{
+public class TouristController {
     private AuthenticationInterface authenticationInterface;
 
     @Autowired
     private ITouristService interfaceTouristService;
 
 
-
     @PostMapping("create/tourist")
-    public void createTourist(@RequestBody TouristHelper touristHelper){
-        this.interfaceTouristService.createTourist(touristHelper.getName(),touristHelper.getSurname(), touristHelper.getAge(), touristHelper.getGender(), touristHelper.getEmail(), touristHelper.getPassword(), touristHelper.getUsername(), touristHelper.getRole());
+    public void createTourist(@RequestBody TouristHelper touristHelper) {
+        this.interfaceTouristService.createTourist(touristHelper.getName(), touristHelper.getSurname(), touristHelper.getAge(), touristHelper.getGender(), touristHelper.getEmail(), touristHelper.getPassword(), touristHelper.getUsername(), touristHelper.getRole());
     }
 
     @PostMapping("get/tourist")
-    public Tourist getTourist(@RequestBody LoginHelper loginHelper){
+    public Tourist getTourist(@RequestBody LoginHelper loginHelper) {
         String username = loginHelper.getUsername();
         String password = loginHelper.getPassword();
 
-        return this.interfaceTouristService.getTouristByUsernameAndPassword(username,password);
+        return this.interfaceTouristService.getTouristByUsernameAndPassword(username, password);
     }
 
     @PostMapping("check/tourist")
-    public boolean TouristExist(@RequestBody LoginHelper loginHelper){
+    public boolean TouristExist(@RequestBody LoginHelper loginHelper) {
         String username = loginHelper.getUsername();
         String password = loginHelper.getPassword();
 
-        boolean checkUsername = this.authenticationInterface.checkIfTouristExist(username,password);
+        boolean checkUsername = this.authenticationInterface.checkIfTouristExist(username, password);
 
         return checkUsername;
     }
