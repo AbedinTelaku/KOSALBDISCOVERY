@@ -38,11 +38,11 @@
         
                     <div class="collapse" id="usersMenu">
                         <ul class="side-nav-second-level">
-                            <li >Manage Users</li>
-                            <li >Admins</li>
-                            <li >Tourists</li>
+                           
+                            <li id="adminButton">Admins</li>
+                            <li id="touristsButton">Tourists</li>
                             <li id="businessesButton">Businesses</li>
-                            <li >Blocked User</li>
+                            <li id="blockedUsersButton">Blocked User</li>
                         </ul>
         
                     </div>
@@ -279,17 +279,14 @@
                         
                 </div>
 
-                <div class="allUsersTable hide" id="allUsersTable">
+                
 
-                  
-
+                <div class="hide" id="allAdminsTable">
+                    <p>All Admins</p>
                 </div>
-
-                <div class="allAdminsTable hide" id="allAdminsTable">
-
-                </div>
-                <div class="allTouristsTable hide" id="allTouristsTable">
-
+                <div class="hide" id="allTouristsTable">
+                    <p>All Tourists</p>
+                         
                 </div>
 
                 <div class="hide" id="allBusinessesTable">
@@ -388,8 +385,8 @@
                         
 
                           <div style="display: flex; flex-direction: row; justify-content: space-evenly; width: 30%;">
-                            <button class="btn btn-primary" id="editBusinessButton" data-toggle="modal" data-target="#exampleModalCenter" >Edit</button>
-                            <button class="btn btn-danger" id="deleteBusinessButton">Delete</button>
+                            <button class="btn btn-dark" id="editBusinessButton" data-toggle="modal" data-target="#exampleModalCenter" >Edit</button>
+                            <button class="btn btn-dark" id="deleteBusinessButton">Delete</button>
                             <button class="btn btn-dark" id="blockBusinessButton">Block</button>
                           </div>
                          
@@ -399,8 +396,8 @@
                       
                 </div>
 
-                <div class="blockedUsersTable hide" id="blockedUsersTable">
-
+                <div class="hide" id="blockedUsersTable">
+                           <p>Blocked Users</p>
                 </div>
 
             </div>
