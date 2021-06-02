@@ -12,5 +12,6 @@ public interface IBusinessService {
     void deleteBusiness(int id);
     void editBusiness(int id,String businessActivity,String businessNumber,String email,String fiscalNumber,String name,String ownerId,String password,String telNumber,String username,String status,String role);
     void editBusinessStatus(int id, String status);
+    long getBusinessesNumber();
 
 }

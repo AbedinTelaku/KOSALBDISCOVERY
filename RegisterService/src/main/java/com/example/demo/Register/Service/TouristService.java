@@ -50,4 +50,9 @@ public class TouristService implements ITouristService {
         this.touristRepository.deleteById(id);
 
     }
+
+    @Override
+    public long getTouristsNumber() {
+        return this.touristRepository.count();
+    }
 }

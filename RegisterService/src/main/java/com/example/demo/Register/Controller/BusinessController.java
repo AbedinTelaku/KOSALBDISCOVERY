@@ -40,6 +40,11 @@ public class BusinessController {
        return this.interfaceBusinessService.getBusinessByUsernameAndPassword(username,password);
     }
 
+    @GetMapping("/get/businesses/number")
+    public long getBusinessesNumber(){
+        return this.interfaceBusinessService.getBusinessesNumber();
+    }
+
     @PostMapping("/check/business")
     public boolean businessExist(@RequestBody LoginHelper loginHelper){
         String username = loginHelper.getUsername();
