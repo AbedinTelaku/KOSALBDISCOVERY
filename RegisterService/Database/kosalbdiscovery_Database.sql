@@ -1,1 +1,1 @@
-create database KosAlbDiscovery
+create database RegisterService
