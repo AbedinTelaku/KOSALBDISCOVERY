@@ -7,6 +7,13 @@ public class TouristPlace {
 
     private String touristPlaceName;
 
+    public TouristPlace(String touristPlaceName) {
+        this.touristPlaceName = touristPlaceName;
+    }
+
+    public TouristPlace() {
+    }
+
     public String getTouristPlaceName() {
         return touristPlaceName;
     }

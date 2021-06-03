@@ -6,6 +6,13 @@ import javax.persistence.Embeddable;
 public class City {
     private String cityName;
 
+    public City(String cityName) {
+        this.cityName = cityName;
+    }
+
+    public City() {
+    }
+
     public String getCityName() {
         return cityName;
     }

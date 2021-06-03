@@ -1,11 +1,8 @@
 package com.example.demo.Application.InputAdapter;
-
 import com.example.demo.Application.InputPort.EventInputport;
 import com.example.demo.Core.Entities.Event;
-import com.example.demo.Core.OutputPort.UserOutputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -14,12 +11,11 @@ public class EventController {
 
     @Autowired
     private EventInputport eventInputport;
-    @Autowired
-    private UserOutputPort userOutputPort;
 
-   public EventController(EventInputport eventInputport, UserOutputPort userOutputPort) {
+
+   public EventController(EventInputport eventInputport) {
         this.eventInputport = eventInputport;
-        this.userOutputPort = userOutputPort;
+
     }
 
     public EventController() {
@@ -33,7 +29,6 @@ public class EventController {
 
     @PostMapping("/get/event/creator/{username}")
     public String getEventCreator(@PathVariable("username") String username){
-
-        return this.userOutputPort.getUserFullNameByUsername(username);
+        return null;
     }
 }

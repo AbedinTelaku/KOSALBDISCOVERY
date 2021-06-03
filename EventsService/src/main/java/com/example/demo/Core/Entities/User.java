@@ -5,20 +5,20 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class User {
-    private String username;
+ private String userFullName;
 
-    public User(String username) {
-        this.username = username;
+    public User(String userFullName) {
+        this.userFullName = userFullName;
     }
 
     public User() {
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserFullName() {
+        return userFullName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserFullName(String userFullName) {
+        this.userFullName = userFullName;
     }
 }
