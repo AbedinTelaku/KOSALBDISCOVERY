@@ -8,6 +8,7 @@ public interface IBusinessService {
     Business getBusiness(int id);
 
     Business getBusinessByUsernameAndPassword(String username, String password);
+    Business getBusinessByUsername(String username);
 
     List<Business> getAllBusinesses();
 

@@ -32,6 +32,12 @@ public class BusinessService implements IBusinessService {
     }
 
     @Override
+    public Business getBusinessByUsername(String username) {
+        Optional<Business> optionalBusiness= this.businessRepository.findBusinessByUsername(username);
+        return optionalBusiness.get();
+    }
+
+    @Override
     public List<Business> getAllBusinesses() {
         return this.businessRepository.findAll();
     }

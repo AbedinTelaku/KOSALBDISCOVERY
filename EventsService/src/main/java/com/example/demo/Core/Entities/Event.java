@@ -3,6 +3,7 @@ package com.example.demo.Core.Entities;
 import javax.persistence.*;
 import java.sql.Date;
 
+@Entity
 public class Event {
 
     @Id

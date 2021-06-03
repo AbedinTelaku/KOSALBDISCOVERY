@@ -7,6 +7,8 @@ import com.example.demo.Register.Repository.BusinessRepository;
 import com.example.demo.Register.Models.Tourist;
 import com.example.demo.Register.Repository.TouristRepository;
 
+import java.util.Optional;
+
 public class Authentication implements AuthenticationInterface {
 
 
@@ -31,9 +33,11 @@ public class Authentication implements AuthenticationInterface {
     public boolean checkTouristPassword(String username, String password) {
 
         boolean usernameExist = checkTouristUsername(username);
-        Tourist tourist = null;
+        Optional<Tourist> touristOptional = null;
+        Tourist tourist=null;
         if (usernameExist == true) {
-            tourist = this.touristRepository.findTouristByUsername(username);
+            touristOptional = this.touristRepository.findTouristByUsername(username);
+            tourist=touristOptional.get();
         }
         if (tourist.getPassword().equals(password)) {
             return true;
@@ -44,7 +48,8 @@ public class Authentication implements AuthenticationInterface {
 
     @Override
     public boolean checkTouristUsername(String username) {
-        Tourist tourist = this.touristRepository.findTouristByUsername(username);
+        Optional<Tourist> touristOptional = this.touristRepository.findTouristByUsername(username);
+        Tourist tourist=touristOptional.get();
 
         if (tourist != null) {
             return true;
@@ -69,9 +74,11 @@ public class Authentication implements AuthenticationInterface {
     @Override
     public boolean checkBusinessPassword(String username, String password) {
         boolean usernameExist = checkBusinessUsername(username);
+        Optional<Business> businessOptional=null;
         Business business = null;
         if (usernameExist == true) {
-            business = this.businessRepository.findBusinessByUsername(username);
+            businessOptional = this.businessRepository.findBusinessByUsername(username);
+            business=businessOptional.get();
         }
         if (business.getPassword().equals(password)) {
             return true;
@@ -83,7 +90,8 @@ public class Authentication implements AuthenticationInterface {
     @Override
     public boolean checkBusinessUsername(String username) {
 
-        Business business = this.businessRepository.findBusinessByUsername(username);
+        Optional<Business> businessOptional = this.businessRepository.findBusinessByUsername(username);
+        Business business=businessOptional.get();
 
         if (business != null) {
             return true;

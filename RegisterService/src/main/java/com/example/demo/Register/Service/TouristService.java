@@ -33,6 +33,12 @@ public class TouristService implements ITouristService {
     }
 
     @Override
+    public Tourist getTouristByUsername(String username) {
+        Optional<Tourist> touristOptional = this.touristRepository.findTouristByUsername(username);
+        return touristOptional.get();
+    }
+
+    @Override
     public List<Tourist> getAllTourists() {
         return this.touristRepository.findAll();
     }

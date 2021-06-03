@@ -18,6 +18,9 @@ private EventRepository eventRepository;
         this.eventRepository = eventRepository;
     }
 
+    public EventService() {
+    }
+
     @Override
     public void createEvent(String name, String description, String userName, String cityName, String touristPlace) {
 

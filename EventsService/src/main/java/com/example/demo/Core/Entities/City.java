@@ -4,13 +4,15 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class City {
-    private String name;
+    private String cityName;
 
-    public String getName() {
-        return name;
+    public String getCityName() {
+        return cityName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
     }
+
+
 }

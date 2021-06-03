@@ -5,13 +5,13 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class TouristPlace {
 
-    private String name;
+    private String touristPlaceName;
 
-    public String getName() {
-        return name;
+    public String getTouristPlaceName() {
+        return touristPlaceName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTouristPlaceName(String touristPlaceName) {
+        this.touristPlaceName = touristPlaceName;
     }
 }
