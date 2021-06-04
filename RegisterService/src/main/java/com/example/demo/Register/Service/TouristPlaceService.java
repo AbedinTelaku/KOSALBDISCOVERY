@@ -39,4 +39,9 @@ public class TouristPlaceService implements ITouristPlaceService{
     public List<TouristPlace> getAllTouristPlaces() {
         return this.touristPlaceRepository.findAll();
     }
+
+    @Override
+    public List<String> getAllTouristPlacesNames() {
+        return this.touristPlaceRepository.getTouristPlacesNames();
+    }
 }

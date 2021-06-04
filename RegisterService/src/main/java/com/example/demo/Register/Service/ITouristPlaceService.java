@@ -11,4 +11,5 @@ public interface ITouristPlaceService {
     void deleteTouristPlace(int id);
     TouristPlace getToruistPlace(int id);
     List<TouristPlace> getAllTouristPlaces();
+    List<String> getAllTouristPlacesNames();
 }

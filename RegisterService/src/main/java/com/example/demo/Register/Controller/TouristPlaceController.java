@@ -27,4 +27,9 @@ public class TouristPlaceController {
     public List<TouristPlace> getAllTouristplaces(){
         return this.iTouristPlaceService.getAllTouristPlaces();
     }
+
+    @GetMapping("get/all/names")
+    public List<String> getAllTouristplacesNames(){
+        return this.iTouristPlaceService.getAllTouristPlacesNames();
+    }
 }

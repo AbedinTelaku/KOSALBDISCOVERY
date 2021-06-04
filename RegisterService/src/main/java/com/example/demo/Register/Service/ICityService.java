@@ -11,5 +11,6 @@ public interface ICityService {
     City getCity(String name);
     City getCity(int id);
     List<City> getAllCities();
+    List<String> getAllCitiesNames();
 
 }

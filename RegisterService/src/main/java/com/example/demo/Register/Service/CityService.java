@@ -45,6 +45,12 @@ public class CityService implements ICityService{
 
     @Override
     public List<City> getAllCities() {
+
         return this.cityRepository.findAll();
+    }
+
+    @Override
+    public List<String> getAllCitiesNames() {
+        return this.cityRepository.getCitiesNames();
     }
 }

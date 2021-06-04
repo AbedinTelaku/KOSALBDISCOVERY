@@ -27,4 +27,9 @@ public class CityController {
     public List<City> getAllCities(){
         return this.iCityService.getAllCities();
     }
+
+    @GetMapping("/get/all/names")
+    public List<String> getAllCitiesNames(){
+        return this.iCityService.getAllCitiesNames();
+    }
 }
