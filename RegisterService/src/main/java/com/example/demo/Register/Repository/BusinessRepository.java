@@ -19,7 +19,7 @@ public interface BusinessRepository extends JpaRepository<Business, Integer> {
     public void updateBusiness(@Param("id") int id, @Param("businessActivity") String businessActivity, @Param("businessNumber") String businessNumber, @Param("email") String email, @Param("fiscalNumber") String fiscal_Number, @Param("name") String name, @Param("ownerId") String ownerId, @Param("password") String password, @Param("telNumber") String telNumber, @Param("username") String username, @Param("role") String role, @Param("status") String status);
 
     @Query(value = "select * from business where username=:username", nativeQuery = true)
-    public Optional<Business> findBusinessByUsername(@Param("username") String username);
+    public Business findBusinessByUsername(@Param("username") String username);
 
     @Query(value = "select * from business where username=:username and password=:password", nativeQuery = true)
     public Optional<Business> findBusinessByUsernameAndPassword(@Param("username") String username, @Param("password") String password);

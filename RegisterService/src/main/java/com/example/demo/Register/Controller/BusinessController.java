@@ -1,6 +1,5 @@
 package com.example.demo.Register.Controller;
 
-import com.example.demo.Register.Authentication.AuthenticationInterface;
 import com.example.demo.Register.Helper.BusinessHelper;
 import com.example.demo.Register.Helper.LoginHelper;
 import com.example.demo.Register.Helper.StatusHelper;
@@ -14,7 +13,7 @@ import java.util.List;
 @RequestMapping("api/business")
 public class BusinessController {
     private IBusinessService interfaceBusinessService;
-    private AuthenticationInterface authenticationInterface;
+
 
     public BusinessController(IBusinessService interfaceBusinessService) {
         this.interfaceBusinessService = interfaceBusinessService;
@@ -46,15 +45,7 @@ public class BusinessController {
         return this.interfaceBusinessService.getBusinessesNumber();
     }
 
-    @PostMapping("/check/business")
-    public boolean businessExist(@RequestBody LoginHelper loginHelper) {
-        String username = loginHelper.getUsername();
-        String password = loginHelper.getPassword();
 
-        boolean checkUsername = this.authenticationInterface.checkIfBusinessExist(username, password);
-
-        return checkUsername;
-    }
 
     @GetMapping("/get/all/businesses")
     public List<Business> getAllBusinesess() {
