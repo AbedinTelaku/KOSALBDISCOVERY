@@ -28,8 +28,8 @@ public class TouristPlaceController {
         return this.iTouristPlaceService.getAllTouristPlaces();
     }
 
-    @GetMapping("get/all/names")
-    public List<String> getAllTouristplacesNames(){
+    @GetMapping("get/all/names/{cityName}")
+    public List<String> getAllTouristplacesNames(@PathVariable("cityName") String cityName){
         return this.iTouristPlaceService.getAllTouristPlacesNames();
     }
 }

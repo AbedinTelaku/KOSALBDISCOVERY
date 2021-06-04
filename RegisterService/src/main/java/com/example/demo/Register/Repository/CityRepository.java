@@ -17,4 +17,7 @@ public interface CityRepository extends JpaRepository<City,Integer> {
     @Query(value = "select name from city", nativeQuery = true)
     public List<String> getCitiesNames();
 
+    @Query(value = "select id from city", nativeQuery = true)
+    public List<Integer> getCitiesIds();
+
 }

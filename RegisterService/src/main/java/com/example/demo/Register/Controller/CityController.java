@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("api/city")
@@ -31,5 +32,10 @@ public class CityController {
     @GetMapping("/get/all/names")
     public List<String> getAllCitiesNames(){
         return this.iCityService.getAllCitiesNames();
+    }
+
+    @GetMapping("/get/all/names-ids")
+    public Map<Integer,String> getAllCitiesNamesAndIds(){
+        return this.iCityService.getCitiesNamesAndIds();
     }
 }

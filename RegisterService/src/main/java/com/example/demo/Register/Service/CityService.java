@@ -5,7 +5,9 @@ import com.example.demo.Register.Repository.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -52,5 +54,22 @@ public class CityService implements ICityService{
     @Override
     public List<String> getAllCitiesNames() {
         return this.cityRepository.getCitiesNames();
+    }
+
+    @Override
+    public List<Integer> getAllCitiesIds() {
+        return this.cityRepository.getCitiesIds();
+    }
+
+    @Override
+    public Map<Integer, String> getCitiesNamesAndIds() {
+        Map<Integer,String> cityMap = new HashMap<Integer, String>();
+
+        List<City> cities = this.cityRepository.findAll();
+
+        for(int i=0;i<cities.size();i++){
+            cityMap.put(cities.get(i).getId(),cities.get(i).getName());
+        }
+        return cityMap;
     }
 }

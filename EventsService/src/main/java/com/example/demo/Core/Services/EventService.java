@@ -38,7 +38,6 @@ private EventDomain eventDomain;
         String userFullName = this.userOutputPort.getUserFullNameByUsername(username);
         //get city from register module
         //get tourist place from register module
-
         User user = new User(userFullName);
         City city = new City(cityName);
         TouristPlace touristPlace = new TouristPlace(touristPlaceName);

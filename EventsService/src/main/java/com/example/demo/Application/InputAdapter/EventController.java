@@ -1,6 +1,8 @@
 package com.example.demo.Application.InputAdapter;
 import com.example.demo.Application.InputPort.EventInputport;
 import com.example.demo.Core.Entities.Event;
+import com.example.demo.Core.Helper.EventHelper;
+import com.example.demo.Core.OutputPort.UserOutputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -12,23 +14,27 @@ public class EventController {
     @Autowired
     private EventInputport eventInputport;
 
+    @Autowired
+    private UserOutputPort userOutputPort;
 
    public EventController(EventInputport eventInputport) {
         this.eventInputport = eventInputport;
 
     }
 
-    public EventController() {
+    @PostMapping("/create")
+    public void createEvent(@RequestBody EventHelper eventHelper){
+       this.eventInputport.createEvent(eventHelper.getName(),eventHelper.getDescription(),eventHelper.getStartDate(),eventHelper.getEndDate(),eventHelper.getCityName(),eventHelper.getTouristPlaceName(),eventHelper.getUsername());
     }
-
     @GetMapping("/get/all/events")
     public List<Event> getAllEvents(){
         return this.eventInputport.getAllEvents();
     }
 
 
-    @PostMapping("/get/event/creator/{username}")
+    @GetMapping("/get/event/creator/{username}")
     public String getEventCreator(@PathVariable("username") String username){
-        return null;
+
+       return this.userOutputPort.getUserFullNameByUsername(username);
     }
 }

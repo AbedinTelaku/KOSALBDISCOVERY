@@ -1,6 +1,6 @@
 package com.example.demo.Register.Controller;
 
-import com.example.demo.Register.Authentication.AuthenticationInterface;
+
 import com.example.demo.Register.Helper.LoginHelper;
 import com.example.demo.Register.Helper.TouristHelper;
 import com.example.demo.Register.Models.Tourist;
@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/tourist")
 public class TouristController {
-    private AuthenticationInterface authenticationInterface;
+
 
     @Autowired
     private ITouristService interfaceTouristService;
@@ -33,15 +33,6 @@ public class TouristController {
         return this.interfaceTouristService.getTouristByUsernameAndPassword(username, password);
     }
 
-    @PostMapping("check/tourist")
-    public boolean TouristExist(@RequestBody LoginHelper loginHelper) {
-        String username = loginHelper.getUsername();
-        String password = loginHelper.getPassword();
-
-        boolean checkUsername = this.authenticationInterface.checkIfTouristExist(username, password);
-
-        return checkUsername;
-    }
 
     @GetMapping("get/all/tourists")
     public List<Tourist> getAllTourists() {
