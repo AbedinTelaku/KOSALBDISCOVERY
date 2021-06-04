@@ -1,8 +1,9 @@
 package com.example.demo.Core.OutputPort;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface TouristPlaceOutputPort {
 
-    ArrayList<String> getAllTouristPlacesNamesByCityName(String cityName);
+    List<String> getAllTouristPlacesNamesByCityName(String cityName);
 }
