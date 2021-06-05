@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="Css/adminDashboardStyle.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="Js/usersStatsDiagram.js"></script>
+    <script type="text/javascript" src="Js/usersStatsDiagram.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     
@@ -86,7 +86,7 @@
                     
                                 <div class="collapse" id="citiesMenu">
                                     <ul class="side-nav-second-level">
-                                        <li >Add New City</li>
+                                        <li id="addNewCityButton" data-toggle="modal" data-target="#addNewCity">Add New City</li>
                                         <li >All Cities</li>
                                        
                                     </ul>
@@ -100,7 +100,7 @@
                         
                                     <div class="collapse" id="touristPlacesMenu">
                                         <ul class="side-nav-second-level">
-                                            <li >Add New Tourist Place</li>
+                                            <li id="addNewTouristPlaceButton" data-toggle="modal" data-target="#addNewTouristPlace" >Add New Tourist Place</li>
                                             <li >All Tourist Places</li>
                                            
                                         </ul>
@@ -292,7 +292,15 @@
 
                     <div class="usersDiagram">
                         <p>diagram</p>
-                        <canvas id="pieChart"></canvas>
+                      
+                        <div class="container my-4">
+                        
+                            <div>
+                              <canvas id="pieChart" style="max-width: 500px;"></canvas>
+                            </div>
+                        
+                          </div>
+                       
                      
                     </div>
 
@@ -451,6 +459,88 @@
 
                     </div>
                 </div>
+               <!-- all cities Div -->
+                <div class="hide" id="allCities">
+                    <p style ="color: #6c757d; margin-left: 1%;  font-size: x-large;">Cities</p>
+                    <div style="width: 100%; height: 80%; overflow: scroll; ">
+
+                    </div>
+                </div>
+
+                <!-- Add new city Modal  -->
+ <div class="modal fade" id="addNewCity" tabindex="-1" role="dialog" aria-labelledby="addNewCity" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Add New City</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" >
+  
+          <label for="newCityName">Name</label>
+          <input type="text" id="newCityName" placeholder="write name">
+  
+  
+          <label for="newCityZip">Zip Code</label>
+          <input type="text" id="newCityZip" placeholder="write Zip Code">
+  
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="saveChangesButton">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- end of new city modal -->
+
+
+ <!-- all tourist places Div -->
+ <div class="hide" id="allCities">
+    <p style ="color: #6c757d; margin-left: 1%;  font-size: x-large;">Tourist Places</p>
+    <div style="width: 100%; height: 80%; overflow: scroll; ">
+
+    </div>
+</div>
+
+<!-- Add new tourist place Modal  -->
+<div class="modal fade" id="addNewTouristPlace" tabindex="-1" role="dialog" aria-labelledby="addNewTouristPlace" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="exampleModalLongTitle">Add New Tourist Place</h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="modal-body" >
+
+<label for="newTouristPlaceName">Name</label>
+<input type="text" id="newTouristPlaceName" placeholder="write name">
+
+
+<label for="newTouristPlaceCity">City</label>
+<select  id="newTouristPlaceCity" class="form-control" name="newTouristPlaceCity">
+    <option value="Restaurant">Shkoder</option>
+    <option value="Bar Coffee">Durres</option>              
+  </select>
+
+
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+<button type="button" class="btn btn-primary" id="saveChangesButton">Save changes</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- end of new tourist place modal -->
+
 
             </div>
         </div>
@@ -462,14 +552,14 @@
 
    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+    <script type="text/javascript" src="Js/usersStatsDiagram.js"></script>
     <script src="Js/adminDashboardJS.js"></script>
     <script src="Js/dashboardHideParts.js"></script>
     <script src="Js/getBusinesses.js"></script>
     <script src="Js/editBusiness.js"></script>
     <script src="Js/dashboardStatsJs.js"></script>
     <script src="Js/getTourists.js"></script>
-  
+    
 
 </body>
 </html>
