@@ -24,7 +24,7 @@ public class EventController {
 
     @PostMapping("/create")
     public void createEvent(@RequestBody EventHelper eventHelper){
-       this.eventInputport.createEvent(eventHelper.getName(),eventHelper.getDescription(),eventHelper.getStartDate(),eventHelper.getEndDate(),eventHelper.getCityName(),eventHelper.getTouristPlaceName(),eventHelper.getUsername());
+       this.eventInputport.createEvent(eventHelper.getName(),eventHelper.getDescription(),eventHelper.getStartDate(),eventHelper.getEndDate(),eventHelper.getStartTime(),eventHelper.getCityName(),eventHelper.getTouristPlaceName(),eventHelper.getUsername());
     }
     @GetMapping("/get/all/events")
     public List<Event> getAllEvents(){

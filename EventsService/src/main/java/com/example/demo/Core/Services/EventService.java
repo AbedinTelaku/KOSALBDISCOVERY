@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,7 +35,7 @@ private EventDomain eventDomain;
     }
 
     @Override
-    public void createEvent(String name, String description, Date startDate,Date endDate,String cityName,String touristPlaceName,String username) {
+    public void createEvent(String name, String description, Date startDate, Date endDate, Time startTime, String cityName, String touristPlaceName, String username) {
        eventDomain = new EventDomain(this.eventRepository);
         String userFullName = this.userOutputPort.getUserFullNameByUsername(username);
         //get city from register module
@@ -43,7 +44,7 @@ private EventDomain eventDomain;
         City city = new City(cityName);
         TouristPlace touristPlace = new TouristPlace(touristPlaceName);
 
-        eventDomain.createEvent(name,description,startDate,endDate,user,city,touristPlace);
+        eventDomain.createEvent(name,description,startDate,endDate,startTime,user,city,touristPlace);
 
     }
 

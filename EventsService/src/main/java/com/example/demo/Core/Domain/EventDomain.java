@@ -8,6 +8,7 @@ import com.example.demo.Core.OutputPort.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.Date;
+import java.sql.Time;
 
 public class EventDomain {
 
@@ -18,11 +19,11 @@ public class EventDomain {
         this.eventRepository = eventRepository;
     }
 
-    public void createEvent(String name, String description,Date startDate,Date endDate ,User user, City city, TouristPlace touristPlace){
+    public void createEvent(String name, String description, Date startDate, Date endDate, Time startTime, User user, City city, TouristPlace touristPlace){
 
        String status = setEventStatus(startDate,endDate);
 
-       Event event = new Event(name,description,startDate,endDate,status,user,city,touristPlace);
+       Event event = new Event(name,description,startDate,endDate,startTime,status,user,city,touristPlace);
 
        this.eventRepository.save(event);
     }

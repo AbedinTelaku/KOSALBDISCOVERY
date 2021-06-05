@@ -2,21 +2,24 @@ package com.example.demo.Core.Helper;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Time;
 
 public class EventHelper implements Serializable {
     private String name;
     private String description;
     private Date startDate;
     private Date endDate;
+    private Time startTime;
     private String cityName;
     private String touristPlaceName;
     private String username;
 
-    public EventHelper(String name, String description, Date startDate, Date endDate, String cityName, String touristPlaceName, String username) {
+    public EventHelper(String name, String description, Date startDate, Date endDate,Time startTime ,String cityName, String touristPlaceName, String username) {
         this.name = name;
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.startTime=startTime;
         this.cityName = cityName;
         this.touristPlaceName = touristPlaceName;
         this.username=username;
@@ -76,5 +79,13 @@ public class EventHelper implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Time getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Time startTime) {
+        this.startTime = startTime;
     }
 }

@@ -2,6 +2,7 @@ package com.example.demo.Core.Entities;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Time;
 
 @Entity
 public class Event {
@@ -18,6 +19,8 @@ public class Event {
     @Column
     private Date endDate;
     @Column
+    private Time startTime;
+    @Column
     private String status;
     @Embedded
     private User user;
@@ -26,11 +29,12 @@ public class Event {
     @Embedded
     private TouristPlace touristPlace;
 
-    public Event(String name, String description,Date startDate, Date endDate, String status,User user, City city, TouristPlace touristPlace){
+    public Event(String name, String description,Date startDate, Date endDate, Time startTime,String status,User user, City city, TouristPlace touristPlace){
         this.name=name;
         this.description=description;
         this.startDate=startDate;
         this.endDate=endDate;
+        this.startTime=startTime;
         this.status=status;
         this.user=user;
         this.city = city;

@@ -1,0 +1,121 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+    background: rgb(238, 238, 238);
+}
+.header{
+    width: 100%;
+    height: 10%;
+    background: rgb(0, 196, 147);
+
+    
+}
+.hide{
+    display: none;
+}
+.content{
+    display: flex;
+    flex-direction: row;
+    height: 90%;
+    width: 100%;
+}
+.sideNav{
+    width: 20%;
+    height: 100%;
+    background: white;
+}
+
+.sideNawItems{
+    list-style: none;
+    width: 90%;
+    height: 60%;
+   
+    margin-left: 5%;
+}
+.sideNawItems li{
+    width: 100%;
+    height: 8%;
+    margin-top: 5%;
+    
+    text-align: center;
+    padding-top: 2%;
+    color: #6c757d;
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    cursor: pointer;
+    border-radius: 5px;
+    background: rgb(0, 196, 147);
+}
+.sideNawItems li:hover{
+    color: #cedce4;
+}
+.main{
+    width: 80%;
+    height: 100%;
+    
+    
+   
+}
+.allEvents{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: scroll;
+}
+.event{
+    margin-top: 5%;
+    margin-left: 5%;
+    width: 40%;
+    height: 50%;
+    border-radius: 5%;
+    border: 1px solid red;
+    background: white;
+}
+
+.eventImg{
+    width: 100%;
+    height: 70%;
+    
+    border: 1px solid black;
+}
+.eventName{
+    width: 50%;
+    height:10%;
+    border: 1px solid red;
+}
+.eventDate{
+    width: 50%;
+    height:10%;
+    border: 1px solid red;
+}
+.eventDescription{
+    width: 90%;
+    margin-left: 5%;
+    height:20%;
+    border: 1px solid red;
+}
+.createEvent{
+    width: 100%;
+    height: 100%;
+   
+}
+#createEventModal{
+    width: 70%;
+    height: 80%;
+    margin-top: 5%;
+    margin-left: 20%;
+  
+}
+    
+.modal-body{
+    display: flex;
+    flex-direction: column;
+}
