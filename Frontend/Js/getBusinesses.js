@@ -14,8 +14,9 @@ function getBusinesses() {
         //data: JSON.stringify(user),
         success: function (data) {
             var business = JSON.parse(JSON.stringify(data));
-
+            
             showBusinesses(business);
+            
         },
         error: function (request, status, error) {
             console.log(error);
@@ -72,7 +73,7 @@ function deleteBusiness(businessId) {
             // localStorage.setItem('kuizi', JSON.stringify(res))
 
             //   console.log(business)
-
+            alert("Business was deletet successfully.")
             location.reload();
 
 

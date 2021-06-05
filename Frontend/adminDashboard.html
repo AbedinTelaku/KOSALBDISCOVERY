@@ -71,7 +71,7 @@
                 
                             <div class="collapse" id="eventsMenu">
                                 <ul class="side-nav-second-level">
-                                    <a href="eventDashboard.html">  <li>Manage Events</li>  </a>
+                                    <li>Manage Events</li> 
                                     <li>Edit Events</li>
                                     <li>New Event</li>
                                 </ul>
@@ -282,10 +282,39 @@
                 
 
                 <div class="hide" id="allAdminsTable">
-                    <p>All Admins</p>
+                  
+                    <p style ="color: #6c757d; margin-left: 1%;  font-size: x-large;">Admins</p>
+                    <div style="width: 100%; height: 80%; overflow: scroll;">
+
+                    </div>
                 </div>
                 <div class="hide" id="allTouristsTable">
-                    <p>All Tourists</p>
+                   
+                    <p style ="color: #6c757d; margin-left: 1%;  font-size: x-large;">Tourists</p>
+
+                    <div style="width: 100%; height: 80%; overflow: scroll;">
+                        <table class="table table-bordered table-dark" id="table" style="width: 100%;">
+                            <thead style="font-family: 'Courier New', Courier, monospace;">
+                              <tr>
+                                
+                                <th scope="col">#</th>
+                                <th scope="col">Full Name</th>
+                                <th scope="col">Age</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Password</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Role</th>
+                                <th scope="col">Status</th>
+                                
+                           
+                              </tr>
+                            </thead>
+                            <tbody id="touristsTableBody" style="font-family: 'Courier New', Courier, monospace;">
+                              
+                            </tbody>
+                          </table>
+                    </div>
                          
                 </div>
 
@@ -397,7 +426,10 @@
                 </div>
 
                 <div class="hide" id="blockedUsersTable">
-                           <p>Blocked Users</p>
+                    <p style ="color: #6c757d; margin-left: 1%;  font-size: x-large;">Blocked Users</p>
+                    <div style="width: 100%; height: 80%; overflow: scroll; ">
+
+                    </div>
                 </div>
 
             </div>
@@ -415,6 +447,7 @@
     <script src="Js/getBusinesses.js"></script>
     <script src="Js/editBusiness.js"></script>
     <script src="Js/dashboardStatsJs.js"></script>
+    <script src="Js/getTourists.js"></script>
 
 </body>
 </html>

@@ -272,7 +272,14 @@ body {
     height: 100%;
 
 }
-
+#allTouristsTable{
+    width: 100%;
+    height: 100%;
+}
+#allAdminsTable{
+    width: 100%;
+    height: 100%;
+}
 .businessesNavigation {
 
     display: flex;

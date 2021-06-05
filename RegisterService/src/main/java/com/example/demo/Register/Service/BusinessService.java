@@ -64,7 +64,7 @@ public class BusinessService implements IBusinessService {
 
     @Override
     public void editBusiness(int id, String businessActivity, String businessNumber, String email, String fiscalNumber, String name, String ownerId, String password, String telNumber, String username, String role, String status) {
-        this.businessRepository.updateBusiness(id, businessActivity, businessNumber, email, fiscalNumber, name, ownerId, password, telNumber, username, role, status);
+        this.businessRepository.updateBusiness(id, businessActivity, businessNumber, email, fiscalNumber, name, ownerId, password, telNumber, username, status, role);
     }
 
 

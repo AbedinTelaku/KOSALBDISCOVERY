@@ -17,10 +17,6 @@ public class UserOutputAdapter implements UserOutputPort {
 
         String name = responseEntity.getBody().getName();
 
-        String fullName = name;
-
-
-
-        return fullName;
+        return name;
     }
 }

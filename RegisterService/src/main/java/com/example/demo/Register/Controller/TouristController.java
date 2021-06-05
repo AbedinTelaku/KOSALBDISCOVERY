@@ -20,12 +20,12 @@ public class TouristController {
     private ITouristService interfaceTouristService;
 
 
-    @PostMapping("create/tourist")
+    @PostMapping("/create/tourist")
     public void createTourist(@RequestBody TouristHelper touristHelper) {
         this.interfaceTouristService.createTourist(touristHelper.getFull_name(), touristHelper.getAge(), touristHelper.getGender(), touristHelper.getEmail(), touristHelper.getPassword(), touristHelper.getUsername(), touristHelper.getRole(), touristHelper.getStatus());
     }
 
-    @PostMapping("get/tourist")
+    @PostMapping("/get/tourist")
     public Tourist getTourist(@RequestBody LoginHelper loginHelper) {
         String username = loginHelper.getUsername();
         String password = loginHelper.getPassword();
@@ -34,12 +34,12 @@ public class TouristController {
     }
 
 
-    @GetMapping("get/all/tourists")
+    @GetMapping("/get/all/tourists")
     public List<Tourist> getAllTourists() {
         return this.interfaceTouristService.getAllTourists();
     }
 
-    @GetMapping("get/tourists/number")
+    @GetMapping("/get/tourists/number")
     public long getTouristsNumber() {
         return this.interfaceTouristService.getTouristsNumber();
     }
