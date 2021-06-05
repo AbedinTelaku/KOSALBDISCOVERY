@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class UserHelper implements Serializable {
     private String name;
-    private String surname;
+  //  private String surname;
 
 
 
@@ -17,11 +17,5 @@ public class UserHelper implements Serializable {
         this.name = name;
     }
 
-    public String getSurname() {
-        return surname;
-    }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
 }

@@ -12,9 +12,7 @@ public class Tourist {
     @Column
     private int touristID;
     @Column
-    private String name;
-    @Column
-    private String surname;
+    private String full_name;
     @Column
     private int age;
     @Column
@@ -27,18 +25,19 @@ public class Tourist {
     private String username;
     @Column
     private String role;
+    @Column
+    private String status;
 
+    public Tourist(String fullName, int age, char gender, String email, String password, String username, String role,String status) {
 
-    public Tourist(String name, String surname, int age, char gender, String email, String password, String username, String role) {
-
-        this.name = name;
-        this.surname = surname;
+        this.full_name=fullName;
         this.age = age;
         this.gender = gender;
         this.email = email;
         this.password = password;
         this.username = username;
         this.role = role;
+        this.status=status;
     }
 
     public Tourist() {
@@ -51,22 +50,6 @@ public class Tourist {
 
     public void setTouristID(int touristID) {
         this.touristID = touristID;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
     }
 
     public int getAge() {
@@ -115,6 +98,22 @@ public class Tourist {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getFull_name() {
+        return full_name;
+    }
+
+    public void setFull_name(String full_name) {
+        this.full_name = full_name;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
 

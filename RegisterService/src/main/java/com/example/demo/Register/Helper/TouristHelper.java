@@ -1,38 +1,33 @@
 package com.example.demo.Register.Helper;
 
-import javax.persistence.Column;
 import java.io.Serializable;
 
 public class TouristHelper implements Serializable {
 
 
-    private String name;
-    private String surname;
+    private String full_name;
     private int age;
     private char gender;
     private String email;
     private String password;
     private String username;
     private String role;
+    private String status;
 
 
-    public TouristHelper(String name, String surname, int age, char gender, String email, String password, String username, String role) {
-        this.name = name;
-        this.surname = surname;
+    public TouristHelper(String full_name, int age, char gender, String email, String password, String username, String role,String status) {
+        this.full_name=full_name;
         this.age = age;
         this.gender = gender;
         this.email = email;
         this.password = password;
         this.username = username;
         this.role = role;
+        this.status=status;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getSurname() {
-        return surname;
+    public String getFull_name() {
+        return full_name;
     }
 
     public int getAge() {
@@ -57,5 +52,9 @@ public class TouristHelper implements Serializable {
 
     public String getUsername() {
         return username;
+    }
+
+    public String getStatus() {
+        return status;
     }
 }

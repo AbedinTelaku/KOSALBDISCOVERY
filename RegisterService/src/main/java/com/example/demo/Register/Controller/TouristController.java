@@ -22,7 +22,7 @@ public class TouristController {
 
     @PostMapping("create/tourist")
     public void createTourist(@RequestBody TouristHelper touristHelper) {
-        this.interfaceTouristService.createTourist(touristHelper.getName(), touristHelper.getSurname(), touristHelper.getAge(), touristHelper.getGender(), touristHelper.getEmail(), touristHelper.getPassword(), touristHelper.getUsername(), touristHelper.getRole());
+        this.interfaceTouristService.createTourist(touristHelper.getFull_name(), touristHelper.getAge(), touristHelper.getGender(), touristHelper.getEmail(), touristHelper.getPassword(), touristHelper.getUsername(), touristHelper.getRole(), touristHelper.getStatus());
     }
 
     @PostMapping("get/tourist")

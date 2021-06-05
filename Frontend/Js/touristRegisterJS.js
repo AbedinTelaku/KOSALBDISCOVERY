@@ -1,23 +1,23 @@
 $("#registerButton").click(function (event) {
 
-    var name = document.getElementById("name").value;
-    var surname = document.getElementById("surname").value;
-    var age = document.getElementById("age").value;
-    var gender = document.getElementById("gender").value;
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
-    var username = document.getElementById("username").value;
+    var name = document.getElementById("nameInput").value;
+    var age = document.getElementById("ageInput").value;
+    var gender = document.getElementById("genderInput").value;
+    var email = document.getElementById("emailInput").value;
+    var password = document.getElementById("passwordInput").value;
+    var username = document.getElementById("usernameInput").value;
     var rolee = "tourist";
+    var statuus = "active";
 
     tourist = {
-        name: name,
-        surname: surname,
+        full_name: name,
         age: age,
         gender: gender,
         email: email,
         password: password,
         username: username,
-        role: rolee
+        role: rolee,
+        status:statuus
     }
 
     console.log(tourist)
@@ -52,12 +52,12 @@ function registerTourist(tourist) {
 
 
 var tourist = {
-    name: "",
-    surname: "",
+    full_name: "",
     age: "",
     gender: "",
     email: "",
     password: "",
     username: "",
-    role: ""
+    role: "",
+    status:""
 }

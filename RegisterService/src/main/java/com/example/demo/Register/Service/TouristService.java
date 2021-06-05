@@ -47,8 +47,8 @@ public class TouristService implements ITouristService {
     }
 
     @Override
-    public void createTourist(String name, String surname, int age, char gender, String Email, String password, String username, String role) {
-        Tourist tourist = new Tourist(name, surname, age, gender, Email, password, username, role);
+    public void createTourist(String fullName, int age, char gender, String Email, String password, String username, String role,String status) {
+        Tourist tourist = new Tourist(fullName, age, gender, Email, password, username, role,status);
         this.touristRepository.save(tourist);
     }
 

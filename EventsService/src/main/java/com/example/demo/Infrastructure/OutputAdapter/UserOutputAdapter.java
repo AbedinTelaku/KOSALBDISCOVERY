@@ -16,12 +16,10 @@ public class UserOutputAdapter implements UserOutputPort {
         ResponseEntity<UserHelper> responseEntity = restTemplate.getForEntity(registerServiceURL,UserHelper.class);
 
         String name = responseEntity.getBody().getName();
-        String surname  =responseEntity.getBody().getSurname();
+
         String fullName = name;
 
-        if(surname != null){
-            fullName+=" " + surname;
-        }
+
 
         return fullName;
     }
