@@ -192,10 +192,11 @@
       <div class="modal-body" >
 
         <label for="crEventName">Name</label>
-        <input type="text" id="crEventName">
+        <input type="text" id="crEventName" placeholder="write name">
 
         <label for="crEventDescription">Description</label>
-        <input type="text" id="crEventDescription">
+
+        <textarea name="" id="crEventDescription" cols="30" rows="2"></textarea>
 
         <label for="crEventStartDate">Start Date</label>
         <input type="date" id="crEventStartDate">
@@ -208,6 +209,18 @@
 
         <label for="crEventPhoto">Photo</label>
         <input type="file" id="crEventPhoto">
+
+        <label for="crEventCity">City</label>
+        <select  id="crEventCity" class="form-control" name="crEventCity">
+          <option value="Restaurant">Shkoder</option>
+          <option value="Bar Coffee">Durres</option>              
+        </select>
+
+        <label for="crEventTouristPlace">Tourist Place</label>
+        <select  id="crEventTouristPlace" class="form-control" name="crEventCity">
+          <option value="Restaurant">Kalaja e Skenderbeut</option>
+          <option value="Bar Coffee">Kalaja e Rozafatit</option>              
+        </select>
 
         
       </div>
