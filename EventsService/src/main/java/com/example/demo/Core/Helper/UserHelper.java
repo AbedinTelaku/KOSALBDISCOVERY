@@ -6,9 +6,6 @@ public class UserHelper implements Serializable {
     private String name;
   //  private String surname;
 
-
-
-
     public String getName() {
         return name;
     }

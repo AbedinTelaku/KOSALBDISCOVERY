@@ -5,11 +5,13 @@ import com.example.demo.Core.Entities.Event;
 import com.example.demo.Core.Entities.TouristPlace;
 import com.example.demo.Core.Entities.User;
 import com.example.demo.Core.OutputPort.EventRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.Date;
 
 public class EventDomain {
 
+    @Autowired
     private EventRepository eventRepository;
 
     public EventDomain(EventRepository eventRepository) {
@@ -30,7 +32,7 @@ public class EventDomain {
     public String setEventStatus(Date startDate,Date endDate){
         Date currentDate = new Date(System.currentTimeMillis());
 
-        if(endDate.equals(currentDate)){
+        if(endDate.before(currentDate)){
             return "finished";
         }if(startDate.after(currentDate)){
             return "starting";

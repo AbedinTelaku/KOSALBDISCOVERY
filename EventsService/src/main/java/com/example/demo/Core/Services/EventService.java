@@ -35,6 +35,7 @@ private EventDomain eventDomain;
 
     @Override
     public void createEvent(String name, String description, Date startDate,Date endDate,String cityName,String touristPlaceName,String username) {
+       eventDomain = new EventDomain(this.eventRepository);
         String userFullName = this.userOutputPort.getUserFullNameByUsername(username);
         //get city from register module
         //get tourist place from register module

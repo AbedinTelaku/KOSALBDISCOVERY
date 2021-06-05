@@ -12,7 +12,7 @@ public class Tourist {
     @Column
     private int touristID;
     @Column
-    private String full_name;
+    private String name;
     @Column
     private int age;
     @Column
@@ -28,9 +28,9 @@ public class Tourist {
     @Column
     private String status;
 
-    public Tourist(String fullName, int age, char gender, String email, String password, String username, String role,String status) {
+    public Tourist(String name, int age, char gender, String email, String password, String username, String role,String status) {
 
-        this.full_name=fullName;
+        this.name=name;
         this.age = age;
         this.gender = gender;
         this.email = email;
@@ -100,12 +100,12 @@ public class Tourist {
         this.username = username;
     }
 
-    public String getFull_name() {
-        return full_name;
+    public String getName() {
+        return name;
     }
 
-    public void setFull_name(String full_name) {
-        this.full_name = full_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getStatus() {

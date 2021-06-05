@@ -43,4 +43,9 @@ public class TouristController {
     public long getTouristsNumber() {
         return this.interfaceTouristService.getTouristsNumber();
     }
+
+    @PostMapping("/delete/{id}")
+    public void deleteTourist(@PathVariable("id") int id){
+        this.interfaceTouristService.deleteTourist(id);
+    }
 }
