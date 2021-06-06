@@ -36,7 +36,8 @@ public class CityService implements ICityService{
 
     @Override
     public City getCity(String name) {
-        return null;
+
+        return this.cityRepository.findCityByName(name);
     }
 
     @Override

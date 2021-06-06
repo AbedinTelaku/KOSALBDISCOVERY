@@ -1,15 +1,13 @@
 package com.example.demo.Register.Controller;
 
+import com.example.demo.Register.Helper.CityHelper;
 import com.example.demo.Register.Models.TouristPlace;
 import com.example.demo.Register.Service.ITouristPlaceService;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("api/touristPlace")
 public class TouristPlaceController {
     private ITouristPlaceService iTouristPlaceService;
@@ -18,6 +16,10 @@ public class TouristPlaceController {
         this.iTouristPlaceService = iTouristPlaceService;
     }
 
+    @PostMapping("/create/touristPlace")
+    public void creteTouristPlaceByCityName(@RequestBody CityHelper cityHelper){
+
+    }
     @GetMapping("/get//{id}")
     public TouristPlace getTouristPlace(@PathVariable("id") int id){
         return this.iTouristPlaceService.getToruistPlace(id);
