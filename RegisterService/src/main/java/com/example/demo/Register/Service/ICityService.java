@@ -9,7 +9,7 @@ public interface ICityService {
 
     void createCity(String name, String zipCode);
     void deleteCity(int id);
-    City getCity(String name);
+    City getCityByName(String name);
     City getCity(int id);
     List<City> getAllCities();
     List<String> getAllCitiesNames();

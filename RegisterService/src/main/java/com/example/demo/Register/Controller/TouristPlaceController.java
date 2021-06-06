@@ -1,6 +1,6 @@
 package com.example.demo.Register.Controller;
 
-import com.example.demo.Register.Helper.CityHelper;
+import com.example.demo.Register.Helper.TouristPlaceHelper;
 import com.example.demo.Register.Models.TouristPlace;
 import com.example.demo.Register.Service.ITouristPlaceService;
 import org.springframework.web.bind.annotation.*;
@@ -16,9 +16,9 @@ public class TouristPlaceController {
         this.iTouristPlaceService = iTouristPlaceService;
     }
 
-    @PostMapping("/create/touristPlace")
-    public void creteTouristPlaceByCityName(@RequestBody CityHelper cityHelper){
-
+    @PostMapping("/create/touristPlace/{cityName}")
+    public void creteTouristPlaceByCityName(@RequestBody TouristPlaceHelper touristPlaceHelper,@PathVariable("cityName") String cityName){
+        this.iTouristPlaceService.createTouristPlace(touristPlaceHelper.getName(),cityName);
     }
     @GetMapping("/get//{id}")
     public TouristPlace getTouristPlace(@PathVariable("id") int id){

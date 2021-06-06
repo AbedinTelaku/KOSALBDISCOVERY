@@ -60,19 +60,22 @@ $("#touristPlaceSaveChangesButton").click(function(){
             name:tPName,
             city:tPCity
         }
+        createTouristPlace(touristPlace);
+        console.log(touristPlace)
+        console.log(touristPlace.city)
     }
 
 });
 
 
-function createCity(city){
+function createTouristPlace(touristPlace){
     $.ajax({
-        url:"http://localhost:8080/api/city/create",
+        url:"http://localhost:8080/api/touristPlace/create/touristPlace/"+touristPlace.city,
         type:"post",
         contentType:"application/json; charset=utf-8",
-        data: JSON.stringify(city),
+        data: JSON.stringify(touristPlace),
         success: function(res){
-            console.log(city)
+            console.log(touristPlace)
         },
         error: function(request,error,status){
             console.log(error)
@@ -84,4 +87,5 @@ function createCity(city){
 touristPlace={
     name:"",
     city:""
+  
 }

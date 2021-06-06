@@ -22,6 +22,8 @@ public class Event {
     private Time startTime;
     @Column
     private String status;
+    @Column
+    private String photoPath;
     @Embedded
     private User user;
     @Embedded
@@ -114,5 +116,13 @@ public class Event {
 
     public void setTouristPlace(TouristPlace touristPlace) {
         this.touristPlace = touristPlace;
+    }
+
+    public Time getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Time startTime) {
+        this.startTime = startTime;
     }
 }

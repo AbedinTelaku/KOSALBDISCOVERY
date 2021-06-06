@@ -38,8 +38,6 @@ private EventDomain eventDomain;
     public void createEvent(String name, String description, Date startDate, Date endDate, Time startTime, String cityName, String touristPlaceName, String username) {
        eventDomain = new EventDomain(this.eventRepository);
         String userFullName = this.userOutputPort.getUserFullNameByUsername(username);
-        //get city from register module
-        //get tourist place from register module
         User user = new User(userFullName);
         City city = new City(cityName);
         TouristPlace touristPlace = new TouristPlace(touristPlaceName);

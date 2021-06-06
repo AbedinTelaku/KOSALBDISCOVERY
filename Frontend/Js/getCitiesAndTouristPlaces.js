@@ -17,7 +17,7 @@ function getCities() {
         success: function (data) {
             var cities = JSON.parse(JSON.stringify(data));
             console.log(cities)
-            showCities(cities)
+            showCitiesForTouristPlace(cities)
            
         },
         error: function (request, status, error) {
@@ -28,23 +28,28 @@ function getCities() {
 
 }
 
-
-function showCities(cities){
+var isExecuted=false;
+function showCitiesForTouristPlace(cities){
     var touristCitiesList = document.getElementById("newTouristPlaceCity");
 
-    for( i in cities){
-       var city = cities[i];
-
-       var cityname=city.name;
-
-       var cityNameText = document.createTextNode(cityname);
-
-       var option = document.createElement("option");
-       option.appendChild(cityNameText);
-       option.value=cityNameText;
-
-       touristCitiesList.appendChild(option);
-       
+    if(isExecuted == false){
+        for( i in cities){
+            var city = cities[i];
+     
+            var cityname=city.name;
+     
+            var cityNameText = document.createTextNode(cityname);
+     
+            var option = document.createElement("option");
+            option.value=cityNameText.data
+            option.appendChild(cityNameText);
+            
+     
+            touristCitiesList.appendChild(option);
+            
+         }
     }
+   
+    isExecuted=true;
 }
 

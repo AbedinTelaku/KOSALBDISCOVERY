@@ -35,10 +35,10 @@ public class CityService implements ICityService{
     }
 
     @Override
-    public City getCity(String name) {
-
+    public City getCityByName(String name) {
         return this.cityRepository.findCityByName(name);
     }
+
 
     @Override
     public City getCity(int id) {
