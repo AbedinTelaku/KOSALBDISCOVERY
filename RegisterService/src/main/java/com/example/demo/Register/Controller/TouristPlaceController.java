@@ -25,12 +25,18 @@ public class TouristPlaceController {
         return this.iTouristPlaceService.getToruistPlace(id);
     }
 
-    @GetMapping("get/all")
+    @GetMapping("/get/all")
     public List<TouristPlace> getAllTouristplaces(){
         return this.iTouristPlaceService.getAllTouristPlaces();
     }
 
-    @GetMapping("get/all/names/{cityName}")
+    @GetMapping("/get/all/{cityName}")
+    public List<TouristPlace> getAllTouristplacesByCityName(@PathVariable("cityName") String cityName){
+
+        return this.iTouristPlaceService.getAllTouristPlacesByCityName(cityName);
+    }
+
+    @GetMapping("/get/all/names/{cityName}")
     public List<String> getAllTouristplacesNames(@PathVariable("cityName") String cityName){
         return this.iTouristPlaceService.getAllTouristPlacesNames();
     }

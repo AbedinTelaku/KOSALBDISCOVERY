@@ -15,4 +15,7 @@ public interface TouristPlaceRepository extends JpaRepository<TouristPlace,Integ
     @Transactional
     @Query(value = "select name from tourist_place", nativeQuery = true)
     public List<String> getTouristPlacesNames();
+
+    @Query(value = "select * from tourist_place t where t.city_id=?1", nativeQuery = true)
+    public List<TouristPlace> getTouristPlacesByCityId(int cityId);
 }

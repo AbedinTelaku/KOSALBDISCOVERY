@@ -15,23 +15,23 @@ $("#crEventSaveChangesButton").click(function(){
         name:crEventName,
         descripion:crEventDescription,
         startDate:crEventStartDate,
-        endDate:crEventStartTime,
-        startTime:crEventEndDate,
+        endDate:crEventEndDate,
+        startTime:crEventStartTime,
         photoPath:crEventPhoto,
         cityName:crEventCity,
         touristPlaceName:crEventTouristPlace,
         username:"eltonboshnjaku",
         
     }
-    console.log("test")
+   
     console.log(eventt)
-   // createEvent(eventt)
+    createEvent(eventt)
 })
 
 
 function createEvent(event){
     $.ajax({
-        url: "http://localhost:8080/api/event/create",
+        url: "http://localhost:8000/api/event/create",
         type: 'post',
         contentType: "application/json; charset=utf-8",
         // dataType: "json",

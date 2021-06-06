@@ -30,7 +30,7 @@
 
       <ul class="sideNawItems">
         <li>My Events</li>
-        <li  type="button" class="btn btn-primary" data-toggle="modal" data-target="#createEventModal">Create Event</li>
+        <li  type="button" class="btn btn-primary" data-toggle="modal" data-target="#createEventModal" id="createEventButton">Create Event</li>
         <li>All Events</li>
         <li>Future Events</li>
         <li>Happening Events</li>
@@ -219,15 +219,13 @@
         <input type="file" id="crEventPhoto">
 
         <label for="crEventCity">City</label>
-        <select  id="crEventCity" class="form-control" name="crEventCity">
-          <option value="Shkoder">Shkoder</option>
-          <option value="Durres">Durres</option>              
+        <select  id="crEventCity" class="form-control" name="crEventCity" onclick="return false">
+                     
         </select>
 
         <label for="crEventTouristPlace">Tourist Place</label>
         <select  id="crEventTouristPlace" class="form-control" name="crEventCity">
-          <option value="Kalaja e Skenderbeut">Kalaja e Skenderbeut</option>
-          <option value="Kalaja e Rozafatit">Kalaja e Rozafatit</option>              
+                  
         </select>
 
         
@@ -246,5 +244,6 @@
 
   </div>
   <script src="Js/createEventJS.js"></script>
+  <script src="Js/getCitiesAndTouristPlacesForEvent.js"></script>
 </body>
 </html>
