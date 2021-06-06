@@ -35,14 +35,14 @@ private EventDomain eventDomain;
     }
 
     @Override
-    public void createEvent(String name, String description, Date startDate, Date endDate, Time startTime, String cityName, String touristPlaceName, String username) {
+    public void createEvent(String name, String description, Date startDate, Date endDate, Time startTime,String photoPath ,String cityName, String touristPlaceName, String username) {
        eventDomain = new EventDomain(this.eventRepository);
         String userFullName = this.userOutputPort.getUserFullNameByUsername(username);
         User user = new User(userFullName);
         City city = new City(cityName);
         TouristPlace touristPlace = new TouristPlace(touristPlaceName);
 
-        eventDomain.createEvent(name,description,startDate,endDate,startTime,user,city,touristPlace);
+        eventDomain.createEvent(name,description,startDate,endDate,startTime,photoPath,user,city,touristPlace);
 
     }
 

@@ -19,11 +19,11 @@ public class EventDomain {
         this.eventRepository = eventRepository;
     }
 
-    public void createEvent(String name, String description, Date startDate, Date endDate, Time startTime, User user, City city, TouristPlace touristPlace){
+    public void createEvent(String name, String description, Date startDate, Date endDate, Time startTime,String photoPath ,User user, City city, TouristPlace touristPlace){
 
        String status = setEventStatus(startDate,endDate);
 
-       Event event = new Event(name,description,startDate,endDate,startTime,status,user,city,touristPlace);
+       Event event = new Event(name,description,startDate,endDate,startTime,photoPath,status,user,city,touristPlace);
 
        this.eventRepository.save(event);
     }

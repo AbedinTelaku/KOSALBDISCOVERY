@@ -10,16 +10,18 @@ public class EventHelper implements Serializable {
     private Date startDate;
     private Date endDate;
     private Time startTime;
+    private String photoPath;
     private String cityName;
     private String touristPlaceName;
     private String username;
 
-    public EventHelper(String name, String description, Date startDate, Date endDate,Time startTime ,String cityName, String touristPlaceName, String username) {
+    public EventHelper(String name, String description, Date startDate, Date endDate,Time startTime,String photoPath ,String cityName, String touristPlaceName, String username) {
         this.name = name;
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
         this.startTime=startTime;
+        this.photoPath=photoPath;
         this.cityName = cityName;
         this.touristPlaceName = touristPlaceName;
         this.username=username;
@@ -87,5 +89,13 @@ public class EventHelper implements Serializable {
 
     public void setStartTime(Time startTime) {
         this.startTime = startTime;
+    }
+
+    public String getPhotoPath() {
+        return photoPath;
+    }
+
+    public void setPhotoPath(String photoPath) {
+        this.photoPath = photoPath;
     }
 }

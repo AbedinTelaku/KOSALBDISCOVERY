@@ -12,9 +12,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
   <script>
-    $(function(){
-      $("#header").load("header.html");
-    });
+   // $(function(){
+   //   $("#header").load("header.html");
+    //});
   </script>
   <title>Events</title>
 </head>
@@ -178,6 +178,7 @@
 
     </div>
 
+    <!--create event div-->
     <div class="createEvent">
 
   
@@ -219,21 +220,21 @@
 
         <label for="crEventCity">City</label>
         <select  id="crEventCity" class="form-control" name="crEventCity">
-          <option value="Restaurant">Shkoder</option>
-          <option value="Bar Coffee">Durres</option>              
+          <option value="Shkoder">Shkoder</option>
+          <option value="Durres">Durres</option>              
         </select>
 
         <label for="crEventTouristPlace">Tourist Place</label>
         <select  id="crEventTouristPlace" class="form-control" name="crEventCity">
-          <option value="Restaurant">Kalaja e Skenderbeut</option>
-          <option value="Bar Coffee">Kalaja e Rozafatit</option>              
+          <option value="Kalaja e Skenderbeut">Kalaja e Skenderbeut</option>
+          <option value="Kalaja e Rozafatit">Kalaja e Rozafatit</option>              
         </select>
 
         
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="saveChangesButton">Save changes</button>
+        <button type="button" class="btn btn-primary" id="crEventSaveChangesButton">Save changes</button>
       </div>
     </div>
   </div>
@@ -244,5 +245,6 @@
     </div>
 
   </div>
+  <script src="Js/createEventJS.js"></script>
 </body>
 </html>

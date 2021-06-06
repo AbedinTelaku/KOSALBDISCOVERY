@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface EventInputport {
 
-    void createEvent(String name, String description, Date startDate, Date endDate, Time startTime, String cityName, String touristPlaceName, String username);
+    void createEvent(String name, String description, Date startDate, Date endDate, Time startTime,String photoPath ,String cityName, String touristPlaceName, String username);
     void deleteEventById(int id);
     Event getEventById(int id);
     List<Event> getAllEvents();

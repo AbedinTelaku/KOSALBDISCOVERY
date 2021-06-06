@@ -31,7 +31,7 @@ public class Event {
     @Embedded
     private TouristPlace touristPlace;
 
-    public Event(String name, String description,Date startDate, Date endDate, Time startTime,String status,User user, City city, TouristPlace touristPlace){
+    public Event(String name, String description,Date startDate, Date endDate, Time startTime,String status,String photoPath,User user, City city, TouristPlace touristPlace){
         this.name=name;
         this.description=description;
         this.startDate=startDate;
