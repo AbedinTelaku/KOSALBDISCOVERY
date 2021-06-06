@@ -1,26 +1,12 @@
 $("#createEventButton").click(function(){
     getCities();
-   
+    getTouristPlaces();
 });
-var removed=true;
-$("#crEventCity").click(function(){
-    var touristCitiesList = document.getElementById("crEventCity").value;
-    if(removed == true){
-        getTouristPlaces(touristCitiesList);
-        console.log("emri qytetit: "+ touristCitiesList)
-    
-        removed=false;
-    }else{
-        deleteTouristPlacesForEvent();
 
-        removed=true;
-    }
-    
-})
 
 
 function getCities() {
-
+ 
     $.ajax({
         url: "http://localhost:8080/api/city/get/all/cities",
         type: 'GET',
@@ -71,10 +57,10 @@ function showCitiesForEvent(cities){
 
 
 
-function getTouristPlaces(cityName) {
+function getTouristPlaces() {
 
     $.ajax({
-        url: "http://localhost:8080/api/touristPlace/get/all/"+cityName,
+        url: "http://localhost:8080/api/touristPlace/get/all",
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         dataType: "JSON",
@@ -94,36 +80,40 @@ function getTouristPlaces(cityName) {
 }
 var touristCitiesList = document.getElementById("crEventCity").value;
 var executed=false;
-function showTouristPlacesForEvent(touristPlaces){
-    
-    var touristCitiesList = document.getElementById("crEventTouristPlace");
 
-    if(executed == false){
-        for( i in touristPlaces){
+function showTouristPlacesForEvent(touristPlaces) {
+
+    var touristCitiesList = document.getElementById("crEventTouristPlace");
+    var option = "";
+
+    if (executed == false) {
+        for (i in touristPlaces) {
             var touristplace = touristPlaces[i];
-     
-            var touristplaceName=touristplace.name;
-     
+
+            var touristplaceName = touristplace.name;
+
             var touristplaceNameText = document.createTextNode(touristplaceName);
-     
-            var option = document.createElement("option");
-            option.value=touristplaceNameText.data
+
+            option = document.createElement("option");
+            option.value = touristplaceNameText.data
             option.appendChild(touristplaceNameText);
-            
-     
-            touristCitiesList.appendChild(option);
-            
-         }
-    }
-  executed=true;
-   
+
+       
+                touristCitiesList.appendChild(option);
+        
+        }
+      
+       executed=true;
+    } 
+
+
 }
 
-function deleteTouristPlacesForEvent(){
-    var touristCitiesList = document.getElementById("crEventTouristPlace");
-    touristCitiesList.removeChild;
-}
 
+function updateDiv()
+{ 
+    $( "#crEventCity" ).load(window.location.href + " #tpdiv" );
+}
 
 
 

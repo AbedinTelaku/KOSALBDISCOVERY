@@ -13,10 +13,10 @@ $("#crEventSaveChangesButton").click(function(){
 
     eventt={
         name:crEventName,
-        descripion:crEventDescription,
+        description:crEventDescription,
         startDate:crEventStartDate,
         endDate:crEventEndDate,
-        startTime:crEventStartTime,
+        startTime:crEventStartTime+":00",
         photoPath:crEventPhoto,
         cityName:crEventCity,
         touristPlaceName:crEventTouristPlace,
@@ -53,7 +53,7 @@ function createEvent(event){
 
 eventt={
     name:"",
-    descripion:"",
+    description:"",
     startDate:"",
     endDate:"",
     startTime:"",

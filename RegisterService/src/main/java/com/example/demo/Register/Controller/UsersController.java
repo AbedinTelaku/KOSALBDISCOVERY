@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequestMapping("api/user")
 public class UsersController {
@@ -30,7 +33,17 @@ public class UsersController {
     public long getUsersNumber() {
         return this.interfaceBusinessService.getBusinessesNumber() + this.interfaceTouristService.getTouristsNumber();
     }
+    @GetMapping("/get/users/numbers")
+    public List<Long> getTouristsAndBusinessesNumber() {
+        long tNum = this.interfaceTouristService.getTouristsNumber();
+        long bNum = this.interfaceBusinessService.getBusinessesNumber();
 
+        List<Long> numbers = new ArrayList<Long>();
+        numbers.add(tNum);
+        numbers.add(bNum);
+
+        return numbers;
+    }
     @GetMapping("/get/user/{username}")
     public ResponseEntity<?> getUserByUsername(@PathVariable("username") String username) {
         Business business = this.interfaceBusinessService.getBusinessByUsername(username);

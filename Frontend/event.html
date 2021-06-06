@@ -219,18 +219,25 @@
         <input type="file" id="crEventPhoto">
 
         <label for="crEventCity">City</label>
-        <select  id="crEventCity" class="form-control" name="crEventCity" onclick="return false">
+        <div >
+          <select  id="crEventCity" class="form-control" name="crEventCity" onclick="return false" >
                      
-        </select>
-
-        <label for="crEventTouristPlace">Tourist Place</label>
-        <select  id="crEventTouristPlace" class="form-control" name="crEventCity">
-                  
-        </select>
+          </select>
+     
+        </div>
+     
+        <div id="tpdiv">
+          <label for="crEventTouristPlace">Tourist Place</label>
+          <select  id="crEventTouristPlace" class="form-control" name="crEventCity">
+       
+          </select>
+        </div>
+        
 
         
       </div>
       <div class="modal-footer">
+        
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" id="crEventSaveChangesButton">Save changes</button>
       </div>
@@ -243,6 +250,7 @@
     </div>
 
   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="Js/createEventJS.js"></script>
   <script src="Js/getCitiesAndTouristPlacesForEvent.js"></script>
 </body>

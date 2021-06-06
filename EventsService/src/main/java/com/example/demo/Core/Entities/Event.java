@@ -1,5 +1,7 @@
 package com.example.demo.Core.Entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;

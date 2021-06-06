@@ -3,9 +3,10 @@ window.onload = function WindowLoad(event) {
     getBusinessNumber()
     getTouristsNumber()
     getAllUsersNumber()
+
 }
 
-var totalUsersNumber = 0;
+
 
 
 //show businesses number
@@ -36,6 +37,7 @@ function getBusinessNumber() {
 
 }
 
+
 //show tourists number
 
 var touristsNumberP = document.getElementById("touristsNumberP");
@@ -43,6 +45,7 @@ var touristsNumberP = document.getElementById("touristsNumberP");
 function showTouristsNum(num) {
     var touristsNumber = document.createTextNode(num);
     touristsNumberP.appendChild(touristsNumber);
+ 
 }
 
 function getTouristsNumber() {
@@ -54,7 +57,7 @@ function getTouristsNumber() {
         //data: JSON.stringify(user),
         success: function (data) {
             var touristsNumber = JSON.parse(JSON.stringify(data));
-
+            
 
             showTouristsNum(touristsNumber)
 
@@ -66,9 +69,9 @@ function getTouristsNumber() {
     });
 
 }
+var usersNumber;
 
-
-//get all users numer
+//get all users number
 var totalUsersNumberP = document.getElementById("totalUsersNumberP");
 
 function showAllUsersNumber(num) {
@@ -99,4 +102,4 @@ function getAllUsersNumber() {
 
 
 
- 
+

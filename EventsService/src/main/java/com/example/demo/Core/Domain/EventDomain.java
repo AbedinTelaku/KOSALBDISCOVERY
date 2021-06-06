@@ -23,7 +23,7 @@ public class EventDomain {
 
        String status = setEventStatus(startDate,endDate);
 
-       Event event = new Event(name,description,startDate,endDate,startTime,photoPath,status,user,city,touristPlace);
+       Event event = new Event(name,description,startDate,endDate,startTime,status,photoPath,user,city,touristPlace);
 
        this.eventRepository.save(event);
     }
@@ -35,7 +35,7 @@ public class EventDomain {
 
         if(endDate.before(currentDate)){
             return "finished";
-        }if(startDate.after(currentDate)){
+        }else if(startDate.after(currentDate)){
             return "starting";
         }else{
             return "happening";

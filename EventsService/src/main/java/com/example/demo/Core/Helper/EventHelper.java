@@ -1,5 +1,7 @@
 package com.example.demo.Core.Helper;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
@@ -14,6 +16,7 @@ public class EventHelper implements Serializable {
     private String cityName;
     private String touristPlaceName;
     private String username;
+
 
     public EventHelper(String name, String description, Date startDate, Date endDate,Time startTime,String photoPath ,String cityName, String touristPlaceName, String username) {
         this.name = name;
