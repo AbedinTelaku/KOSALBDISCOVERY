@@ -1,140 +1,65 @@
 <!DOCTYPE html>
-<html>
-<style>
-  body{
-    margin:0px;
-  }
-  #header
-  {
-
-    width:100%;
-    height:102px;
-    float:left;
-    text-align:center;
-    background-color:#101010;
-  }
-  #logo
-  {
-    margin-top:13px;
-    width:30%;
-    float:left;
-  }
-  #logo h1
-  {
-    cursor:pointer;
-
-    color:white;
-    font-family:cambria;
-  }
-  #logo h1:hover
-  {
-    color:black;
-  }
-
-  #menu
-  {
-    float:left;
-    width:70%;
-  }
-  #menu ul
-  {
-    margin-top:13px;
-    margin-right: 10%;
-    padding: 0;
-    float:right;
-    text-align: center;
-  }
-  #menu a li{
-    color: white;
-    font-family: 'Montserrat';
-    font-size: 18px;
-  }
-
-  #menu ul li
-  {
-    cursor:pointer;
-    list-style-type:none;
-    display:inline-block;
-    padding:8px;
-  }
-
-  #menu ul li a
-  {
-    font-family:cambria;
-    text-decoration:none;
-    color:white;
-    font-size:20px;
-  }
-  #menu ul li a:hover
-  {
-    color:black;
-  }
-  @media only screen and (max-width: 590px) {
-    #header
-    {
-      font-size:15px;
-    }
-    #logo
-    {
-      width:100%;
-      float:left;
-      text-align:center;
-    }
-    #menu
-    {
-      width:100%;
-      margin: 0 auto;
-    }
-    #menu ul
-    {
-      float:none;
-      margin-right:0px;
-    }
-  }
-  @media only screen and (max-width: 320px) {
-    #header
-    {
-      font-size:15px;
-    }
-    #logo h1
-    {
-      margin-bottom:1%;
-
-    }
-    #menu ul li
-    {
-      display:block;
-
-    }
-
-
-
-  }
-</style>
+<html lang="en" dir="ltr">
 <head>
+  <meta charset="utf-8">
+  <title>KosAlbDiscovery</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="responsive.css">
-
-  <div id="header">
-    <div id="logo">
-      <h1>KosAlbDiscovery</h1>
-    </div>
-    <div id="menu">
-      <ul>
-        <a ><li></li></a>
-
-        <a href="event.html"><li>Events</li></a>
-        <a href=".#"><li>Reservations</li></a>
-        <a href="#"><li>Services</li></a>
-        <a href="#" ><li>Contact us</li></a>
-
-
-
-      </ul>
-    </div>
-
-  </div>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 ">
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+      text-decoration: none;
+      list-style: none;
+      box-sizing: border-box;
+    }
+    body{
+      font-family: montserrat;
+    }
+    nav{
+      background: #0082e6;
+      height: 90px;
+      width: 100%;
+    }
+    label.logo{
+      color: white;
+      font-size: 35px;
+      line-height: 80px;
+      padding: 0 100px;
+      font-weight: bold;
+    }
+    nav ul{
+      float: right;
+      margin-right: 20px;
+    }
+    nav ul li{
+      display: inline-block;
+      line-height: 80px;
+      margin: 0 5px;
+    }
+    nav ul li a{
+      color: white;
+      font-size: 17px;
+      padding: 7px 13px;
+      border-radius: 5px;
+      text-transform: uppercase;
+    }
+    a.active,a:hover{
+      background: #1b9bff;
+      transition: .5s;
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <label class="logo">KosAlbDiscovery</label>
+  <ul>
+    <li><a  class="active" href="#">Home</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Rezervations</a></li>
+    <li><a href="event.html">Events</a></li>
+  </ul>
+</nav>
+</body>
 
 </html>
