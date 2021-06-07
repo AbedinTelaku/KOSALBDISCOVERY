@@ -10,20 +10,20 @@ $("#crEventSaveChangesButton").click(function(){
     var crEventPhoto  =document.getElementById("crEventPhoto").value;
     var crEventCity  =document.getElementById("crEventCity").value;
     var crEventTouristPlace  =document.getElementById("crEventTouristPlace").value;
-
+    var eventImg = document.getElementById("eventimg");
     eventt={
         name:crEventName,
         description:crEventDescription,
         startDate:crEventStartDate,
         endDate:crEventEndDate,
         startTime:crEventStartTime+":00",
-        photoPath:crEventPhoto,
+        photoPath:"C:\\Users\\elton\\OneDrive\\Documents\\Shkenca Kompjuterike\\Semestri 6\\Lab Course 2\\Project-KosAlbDiscovery\\Frontend\\EventPhotos\\kalajaEKrujes.jpg",
         cityName:crEventCity,
         touristPlaceName:crEventTouristPlace,
         username:"eltonboshnjaku",
         
     }
-   
+
     console.log(eventt)
     createEvent(eventt)
 })

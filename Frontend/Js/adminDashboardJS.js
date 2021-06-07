@@ -9,6 +9,7 @@ var TouristsStats = document.getElementById("TouristsStats");
 var BusinessesStats = document.getElementById("BusinessesStats");
 var reservationsStatsChild = document.getElementById("reservationsStatsChild");
 var eventsStatsChild = document.getElementById("eventsStatsChild");
+var usersDiagramDivBorder = document.getElementById("usersDiagramDiv");
 
 $("#darkModeSwitchCheck").on('change', function () {
     if ($(this).is(':checked')) {
@@ -19,6 +20,7 @@ $("#darkModeSwitchCheck").on('change', function () {
         BusinessesStats.classList.add("dark-Mode-Zero");
         reservationsStatsChild.classList.add("dark-Mode-Zero");
         eventsStatsChild.classList.add("dark-Mode-Zero");
+        usersDiagramDivBorder.classList.add("usersDiagramDMBorder");
 
         lightModeCheck.checked = false;
 
@@ -30,6 +32,7 @@ $("#darkModeSwitchCheck").on('change', function () {
         BusinessesStats.classList.remove("dark-Mode-Zero");
         reservationsStatsChild.classList.remove("dark-Mode-Zero");
         eventsStatsChild.classList.remove("dark-Mode-Zero");
+        usersDiagramDivBorder.classList.remove("usersDiagramDMBorder");
 
         lightModeCheck.checked = true;
     }
@@ -44,6 +47,7 @@ $("#lightModeSwitchCheck").on('change', function () {
         BusinessesStats.classList.remove("dark-Mode-Zero");
         reservationsStatsChild.classList.remove("dark-Mode-Zero");
         eventsStatsChild.classList.remove("dark-Mode-Zero");
+        usersDiagramDivBorder.classList.remove("usersDiagramDMBorder");
 
         darkModeCheck.checked = false;
 
@@ -55,6 +59,7 @@ $("#lightModeSwitchCheck").on('change', function () {
         BusinessesStats.classList.add("dark-Mode-Zero");
         reservationsStatsChild.classList.add("dark-Mode-Zero");
         eventsStatsChild.classList.add("dark-Mode-Zero");
+        usersDiagramDivBorder.classList.add("usersDiagramDMBorder");
 
         darkModeCheck.checked = true;
     }

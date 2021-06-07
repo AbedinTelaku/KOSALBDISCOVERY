@@ -40,6 +40,7 @@ public class Event {
         this.endDate=endDate;
         this.startTime=startTime;
         this.status=status;
+        this.photoPath=photoPath;
         this.user=user;
         this.city = city;
         this.touristPlace=touristPlace;
@@ -126,5 +127,13 @@ public class Event {
 
     public void setStartTime(Time startTime) {
         this.startTime = startTime;
+    }
+
+    public String getPhotoPath() {
+        return photoPath;
+    }
+
+    public void setPhotoPath(String photoPath) {
+        this.photoPath = photoPath;
     }
 }
