@@ -9,7 +9,7 @@ public class Business {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
-    private int Business_ID;
+    private int id;
     @Column
     private String name;
     @Column
@@ -53,11 +53,11 @@ public class Business {
     }
 
     public int getBusiness_ID() {
-        return Business_ID;
+        return id;
     }
 
-    public void setBusiness_ID(int business_ID) {
-        Business_ID = business_ID;
+    public void setBusiness_ID(int id) {
+        id = id;
     }
 
     public String getName() {
