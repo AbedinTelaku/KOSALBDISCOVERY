@@ -38,7 +38,7 @@ public class ReservationService implements ReservationInputPort {
        reservationDomain=new ReservationDomain(this.reservationRepository);
        TouristHelper touristHelper = this.touristOutputPort.getTouristByUsername(touristUsername);
        Tourist tourist = new Tourist(touristHelper.getName(),touristHelper.getEmail());
-       //qetu i boni edhe ju si une per turist
+
 
        reservationDomain.createReservation();
     }

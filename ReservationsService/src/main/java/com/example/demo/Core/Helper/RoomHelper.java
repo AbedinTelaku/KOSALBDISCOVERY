@@ -1,6 +1,8 @@
 package com.example.demo.Core.Helper;
 
-public class RoomHelper {
+import java.io.Serializable;
+
+public class RoomHelper implements Serializable{
 
     private int room_number;
     private String room_type;
