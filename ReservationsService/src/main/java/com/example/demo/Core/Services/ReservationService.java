@@ -7,8 +7,11 @@ import com.example.demo.Core.Entities.Reservation;
 import com.example.demo.Core.Entities.Room;
 import com.example.demo.Core.Entities.Tourist;
 import com.example.demo.Core.Helper.TouristHelper;
+import com.example.demo.Core.Helper.BusinessHelper;
+import com.example.demo.Core.Helper.RoomHelper;
 import com.example.demo.Core.OutputPort.ReservationRepository;
 import com.example.demo.Core.OutputPort.TouristOutputPort;
+import com.example.demo.Core.OutputPort.RoomOutputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,10 +30,13 @@ public class ReservationService implements ReservationInputPort {
 
     private ReservationDomain reservationDomain;
 
+    private RoomOutputPort roomOutputPort;
 
-    public ReservationService(ReservationRepository reservationRepository, TouristOutputPort touristOutputPort) {
+
+    public ReservationService(ReservationRepository reservationRepository, TouristOutputPort touristOutputPort, RoomOutputPort roomOutputPort) {
         this.reservationRepository = reservationRepository;
         this.touristOutputPort = touristOutputPort;
+        this.RoomOutputPort = roomOutputPort
     }
 
     @Override
@@ -38,6 +44,8 @@ public class ReservationService implements ReservationInputPort {
        reservationDomain=new ReservationDomain(this.reservationRepository);
        TouristHelper touristHelper = this.touristOutputPort.getTouristByUsername(touristUsername);
        Tourist tourist = new Tourist(touristHelper.getName(),touristHelper.getEmail());
+       RoomHelper roomHelper = this.roomOutputPort.getRoomById(roomId);
+       Room room = new Room(roomHelper.getRoom_number(), roomHelper.getRoom_type(), roomHelper.getPrice());
 
 
        reservationDomain.createReservation();
