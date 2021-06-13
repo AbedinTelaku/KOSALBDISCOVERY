@@ -14,14 +14,17 @@ public class Room {
     private String room_type;
     @Column
     private boolean is_available;
+    @Column
+    private double price;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn
     private Business business;
 
-    public Room(int room_number, String room_type, boolean is_available, Business business) {
+    public Room(int room_number, String room_type, boolean is_available,double price ,Business business) {
         this.room_number = room_number;
         this.room_type = room_type;
         this.is_available = is_available;
+        this.price=price;
         this.business=business;
     }
 

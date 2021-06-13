@@ -6,7 +6,7 @@ import com.example.demo.Register.Models.Room;
 import java.util.List;
 
 public interface IRoomService {
-    void createRoom(int roomNumber, String roomType, boolean isAvailable, String businessUsername);
+    void createRoom(int roomNumber, String roomType, boolean isAvailable,double price ,String businessUsername);
     void createRooms(List<Room> rooms);
     Room getRoomById(int id);
     List<Room> getAllRooms();

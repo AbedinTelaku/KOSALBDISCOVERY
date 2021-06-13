@@ -10,8 +10,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TouristRepository extends JpaRepository<Tourist, Integer> {
 
-    @Query(value = "select * from tourist where username=:username", nativeQuery = true)
-    public Tourist findTouristByUsername(@Param("username") String username);
+    @Query(value = "select * from tourist where username=?1", nativeQuery = true)
+    public Tourist findTouristByUsername(String username);
 
     @Query(value = "select * from tourist where username=:username and password=:password", nativeQuery = true)
     public Tourist findTouristByUsernameAndPassword(@Param("username") String username, @Param("password") String password);

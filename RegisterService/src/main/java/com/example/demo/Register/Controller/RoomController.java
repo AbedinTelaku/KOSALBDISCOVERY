@@ -22,7 +22,7 @@ public class RoomController {
 
     @PostMapping("/create/room/{businessUsername}")
     public void createRoom(@RequestBody RoomHelper roomHelper,@PathVariable("businessUsername") String businessUsername){
-        this.iRoomService.createRoom(roomHelper.getRoomNumber(),roomHelper.getRoomType(),roomHelper.isAvailable(),businessUsername);
+        this.iRoomService.createRoom(roomHelper.getRoomNumber(),roomHelper.getRoomType(),roomHelper.isAvailable(),roomHelper.getPrice(),businessUsername);
 
     }
     @PostMapping("create/rooms")

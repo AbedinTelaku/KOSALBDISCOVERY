@@ -33,6 +33,11 @@ public class TouristController {
         return this.interfaceTouristService.getTouristByUsernameAndPassword(username, password);
     }
 
+    @GetMapping("/get/tourist/{username}")
+    public Tourist getTouristByUsername(@PathVariable("username") String username){
+        return this.interfaceTouristService.getTouristByUsername(username);
+    }
+
 
     @GetMapping("/get/all/tourists")
     public List<Tourist> getAllTourists() {
