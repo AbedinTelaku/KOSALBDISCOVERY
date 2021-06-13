@@ -10,17 +10,70 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-
+ <!--
   <script>
-    $(function(){
+   $(function(){
       $("#header").load("header.html");
     });
   </script>
+  -->
+    <style>
+      *{
+        padding: 0;
+        margin: 0;
+        text-decoration: none;
+        list-style: none;
+        box-sizing: border-box;
+      }
+      body{
+        font-family: montserrat;
+      }
+      nav{
+        background: #0082e6;
+        height: 90px;
+        width: 100%;
+      }
+      label.logo{
+        color: white;
+        font-size: 35px;
+        line-height: 80px;
+        padding: 0 100px;
+        font-weight: bold;
+      }
+      nav ul{
+        float: right;
+        margin-right: 20px;
+      }
+      nav ul li{
+        display: inline-block;
+        line-height: 80px;
+        margin: 0 5px;
+      }
+      nav ul li a{
+        color: white;
+        font-size: 17px;
+        padding: 7px 13px;
+        border-radius: 5px;
+        text-transform: uppercase;
+      }
+      a.active,a:hover{
+        background: #1b9bff;
+        transition: .5s;
+      }
+    </style>
   <title>Events</title>
 </head>
 <body>
 <div id="header">
-  <p>header</p>
+  <nav>
+    <label class="logo">KosAlbDiscovery</label>
+    <ul>
+      <li><a  class="active" href="#">Home</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Rezervations</a></li>
+      <li><a href="event.html">Events</a></li>
+    </ul>
+  </nav>
 </div>
 
 
