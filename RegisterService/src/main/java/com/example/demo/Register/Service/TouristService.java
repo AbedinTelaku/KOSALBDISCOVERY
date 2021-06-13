@@ -50,6 +50,7 @@ public class TouristService implements ITouristService {
     public void createTourist(String fullName, int age, char gender, String Email, String password, String username, String role,String status) {
         Tourist tourist = new Tourist(fullName, age, gender, Email, password, username, role,status);
         this.touristRepository.save(tourist);
+
     }
 
 
