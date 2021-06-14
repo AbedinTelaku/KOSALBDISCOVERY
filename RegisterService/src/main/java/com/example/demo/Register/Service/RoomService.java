@@ -23,9 +23,9 @@ public class RoomService implements IRoomService{
     }
 
     @Override
-    public void createRoom(int roomNumber, String roomType, boolean isAvailable,double price ,String businessUsername) {
+    public void createRoom(int roomNumber, String roomType, boolean isAvailable,double price, double discount ,String businessUsername) {
         Business business = this.iBusinessService.getBusinessByUsername(businessUsername);
-       Room room = new Room(roomNumber,roomType,isAvailable,price,business);
+       Room room = new Room(roomNumber,roomType,isAvailable,price, discount,business);
         this.roomRepository.save(room);
     }
 

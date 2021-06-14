@@ -4,27 +4,30 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class Tourist {
-    private String name;
-    private String email;
+    private String touristName;
+    private String touristEmail;
 
-    public Tourist(String name, String email) {
-        this.name = name;
-        this.email = email;
+    public Tourist(String touristName, String touristEmail) {
+        this.touristName = touristName;
+        this.touristEmail = touristEmail;
     }
 
-    public String getName() {
-        return name;
+    public Tourist() {
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getTouristName() {
+        return touristName;
     }
 
-    public String getEmail() {
-        return email;
+    public void setTouristName(String touristName) {
+        this.touristName = touristName;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public String getTouristEmail() {
+        return touristEmail;
+    }
+
+    public void setTouristEmail(String touristEmail) {
+        this.touristEmail = touristEmail;
     }
 }

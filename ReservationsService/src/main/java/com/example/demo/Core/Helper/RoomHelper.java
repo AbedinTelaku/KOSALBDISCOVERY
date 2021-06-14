@@ -7,6 +7,7 @@ public class RoomHelper implements Serializable{
     private int room_number;
     private String room_type;
     private double price;
+    private double discount;
 
     public int getRoom_number() {
         return room_number;
@@ -30,5 +31,13 @@ public class RoomHelper implements Serializable{
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(double discount) {
+        this.discount = discount;
     }
 }

@@ -16,15 +16,18 @@ public class Room {
     private boolean is_available;
     @Column
     private double price;
+    @Column
+    private double discount;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn
     private Business business;
 
-    public Room(int room_number, String room_type, boolean is_available,double price ,Business business) {
+    public Room(int room_number, String room_type, boolean is_available,double price, double discount, Business business) {
         this.room_number = room_number;
         this.room_type = room_type;
         this.is_available = is_available;
         this.price=price;
+        this.discount=discount;
         this.business=business;
     }
 
@@ -69,5 +72,21 @@ public class Room {
 
     public void setBusiness(Business business) {
         this.business = business;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(double discount) {
+        this.discount = discount;
     }
 }

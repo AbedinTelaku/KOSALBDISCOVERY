@@ -3,6 +3,7 @@ package com.example.demo.Application.InputAdapter;
 import com.example.demo.Application.InputPort.ReservationInputPort;
 import com.example.demo.Core.Domain.ReservationInvoice;
 import com.example.demo.Core.Entities.Reservation;
+import com.example.demo.Core.Helper.ReservationHelper;
 import com.lowagie.text.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,12 +25,13 @@ public class ReservationController {
         this.reservationInputPort = reservationInputPort;
     }
 
-    @PostMapping("/create")
-    public void createReservation(){
+    @PostMapping("/create/reservation")
+    public void createReservation(@RequestBody ReservationHelper reservationHelper){
+        this.reservationInputPort.createReservation(reservationHelper.getTime(),reservationHelper.getDate(),reservationHelper.getCheckInDate(),reservationHelper.getCheckOutDate(),reservationHelper.getRoomId(),reservationHelper.getBusinessId(),reservationHelper.getTouristUsername());
 
     }
 
-    @GetMapping("/export/PDF{id}")
+    @GetMapping("/export/PDF/{id}")
     public void exportToPDF(@PathVariable("id") int id, HttpServletResponse response) throws DocumentException, IOException {
 
         Reservation reservation=this.reservationInputPort.getReservationById(id);

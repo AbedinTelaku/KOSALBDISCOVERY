@@ -25,14 +25,14 @@ public class ReservationInvoice {
         Font font = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
         font.setSize(18);
         font.setColor(Color.RED);
-        Paragraph p = new Paragraph(reservation.getBusiness().getName(), font);
+        Paragraph p = new Paragraph(reservation.getBusiness().getBusinessName(), font);
         p.setAlignment(Paragraph.ALIGN_CENTER);
         document.add(p);
         // invoice body
         Font bodyFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
         bodyFont.setSize(12);
         bodyFont.setColor(Color.BLACK);
-        Paragraph p1 = new Paragraph(reservation.getBusiness().getPhoneNumber() + "\n" + reservation.getBusiness().getEmail(), bodyFont);
+        Paragraph p1 = new Paragraph(reservation.getBusiness().getBusinessPhoneNumber() + "\n" + reservation.getBusiness().getBusinessEmail(), bodyFont);
         p1.setAlignment(Paragraph.ALIGN_LEFT);
         System.out.println("\n");
 
@@ -43,7 +43,7 @@ public class ReservationInvoice {
         Paragraph p2 = new Paragraph("\n"+"Booking Details", bookingtitle);
         p2.setAlignment(Paragraph.ALIGN_LEFT);
         System.out.println("\n");
-        Paragraph p3 = new Paragraph("Accommodation: "+"\t"+reservation.getRoom().getType() + "\t" + " Number: " +reservation.getRoom().getNumber(), bodyFont);
+        Paragraph p3 = new Paragraph("Accommodation: "+"\t"+reservation.getRoom().getRoomType() + "\t" + " Number: " +reservation.getRoom().getRoomNumber(), bodyFont);
         p3.setAlignment(Paragraph.ALIGN_LEFT);
         System.out.println("\n");
         Paragraph p4 = new Paragraph("Check in: "+"\t"+reservation.getCheckInDate(), bodyFont);
@@ -55,10 +55,10 @@ public class ReservationInvoice {
         Paragraph p6 = new Paragraph("GUEST", bodyFont);
         p6.setAlignment(Paragraph.ALIGN_CENTER);
         System.out.println("\n");
-        Paragraph p7 = new Paragraph(reservation.getTourist().getName(), bodyFont);
+        Paragraph p7 = new Paragraph(reservation.getTourist().getTouristName(), bodyFont);
         p7.setAlignment(Paragraph.ALIGN_LEFT);
         System.out.println("\n");
-        Paragraph p8 = new Paragraph("Email: "+"  "+reservation.getTourist().getEmail(), bodyFont);
+        Paragraph p8 = new Paragraph("Email: "+"  "+reservation.getTourist().getTouristEmail(), bodyFont);
         p8.setAlignment(Paragraph.ALIGN_LEFT);
 
         System.out.println("\n");
@@ -70,10 +70,10 @@ public class ReservationInvoice {
         Paragraph p10 = new Paragraph("Date: "+"\t"+reservation.getReservationDate() + "\t" + "|" +reservation.getReservationTime(), bodyFont);
         p10.setAlignment(Paragraph.ALIGN_LEFT);
         System.out.println("\n");
-        Paragraph p11 = new Paragraph("Price: "+"\t"+reservation.getRoom().getPrice(), bodyFont);
+        Paragraph p11 = new Paragraph("Price: "+"\t"+reservation.getRoom().getRoomPrice(), bodyFont);
         p11.setAlignment(Paragraph.ALIGN_LEFT);
         System.out.println("\n");
-        Paragraph p12 = new Paragraph("Discount: "+"\t"+reservation.getDiscount(), bodyFont);
+        Paragraph p12 = new Paragraph("Discount: "+"\t"+reservation.getRoom().getRoomDiscount()+"%", bodyFont);
         p12.setAlignment(Paragraph.ALIGN_LEFT);
         System.out.println("\n");
         Paragraph p13 = new Paragraph("Total Price: "+"\t"+reservation.getTotalPrice(), bodyFont);

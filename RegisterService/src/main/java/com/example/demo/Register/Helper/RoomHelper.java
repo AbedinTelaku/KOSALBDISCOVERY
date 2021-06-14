@@ -7,12 +7,14 @@ public class RoomHelper implements Serializable {
     private String roomType;
     private boolean isAvailable;
     private  double price;
+    private double discount;
 
-    public RoomHelper(int roomNumber, String roomType, boolean isAvailable, double price) {
+    public RoomHelper(int roomNumber, String roomType, boolean isAvailable, double price, double discount) {
         this.roomNumber = roomNumber;
         this.roomType = roomType;
         this.isAvailable = isAvailable;
         this.price=price;
+        this.discount=discount;
     }
 
     public int getRoomNumber() {
@@ -45,5 +47,13 @@ public class RoomHelper implements Serializable {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(double discount) {
+        this.discount = discount;
     }
 }

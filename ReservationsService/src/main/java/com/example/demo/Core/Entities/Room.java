@@ -4,37 +4,50 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class Room {
-    private int number;
-    private double price;
-    private String type;
+    private int roomNumber;
+    private double roomPrice;
+    private String roomType;
+    private double roomDiscount;
 
-    public Room(int number, double price, String type) {
-        this.number = number;
-        this.price = price;
-        this.type = type;
+    public Room(int roomNumber, String roomType, double roomPrice, double roomDiscount) {
+        this.roomNumber = roomNumber;
+        this.roomPrice = roomPrice;
+        this.roomType = roomType;
+        this.roomDiscount = roomDiscount;
     }
 
-    public int getNumber() {
-        return number;
+    public Room() {
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public int getRoomNumber() {
+        return roomNumber;
     }
 
-    public double getPrice() {
-        return price;
+    public void setRoomNumber(int roomNumber) {
+        this.roomNumber = roomNumber;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public double getRoomPrice() {
+        return roomPrice;
     }
 
-    public String getType() {
-        return type;
+    public void setRoomPrice(double roomPrice) {
+        this.roomPrice = roomPrice;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public String getRoomType() {
+        return roomType;
+    }
+
+    public void setRoomType(String roomType) {
+        this.roomType = roomType;
+    }
+
+    public double getRoomDiscount() {
+        return roomDiscount;
+    }
+
+    public void setRoomDiscount(double roomDiscount) {
+        this.roomDiscount = roomDiscount;
     }
 }

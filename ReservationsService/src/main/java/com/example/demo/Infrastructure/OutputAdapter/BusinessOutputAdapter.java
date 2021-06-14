@@ -3,8 +3,10 @@ package com.example.demo.Infrastructure.OutputAdapter;
 import com.example.demo.Core.Helper.BusinessHelper;
 import com.example.demo.Core.OutputPort.BusinessOutputPort;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+@Service
 public class BusinessOutputAdapter implements BusinessOutputPort {
 
     @Override

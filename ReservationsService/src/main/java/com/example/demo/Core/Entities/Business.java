@@ -4,37 +4,40 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class Business {
-    private String name;
-    private String email;
-    private String phoneNumber;
+    private String businessName;
+    private String businessEmail;
+    private String businessPhoneNumber;
 
-    public Business(String name, String email, String phoneNumber) {
-        this.name = name;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
+    public Business(String businessName, String businessEmail, String businessPhoneNumber) {
+        this.businessName = businessName;
+        this.businessEmail = businessEmail;
+        this.businessPhoneNumber = businessPhoneNumber;
     }
 
-    public String getName() {
-        return name;
+    public Business() {
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getBusinessName() {
+        return businessName;
     }
 
-    public String getEmail() {
-        return email;
+    public void setBusinessName(String businessName) {
+        this.businessName = businessName;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public String getBusinessEmail() {
+        return businessEmail;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public void setBusinessEmail(String businessEmail) {
+        this.businessEmail = businessEmail;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public String getBusinessPhoneNumber() {
+        return businessPhoneNumber;
+    }
+
+    public void setBusinessPhoneNumber(String businessPhoneNumber) {
+        this.businessPhoneNumber = businessPhoneNumber;
     }
 }

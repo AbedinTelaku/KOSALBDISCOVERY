@@ -41,23 +41,25 @@ public class ReservationService implements ReservationInputPort {
     public ReservationService(ReservationRepository reservationRepository, TouristOutputPort touristOutputPort, RoomOutputPort roomOutputPort, BusinessOutputPort businessOutputPort) {
         this.reservationRepository = reservationRepository;
         this.touristOutputPort = touristOutputPort;
-        this.RoomOutputPort = roomOutputPort;
-        this.BusinessOutputPort = businessOutputPort;
+        this.roomOutputPort = roomOutputPort;
+        this.businessOutputPort = businessOutputPort;
 
     }
 
     @Override
-    public void createReservation(Time reservationTime, Date reservationDate, Date checkInDate, Date checkOutDate, double totalPrice, double discount,  int roomId, int businessId, String touristUsername) {
+    public void createReservation(Time reservationTime, Date reservationDate, Date checkInDate, Date checkOutDate,  int roomId, int businessId, String touristUsername) {
        reservationDomain=new ReservationDomain(this.reservationRepository);
+
        TouristHelper touristHelper = this.touristOutputPort.getTouristByUsername(touristUsername);
+        BusinessHelper businessHelper = this.businessOutputPort.getBusinessByID(businessId);
+        RoomHelper roomHelper = this.roomOutputPort.getRoomByID(roomId);
+
        Tourist tourist = new Tourist(touristHelper.getName(),touristHelper.getEmail());
-       RoomHelper roomHelper = this.roomOutputPort.getRoomById(roomId);
-       Room room = new Room(roomHelper.getRoom_number(), roomHelper.getRoom_type(), roomHelper.getPrice());
-       BusinessHelper businessHelper = this.businessOutputPort.getBusinessById(businessId);
-       Bussines bussines = new Business(businessHelper.getName(), businessHelper.getEmail(), businessHelper.getTel_Number());
+       Room room = new Room(roomHelper.getRoom_number(),roomHelper.getRoom_type(),roomHelper.getPrice(),roomHelper.getDiscount());
+       Business bussines = new Business(businessHelper.getName(), businessHelper.getEmail(), businessHelper.getTel_Number());
 
 
-       reservationDomain.createReservation();
+       reservationDomain.createReservation(reservationTime,reservationDate,checkInDate,checkOutDate,room,bussines,tourist);
     }
 
     @Override
