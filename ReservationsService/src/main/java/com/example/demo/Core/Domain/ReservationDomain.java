@@ -23,10 +23,10 @@ public class ReservationDomain {
     }
 
     public void createReservation(Time reservationTime, Date reservationDate , Date checkInDate, Date checkOutDate , Room room, Business business, Tourist tourist){
-        long daysNumber = getNumberOfDays(checkInDate,checkOutDate);
+        int daysNumber = getNumberOfDays(checkInDate,checkOutDate);
         double totalPrice=daysNumber*room.getRoomPrice();
 
-        totalPrice=setTotalPrice(totalPrice,room.getRoomDiscount());
+        totalPrice=totalPrice-setTotalPrice(totalPrice,room.getRoomDiscount());
 
         Reservation reservation = new Reservation(reservationTime,reservationDate,checkInDate,checkOutDate,totalPrice,room.getRoomDiscount(),room,business,tourist);
         this.reservationRepository.save(reservation);
@@ -39,8 +39,8 @@ public class ReservationDomain {
        return totalPrice;
     }
 
-    public long getNumberOfDays(Date checkInDate, Date checkOutDate){
-       long numOfDays = Math.round(checkInDate.getTime()-checkOutDate.getTime()/ (double)86400000);
-       return numOfDays;
+    public int getNumberOfDays(Date checkInDate, Date checkOutDate){
+       int numOfDays = (int) Math.round((checkInDate.getTime()-checkOutDate.getTime())/ (double)86400000);
+       return Math.abs(numOfDays);
     }
 }

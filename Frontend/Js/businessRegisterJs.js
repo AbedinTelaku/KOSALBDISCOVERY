@@ -13,25 +13,32 @@ $("#registerButton").click(function (event) {
     var rolee = "business";
 
 
-// if (i madh qe i kqyr krejt me && nese nuk jan tzbrazta mrena qetij if shkojn qeto senet posht){
+if (businessName == ""){
+var errorlabel = document.getElementById("error");
 
-    business = {
-        name: businessName,
-        email: businessEmail,
-        password: businessPassword,
-        username: businessUsername,
-        tel_Number: businessPhoneNumber,
-        owner_ID: businessOwnerId,
-        fiscal_Number: businessFiscalNumber,
-        business_Number: businessNum,
-        business_Activity: businessActi,
-        status: statuss,
-        role: rolee
+var text = document.createTextNode("Please fill required data");
+
+errorlabel.appendChild(text);
+   
+    }else{
+        business = {
+            name: businessName,
+            email: businessEmail,
+            password: businessPassword,
+            username: businessUsername,
+            tel_Number: businessPhoneNumber,
+            owner_ID: businessOwnerId,
+            fiscal_Number: businessFiscalNumber,
+            business_Number: businessNum,
+            business_Activity: businessActi,
+            status: statuss,
+            role: rolee
+           
     }
-
     console.log(business)
 
     registerBusiness(business);
+}
 //{else{
            //i kontrollon me if secilin vec e vec
            // if(input==""){
