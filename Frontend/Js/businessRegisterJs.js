@@ -95,18 +95,12 @@ $("#registerButton").click(function (event) {
             business_Activity: businessActi,
             status: statuss,
             role: rolee
-           
+
     }
     console.log(business)
 
     registerBusiness(business);
 }
-//{else{
-           //i kontrollon me if secilin vec e vec
-           // if(input==""){
-        // label.write a qysh o metoda "name is required*"
-           //}
-//}
 });
 
 
