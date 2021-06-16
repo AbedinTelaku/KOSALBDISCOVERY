@@ -13,14 +13,76 @@ $("#registerButton").click(function (event) {
     var rolee = "business";
 
 
-if (businessName == ""){
-var errorlabel = document.getElementById("error");
+    if (businessName == "" ){
 
-var text = document.createTextNode("Please fill required data");
+    var errorname = document.getElementById("error_name");
 
-errorlabel.appendChild(text);
-   
-    }else{
+    var text_name = document.createTextNode("Please fill required data");
+
+    errorname.appendChild(text_name);
+
+    }
+
+    if (businessEmail == ""){
+
+        var erroremail = document.getElementById("error_email");
+
+        var text_email = document.createTextNode("Please fill required data");
+
+        erroremail.appendChild(text_email);
+
+    }
+
+    if (businessPassword == ""){
+        var errorpassword = document.getElementById("error_password");
+
+        var text_password = document.createTextNode("Please fill required data");
+
+        errorpassword.appendChild(text_password);
+
+    }
+    if (businessUsername == ""){
+        var errorusername = document.getElementById("error_username");
+
+        var text_username = document.createTextNode("Please fill required data");
+
+        errorusername.appendChild(text_username);
+
+    }
+    if (businessPhoneNumber == ""){
+        var errorphone = document.getElementById("error_number");
+
+        var text_phone = document.createTextNode("Please fill required data");
+
+        errorphone.appendChild(text_phone);
+
+    }
+    if (businessOwnerId == ""){
+        var errorId = document.getElementById("error_id");
+
+        var text_Id = document.createTextNode("Please fill required data");
+
+        errorId.appendChild(text_Id);
+
+    }
+    if (businessFiscalNumber == ""){
+        var errorfiscal = document.getElementById("error_fiscal");
+
+        var text_fiscal = document.createTextNode("Please fill required data");
+
+        errorfiscal.appendChild(text_fiscal);
+
+    }
+    if (businessNum == ""){
+        var errorbusinessNR = document.getElementById("error_businessNR");
+
+        var text_businessNR = document.createTextNode("Please fill required data");
+
+        errorbusinessNR.appendChild(text_businessNR);
+
+    }
+
+    else{
         business = {
             name: businessName,
             email: businessEmail,
