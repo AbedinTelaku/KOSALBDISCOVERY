@@ -1,0 +1,17 @@
+server:
+  port: 9000
+
+
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: event-service
+          uri: http://localhost:8000/
+          predicates:
+            - Path=/api/event/**
+        - id: reservation-service
+          uri: http://localhost:8008/
+          predicates:
+            - Path=/api/reservation/**
