@@ -62,4 +62,9 @@ private EventDomain eventDomain;
     public List<Event> getAllEvents() {
         return this.eventRepository.findAll();
     }
+
+    @Override
+    public List<Event> getEventStatus(String status) {
+        return this.eventRepository.findByStatus(status);
+    }
 }

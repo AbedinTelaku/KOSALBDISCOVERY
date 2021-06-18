@@ -2,6 +2,7 @@ package com.example.demo.Application.InputAdapter;
 import com.example.demo.Application.InputPort.EventInputport;
 import com.example.demo.Core.Entities.Event;
 import com.example.demo.Core.Helper.EventHelper;
+import com.example.demo.Core.Helper.EventStatusHelper;
 import com.example.demo.Core.OutputPort.UserOutputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +32,10 @@ public class EventController {
         return this.eventInputport.getAllEvents();
     }
 
+    @GetMapping("/get/events/status")
+    public List<Event> getEventStatus(@RequestBody EventStatusHelper eventStatusHelper){
+       return this.eventInputport.getEventStatus(eventStatusHelper.getStatus());
+    }
 
     @GetMapping("/get/event/creator/{username}")
     public String getEventCreator(@PathVariable("username") String username){

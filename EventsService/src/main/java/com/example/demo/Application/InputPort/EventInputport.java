@@ -14,7 +14,7 @@ public interface EventInputport {
     void deleteEventById(int id);
     Event getEventById(int id);
     List<Event> getAllEvents();
-
+    List<Event> getEventStatus(String status);
 
 
 }
