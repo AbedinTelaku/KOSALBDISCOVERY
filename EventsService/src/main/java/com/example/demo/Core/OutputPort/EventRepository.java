@@ -16,7 +16,7 @@ public interface EventRepository extends JpaRepository<Event,Integer> {
     @Modifying
     @Transactional
 
-    @Query(value = "select * from event where satus=:status", nativeQuery = true)
+    @Query(value = "select * from event where satus=:status order by startDate desc", nativeQuery = true)
     public List<Event> findByStatus(@Param("status") String status);
 
 }
