@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Rooms from "./Rooms";
 
 export default class Reservation extends Component {
   state = {
@@ -19,12 +20,14 @@ export default class Reservation extends Component {
   };
 
   render() {
-    const list = this.state.elements.map((element) => <li>{element}</li>);
-    const sideBarElList = this.state.sidebarElements.map((sideelement) => (
-      <li>{sideelement}</li>
+    const list = this.state.elements.map((element, i) => (
+      <li key={i}>{element}</li>
+    ));
+    const sideBarElList = this.state.sidebarElements.map((sideelement, i) => (
+      <li key={i}>{sideelement}</li>
     ));
     return (
-      <div>
+      <div className="pageMainDiv">
         <div className="navbar navbar-light bg-light">
           <div>
             <h3>KOSALB DISCOVERY</h3>
@@ -40,9 +43,7 @@ export default class Reservation extends Component {
           </div>
 
           <div className="roomsContainer">
-            <div>
-              <img src="" alt="roomPht" />
-            </div>
+            <Rooms />
           </div>
         </div>
       </div>

@@ -25,7 +25,7 @@ public class RoomController {
         this.iRoomService.createRoom(roomHelper.getRoomNumber(),roomHelper.getRoomType(),roomHelper.isAvailable(),roomHelper.getPrice(), roomHelper.getDiscount(),businessUsername);
 
     }
-    @PostMapping("create/rooms")
+    @PostMapping("/create/rooms")
     public void createRooms(@RequestBody CreateRoomsHelper createRoomsHelper){
         this.iRoomService.createRooms(createRoomsHelper.getRooms());
     }
