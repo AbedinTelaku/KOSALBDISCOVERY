@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/touristPlace")
+@RequestMapping("api/register/touristPlace")
 public class TouristPlaceController {
     private ITouristPlaceService iTouristPlaceService;
 
