@@ -17,5 +17,7 @@ public class AuthenticateService implements AuthenticateInputPort {
     @Override
     public boolean checkIfUserExist(String username, String password) {
         return this.authenticateOutputPort.userExist(username,password);
+
+        //if user exist call authenticationDomain to create user JWT
     }
 }

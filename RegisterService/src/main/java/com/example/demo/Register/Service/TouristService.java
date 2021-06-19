@@ -28,8 +28,8 @@ public class TouristService implements ITouristService {
 
     @Override
     public Tourist getTouristByUsernameAndPassword(String username, String password) {
-       Tourist touristOptional = this.touristRepository.findTouristByUsernameAndPassword(username, password);
-        return touristOptional;
+       Optional<Tourist> touristOptional = this.touristRepository.findTouristByUsernameAndPassword(username, password);
+        return touristOptional.get();
     }
 
     @Override

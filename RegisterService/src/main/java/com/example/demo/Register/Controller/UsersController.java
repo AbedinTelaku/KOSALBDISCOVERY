@@ -4,6 +4,7 @@ import com.example.demo.Register.Models.Business;
 import com.example.demo.Register.Models.Tourist;
 import com.example.demo.Register.Service.IBusinessService;
 import com.example.demo.Register.Service.ITouristService;
+import com.example.demo.Register.Service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,17 +16,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/user")
+@RequestMapping("api/register/user")
 public class UsersController {
 
     @Autowired
     private IBusinessService interfaceBusinessService;
     @Autowired
     private ITouristService interfaceTouristService;
+    @Autowired
+    private IUserService iUserService;
 
-    public UsersController(IBusinessService interfaceBusinessService, ITouristService interfaceTouristService) {
+    public UsersController(IBusinessService interfaceBusinessService, ITouristService interfaceTouristService, IUserService iUserService) {
         this.interfaceBusinessService = interfaceBusinessService;
         this.interfaceTouristService = interfaceTouristService;
+        this.iUserService = iUserService;
     }
 
 
@@ -60,5 +64,22 @@ public class UsersController {
        }
 
     }
+
+  //  @GetMapping("/check/user/{username}/{password}")
+   // public boolean checkIfUserExist(@PathVariable("username") String username, @PathVariable("password") String password){
+   //     GeneralResponse generalResponse = this.iUserService.checkIfUserExist(username,password);
+
+     //   if(generalResponse.getError() == null){
+      //      return true;
+      //  }else{
+     //       return false;
+      //  }
+
+  //  }
+
+    @GetMapping("/check/user/{username}/{password}")
+        public ResponseEntity<?> checkIfUserIsValid(@PathVariable("username") String username, @PathVariable("password") String password){
+           return this.iUserService.checkIfUserIsValid(username,password);
+        }
 
 }

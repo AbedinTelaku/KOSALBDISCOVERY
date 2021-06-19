@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface TouristRepository extends JpaRepository<Tourist, Integer> {
 
@@ -14,6 +16,6 @@ public interface TouristRepository extends JpaRepository<Tourist, Integer> {
     public Tourist findTouristByUsername(String username);
 
     @Query(value = "select * from tourist where username=:username and password=:password", nativeQuery = true)
-    public Tourist findTouristByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
+    public Optional<Tourist> findTouristByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
 
 }
