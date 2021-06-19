@@ -12,7 +12,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/api/tourist")
+@RequestMapping("api/register/tourist")
 public class TouristController {
 
 
