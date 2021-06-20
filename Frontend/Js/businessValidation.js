@@ -2,7 +2,7 @@ function myFunction() {
     var x;
     var text;
 
-    // Get the value of the input field with id="numb"
+
     x = document.getElementById("full_name").value;
 
 
