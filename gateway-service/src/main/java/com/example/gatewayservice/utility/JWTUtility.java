@@ -1,36 +1,27 @@
-package com.example.gatewayservice.Authentication.Core.Domain;
+package com.example.gatewayservice.utility;
 
-<<<<<<< Updated upstream
-public class AuthenticationDomain {
-=======
-import com.example.gatewayservice.Authentication.Core.Helper.UserHelper;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-
-import javax.annotation.PostConstruct;
-import java.util.Base64;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
 @Component
-public class AuthenticationDomain {
+public class JWTUtility implements Serializable {
+
     private static final long serialVersionUID = 234234523523L;
 
     public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
 
     @Value("${jwt.secret}")
-    private String secretKey="";
-
-    @PostConstruct
-    protected void init() {
-        secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
-    }
+    private String secretKey;
 
     //retrieve username from jwt token
     public String getUsernameFromToken(String token) {
@@ -63,29 +54,25 @@ public class AuthenticationDomain {
 
 
     //generate token for user
-    public String generateToken(UserHelper userHelper) {
-        Claims claims = Jwts.claims().setSubject(userHelper.getUsername());
-
-        return doGenerateToken(claims, userHelper.getUsername());
+    public String generateToken(UserDetails userDetails) {
+        Map<String, Object> claims = new HashMap<>();
+        return doGenerateToken(claims, userDetails.getUsername());
     }
 
 
     //while creating the token -
     //1. Define  claims of the token, like Issuer, Expiration, Subject, and the ID
     //2. Sign the JWT using the HS512 algorithm and secret key.
-    private String doGenerateToken(Claims claims, String subject) {
-        Date now = new Date();
-        Date validity = new Date(now.getTime() + 3600000);
-        return Jwts.builder().setClaims(claims).setIssuedAt(now)
-                .setExpiration(validity)
-                .signWith(SignatureAlgorithm.HS256, secretKey).compact();
+    private String doGenerateToken(Map<String, Object> claims, String subject) {
+        return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
+                .signWith(SignatureAlgorithm.HS512, secretKey).compact();
     }
 
 
     //validate token
-    public Boolean validateToken(String token, UserHelper userHelper) {
+    public Boolean validateToken(String token, UserDetails userDetails) {
         final String username = getUsernameFromToken(token);
-        return (username.equals(userHelper.getUsername()) && !isTokenExpired(token));
+        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
->>>>>>> Stashed changes
 }

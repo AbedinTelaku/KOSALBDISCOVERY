@@ -9,6 +9,8 @@ public interface IAdminService {
 
     Admin getAdminByUsernameAndPassword(String username, String password);
 
+    Admin getAdminByUsername(String username);
+
     List<Admin> getAllAdmin();
 
     void createAdmin(String name, String email, String surname, String username, String password, char gender);

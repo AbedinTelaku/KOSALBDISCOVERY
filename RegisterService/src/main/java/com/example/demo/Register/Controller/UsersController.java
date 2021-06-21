@@ -1,7 +1,9 @@
 package com.example.demo.Register.Controller;
 
+import com.example.demo.Register.Models.Admin;
 import com.example.demo.Register.Models.Business;
 import com.example.demo.Register.Models.Tourist;
+import com.example.demo.Register.Service.IAdminService;
 import com.example.demo.Register.Service.IBusinessService;
 import com.example.demo.Register.Service.ITouristService;
 import com.example.demo.Register.Service.IUserService;
@@ -24,6 +26,11 @@ public class UsersController {
     @Autowired
     private ITouristService interfaceTouristService;
     @Autowired
+<<<<<<< Updated upstream
+=======
+    private IAdminService iAdminService;
+    @Autowired
+>>>>>>> Stashed changes
     private IUserService iUserService;
 
     public UsersController(IBusinessService interfaceBusinessService, ITouristService interfaceTouristService, IUserService iUserService) {
@@ -52,10 +59,16 @@ public class UsersController {
     public ResponseEntity<?> getUserByUsername(@PathVariable("username") String username) {
         Business business = this.interfaceBusinessService.getBusinessByUsername(username);
         Tourist tourist = this.interfaceTouristService.getTouristByUsername(username);
+        Admin admin = this.iAdminService.getAdminByUsername(username);
 
       if (business == null) {
             if(tourist == null){
-            return  ResponseEntity.notFound().build();
+                if(admin == null){
+                    return  ResponseEntity.notFound().build();
+                }else{
+                    return ResponseEntity.ok(admin);
+                }
+
             }else{
            return ResponseEntity.ok(tourist);
              }

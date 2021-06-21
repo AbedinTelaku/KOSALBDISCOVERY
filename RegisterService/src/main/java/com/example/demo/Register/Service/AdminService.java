@@ -1,9 +1,7 @@
 package com.example.demo.Register.Service;
 
 import com.example.demo.Register.Models.Admin;
-import com.example.demo.Register.Models.Business;
 import com.example.demo.Register.Repository.AdminRepository;
-import com.example.demo.Register.Repository.BusinessRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +28,12 @@ public class AdminService implements IAdminService {
     public Admin getAdminByUsernameAndPassword(String username, String password) {
         Optional<Admin> adminOptional = this.adminRepository.findAdminByUsernameAndPassword(username, password);
         return adminOptional.get();
+    }
+
+    @Override
+    public Admin getAdminByUsername(String username) {
+        Optional<Admin> optionalAdmin = this.adminRepository.findAdminByUsername(username);
+        return optionalAdmin.get();
     }
 
     @Override
