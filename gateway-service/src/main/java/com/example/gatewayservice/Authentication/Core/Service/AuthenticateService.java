@@ -28,8 +28,7 @@ public class AuthenticateService implements AuthenticateInputPort {
         return this.authenticateOutputPort.userExist(username,password);
 
         //if user exist call authenticationDomain to create user JWT
-<<<<<<< Updated upstream
-=======
+
     }
 
     @Override
@@ -47,6 +46,6 @@ public class AuthenticateService implements AuthenticateInputPort {
         }
 
         throw new AppException("Invalid Password or Username", HttpStatus.BAD_REQUEST);
->>>>>>> Stashed changes
+
     }
 }

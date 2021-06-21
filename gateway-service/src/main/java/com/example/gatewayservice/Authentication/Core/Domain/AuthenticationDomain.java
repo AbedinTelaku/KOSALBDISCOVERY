@@ -1,8 +1,6 @@
 package com.example.gatewayservice.Authentication.Core.Domain;
 
-<<<<<<< Updated upstream
-public class AuthenticationDomain {
-=======
+
 import com.example.gatewayservice.Authentication.Core.Helper.UserHelper;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -87,5 +85,5 @@ public class AuthenticationDomain {
         final String username = getUsernameFromToken(token);
         return (username.equals(userHelper.getUsername()) && !isTokenExpired(token));
     }
->>>>>>> Stashed changes
+
 }

@@ -16,8 +16,7 @@ public class AuthenticateOutputAdapter implements AuthenticateOutputPort {
         ResponseEntity<Boolean> doesExist = restTemplate.getForEntity(userURL, Boolean.class);
 
         return doesExist.getBody();
-<<<<<<< Updated upstream
-=======
+
     }
 
     @Override
@@ -27,6 +26,6 @@ public class AuthenticateOutputAdapter implements AuthenticateOutputPort {
         ResponseEntity<UserHelper> responseEntity = restTemplate.getForEntity(userURL, UserHelper.class);
 
         return responseEntity.getBody();
->>>>>>> Stashed changes
+
     }
 }
