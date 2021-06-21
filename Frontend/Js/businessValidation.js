@@ -67,7 +67,7 @@ function validateForm() {
         if (regex.test(username) === false) {
             printError("usernameErr", "Please enter a valid username");
         } else {
-            printError("nameErr", "");
+            printError("usernameErr", "");
             usernameErr = false;
         }
     }
