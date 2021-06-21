@@ -26,11 +26,11 @@ public class UsersController {
     @Autowired
     private ITouristService interfaceTouristService;
     @Autowired
-<<<<<<< Updated upstream
-=======
+
+
     private IAdminService iAdminService;
     @Autowired
->>>>>>> Stashed changes
+
     private IUserService iUserService;
 
     public UsersController(IBusinessService interfaceBusinessService, ITouristService interfaceTouristService, IUserService iUserService) {
