@@ -2,14 +2,13 @@ package com.example.gatewayservice.Authentication.Core.Helper;
 
 import java.io.Serializable;
 
-public class UserHelper implements Serializable {
+public class SignInHelper implements Serializable {
     private String username;
-    private String password;
+    private String token;
 
-
-    public UserHelper(String username, String password) {
+    public SignInHelper(String username, String token) {
         this.username = username;
-        this.password = password;
+        this.token = token;
     }
 
     public String getUsername() {
@@ -20,11 +19,11 @@ public class UserHelper implements Serializable {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getToken() {
+        return token;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setToken(String token) {
+        this.token = token;
     }
 }

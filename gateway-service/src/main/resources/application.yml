@@ -1,7 +1,8 @@
 server:
   port: 9000
 
-
+jwt:
+  secret: secretkey123456789secretkey123456789
 
 spring:
   cloud:
@@ -11,11 +12,22 @@ spring:
           uri: http://localhost:8000/
           predicates:
             - Path=/api/event/**
+            - filters:
+                - AuthFilter
         - id: reservation-service
           uri: http://localhost:8008/
           predicates:
             - Path=/api/reservation/**
+            - filters:
+                - AuthFilter
         - id: RegisterService
           uri: http://localhost:8080/
           predicates:
             - Path=/api/register/**
+          filters:
+            - AuthFilter
+          - id: log-in
+            uri: http://localhost:9000/
+            predicates:
+              - Path=/authenticate/signIn
+

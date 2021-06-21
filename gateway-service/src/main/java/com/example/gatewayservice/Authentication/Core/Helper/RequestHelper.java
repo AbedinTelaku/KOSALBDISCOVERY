@@ -2,12 +2,11 @@ package com.example.gatewayservice.Authentication.Core.Helper;
 
 import java.io.Serializable;
 
-public class UserHelper implements Serializable {
+public class RequestHelper implements Serializable {
     private String username;
     private String password;
 
-
-    public UserHelper(String username, String password) {
+    public RequestHelper(String username, String password) {
         this.username = username;
         this.password = password;
     }
@@ -16,15 +15,7 @@ public class UserHelper implements Serializable {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getPassword() {
         return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.gatewayservice.Authentication.Infrastructure.OutputAdapter;
 
 
+import com.example.gatewayservice.Authentication.Core.Helper.UserHelper;
 import com.example.gatewayservice.Authentication.Core.OutputPort.AuthenticateOutputPort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -15,5 +16,16 @@ public class AuthenticateOutputAdapter implements AuthenticateOutputPort {
         ResponseEntity<Boolean> doesExist = restTemplate.getForEntity(userURL, Boolean.class);
 
         return doesExist.getBody();
+
+    }
+
+    @Override
+    public UserHelper getUserByUsername(String username) {
+        RestTemplate restTemplate = new RestTemplate();
+        String userURL = "http://localhost:8080/api/register/user/get/user/"+username;
+        ResponseEntity<UserHelper> responseEntity = restTemplate.getForEntity(userURL, UserHelper.class);
+
+        return responseEntity.getBody();
+
     }
 }
