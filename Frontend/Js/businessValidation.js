@@ -1,6 +1,6 @@
 function loginValidate(){
     if(document.myForm.fullname.value == "" || document.myForm.fullname.value ==null){
-        alert("Name is required");
+        printError("Name is required");
         return false;
     }
     if(document.myForm.email.value == ""){

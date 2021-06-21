@@ -1,86 +1,50 @@
-// $("#registerButton").click(function (event) {
-//
-//     var businessName = document.getElementById("full_name").value;
-//     var businessEmail = document.getElementById("email").value;
-//     var businessPassword = document.getElementById("password").value;
-//     var businessUsername = document.getElementById("user_name").value;
-//     var businessPhoneNumber = document.getElementById("phonenumber").value;
-//     var businessOwnerId = document.getElementById("ownerid").value;
-//     var businessFiscalNumber = document.getElementById("fiscalnumber").value;
-//     var businessNum = document.getElementById("businessnumber").value;
-//     var businessActi = document.getElementById("businessactivity").value;
+// function validateForm() {
+//     var fullname = document.myForm.fullname.value;
+//     var email = document.myForm.email.value;
+//     var businessPassword = document.myForm("password").value;
+//     var businessUsername = document.myForm("user_name").value;
+//     var businessPhoneNumber = document.myForm("phonenumber").value;
+//     var businessOwnerId = document.myForm("ownerid").value;
+//     var businessFiscalNumber = document.myForm("fiscalnumber").value;
+//     var businessNum = document.myForm("businessnumber").value;
+//     var businessActi = document.myForm("businessactivity").value;
 //     var statuss = "activ"
 //     var rolee = "business";
 //
 //
-//     if (businessName == "" ){
-//
-//         var errorname = document.getElementById("error_name");
-//
-//         var text_name = document.push("Please fill required data");
-//
-//         errorname.appendChild(text_name);
-//
+//     function printError(elemId, hintMsg) {
+//         document.getElementById(elemId).innerHTML = hintMsg;
 //     }
 //
-//     if (businessEmail == ""){
+//     var nameErr = emailErr  = true;
 //
-//         var erroremail = document.getElementById("error_email");
-//
-//         var text_email = document.createTextNode("Please fill required data");
-//
-//         erroremail.appendChild(text_email);
-//
+//     // Validate name
+//     if(fullname == "") {
+//         printError("nameErr", "Please enter your name");
+//     } else {
+//         var regex = /^[a-zA-Z\s]+$/;
+//         if(regex.test(fullname) === false) {
+//             printError("nameErr", "Please enter a valid name");
+//         } else {
+//             printError("nameErr", "");
+//             nameErr = false;
+//         }
 //     }
 //
-//     if (businessPassword == ""){
-//         var errorpassword = document.getElementById("error_password");
-//
-//         var text_password = document.createTextNode("Please fill required data");
-//
-//         errorpassword.appendChild(text_password);
-//
+//     // Validate email address
+//     if(email == "") {
+//         printError("emailErr", "Please enter your email address");
+//     } else {
+//         // Regular expression for basic email validation
+//         var regex = /^\S+@\S+\.\S+$/;
+//         if(regex.test(email) === false) {
+//             printError("emailErr", "Please enter a valid email address");
+//         } else{
+//             printError("emailErr", "");
+//             emailErr = false;
+//         }
 //     }
-//     if (businessUsername == ""){
-//         var errorusername = document.getElementById("error_username");
 //
-//         var text_username = document.createTextNode("Please fill required data");
-//
-//         errorusername.appendChild(text_username);
-//
-//     }
-//     if (businessPhoneNumber == ""){
-//         var errorphone = document.getElementById("error_number");
-//
-//         var text_phone = document.createTextNode("Please fill required data");
-//
-//         errorphone.appendChild(text_phone);
-//
-//     }
-//     if (businessOwnerId == ""){
-//         var errorId = document.getElementById("error_id");
-//
-//         var text_Id = document.createTextNode("Please fill required data");
-//
-//         errorId.appendChild(text_Id);
-//
-//     }
-//     if (businessFiscalNumber == ""){
-//         var errorfiscal = document.getElementById("error_fiscal");
-//
-//         var text_fiscal = document.createTextNode("Please fill required data");
-//
-//         errorfiscal.appendChild(text_fiscal);
-//
-//     }
-//     if (businessNum == ""){
-//         var errorbusinessNR = document.getElementById("error_businessNR");
-//
-//         var text_businessNR = document.createTextNode("Please fill required data");
-//
-//         errorbusinessNR.appendChild(text_businessNR);
-//
-//     }
 //
 //     else{
 //         business = {
