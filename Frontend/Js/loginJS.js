@@ -1,46 +1,46 @@
-// function loginValidate() {
-//     if (document.myForm.username.value == "") {
-//         alert("Shenoni usernamin");
-//         document.myForm.username.focus();
-//         return false;
-//     }
-//     if (document.myForm.username.value.length < 6) {
-//         alert("Username duhet te permbaje se paku 6 karaktere");
-//         document.myForm.username.focus();
-//         return false;
-//     }
-//     if (document.myForm.password.value == "") {
-//         alert("Shenoni Fjalkalimin");
-//         document.myForm.password.focus();
-//         return false;
-//     }
-//     if (document.myForm.password.value.length < 6) {
-//         alert("Fjalkalimi duhet te permbaje se paku 6 karaktere");
-//         document.myForm.password.focus();
-//         return false;
-//     }
-// }
+function printError(elemId, hintMsg) {
+    document.getElementById(elemId).innerHTML = hintMsg;
+}
 
-$("#loginButton").click(function (event) {
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
-    var statuss = "activ"
-    var rolee = "business";
+function validateForm() {
+    var username = document.myForm.username.value;
+    var password = document.myForm.password.value;
 
-    if (username == "") {
+    var usernameErr = passwordErr = true;
 
-        var error_username = document.getElementById("error_username");
-
-        var text_username = document.createTextNode("Please fill required data");
-
-        error_username.appendChild(text_username);
+    if(username == ""){
+        printError("usernameErr", "Please enter your username");
+    }else{
+        var regex = /^[a-zA-Z\s]+$/;
+        if(regex.test(username) === false){
+            printError("usernameErr", "Please enter a valid username");
+        }else{
+            printError("usernameErr","");
+            usernameErr = false;
+        }
     }
+
     if(password == ""){
-
-        var error_password = document.getElementById("error_password");
-
-        var text_password = document.createTextNode("Please fill required data");
-
-        error_password.appendChild(text_password);
+        printError("passwordErr","Please enter your password");
+    }else{
+        var regex = "^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$";
+        if(regex.test(password) === false){
+            printError("passwordErr", "Please enter a valid password");
+        }else{
+            printError("passwordErr", "");
+            passwordErr = false;
+        }
     }
-});
+
+    if ((usernameErr || passwordErr) == true){
+        return false;
+    }else{
+        var dataPreview = "You've entered the following details: \n" +
+            "Username: " + username + "\n" +
+            "Password: " + password + "\n";
+        if(hobbies.length) {
+            dataPreview += "Hobbies: " + hobbies.join(", ");
+        }
+        alert(dataPreview);
+    }
+};
