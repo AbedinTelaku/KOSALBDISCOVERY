@@ -28,11 +28,5 @@ spring:
           uri: lb://REGISTER-SERVICE/
           predicates:
             - Path=/api/register/**
-          #filters:
-           # - AuthFilter
-        - id: log-in
-          uri: http://localhost:9000/
-          predicates:
-            - Path=/authenticate/signIn
   application:
     name: gateway-api-service

@@ -28,8 +28,9 @@ public class AuthenticateController {
         this.authenticateInputPort = authenticateInputPort;
     }
 
+    //user gets token from responseHelper
     @PostMapping("/signIn")
-    public SignInHelper signIn(@RequestBody RequestHelper requestHelper){
+    public ResponseHelper signIn(@RequestBody RequestHelper requestHelper){
         return this.authenticateInputPort.signIn(requestHelper);
     }
     @PostMapping("/checkUser")
@@ -37,9 +38,11 @@ public class AuthenticateController {
         return this.authenticateInputPort.checkIfUserExist(userhelper.getUsername(),userhelper.getPassword());
     }
 
-    @PostMapping("/validate")
+    @PostMapping("/auth/user")
     public ResponseHelper authenticateUser(@RequestBody RequestHelper requestHelper){
-        ResponseHelper responseHelper = new ResponseHelper(this.authenticateInputPort.generateToken(requestHelper));
+        ResponseHelper responseHelper = new ResponseHelper(requestHelper.getUsername(),this.authenticateInputPort.generateToken(requestHelper));
         return responseHelper;
     }
+
+
 }

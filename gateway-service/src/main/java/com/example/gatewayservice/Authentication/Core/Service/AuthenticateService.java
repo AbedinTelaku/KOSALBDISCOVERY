@@ -4,6 +4,7 @@ import com.example.gatewayservice.Authentication.Application.InputPort.Authentic
 import com.example.gatewayservice.Authentication.Core.Domain.AuthenticationDomain;
 import com.example.gatewayservice.Authentication.Core.Exception.AppException;
 import com.example.gatewayservice.Authentication.Core.Helper.RequestHelper;
+import com.example.gatewayservice.Authentication.Core.Helper.ResponseHelper;
 import com.example.gatewayservice.Authentication.Core.Helper.SignInHelper;
 import com.example.gatewayservice.Authentication.Core.Helper.UserHelper;
 import com.example.gatewayservice.Authentication.Core.OutputPort.AuthenticateOutputPort;
@@ -39,13 +40,22 @@ public class AuthenticateService implements AuthenticateInputPort {
     }
 
     @Override
-    public SignInHelper signIn(RequestHelper requestHelper){
+    public ResponseHelper signIn(RequestHelper requestHelper){
         if(checkIfUserExist(requestHelper.getUsername(),requestHelper.getPassword())){
-            return new SignInHelper(requestHelper.getUsername(),generateToken(requestHelper));
+            return new ResponseHelper(requestHelper.getUsername(),generateToken(requestHelper));
 
         }
 
         throw new AppException("Invalid Password or Username", HttpStatus.BAD_REQUEST);
 
+    }
+
+    @Override
+    public ResponseHelper validateToken(String token, RequestHelper requestHelper) {
+        UserHelper userHelper = new UserHelper(requestHelper.getUsername(),requestHelper.getPassword());
+        if(this.authenticationDomain.validateToken(token, userHelper)){
+            return new ResponseHelper(userHelper.getUsername(),token);
+        }
+        throw new AppException(("Token is invalid"), HttpStatus.BAD_REQUEST);
     }
 }
