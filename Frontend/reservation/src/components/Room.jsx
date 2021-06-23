@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { FaCheck } from "react-icons/fa";
+import axios from "axios";
+
 class Room extends Component {
   state = {
     id: this.props.id,
@@ -7,14 +9,37 @@ class Room extends Component {
     price: this.props.price,
     discount: this.props.discount,
     roomFeatures: [],
+    link: "",
   };
 
   componentDidMount() {
-    fetch("http://localhost:8080/roomFeature/get/all/" + this.state.id)
+    fetch(
+      "http://localhost:8080/api/register/roomFeature/get/all/" + this.state.id
+    )
       .then((res) => res.json())
       .then((data) => {
         this.setState({ roomFeatures: data });
       });
+  }
+  showPayButton() {
+    axios
+      .post("http://localhost:7000/payment/get/data", {
+        amount: 250,
+        hotel: "hotel",
+        roomType: "Suite",
+        roomNumber: 15,
+      })
+      .then(
+        (response) => {
+          console.log(response);
+          if (response.data === true) {
+            window.open("http://localhost:7000/checkout");
+          }
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
   render() {
     const roomF = this.state.roomFeatures.map((element, i) => (
@@ -51,7 +76,13 @@ class Room extends Component {
             <input type="date" id="checkOutDate" />
           </div>
           <div className="submit">
-            <input type="submit" value="Book Now" />
+            <input
+              type="submit"
+              value="Book Now"
+              onClick={this.showPayButton}
+            />
+
+            <div></div>
           </div>
         </div>
       </div>

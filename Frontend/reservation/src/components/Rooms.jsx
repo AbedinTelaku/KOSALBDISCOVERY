@@ -10,7 +10,7 @@ class Rooms extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:8080/api/room/get/all/rooms")
+    fetch("http://localhost:8080/api/register/room/get/all/rooms")
       .then((res) => res.json())
       .then((data) => {
         this.setState({ rooms: data });
