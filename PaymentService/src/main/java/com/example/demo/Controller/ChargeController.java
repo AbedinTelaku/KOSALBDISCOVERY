@@ -1,23 +1,29 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Entity.ChargeRequest;
+import com.example.demo.Helper.ReservationHelper;
+import com.example.demo.Service.IPaymentService;
 import com.example.demo.Service.StripeService;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.naming.AuthenticationException;
 
 @Controller
+@RequestMapping("payment")
 public class ChargeController {
     @Autowired
     private StripeService paymentsService;
+
+    @Autowired
+    private IPaymentService paymentService;
+
+    private String paymentStatus="";
+    private ReservationHelper reservationHelper;
 
     public ChargeController(StripeService paymentsService) {
         this.paymentsService = paymentsService;
@@ -33,9 +39,23 @@ public class ChargeController {
         model.addAttribute("status", charge.getStatus());
         model.addAttribute("chargeId", charge.getId());
         model.addAttribute("balance_transaction", charge.getBalanceTransaction());
+
+        if(charge.getStatus() == "succeeded"){
+            this.paymentService.createReservation(this.reservationHelper);
+        }
+
         return "result";
     }
+//status --> succeeded
+    @GetMapping("/get/status")
+    public String setPaymentStatus(String status){
+      return  this.paymentStatus=status;
+    }
 
+    @PostMapping("/get/reservation")
+    public void getReservation(@RequestBody ReservationHelper reservationHelper){
+        this.reservationHelper=reservationHelper;
+    }
 
     @ExceptionHandler(StripeException.class)
     public String handleError(Model model, StripeException ex) {

@@ -2,10 +2,16 @@ package com.example.demo.Service;
 
 import com.example.demo.Controller.PaymentController;
 import com.example.demo.Helper.PaymentHelper;
+import com.example.demo.Helper.ReservationHelper;
 import com.example.demo.Models.Payment;
 import com.example.demo.Repository.PaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Optional;
 
@@ -34,6 +40,19 @@ public class PaymentService implements IPaymentService{
     public Payment getPayment(int id) {
         Optional<Payment> optionalPayment = this.paymentRepository.findById(id);
         return optionalPayment.get();
+    }
+
+    @Override
+    public void createReservation(ReservationHelper reservationHelper) {
+        RestTemplate restTemplate = new RestTemplate();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<ReservationHelper> request = new HttpEntity<ReservationHelper>(reservationHelper);
+
+        String reservationServiceURL = "http://localhost:8008/api/reservation/create/reservation";
+        ResponseEntity<ReservationHelper> responseEntity = restTemplate.postForEntity(reservationServiceURL,request,ReservationHelper.class);
+
     }
 
     public void setPaymentHelper(PaymentHelper paymentHelper){

@@ -1,6 +1,7 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Helper.PaymentHelper;
+import com.example.demo.Helper.ReservationHelper;
 import com.example.demo.Service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -27,5 +28,10 @@ public class PaymentController {
     public void createPayment(@RequestBody PaymentHelper paymentHelper){
         this.paymentService.createPayment(paymentHelper.getAmount(),paymentHelper.getHotel(),paymentHelper.getRoomType(),paymentHelper.getRoomNumber());
 
+    }
+
+    @PostMapping("/create/reservation")
+    public void createReservation(@RequestBody ReservationHelper reservationHelper){
+        this.paymentService.createReservation(reservationHelper);
     }
 }

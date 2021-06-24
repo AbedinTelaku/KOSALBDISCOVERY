@@ -13,7 +13,7 @@ public class TouristOutputAdapter implements TouristOutputPort {
     @Override
     public TouristHelper getTouristByUsername(String username) {
         RestTemplate restTemplate =new RestTemplate();
-        String registerServiceURL = "http://localhost:8080/api/tourist/get/tourist/"+username;
+        String registerServiceURL = "http://localhost:8080/api/register/tourist/get/tourist/"+username;
         ResponseEntity<TouristHelper> responseEntity = restTemplate.getForEntity(registerServiceURL,TouristHelper.class);
 
         TouristHelper touristHelper= responseEntity.getBody();

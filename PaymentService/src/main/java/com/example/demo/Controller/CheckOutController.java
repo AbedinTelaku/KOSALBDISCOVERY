@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Controller
-//@RestController
 @CrossOrigin
-//@RequestMapping("payment")
 public class CheckOutController {
 
     //@Value("${stripe_public_key}")

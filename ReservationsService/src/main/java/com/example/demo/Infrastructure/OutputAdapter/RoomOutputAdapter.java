@@ -12,7 +12,7 @@ public class RoomOutputAdapter implements RoomOutputPort {
     @Override
     public RoomHelper getRoomByID(int id) {
         RestTemplate restTemplate=new RestTemplate();
-        String registerServiceURL = "http://localhost:8080/api/room/get/room/"+id;
+        String registerServiceURL = "http://localhost:8080/api/register/room/get/room/"+id;
         ResponseEntity<RoomHelper> responseEntity = restTemplate.getForEntity(registerServiceURL,RoomHelper.class);
 
         RoomHelper roomHelper= responseEntity.getBody();

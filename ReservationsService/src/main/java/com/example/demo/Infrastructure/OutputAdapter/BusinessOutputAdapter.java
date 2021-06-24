@@ -12,7 +12,7 @@ public class BusinessOutputAdapter implements BusinessOutputPort {
     @Override
     public BusinessHelper getBusinessByID(int id) {
         RestTemplate restTemplate=new RestTemplate();
-        String registerServiceURL = "http://localhost:8080/api/business/get/business/"+id;
+        String registerServiceURL = "http://localhost:8080/api/register/business/get/business/"+id;
         ResponseEntity<BusinessHelper> responseEntity = restTemplate.getForEntity(registerServiceURL,BusinessHelper.class);
 
         BusinessHelper businessHelper= responseEntity.getBody();

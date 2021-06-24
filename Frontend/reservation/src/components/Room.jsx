@@ -9,7 +9,8 @@ class Room extends Component {
     price: this.props.price,
     discount: this.props.discount,
     roomFeatures: [],
-    link: "",
+    checkinDate: "",
+    checkoutDate: "",
   };
 
   componentDidMount() {
@@ -21,13 +22,15 @@ class Room extends Component {
         this.setState({ roomFeatures: data });
       });
   }
+  wrapperFunction = () => {};
   showPayButton() {
     axios
       .post("http://localhost:7000/payment/get/data", {
-        amount: 250,
-        hotel: "hotel",
-        roomType: "Suite",
-        roomNumber: 15,
+        amount:
+          this.state.price - this.state.price * (this.state.discount / 100),
+        hotel: "Adriatiku",
+        roomType: this.state.type,
+        roomNumber: 21,
       })
       .then(
         (response) => {
@@ -40,7 +43,42 @@ class Room extends Component {
           console.log(error);
         }
       );
+
+    var date = new Date();
+    axios.post("http://localhost:7000/payment/get/reservation", {
+      time: date.getTime(),
+      date: date.getDate(),
+      checkInDate: this.state.checkinDate,
+      checkOutDate: this.state.checkoutDate,
+      roomId: "Adriatiku",
+      businessId: 20,
+      touristUsername: "Sadio Mane",
+    });
   }
+
+  sendReservationData() {
+    var date = new Date();
+    axios.post("http://localhost:7000/payment/get/reservation", {
+      time: date.getTime(),
+      date: date.getDate(),
+      checkInDate: this.state.checkinDate,
+      checkOutDate: this.state.checkoutDate,
+      roomId: "Adriatiku",
+      businessId: 20,
+      touristUsername: "Sadio Mane",
+    });
+  }
+  getCheckInDate = (event) => {
+    let val = event.target.value;
+    this.setState({ checkinDate: val });
+    console.log(val);
+  };
+  getCheckOutDate = (event) => {
+    let val = event.target.value;
+    this.setState({ checkoutDate: val });
+    console.log(val);
+  };
+
   render() {
     const roomF = this.state.roomFeatures.map((element, i) => (
       <p key={i}>
@@ -71,9 +109,17 @@ class Room extends Component {
           </div>
           <div className="chooseDate">
             <label htmlFor="checkInDate">Check In</label>
-            <input type="date" id="checkInDate" />
+            <input
+              type="date"
+              id="checkInDate"
+              onChange={this.getCheckInDate}
+            />
             <label htmlFor="checkOutDate">Check Out</label>
-            <input type="date" id="checkOutDate" />
+            <input
+              type="date"
+              id="checkOutDate"
+              onChange={this.getCheckOutDate}
+            />
           </div>
           <div className="submit">
             <input
