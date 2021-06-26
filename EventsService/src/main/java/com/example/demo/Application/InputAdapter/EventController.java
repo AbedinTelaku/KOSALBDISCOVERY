@@ -47,4 +47,16 @@ public class EventController {
     public List<Event> getHappeningEvents(){
        return this.eventInputport.getHappeningEvents();
     }
+
+    @GetMapping("/get/finished/events")
+    public List<Event> getFinishedEvents(){
+        return this.eventInputport.getFinishedEvents();
+    }
+
+    @GetMapping("/get/future/events")
+    public List<Event> getFutureEvents(){
+        return this.eventInputport.getFutureEvents();
+    }
+
+
 }
