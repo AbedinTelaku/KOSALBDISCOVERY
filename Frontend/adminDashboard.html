@@ -14,6 +14,8 @@
 	<script src="Js/chartJS/Chart.js"></script>
     <script src="Js/chartJS.js"></script>
     <title>Admin Dashboard</title>
+    <script src="../Frontend/Js/AdminValidation.js">
+    </script>
 </head>
 <body>
     
@@ -398,40 +400,47 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+
+
+
+
+
         <div class="modal-body" >
-          <label for="bid">Business Id</label>
-          <input type="text" id="bid" disabled>
-          <label for="bname">Name</label>
-          <input type="text" id="bname">
+            <form  name="myForm" id="form" method="post" onsubmit="return validateForm()" >
+          <label for="bid">Business Id</label><br>
+          <input type="text" id="bid" disabled><br>
 
-          <label for="bemail">Email</label>
-          <input type="text" id="bemail">
+          <label for="bname">Name</label><br>
+          <input type="text" id="bname" name="name"><br>
 
-          <label for="bpassword">Password</label>
-          <input type="text" id="bpassword">
+          <label for="bemail">Email</label><br>
+          <input type="text" id="bemail"name="email"><br>
 
-          <label for="busername">Username</label>
-          <input type="text" id="busername">
+          <label for="bpassword">Password</label><br>
+          <input type="text" id="bpassword"name="password"><br>
 
-          <label for="bphoneNum">Phone Number</label>
-          <input type="text" id="bphoneNum">
+          <label for="busername">Username</label><br>
+          <input type="text" id="busername"name="username"><br>
 
-          <label for="bownerId">Owner Id</label>
-          <input type="text" id="bownerId">
+          <label for="bphoneNum">Phone Number</label><br>
+          <input type="text" id="bphoneNum"name="number"><br>
 
-          <label for="bfiscalNum">Fiscal Number</label>
-          <input type="text" id="bfiscalNum">
+          <label for="bownerId">Owner Id</label><br>
+          <input type="text" id="bownerId"name="id"><br>
 
-          <label for="bnumber">Business Number</label>
-          <input type="text" id="bnumber">
+          <label for="bfiscalNum">Fiscal Number</label><br>
+          <input type="text" id="bfiscalNum"name="fiscal"><br>
 
-          <label for="bactivity">Business Activity</label>
-          <input type="text" id="bactivity">
-          
+          <label for="bnumber">Business Number</label><br>
+          <input type="text" id="bnumber"name="business"><br>
+
+          <label for="bactivity">Business Activity</label><br>
+          <input type="text" id="bactivity"name="activity"><br>
+          </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="saveChangesButton">Save changes</button>
+          <button type="button" class="btn btn-primary" id="saveChangesButton"onclick="return validateForm()">Save changes</button>
         </div>
       </div>
     </div>
