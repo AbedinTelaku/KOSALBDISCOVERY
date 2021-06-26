@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/register/event")
+@RequestMapping("api/event")
 public class EventController {
 
     @Autowired
@@ -41,5 +41,10 @@ public class EventController {
     public String getEventCreator(@PathVariable("username") String username){
 
        return this.userOutputPort.getUserFullNameByUsername(username);
+    }
+
+    @GetMapping("/get/happening/events")
+    public List<Event> getHappeningEvents(){
+       return this.eventInputport.getHappeningEvents();
     }
 }

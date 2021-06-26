@@ -15,6 +15,9 @@ public interface EventInputport {
     Event getEventById(int id);
     List<Event> getAllEvents();
     List<Event> getEventStatus(String status);
+    List<Event> getHappeningEvents();
+    List<Event> getFinishedEvents();
+    List<Event> getFutureEvents();
 
 
 }
