@@ -6,12 +6,10 @@ import com.example.gatewayservice.Authentication.Core.Helper.RequestHelper;
 import com.example.gatewayservice.Authentication.Core.Helper.ResponseHelper;
 import com.example.gatewayservice.Authentication.Core.Helper.SignInHelper;
 import com.example.gatewayservice.Authentication.Core.Helper.UserHelper;
+import com.example.gatewayservice.Authentication.Core.OutputPort.AuthenticateOutputPort;
 import com.example.gatewayservice.Authentication.Core.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("authenticate")
@@ -22,6 +20,10 @@ public class AuthenticateController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private AuthenticateOutputPort authenticateOutputPort;
+
+
 
 
     public AuthenticateController(AuthenticateInputPort authenticateInputPort) {
@@ -44,5 +46,15 @@ public class AuthenticateController {
         return responseHelper;
     }
 
+    @GetMapping("/validate/{token}")
+    public ResponseHelper validateToken(@PathVariable("token") String token){
+        return this.authenticateInputPort.getResponseHelperFromValidToken(token);
+    }
+
+
+    @GetMapping("/get/user/{username}")
+    public UserHelper getUser(@PathVariable("username") String username){
+        return this.authenticateOutputPort.getUserByUsername(username);
+    }
 
 }

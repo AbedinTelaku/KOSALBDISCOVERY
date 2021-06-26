@@ -15,10 +15,11 @@ public class BusinessHelper implements Serializable {
     private String fiscal_Number;
     private String business_Number;
     private String business_Activity;
+    private String cityName;
     private String status;
     private String role;
 
-    public BusinessHelper(int id, String name, String email, String password, String username, String tel_Number, String owner_ID, String fiscal_Number, String business_Number, String business_Activity, String status, String role) {
+    public BusinessHelper(int id, String name, String email, String password, String username, String tel_Number, String owner_ID, String fiscal_Number, String business_Number, String business_Activity, String cityName ,String status, String role) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -29,6 +30,7 @@ public class BusinessHelper implements Serializable {
         this.fiscal_Number = fiscal_Number;
         this.business_Number = business_Number;
         this.business_Activity = business_Activity;
+        this.cityName=cityName;
         this.status = status;
         this.role = role;
     }
@@ -83,5 +85,13 @@ public class BusinessHelper implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
     }
 }

@@ -4,6 +4,7 @@ import com.example.gatewayservice.Authentication.Application.InputPort.Authentic
 import com.example.gatewayservice.Authentication.Core.Domain.AuthenticationDomain;
 import com.example.gatewayservice.Authentication.Core.Exception.AppException;
 import com.example.gatewayservice.Authentication.Core.Helper.RequestHelper;
+import com.example.gatewayservice.Authentication.Core.Helper.ResponseHelper;
 import com.example.gatewayservice.Authentication.Core.Helper.UserHelper;
 import com.example.gatewayservice.Authentication.Core.OutputPort.AuthenticateOutputPort;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,20 +47,20 @@ public class AuthFilter extends AbstractGatewayFilterFactory<AuthFilter.Config> 
             }
             String token = parts[1];
             String username = authenticationDomain.getUsernameFromToken(token);
-            UserHelper userHelper = this.authenticateOutputPort.getUserByUsername(username);
+           // UserHelper userHelper = this.authenticateOutputPort.getUserByUsername(username);
 
-              if(authenticationDomain.validateToken(token,userHelper)){
+              if(authenticationDomain.validateToken(token)){
                   //token is valid send request to services
-                  //return webClientBuilder.build()
-                       /*   .post()
+                  return webClientBuilder.build()
+                          .post()
                           .uri("http://localhost:9000/authenticate/validate" + parts[1])
-                          .retrieve().bodyToMono(RequestHelper.class)
-                          .map(requestHelper -> {
+                          .retrieve().bodyToMono(ResponseHelper.class)
+                          .map(responseHelper -> {
                               exchange.getRequest()
                                       .mutate()
-                                      .header("auth-user-username", requestHelper.getUsername());
+                                      .header("auth-user-username", responseHelper.getUsername());
                               return exchange;
-                          }).flatMap(chain::filter); */
+                          }).flatMap(chain::filter);
 
               }else{
                   throw new AppException("Token is invalid", HttpStatus.BAD_REQUEST);

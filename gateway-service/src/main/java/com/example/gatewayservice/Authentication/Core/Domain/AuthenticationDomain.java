@@ -1,11 +1,16 @@
 package com.example.gatewayservice.Authentication.Core.Domain;
 
 
+import com.example.gatewayservice.Authentication.Core.Exception.AppException;
+import com.example.gatewayservice.Authentication.Core.Helper.ResponseHelper;
 import com.example.gatewayservice.Authentication.Core.Helper.UserHelper;
+import com.example.gatewayservice.Authentication.Core.OutputPort.AuthenticateOutputPort;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 
@@ -24,6 +29,9 @@ public class AuthenticationDomain {
 
     //@Value("${jwt.secret}")
     private String secretKey="secretkey123secretkey123secretkey123secretkey123";
+
+    @Autowired
+    private AuthenticateOutputPort authenticateOutputPort;
 
     @PostConstruct
     protected void init() {
@@ -81,9 +89,25 @@ public class AuthenticationDomain {
 
 
     //validate token
-    public Boolean validateToken(String token, UserHelper userHelper) {
+    public Boolean validateToken(String token) {
         final String username = getUsernameFromToken(token);
-        return (username.equals(userHelper.getUsername()) && !isTokenExpired(token));
+        UserHelper user = this.authenticateOutputPort.getUserByUsername(username);
+
+        if(username.equals(user.getUsername()) && !isTokenExpired(token)) {
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+    public ResponseHelper getResponseHelperFromValidToken(String token){
+        if(validateToken(token)){
+            String username = getUsernameFromToken(token);
+            return new ResponseHelper(username,token);
+        }else{
+            throw new AppException("Invalid Token", HttpStatus.BAD_REQUEST);
+        }
     }
 
 }

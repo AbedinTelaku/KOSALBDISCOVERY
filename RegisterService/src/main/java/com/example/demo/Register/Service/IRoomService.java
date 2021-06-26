@@ -10,6 +10,7 @@ public interface IRoomService {
     void createRooms(List<Room> rooms);
     Room getRoomById(int id);
     List<Room> getAllRooms();
+    List<Room> getAllRoomsByBusinessId(int id);
     void deleteRoomById(int id);
     void editRoom(int id,int roomNumber, String roomType, boolean isAvailable, Business business);
 

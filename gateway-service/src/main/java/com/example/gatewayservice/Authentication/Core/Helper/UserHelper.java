@@ -12,6 +12,9 @@ public class UserHelper implements Serializable {
         this.password = password;
     }
 
+    public UserHelper() {
+    }
+
     public String getUsername() {
         return username;
     }

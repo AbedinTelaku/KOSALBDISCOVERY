@@ -32,9 +32,11 @@ public class Business {
     private String status;
     @Column
     private String role;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn
+    private City city;
 
-
-    public Business(String name, String email, String password, String username, String tel_Number, String owner_ID, String fiscal_Number, String business_Number, String business_Activity, String status, String role) {
+    public Business(String name, String email, String password, String username, String tel_Number, String owner_ID, String fiscal_Number, String business_Number, String business_Activity,City city,String status, String role) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -46,10 +48,15 @@ public class Business {
         this.business_Activity = business_Activity;
         this.status = status;
         this.role = role;
+        this.city=city;
     }
 
     public Business() {
 
+    }
+
+    public int getId() {
+        return id;
     }
 
     public int getBusiness_ID() {
@@ -146,5 +153,13 @@ public class Business {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
     }
 }

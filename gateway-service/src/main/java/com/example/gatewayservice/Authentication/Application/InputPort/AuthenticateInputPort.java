@@ -10,6 +10,7 @@ public interface AuthenticateInputPort {
     boolean checkIfUserExist(String username,String password);
     String generateToken(RequestHelper requestHelper);
     ResponseHelper signIn(RequestHelper requestHelper);
-    ResponseHelper validateToken(String token, RequestHelper requestHelper);
+    boolean validateToken(String token);
+    ResponseHelper getResponseHelperFromValidToken(String token);
 
 }

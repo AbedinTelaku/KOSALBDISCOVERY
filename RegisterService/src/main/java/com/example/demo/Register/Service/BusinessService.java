@@ -1,6 +1,7 @@
 package com.example.demo.Register.Service;
 
 import com.example.demo.Register.Models.Business;
+import com.example.demo.Register.Models.City;
 import com.example.demo.Register.Repository.BusinessRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,9 @@ public class BusinessService implements IBusinessService {
 
     @Autowired
     private BusinessRepository businessRepository;
+
+    @Autowired
+    private CityService cityService;
 
     public BusinessService(BusinessRepository businessRepository) {
         this.businessRepository = businessRepository;
@@ -50,8 +54,9 @@ public class BusinessService implements IBusinessService {
     }
 
     @Override
-    public void createBusiness(String name, String email, String password, String username, String tel_Number, String owner_ID, String fiscal_Number, String business_Number, String business_Activity, String status, String role) {
-        Business business = new Business(name, email, password, username, tel_Number, owner_ID, fiscal_Number, business_Number, business_Activity, status, role);
+    public void createBusiness(String name, String email, String password, String username, String tel_Number, String owner_ID, String fiscal_Number, String business_Number, String business_Activity, String cityName, String status, String role) {
+        City city = this.cityService.getCityByName(cityName);
+        Business business = new Business(name, email, password, username, tel_Number, owner_ID, fiscal_Number, business_Number, business_Activity, city ,status, role);
         this.businessRepository.save(business);
     }
 

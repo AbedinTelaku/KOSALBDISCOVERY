@@ -46,6 +46,11 @@ public class RoomService implements IRoomService{
     }
 
     @Override
+    public List<Room> getAllRoomsByBusinessId(int id) {
+        return this.roomRepository.getRoomsByBusinessId(id);
+    }
+
+    @Override
     public void deleteRoomById(int id) {
       this.roomRepository.deleteById(id);
     }

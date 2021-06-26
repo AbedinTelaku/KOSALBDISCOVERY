@@ -12,7 +12,7 @@ public interface IBusinessService {
 
     List<Business> getAllBusinesses();
 
-    void createBusiness(String name, String email, String password, String username, String tel_Number, String owner_ID, String fiscal_Number, String business_Number, String business_Activity, String status, String role);
+    void createBusiness(String name, String email, String password, String username, String tel_Number, String owner_ID, String fiscal_Number, String business_Number, String business_Activity, String cityName, String status, String role);
 
     void deleteBusiness(int id);
 

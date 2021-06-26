@@ -8,6 +8,7 @@ class Room extends Component {
     type: this.props.type,
     price: this.props.price,
     discount: this.props.discount,
+    businessId: this.props.businessId,
     roomFeatures: [],
     checkinDate: "",
     checkoutDate: "",
@@ -26,10 +27,9 @@ class Room extends Component {
   showPayButton() {
     axios
       .post("http://localhost:7000/payment/get/data", {
-        amount:
-          this.state.price - this.state.price * (this.state.discount / 100),
+        amount: 250,
         hotel: "Adriatiku",
-        roomType: this.state.type,
+        roomType: "Suite",
         roomNumber: 21,
       })
       .then(
@@ -44,7 +44,7 @@ class Room extends Component {
         }
       );
 
-    var date = new Date();
+    /*var date = new Date();
     axios.post("http://localhost:7000/payment/get/reservation", {
       time: date.getTime(),
       date: date.getDate(),
@@ -53,7 +53,7 @@ class Room extends Component {
       roomId: "Adriatiku",
       businessId: 20,
       touristUsername: "Sadio Mane",
-    });
+    });*/
   }
 
   sendReservationData() {
@@ -87,6 +87,7 @@ class Room extends Component {
       </p>
     ));
 
+    console.log(this.props);
     return (
       <div className="room">
         <div className="roomPhotos">

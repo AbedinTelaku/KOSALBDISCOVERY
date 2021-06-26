@@ -58,12 +58,15 @@ public class UsersController {
     @GetMapping("/get/user/{username}")
     public ResponseEntity<?> getUserByUsername(@PathVariable("username") String username) {
         Business business = this.interfaceBusinessService.getBusinessByUsername(username);
-        Tourist tourist = this.interfaceTouristService.getTouristByUsername(username);
-        Admin admin = this.iAdminService.getAdminByUsername(username);
+
+
 
       if (business == null) {
+          Tourist tourist = this.interfaceTouristService.getTouristByUsername(username);
             if(tourist == null){
+                Admin admin = this.iAdminService.getAdminByUsername(username);
                 if(admin == null){
+
                     return  ResponseEntity.notFound().build();
                 }else{
                     return ResponseEntity.ok(admin);

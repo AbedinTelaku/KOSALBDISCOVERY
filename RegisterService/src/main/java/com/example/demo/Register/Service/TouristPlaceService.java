@@ -42,6 +42,11 @@ public class TouristPlaceService implements ITouristPlaceService{
     }
 
     @Override
+    public TouristPlace getTouristPlaceByName(String name) {
+        return this.touristPlaceRepository.getTouristPlaceByName(name);
+    }
+
+    @Override
     public List<TouristPlace> getAllTouristPlaces() {
         return this.touristPlaceRepository.findAll();
     }

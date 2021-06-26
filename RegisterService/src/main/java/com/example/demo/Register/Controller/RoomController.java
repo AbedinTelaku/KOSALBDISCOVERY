@@ -39,6 +39,11 @@ public class RoomController {
         return this.iRoomService.getAllRooms();
     }
 
+    @GetMapping("/get/all/rooms/{businessId}")
+    public List<Room> getAllRoomsByBusinessId(@PathVariable("businessId") int businessId){
+       return this.iRoomService.getAllRoomsByBusinessId(businessId);
+    }
+
     @PostMapping("/delete/room/{id}")
     public void deleteRoomById(@PathVariable("id") int id){
         this.iRoomService.deleteRoomById(id);

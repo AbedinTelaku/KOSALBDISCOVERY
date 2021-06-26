@@ -18,4 +18,7 @@ public interface TouristPlaceRepository extends JpaRepository<TouristPlace,Integ
 
     @Query(value = "select * from tourist_place t where t.city_id=?1", nativeQuery = true)
     public List<TouristPlace> getTouristPlacesByCityId(int cityId);
+
+    @Query(value = "select * from tourist_place t where t.name=?1", nativeQuery = true)
+    public TouristPlace getTouristPlaceByName(String name);
 }

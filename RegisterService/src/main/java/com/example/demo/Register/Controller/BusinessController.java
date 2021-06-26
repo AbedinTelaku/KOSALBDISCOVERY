@@ -22,7 +22,7 @@ public class BusinessController {
 
     @PostMapping("/create/business")
     public void registerBusiness(@RequestBody BusinessHelper businessHelper) {
-        this.interfaceBusinessService.createBusiness(businessHelper.getName(), businessHelper.getEmail(), businessHelper.getPassword(), businessHelper.getUsername(), businessHelper.getTel_Number(), businessHelper.getOwner_ID(), businessHelper.getFiscal_Number(), businessHelper.getBusiness_Number(), businessHelper.getBusiness_Activity(), businessHelper.getStatus(), businessHelper.getRole());
+        this.interfaceBusinessService.createBusiness(businessHelper.getName(), businessHelper.getEmail(), businessHelper.getPassword(), businessHelper.getUsername(), businessHelper.getTel_Number(), businessHelper.getOwner_ID(), businessHelper.getFiscal_Number(), businessHelper.getBusiness_Number(), businessHelper.getBusiness_Activity(), businessHelper.getCityName(),businessHelper.getStatus(), businessHelper.getRole());
 
     }
 

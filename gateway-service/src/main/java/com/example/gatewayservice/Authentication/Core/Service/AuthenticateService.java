@@ -51,11 +51,13 @@ public class AuthenticateService implements AuthenticateInputPort {
     }
 
     @Override
-    public ResponseHelper validateToken(String token, RequestHelper requestHelper) {
-        UserHelper userHelper = new UserHelper(requestHelper.getUsername(),requestHelper.getPassword());
-        if(this.authenticationDomain.validateToken(token, userHelper)){
-            return new ResponseHelper(userHelper.getUsername(),token);
-        }
-        throw new AppException(("Token is invalid"), HttpStatus.BAD_REQUEST);
+    public boolean validateToken(String token) {
+
+       return this.authenticationDomain.validateToken(token);
+    }
+
+    @Override
+    public ResponseHelper getResponseHelperFromValidToken(String token) {
+        return this.authenticationDomain.getResponseHelperFromValidToken(token);
     }
 }

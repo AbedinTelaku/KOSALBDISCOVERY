@@ -3,7 +3,6 @@ import Rooms from "./Rooms";
 
 export default class Reservation extends Component {
   state = {
-    elements: ["Home", "Tourist Places", "Reservations", "Events"],
     sidebarElements: [
       "Single",
       "Double",
@@ -20,22 +19,12 @@ export default class Reservation extends Component {
   };
 
   render() {
-    const list = this.state.elements.map((element, i) => (
-      <li key={i}>{element}</li>
-    ));
     const sideBarElList = this.state.sidebarElements.map((sideelement, i) => (
       <li key={i}>{sideelement}</li>
     ));
+    console.log(this.props.match.params.id);
     return (
       <div className="pageMainDiv">
-        <div className="navbar navbar-light bg-light">
-          <div>
-            <h3>KOSALB DISCOVERY</h3>
-          </div>
-
-          <div className="navbarRightElements">{list}</div>
-        </div>
-
         <div className="appContainer">
           <div className="sideNav">
             <p className="sideNavTitle">What room are you looking for?</p>
@@ -43,7 +32,7 @@ export default class Reservation extends Component {
           </div>
 
           <div className="roomsContainer">
-            <Rooms />
+            <Rooms businessId={this.props.match.params.id} />
           </div>
         </div>
       </div>
