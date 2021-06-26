@@ -76,12 +76,14 @@ private EventDomain eventDomain;
 
     @Override
     public List<Event> getFinishedEvents() {
-        return null;
+        String status="Finished";
+        return this.eventRepository.findByStatus(status);
     }
 
     @Override
     public List<Event> getFutureEvents() {
-        return null;
+        String status="Future";
+        return this.eventRepository.findByStatus(status);
     }
 
 }
