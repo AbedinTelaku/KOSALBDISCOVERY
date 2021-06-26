@@ -30,7 +30,7 @@ class Room extends Component {
         amount: 250,
         hotel: "Adriatiku",
         roomType: "Suite",
-        roomNumber: 21,
+        roomNumber: 20,
       })
       .then(
         (response) => {
@@ -44,12 +44,12 @@ class Room extends Component {
         }
       );
 
-    /*var date = new Date();
+    /*   var date = new Date();
     axios.post("http://localhost:7000/payment/get/reservation", {
       time: date.getTime(),
       date: date.getDate(),
-      checkInDate: this.state.checkinDate,
-      checkOutDate: this.state.checkoutDate,
+      checkInDate: date,
+      checkOutDate: date,
       roomId: "Adriatiku",
       businessId: 20,
       touristUsername: "Sadio Mane",

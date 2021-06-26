@@ -70,7 +70,7 @@ private EventDomain eventDomain;
 
     @Override
     public List<Event> getHappeningEvents() {
-        String status="Happening";
+        String status="happening";
         return this.eventRepository.findByStatus(status);
     }
 

@@ -88,7 +88,7 @@
       <ul class="sideNawItems">
         <li id="allEventsButton">All Events</li>
         <li>Future Events</li>
-        <li>Happening Events</li>
+        <li id="happeningEventsButton">Happening Events</li>
         <li>Finished Events</li>
      
         <li  type="button" class="" data-toggle="modal" data-target="#createEventModal" id="createEventButton">Create Event</li>
@@ -100,7 +100,7 @@
     <div class="main">
 
 
-      <div class="allEvents hide" id="allEventsDiv">
+      <div class="hide" id="allEventsDiv">
 
      
 
@@ -131,9 +131,12 @@
     
 -->
 </div>
+<div class="hide" id="happeningEventsDiv">
+ <p>happening div</p>
+</div>
     <!--create event div-->
-    <div class="createEvent " id="createEventDiv">
-
+    <div class="hide" id="createEventDiv">
+<p>create event div</p>
 <!-- Button trigger modal 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
     Launch demo modal
@@ -208,5 +211,6 @@
   <script src="Js/getCitiesAndTouristPlacesForEvent.js"></script>
   <script src="Js/getAllEvents.js"></script>
   <script src="Js/hideEventParts.js"></script>
+  <script src="Js/getHappeningEvents.js"></script>
 </body>
 </html>

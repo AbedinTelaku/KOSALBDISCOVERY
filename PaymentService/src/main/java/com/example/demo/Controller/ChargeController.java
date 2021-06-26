@@ -40,9 +40,9 @@ public class ChargeController {
         model.addAttribute("chargeId", charge.getId());
         model.addAttribute("balance_transaction", charge.getBalanceTransaction());
 
-        if(charge.getStatus() == "succeeded"){
-            this.paymentService.createReservation(this.reservationHelper);
-        }
+      //  if(charge.getStatus() == "succeeded"){
+       //     this.paymentService.createReservation(this.reservationHelper);
+       // }
 
         return "result";
     }

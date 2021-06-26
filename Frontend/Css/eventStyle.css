@@ -88,6 +88,22 @@ body {
   flex-wrap: wrap;
   overflow: scroll;
 }
+#happeningEventsDiv {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow: scroll;
+}
+#allEventsDiv {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow: scroll;
+}
 .event {
   margin-top: 5%;
   margin-left: 5%;
@@ -131,7 +147,7 @@ body {
   flex-direction: column;
   overflow: scroll;
 }
-.createEvent {
+#createEventDiv {
   width: 100%;
   height: 100%;
 
