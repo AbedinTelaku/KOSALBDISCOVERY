@@ -10,6 +10,10 @@ public class EventStatusHelper implements Serializable {
         this.status=status;
     }
 
+    public EventStatusHelper(){
+
+    }
+
     public String getStatus(){
         return status;
     }
