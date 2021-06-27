@@ -24,6 +24,8 @@ public class PaymentService implements IPaymentService{
 
     private PaymentHelper paymentHelper;
 
+    private ReservationHelper reservationHelper;
+
     @Override
     public void createPayment(double amount, String hotel, String roomType, int roomNumber) {
         Payment payment = new Payment(amount,hotel,roomType,roomNumber);
@@ -40,6 +42,16 @@ public class PaymentService implements IPaymentService{
     public Payment getPayment(int id) {
         Optional<Payment> optionalPayment = this.paymentRepository.findById(id);
         return optionalPayment.get();
+    }
+
+    @Override
+    public void setReservationHelper(ReservationHelper reservationHelper) {
+         this.reservationHelper=reservationHelper;
+    }
+
+    @Override
+    public ReservationHelper getReservationHelper() {
+        return this.reservationHelper;
     }
 
     @Override

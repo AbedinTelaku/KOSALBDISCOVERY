@@ -7,5 +7,7 @@ public interface IPaymentService {
     void createPayment(double amount, String hotel,String roomType,int roomNumber);
     void deletePayment(int id);
     Payment getPayment(int id);
+    void setReservationHelper(ReservationHelper reservationHelper);
+    ReservationHelper getReservationHelper();
     void createReservation(ReservationHelper reservationHelper);
 }

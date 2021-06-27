@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.naming.AuthenticationException;
 
 @Controller
-@RequestMapping("payment")
+@RequestMapping("pay")
 public class ChargeController {
     @Autowired
     private StripeService paymentsService;
@@ -22,7 +22,7 @@ public class ChargeController {
     @Autowired
     private IPaymentService paymentService;
 
-    private String paymentStatus="";
+   // private String paymentStatus="";
     private ReservationHelper reservationHelper;
 
     public ChargeController(StripeService paymentsService) {
@@ -40,26 +40,28 @@ public class ChargeController {
         model.addAttribute("chargeId", charge.getId());
         model.addAttribute("balance_transaction", charge.getBalanceTransaction());
 
-      //  if(charge.getStatus() == "succeeded"){
-       //     this.paymentService.createReservation(this.reservationHelper);
-       // }
+        if(charge.getStatus().equals("succeeded")){
+            ReservationHelper rh = this.paymentService.getReservationHelper();
+            this.paymentService.createReservation(rh);
+        }
 
         return "result";
     }
-//status --> succeeded
-    @GetMapping("/get/status")
-    public String setPaymentStatus(String status){
-      return  this.paymentStatus=status;
+    @ExceptionHandler(StripeException.class)
+    public String handleError(Model model, StripeException ex) {
+        model.addAttribute("error", ex.getMessage());
+        return "result";
     }
+//status --> succeeded
+   // @GetMapping("/get/status")
+   // public String setPaymentStatus(String status){
+   //   return  this.paymentStatus=status;
+   // }
 
     @PostMapping("/get/reservation")
     public void getReservation(@RequestBody ReservationHelper reservationHelper){
         this.reservationHelper=reservationHelper;
     }
 
-    @ExceptionHandler(StripeException.class)
-    public String handleError(Model model, StripeException ex) {
-        model.addAttribute("error", ex.getMessage());
-        return "result";
-    }
+
 }

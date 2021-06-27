@@ -26,15 +26,15 @@ text-align: center">
 
 
 
-        <label style="border-bottom: 1px solid #00a6ff;border-top: 1px solid #00a6ff; margin-top: 9%;font-family: Verdana;"> <img th:src="@{/templates/hotel.png}" alt="Hotel: " />   <span th:text='${hotelName}' /></label>
+        <label style="border-bottom: 1px solid #00a6ff;border-top: 1px solid #00a6ff; margin-top: 9%;font-family: Verdana;"> <img src="hotel.png" alt="Hotel: " />   <span th:text='${hotelName}' /></label>
         <label style="border-bottom: 1px solid #00a6ff; margin-top: 3%; font-family: Verdana;"><img src="room.png"  alt="Room type: " /> <span th:text='${roomType}' /></label>
-        <label style="border-bottom: 1px solid #00a6ff; margin-top: 3%; font-family: Verdana;"><img th:src="@{/templates/roomNum.png}" alt="Room number: "/> <span th:text='${roomNumber}' /></label>
-        <label style="border-bottom: 1px solid #00a6ff; margin-top: 3%; font-family: Verdana;"><img th:src="@{/templates/price.png}" alt="Price: "/> <span th:text='${amount/100}' />€</label>
+        <label style="border-bottom: 1px solid #00a6ff; margin-top: 3%; font-family: Verdana;"><img src="roomNum.png" alt="Room number: "/> <span th:text='${roomNumber}' /></label>
+        <label style="border-bottom: 1px solid #00a6ff; margin-top: 3%; font-family: Verdana;"><img src="price.png" alt="Price: "/> <span th:text='${amount/100}' />€</label>
 
     </div>
 
     <div class="paymentFrom" style="padding-top: 1.5%;">
-        <form action='/charge' method='POST' id='checkout-form'>
+        <form action='/pay/charge' method='POST' id='checkout-form'>
             <input type='hidden' th:value='${amount}' name='amount' />
 
             <!-- NOTE: data-key/data-amount/data-currency will be rendered by Thymeleaf -->

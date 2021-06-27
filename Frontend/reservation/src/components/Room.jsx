@@ -28,7 +28,7 @@ class Room extends Component {
     axios
       .post("http://localhost:7000/payment/get/data", {
         amount: 250,
-        hotel: "Adriatiku",
+        hotel: "Empire Hotel",
         roomType: "Suite",
         roomNumber: 20,
       })
@@ -44,22 +44,38 @@ class Room extends Component {
         }
       );
 
-    /*   var date = new Date();
-    axios.post("http://localhost:7000/payment/get/reservation", {
+    //  console.log("Checkin Date: " + this.state.checkinDate);
+    //  console.log("Checkout Date: " + this.state.checkoutDate);
+    /*  var date = new Date();
+    axios.post("http://localhost:7000/pay/get/reservation", {
       time: date.getTime(),
       date: date.getDate(),
-      checkInDate: date,
-      checkOutDate: date,
-      roomId: "Adriatiku",
+      checkInDate: date.getDate(),
+      checkOutDate: date.getDate(),
+      roomId: 50,
       businessId: 20,
-      touristUsername: "Sadio Mane",
+      touristUsername: "veprimmorina",
     });*/
+    var date = new Date();
+    axios({
+      method: "post",
+      url: "http://localhost:7000/payment/get/reservation",
+      data: {
+        time: "20:00:00",
+        date: date.getDate(),
+        checkInDate: date.getDate(),
+        checkOutDate: date.getDate(),
+        roomId: 50,
+        businessId: 20,
+        touristUsername: "abedintelaku",
+      },
+    });
   }
 
   sendReservationData() {
     var date = new Date();
     axios.post("http://localhost:7000/payment/get/reservation", {
-      time: date.getTime(),
+      time: "20:00:00",
       date: date.getDate(),
       checkInDate: this.state.checkinDate,
       checkOutDate: this.state.checkoutDate,
@@ -71,12 +87,10 @@ class Room extends Component {
   getCheckInDate = (event) => {
     let val = event.target.value;
     this.setState({ checkinDate: val });
-    console.log(val);
   };
   getCheckOutDate = (event) => {
     let val = event.target.value;
     this.setState({ checkoutDate: val });
-    console.log(val);
   };
 
   render() {
@@ -87,7 +101,6 @@ class Room extends Component {
       </p>
     ));
 
-    console.log(this.props);
     return (
       <div className="room">
         <div className="roomPhotos">

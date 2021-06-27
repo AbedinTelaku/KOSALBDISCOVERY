@@ -30,7 +30,12 @@ public class PaymentController {
 
     }
 
-    @PostMapping("/create/reservation")
+    @PostMapping("/get/reservation")
+    public void getReservation(@RequestBody ReservationHelper reservationHelper){
+        this.paymentService.setReservationHelper(reservationHelper);
+    }
+
+    @PostMapping("/createreservation")
     public void createReservation(@RequestBody ReservationHelper reservationHelper){
         this.paymentService.createReservation(reservationHelper);
     }

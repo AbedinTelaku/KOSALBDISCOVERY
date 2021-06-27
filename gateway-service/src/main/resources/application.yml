@@ -14,14 +14,14 @@ spring:
           uri: lb://EVENT-SERVICE/
           predicates:
             Path=/api/event/**
-          filters:
-            - AuthFilter
+          #filters:
+           # - AuthFilter
         - id: reservation-service
           uri: lb://RESERVATION-SERVICE	/
           predicates:
             Path=/api/reservation/**
-          filters:
-            - AuthFilter
+         # filters:
+          #  - AuthFilter
         - id: RegisterService
           uri: lb://REGISTER-SERVICE/
           predicates:

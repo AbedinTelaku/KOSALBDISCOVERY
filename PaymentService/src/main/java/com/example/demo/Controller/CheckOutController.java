@@ -33,6 +33,7 @@ public class CheckOutController {
         model.addAttribute("roomNumber",paymentHelper.getRoomNumber());
         model.addAttribute("hotelName",paymentHelper.getHotel());
 
+
         return "checkout";
     }
 
