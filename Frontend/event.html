@@ -87,9 +87,9 @@
 
       <ul class="sideNawItems">
         <li id="allEventsButton">All Events</li>
-        <li>Future Events</li>
+        <li id="futureEventsButton">Future Events</li>
         <li id="happeningEventsButton">Happening Events</li>
-        <li>Finished Events</li>
+        <li id="finishedEventsButton">Finished Events</li>
      
         <li  type="button" class="" data-toggle="modal" data-target="#createEventModal" id="createEventButton">Create Event</li>
         <li>My Events</li>
@@ -100,40 +100,18 @@
     <div class="main">
 
 
-      <div class="hide" id="allEventsDiv">
+      <div class="hide" id="allEventsDiv"> </div>
+<div class="hide" id="happeningEventsDiv">
 
-     
+</div>
 
-   
+      <div class="hide" id="finishedEventsDiv">
 
-
- <!--create event div
-      
-      <div class="event">
-        <div class="eventImg">
-          <img src="" alt="">
-        </div>
-      
-        <div style="display: flex; flex-direction: row; justify-content: space-around ;">
-          <div class="eventName">
-            <h3>Name</h3>
-          </div>
-          <div class="eventDate">
-            <h3>date</h3>
-          </div>
-        </div>
-        <div class="eventDescription">
-          <p>description</p>
-          <p>aaaaaaaaaaaaaaaaaaa. aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.</p>
-        </div>  
       </div>
 
-    
--->
-</div>
-<div class="hide" id="happeningEventsDiv">
- <p>happening div</p>
-</div>
+      <div class="hide" id="futureEventsDiv">
+
+      </div>
     <!--create event div-->
     <div class="hide" id="createEventDiv">
 <p>create event div</p>
@@ -212,5 +190,7 @@
   <script src="Js/getAllEvents.js"></script>
   <script src="Js/hideEventParts.js"></script>
   <script src="Js/getHappeningEvents.js"></script>
+  <script src="Js/getFinishedEvents.js"></script>
+  <script src="Js/getFutureEvents.js"></script>
 </body>
 </html>
