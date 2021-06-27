@@ -262,3 +262,115 @@
   text-decoration: none;
   color: black;
 }
+.allContent {
+  width: 100%;
+  height: 200%;
+  background-color: rgb(238, 238, 238);
+}
+.userProfileContent {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(238, 238, 238);
+}
+.userProfileSideNav {
+  height: 60%;
+  width: 15%;
+  box-shadow: 2px 2px 2px 2px orange;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  margin-top: 2.5%;
+  background-color: white;
+}
+.userProfileMainContent {
+  width: 80%;
+  height: 100%;
+}
+.userProfileData {
+  width: 97.5%;
+  height: 60%;
+  box-shadow: 2px 2px 2px 2px orange;
+  margin-top: 3.5%;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.userOtherData {
+  width: 97.5%;
+  height: 55%;
+  margin-top: 2.5%;
+  background-color: white;
+}
+.tableDiv {
+  width: 95%;
+  height: 50%;
+  margin-left: 2.5%;
+  border-left: 1px solid rgb(211, 211, 211);
+  border-top: 1px solid rgb(211, 211, 211);
+  border-bottom: 1px solid rgb(211, 211, 211);
+  overflow: scroll;
+}
+.userProfilePicture {
+  width: 40%;
+  height: 100%;
+
+  text-align: center;
+  background-color: white;
+}
+.profilePicture {
+  width: 65%;
+  height: 95%;
+  margin-top: 2.5%;
+  border-radius: 70%;
+}
+.userProfileInfo {
+  padding-top: 2.5%;
+  text-align: center;
+
+  width: 40%;
+  background-color: white;
+}
+.reservationsTable {
+  width: 100%;
+  height: 100%;
+}
+
+.reservationsTable th {
+  border-right: 1px solid lightgray;
+}
+.reservationsTable td {
+  border-right: 1px solid lightgray;
+}
+.navBarProfileBtn {
+  color: black;
+  text-decoration: none;
+}
+.navBarProfileBtn:hover {
+  color: black;
+  text-decoration: none;
+}
+.userProfileSideNav ul {
+  list-style: none;
+}
+
+.userProfileSideNav ul li {
+  width: 90%;
+  height: 5%;
+  text-align: center;
+  margin-top: 10%;
+  margin-left: 5%;
+  border-bottom: 1px solid rgb(197, 197, 197);
+}
+.userProfileSideNav ul li:first-child {
+  margin-top: 5%;
+}
+.userProfileSideNav ul li a {
+  color: black;
+  text-decoration: none;
+}
+.userProfileSideNav ul li a:hover {
+  color: orange;
+  text-decoration: none;
+}

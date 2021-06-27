@@ -4,23 +4,25 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class Tourist {
+    private String touristUsername;
     private String touristName;
     private String touristEmail;
 
-    public Tourist(String touristName, String touristEmail) {
-        this.touristName = touristName;
+    public Tourist(String touristUsername, String touristEmail,String touristName) {
+        this.touristUsername = touristUsername;
         this.touristEmail = touristEmail;
+        this.touristName=touristName;
     }
 
     public Tourist() {
     }
 
-    public String getTouristName() {
-        return touristName;
+    public String getTouristUsername() {
+        return touristUsername;
     }
 
-    public void setTouristName(String touristName) {
-        this.touristName = touristName;
+    public void setTouristUsername(String touristUsername) {
+        this.touristUsername = touristUsername;
     }
 
     public String getTouristEmail() {
@@ -29,5 +31,13 @@ public class Tourist {
 
     public void setTouristEmail(String touristEmail) {
         this.touristEmail = touristEmail;
+    }
+
+    public String getTouristName() {
+        return touristName;
+    }
+
+    public void setTouristName(String touristName) {
+        this.touristName = touristName;
     }
 }
