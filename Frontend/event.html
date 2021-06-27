@@ -9,7 +9,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="../Frontend/Js/eventValidation.js">
+    </script>
  <!--
   <script>
    $(function(){
@@ -131,34 +132,39 @@
         </button>
       </div>
       <div class="modal-body" >
+        <form  name="myForm" id="form" method="post" onsubmit="return validateForm()" >
+        <label for="crEventName">Name</label><br>
+        <input type="text" id="crEventName"name="name" placeholder="write name">
+        <div class="error" id="nameErr"></div>
 
-        <label for="crEventName">Name</label>
-        <input type="text" id="crEventName" placeholder="write name">
+        <label for="crEventDescription">Description</label><br>
+        <textarea name="" id="crEventDescription" cols="30" rows="2"name="description" placeholder="write description"></textarea>
+        <div class="error" id="descriptionErr"></div>
 
-        <label for="crEventDescription">Description</label>
+        <label for="crEventStartDate">Start Date</label><br>
+        <input type="date" id="crEventStartDate" name="startDate">
+        <div class="error" id="startDateErr"></div>
 
-        <textarea name="" id="crEventDescription" cols="30" rows="2" placeholder="write description"></textarea>
+        <label for="crEventStartTime">Start Time</label><br>
+        <input type="time" id="crEventStartTime" name="startTime">
+        <div class="error" id="startTimeErr"></div>
 
-        <label for="crEventStartDate">Start Date</label>
-        <input type="date" id="crEventStartDate">
+        <label for="crEventEndDate">End Date</label><br>
+        <input type="date" id="crEventEndDate"name="endDate">
+        <div class="error" id="endDateErr"></div>
 
-        <label for="crEventStartTime">Start Time</label>
-        <input type="time" id="crEventStartTime">
-
-        <label for="crEventEndDate">End Date</label>
-        <input type="date" id="crEventEndDate">
-
-        <label for="crEventPhoto">Photo</label>
-        <input type="file" id="crEventPhoto" accept="image/*" >
+        <label for="crEventPhoto">Photo</label><br>
+        <input type="file" id="crEventPhoto" accept="image/*"name="photo">
         <img src="" alt="" id="eventimg">
-
+        <div class="error" id="photoErr"></div>
+        </form>
         <label for="crEventCity">City</label>
-        <div >
+        <div>
           <select  id="crEventCity" class="form-control" name="crEventCity" onclick="return false" >
                      
           </select>
-     
         </div>
+
      
         <div id="tpdiv">
           <label for="crEventTouristPlace">Tourist Place</label>
@@ -173,7 +179,7 @@
       <div class="modal-footer">
         
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="crEventSaveChangesButton">Save changes</button>
+        <button type="button" class="btn btn-primary" id="crEventSaveChangesButton"onclick="return validateForm()">Save changes</button>
       </div>
     </div>
   </div>
