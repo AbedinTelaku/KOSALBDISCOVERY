@@ -9,7 +9,7 @@ $("#futureEventsButton").click(function(){
 function getFutureBusinesses() {
 
     $.ajax({
-        url: "http://localhost:8000/api/event/get/happening/events",
+        url: "http://localhost:8000/api/event/get/future/events",
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         dataType: "JSON",
@@ -28,9 +28,9 @@ function getFutureBusinesses() {
     });
 
 }
-
+var exec=false;
 function  showFutureEvents(eventsF){
-    if(isexecuted==true){
+    if(exec==false){
 
 
         var allEventsDiv = document.getElementById("futureEventsDiv");
@@ -99,4 +99,5 @@ function  showFutureEvents(eventsF){
         }
 
     }
+    exec=true;
 }

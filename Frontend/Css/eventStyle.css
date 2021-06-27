@@ -96,6 +96,22 @@ body {
   flex-wrap: wrap;
   overflow: scroll;
 }
+#futureEventsDiv {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow: scroll;
+}
+#finishedEventsDiv {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow: scroll;
+}
 #allEventsDiv {
   width: 100%;
   height: 100%;

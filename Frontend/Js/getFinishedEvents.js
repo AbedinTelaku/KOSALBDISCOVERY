@@ -28,9 +28,9 @@ function getFinishedBusinesses() {
     });
 
 }
-var isexecute=false;
+var isexecut=false;
 function  showFinishedEvents(events){
-    if(isexecute==false){
+    if(isexecut==false){
 
 
         var allEventsDiv = document.getElementById("finishedEventsDiv");
@@ -97,6 +97,6 @@ function  showFinishedEvents(events){
 
             allEventsDiv.appendChild(eventDiv)
         }
-        isexecute=true;
+        isexecut=true;
     }
 }

@@ -1,6 +1,8 @@
 var createEventDiv = document.getElementById("createEventDiv");
 var allEventsDiv = document.getElementById("allEventsDiv");
 var happeningEvents = document.getElementById("happeningEventsDiv");
+var finishedEvents=document.getElementById("finishedEventsDiv");
+var futureEvents=document.getElementById("futureEventsDiv");
 
 $("#allEventsButton").click(function (event) {
   if (allEventsDiv.classList == "hide") {
@@ -15,11 +17,40 @@ $("#createEventButton").click(function (event) {
 });
 $("#happeningEventsButton").click(function (event) {
   if (happeningEvents.classList == "hide") {
-    happeningEvents.classList.remove("hide");
+
     createEventDiv.classList.add("hide");
     allEventsDiv.classList.add("hide");
+    finishedEvents.classList.add("hide");
+    futureEvents.classList.add("hide");
+    happeningEvents.classList.remove("hide");
   } else {
     happeningEvents.classList.add("hide");
+  }
+});
+
+$("#finishedEventsButton").click(function (event) {
+  if (finishedEvents.classList == "hide") {
+
+    happeningEvents.classList.add("hide")
+    createEventDiv.classList.add("hide");
+    allEventsDiv.classList.add("hide");
+    futureEvents.classList.add("hide");
+    finishedEvents.classList.remove("hide");
+  } else {
+    finishedEvents.classList.add("hide");
+  }
+});
+
+$("#futureEventsButton").click(function (event) {
+  if (futureEvents.classList == "hide") {
+    finishedEvents.classList.add("hide");
+    allEventsDiv.classList.add("hide");
+    happeningEvents.classList.add("hide");
+    futureEvents.classList.remove("hide");
+    createEventDiv.classList.add("hide");
+
+  } else {
+    futureEvents.classList.add("hide");
   }
 });
 
