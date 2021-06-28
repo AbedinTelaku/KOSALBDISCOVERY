@@ -65,6 +65,9 @@ public class ReservationInvoice {
         Paragraph p7 = new Paragraph(reservation.getTourist().getTouristName(), bodyFont);
         p7.setAlignment(Paragraph.ALIGN_LEFT);
         System.out.println("\n");
+        Paragraph p14 = new Paragraph("Username: "+"  "+reservation.getTourist().getTouristUsername(), bodyFont);
+        p14.setAlignment(Paragraph.ALIGN_LEFT);
+        System.out.println("\n");
         Paragraph p8 = new Paragraph("Email: "+"  "+reservation.getTourist().getTouristEmail(), bodyFont);
         p8.setAlignment(Paragraph.ALIGN_LEFT);
 
@@ -98,12 +101,14 @@ public class ReservationInvoice {
         document.add(p5);
         document.add(p6);
         document.add(p7);
+        document.add(p14);
         document.add(p8);
         document.add(p9);
         document.add(p10);
         document.add(p11);
         document.add(p12);
         document.add(p13);
+
 
         document.close();
 

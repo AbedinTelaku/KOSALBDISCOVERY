@@ -54,9 +54,9 @@ public class ReservationService implements ReservationInputPort {
         BusinessHelper businessHelper = this.businessOutputPort.getBusinessByID(businessId);
         RoomHelper roomHelper = this.roomOutputPort.getRoomByID(roomId);
 
-       Tourist tourist = new Tourist(touristHelper.getName(),touristHelper.getEmail());
+       Tourist tourist = new Tourist(touristHelper.getUsername(),touristHelper.getEmail(),touristHelper.getName());
        Room room = new Room(roomHelper.getRoom_number(),roomHelper.getRoom_type(),roomHelper.getPrice(),roomHelper.getDiscount());
-       Business bussines = new Business(businessHelper.getName(), businessHelper.getEmail(), businessHelper.getTel_Number());
+       Business bussines = new Business(businessHelper.getName(), businessHelper.getEmail(), businessHelper.getTel_Number(),businessHelper.getUsername());
 
 
        reservationDomain.createReservation(reservationTime,reservationDate,checkInDate,checkOutDate,room,bussines,tourist);
@@ -66,6 +66,11 @@ public class ReservationService implements ReservationInputPort {
     public Reservation getReservationById(int id) {
         Optional<Reservation> optionalReservation = this.reservationRepository.findById(id);
         return optionalReservation.get();
+    }
+
+    @Override
+    public List<Reservation> getReservationsByUsername(String username) {
+        return this.reservationRepository.findReservationsByBusinessUsername(username);
     }
 
     @Override

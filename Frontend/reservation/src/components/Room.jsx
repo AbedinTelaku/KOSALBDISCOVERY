@@ -44,18 +44,6 @@ class Room extends Component {
         }
       );
 
-    //  console.log("Checkin Date: " + this.state.checkinDate);
-    //  console.log("Checkout Date: " + this.state.checkoutDate);
-    /*  var date = new Date();
-    axios.post("http://localhost:7000/pay/get/reservation", {
-      time: date.getTime(),
-      date: date.getDate(),
-      checkInDate: date.getDate(),
-      checkOutDate: date.getDate(),
-      roomId: 50,
-      businessId: 20,
-      touristUsername: "veprimmorina",
-    });*/
     var date = new Date();
     axios({
       method: "post",
@@ -74,14 +62,18 @@ class Room extends Component {
 
   sendReservationData() {
     var date = new Date();
-    axios.post("http://localhost:7000/payment/get/reservation", {
-      time: "20:00:00",
-      date: date.getDate(),
-      checkInDate: this.state.checkinDate,
-      checkOutDate: this.state.checkoutDate,
-      roomId: "Adriatiku",
-      businessId: 20,
-      touristUsername: "Sadio Mane",
+    axios({
+      method: "post",
+      url: "http://localhost:7000/payment/get/reservation",
+      data: {
+        time: "20:00:00",
+        date: date.getDate(),
+        checkInDate: date.getDate(),
+        checkOutDate: date.getDate(),
+        roomId: 50,
+        businessId: 20,
+        touristUsername: "abedintelaku",
+      },
     });
   }
   getCheckInDate = (event) => {

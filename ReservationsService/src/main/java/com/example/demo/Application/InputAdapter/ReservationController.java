@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 @RestController
 @RequestMapping("api/reservation")
@@ -50,4 +51,10 @@ public class ReservationController {
         invoiceExporter.export(response);
 
     }
+
+    @GetMapping("/get/reservations/{username}")
+    public List<Reservation> getAllReservationsBy(@PathVariable("username") String username){
+        return this.reservationInputPort.getReservationsByUsername(username);
+    }
+
 }
