@@ -37,13 +37,10 @@ public class BusinessService implements IBusinessService {
 
     @Override
     public Business getBusinessByUsername(String username) {
-        Business optionalBusiness= this.businessRepository.findBusinessByUsername(username);
+        Optional<Business> optionalBusiness= this.businessRepository.findBusinessByUsername(username);
 
-        if(optionalBusiness == null){
-            return null;
-        }else{
-            return optionalBusiness;
-        }
+            return optionalBusiness.get();
+
 
 
     }

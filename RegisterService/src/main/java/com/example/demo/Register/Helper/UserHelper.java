@@ -1,4 +1,4 @@
-package com.example.gatewayservice.Authentication.Core.Helper;
+package com.example.demo.Register.Helper;
 
 import java.io.Serializable;
 
@@ -6,13 +6,9 @@ public class UserHelper implements Serializable {
     private String username;
     private String password;
 
-
     public UserHelper(String username, String password) {
         this.username = username;
         this.password = password;
-    }
-
-    public UserHelper() {
     }
 
     public String getUsername() {

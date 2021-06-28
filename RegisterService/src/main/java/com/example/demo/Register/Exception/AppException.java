@@ -1,4 +1,4 @@
-package com.example.gatewayservice.Authentication.Core.Exception;
+package com.example.demo.Register.Exception;
 
 import org.springframework.http.HttpStatus;
 

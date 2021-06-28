@@ -1,4 +1,4 @@
-package com.example.gatewayservice.Authentication.Core.Helper;
+package com.example.demo.Register.Helper;
 
 import java.io.Serializable;
 

@@ -1,12 +1,13 @@
-package com.example.gatewayservice.Authentication.Core.Helper;
+package com.example.gatewayservice.Helper;
 
 import java.io.Serializable;
 
-public class SignInHelper implements Serializable {
+public class ResponseHelper implements Serializable {
+
     private String username;
     private String token;
 
-    public SignInHelper(String username, String token) {
+    public ResponseHelper(String username, String token) {
         this.username = username;
         this.token = token;
     }

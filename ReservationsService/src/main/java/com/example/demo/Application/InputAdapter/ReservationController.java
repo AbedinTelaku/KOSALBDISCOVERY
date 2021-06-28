@@ -3,7 +3,9 @@ package com.example.demo.Application.InputAdapter;
 import com.example.demo.Application.InputPort.ReservationInputPort;
 import com.example.demo.Core.Domain.ReservationInvoice;
 import com.example.demo.Core.Entities.Reservation;
+import com.example.demo.Core.Helper.BusinessHelper;
 import com.example.demo.Core.Helper.ReservationHelper;
+import com.example.demo.Core.OutputPort.BusinessOutputPort;
 import com.lowagie.text.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +23,9 @@ public class ReservationController {
 
     @Autowired
     private ReservationInputPort reservationInputPort;
+
+    @Autowired
+    private BusinessOutputPort businessOutputPort;
 
     public ReservationController(ReservationInputPort reservationInputPort) {
         this.reservationInputPort = reservationInputPort;
@@ -57,4 +62,8 @@ public class ReservationController {
         return this.reservationInputPort.getReservationsByUsername(username);
     }
 
+    @GetMapping("/get/businessHelper")
+    public BusinessHelper getBusinessHelper(){
+        return this.businessOutputPort.getBusinessByID(20);
+    }
 }

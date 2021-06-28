@@ -1,6 +1,7 @@
 package com.example.demo.Register.Service;
 
 import com.example.demo.Register.Helper.GeneralResponse;
+import com.example.demo.Register.Helper.UserHelper;
 import com.example.demo.Register.Models.Admin;
 import com.example.demo.Register.Models.Business;
 import com.example.demo.Register.Models.Tourist;
@@ -8,7 +9,6 @@ import com.example.demo.Register.Repository.AdminRepository;
 import com.example.demo.Register.Repository.BusinessRepository;
 import com.example.demo.Register.Repository.TouristRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -58,7 +58,7 @@ public class UserService implements IUserService{
     }
 
     @Override
-    public ResponseEntity<?> checkIfUserIsValid(String username, String password) {
+    public boolean checkIfUserIsValid(String username, String password) {
 
         Optional<Business> businessOptional = this.businessRepository.findBusinessByUsernameAndPassword(username,password);
         Optional<Tourist> optionalTourist = this.touristRepository.findTouristByUsernameAndPassword(username,password);
@@ -66,15 +66,22 @@ public class UserService implements IUserService{
         if (!businessOptional.isPresent()) {
             if(!optionalTourist.isPresent()){
                 if(!optionalAdmin.isPresent()){
-                    return  ResponseEntity.notFound().build();
+                    return  false;
                 }else{
-                    return ResponseEntity.ok(true);
+                    return true;
                 }
             }else{
-                return ResponseEntity.ok(true);
+                return true;
             }
         } else {
-            return ResponseEntity.ok(true);
+            return true;
         }
     }
+
+    @Override
+    public UserHelper getUserByUsername(String username) {
+        return null;
+    }
+
+
 }

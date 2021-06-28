@@ -1,4 +1,4 @@
-package com.example.gatewayservice.Authentication.Core.Config;
+package com.example.gatewayservice.Config;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;

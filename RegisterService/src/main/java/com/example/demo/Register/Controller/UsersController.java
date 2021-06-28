@@ -94,7 +94,7 @@ public class UsersController {
   //  }
 
     @GetMapping("/check/user/{username}/{password}")
-        public ResponseEntity<?> checkIfUserIsValid(@PathVariable("username") String username, @PathVariable("password") String password){
+        public boolean checkIfUserIsValid(@PathVariable("username") String username, @PathVariable("password") String password){
            return this.iUserService.checkIfUserIsValid(username,password);
         }
 

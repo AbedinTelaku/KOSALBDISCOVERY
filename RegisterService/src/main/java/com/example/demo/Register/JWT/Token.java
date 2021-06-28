@@ -1,28 +1,23 @@
-package com.example.gatewayservice.Authentication.Core.Domain;
+package com.example.demo.Register.JWT;
 
-
-import com.example.gatewayservice.Authentication.Core.Exception.AppException;
-import com.example.gatewayservice.Authentication.Core.Helper.ResponseHelper;
-import com.example.gatewayservice.Authentication.Core.Helper.UserHelper;
-import com.example.gatewayservice.Authentication.Core.OutputPort.AuthenticateOutputPort;
+import com.example.demo.Register.Exception.AppException;
+import com.example.demo.Register.Helper.ResponseHelper;
+import com.example.demo.Register.Helper.UserHelper;
+import com.example.demo.Register.Service.UserService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
-
 
 import javax.annotation.PostConstruct;
 import java.util.Base64;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.function.Function;
 
 @Component
-public class AuthenticationDomain {
+public class Token {
     private static final long serialVersionUID = 234234523523L;
 
     public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
@@ -31,7 +26,7 @@ public class AuthenticationDomain {
     private String secretKey="secretkey123secretkey123secretkey123secretkey123";
 
     @Autowired
-    private AuthenticateOutputPort authenticateOutputPort;
+    private UserService userService;
 
     @PostConstruct
     protected void init() {
@@ -91,7 +86,7 @@ public class AuthenticationDomain {
     //validate token
     public Boolean validateToken(String token) {
         final String username = getUsernameFromToken(token);
-        UserHelper user = this.authenticateOutputPort.getUserByUsername(username);
+        UserHelper user = this.userService.getUserByUsername(username);
 
         if(username.equals(user.getUsername()) && !isTokenExpired(token)) {
             return true;

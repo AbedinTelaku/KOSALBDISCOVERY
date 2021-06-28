@@ -5,7 +5,21 @@ import { FaAt } from "react-icons/fa";
 import ReservationsTable from "./ReservationsTable";
 
 class UserProfile extends Component {
-  state = {};
+  state = {
+    business: "",
+    city: "",
+  };
+  componentDidMount() {
+    fetch(
+      "http://localhost:8080/api/register/business/get/business/byUsername/" +
+        this.props.match.params.username
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        this.setState({ business: data, city: data.city });
+        console.log();
+      });
+  }
   render() {
     console.log(this.props.match.params.username);
     return (
@@ -44,16 +58,20 @@ class UserProfile extends Component {
                 />
               </div>
               <div className="userProfileInfo">
-                <h2 style={{ color: "orange" }}>User Name</h2>
-                <h6>
+                <h2 style={{ color: "orange", "margin-bottom": "10%" }}>
+                  {this.state.business.name}
+                </h2>
+                <h6 style={{ "margin-bottom": "5%" }}>
                   <FaPhoneAlt style={{ color: "orange" }} />
-                  Phone number
+                  {this.state.business.tel_Number}
+                </h6>
+                <h6 style={{ "margin-bottom": "5%" }}>
+                  <FaAt style={{ color: "orange" }} />{" "}
+                  {this.state.business.email}
                 </h6>
                 <h6>
-                  <FaAt style={{ color: "orange" }} /> email address
-                </h6>
-                <h6>
-                  <FaMapMarkerAlt style={{ color: "orange" }} /> address
+                  <FaMapMarkerAlt style={{ color: "orange" }} />{" "}
+                  {this.state.city.name}
                 </h6>
               </div>
             </div>
