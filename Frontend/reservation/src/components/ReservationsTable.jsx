@@ -81,7 +81,7 @@ class ReservationsTable extends Component {
             <tr>
               <th style={{ "border-left": "1px solid lightgray" }}>ID</th>
               <th>Checkin Date</th>
-              <th>checkout Date</th>
+              <th>Checkout Date</th>
               <th>Room Type</th>
               <th>Room Number</th>
               <th>Room Price</th>

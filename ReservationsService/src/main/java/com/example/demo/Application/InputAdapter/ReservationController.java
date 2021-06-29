@@ -66,4 +66,9 @@ public class ReservationController {
     public BusinessHelper getBusinessHelper(){
         return this.businessOutputPort.getBusinessByID(20);
     }
+
+    @GetMapping("/get/roomreservations/number/{roomType}/{businessUsername}")
+    public int getRoomReservationsByRoomType(@PathVariable("roomType") String roomType,@PathVariable("businessUsername") String businessUsername){
+        return this.reservationInputPort.getRoomReservationNumberByRoomType(roomType,businessUsername);
+    }
 }

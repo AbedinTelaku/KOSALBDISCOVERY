@@ -49,4 +49,10 @@ public class RoomController {
         this.iRoomService.deleteRoomById(id);
     }
 
+    @GetMapping("/get/roomtypes/{username}")
+    public List<String> getRoomTypesByBusinessId(@PathVariable("username") String username){
+        return this.iRoomService.getAllRoomTypesByBusinessId(username);
+    }
+
+
 }
