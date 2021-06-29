@@ -24,13 +24,11 @@ spring:
          # filters:
           #  - AuthFilter
 
-            Path=/api/event/**
-          filters:
-            - AuthFilter
+
         - id: reservation-service
           uri: lb://RESERVATION-SERVICE/
           predicates:
-            Path=/api/reservation/**
+            - Path=/api/reservation/**
           filters:
             - AuthFilter
 
