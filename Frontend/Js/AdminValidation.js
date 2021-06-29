@@ -47,3 +47,15 @@ function validateForm() {
         return false;
     }
 }
+function validateCity(){
+    let name = document.forms["myForm"]["name"].value;
+    let zip = document.forms["myForm"]["zip"].value;
+    if(name == ""){
+        alert("Name must be filled out")
+        return false;
+    }
+    if (zip == ""){
+        alert("Zip Code must be filled out");
+        return false;
+    }
+}
