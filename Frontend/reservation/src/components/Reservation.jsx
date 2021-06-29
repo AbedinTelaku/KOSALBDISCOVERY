@@ -22,7 +22,7 @@ export default class Reservation extends Component {
     const sideBarElList = this.state.sidebarElements.map((sideelement, i) => (
       <li key={i}>{sideelement}</li>
     ));
-    console.log(this.props.match.params.id);
+    console.log(this.props.match.params.username);
     return (
       <div className="pageMainDiv">
         <div className="appContainer">
@@ -32,7 +32,7 @@ export default class Reservation extends Component {
           </div>
 
           <div className="roomsContainer">
-            <Rooms businessId={this.props.match.params.id} />
+            <Rooms businessUsername={this.props.match.params.username} />
           </div>
         </div>
       </div>

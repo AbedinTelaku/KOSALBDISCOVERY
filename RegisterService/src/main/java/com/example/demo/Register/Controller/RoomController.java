@@ -39,9 +39,9 @@ public class RoomController {
         return this.iRoomService.getAllRooms();
     }
 
-    @GetMapping("/get/all/rooms/{businessId}")
-    public List<Room> getAllRoomsByBusinessId(@PathVariable("businessId") int businessId){
-       return this.iRoomService.getAllRoomsByBusinessId(businessId);
+    @GetMapping("/get/all/rooms/{businessUsername}")
+    public List<Room> getAllRoomsByBusinessId(@PathVariable("businessUsername") String businessUsername){
+       return this.iRoomService.getAllRoomsByBusinessUsername(businessUsername);
     }
 
     @PostMapping("/delete/room/{id}")
@@ -54,5 +54,23 @@ public class RoomController {
         return this.iRoomService.getAllRoomTypesByBusinessId(username);
     }
 
+    @GetMapping("/get/availableroom")
+    public Room getAvailableRoom(){
+        return this.iRoomService.getFirstAvailableRoom();
+    }
 
+    @PostMapping("/set/room/unavailable/{roomNumber}")
+    public void setReservedRoomUnavailable(@PathVariable("roomNumber") int roomNumber){
+      this.iRoomService.setReservedRoomUnavailable(roomNumber);
+    }
+
+    @PostMapping("/set/room/available/{roomNumber}")
+    public void setRoomAvailable(@PathVariable("roomNumber") int roomNumber){
+         this.iRoomService.setRoomAvailable(roomNumber);
+    }
+
+    @GetMapping("/get/room/by/roomNumber/{roomNumber}")
+    public Room getRoomsByRoomNumber(@PathVariable("roomNumber") int roomNumber){
+       return this.iRoomService.getRoomByRoomNumber(roomNumber);
+    }
 }

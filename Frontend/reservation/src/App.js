@@ -12,7 +12,7 @@ function App() {
         <div className="appContent">
           <Switch>
             <Route
-              path="/rooms/:id"
+              path="/rooms/:username"
               name="Reservation"
               component={Reservation}
             ></Route>

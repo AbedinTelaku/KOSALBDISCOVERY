@@ -5,5 +5,5 @@ import com.example.demo.Core.Helper.BusinessHelper;
 
 public interface BusinessOutputPort {
 
-    BusinessHelper getBusinessByID(int id);
+    BusinessHelper getBusinessByUsername(String username);
 }

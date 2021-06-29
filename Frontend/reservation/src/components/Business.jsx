@@ -6,13 +6,14 @@ class Business extends Component {
   state = {
     id: this.props.id,
     name: this.props.name,
+    username: this.props.username,
     address: this.props.address,
   };
 
   render() {
     return (
       <div className="business">
-        <Link to={"/rooms/" + this.state.id} className="businessLink">
+        <Link to={"/rooms/" + this.state.username} className="businessLink">
           <div className="businessContent">
             <div className="businessImgDiv">
               <img

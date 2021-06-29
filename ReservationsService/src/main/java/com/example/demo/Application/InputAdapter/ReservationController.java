@@ -1,6 +1,7 @@
 package com.example.demo.Application.InputAdapter;
 
 import com.example.demo.Application.InputPort.ReservationInputPort;
+import com.example.demo.Core.Domain.BusinessReservationsReports;
 import com.example.demo.Core.Domain.ReservationInvoice;
 import com.example.demo.Core.Entities.Reservation;
 import com.example.demo.Core.Helper.BusinessHelper;
@@ -33,7 +34,7 @@ public class ReservationController {
 
     @PostMapping("/create/reservation")
     public void createReservation(@RequestBody ReservationHelper reservationHelper){
-        this.reservationInputPort.createReservation(reservationHelper.getTime(),reservationHelper.getDate(),reservationHelper.getCheckInDate(),reservationHelper.getCheckOutDate(),reservationHelper.getRoomId(),reservationHelper.getBusinessId(),reservationHelper.getTouristUsername());
+        this.reservationInputPort.createReservation(reservationHelper.getTime(),reservationHelper.getDate(),reservationHelper.getCheckInDate(),reservationHelper.getCheckOutDate(),reservationHelper.getBusinessUsername(),reservationHelper.getTouristUsername());
 
     }
 
@@ -56,6 +57,20 @@ public class ReservationController {
         invoiceExporter.export(response);
 
     }
+    @GetMapping("/export/reservations/PDF/{businessusername}")
+    public void exportReservationsToPDF(@PathVariable("businessusername") String businessUsername, HttpServletResponse response) throws DocumentException, IOException {
+
+
+
+        response.setContentType("application/pdf");
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=reservation_"+"reports" + ".pdf";
+        response.setHeader(headerKey, headerValue);
+
+        BusinessReservationsReports businessReservationsReports = new BusinessReservationsReports(this.reservationInputPort,this.businessOutputPort);
+        businessReservationsReports.export(businessUsername,response);
+
+    }
 
     @GetMapping("/get/reservations/{username}")
     public List<Reservation> getAllReservationsBy(@PathVariable("username") String username){
@@ -64,11 +79,21 @@ public class ReservationController {
 
     @GetMapping("/get/businessHelper")
     public BusinessHelper getBusinessHelper(){
-        return this.businessOutputPort.getBusinessByID(20);
+        return this.businessOutputPort.getBusinessByUsername("");
     }
 
     @GetMapping("/get/roomreservations/number/{roomType}/{businessUsername}")
     public int getRoomReservationsByRoomType(@PathVariable("roomType") String roomType,@PathVariable("businessUsername") String businessUsername){
         return this.reservationInputPort.getRoomReservationNumberByRoomType(roomType,businessUsername);
+    }
+
+    @GetMapping("/get/get")
+    public List<String> getGet(){
+       return this.reservationInputPort.getReservedRoomTypes("empireHotel");
+    }
+
+    @PostMapping("/update")
+    public void updateAvailability(){
+        this.reservationInputPort.updateRoomAvailability();
     }
 }

@@ -49,6 +49,7 @@ class Businesses extends Component {
         key={business.id}
         id={business.id}
         name={business.name}
+        username={business.username}
         address={business.city.name}
       />
     ));
