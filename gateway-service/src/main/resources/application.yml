@@ -38,6 +38,10 @@ spring:
           uri: http://localhost:8080/
           predicates:
             - Path=/api/register/**
+        - id: PaymentService
+          uri: http://localhost:8080/
+          predicates:
+            - Path=/api/payment/**
   application:
     name: gateway-api-service
 
