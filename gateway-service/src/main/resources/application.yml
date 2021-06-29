@@ -13,7 +13,6 @@ spring:
         - id: event-service
           uri: http://localhost:8000/
           predicates:
-
             - Path=/api/event/**
           #filters:
            # - AuthFilter
@@ -23,16 +22,6 @@ spring:
             - Path=/api/reservation/**
          # filters:
           #  - AuthFilter
-
-            Path=/api/event/**
-          filters:
-            - AuthFilter
-        - id: reservation-service
-          uri: lb://RESERVATION-SERVICE/
-          predicates:
-            Path=/api/reservation/**
-          filters:
-            - AuthFilter
 
         - id: RegisterService
           uri: http://localhost:8080/
