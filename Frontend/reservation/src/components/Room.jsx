@@ -96,7 +96,10 @@ class Room extends Component {
     return (
       <div className="room">
         <div className="roomPhotos">
-          <img src="" alt="pht1" />
+          <img
+            src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F28%2F2017%2F10%2Fliving-room-hotel-president-wilson-geneva-EXPENSIVESUITE1017.jpg"
+            alt="pht1"
+          />
         </div>
         <div className="roomInfo">
           <h4>{this.state.type}</h4>

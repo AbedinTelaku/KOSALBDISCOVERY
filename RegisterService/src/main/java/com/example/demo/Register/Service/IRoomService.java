@@ -13,5 +13,7 @@ public interface IRoomService {
     List<Room> getAllRoomsByBusinessId(int id);
     void deleteRoomById(int id);
     void editRoom(int id,int roomNumber, String roomType, boolean isAvailable, Business business);
+    List<String> getAllRoomTypesByBusinessId(String username);
+
 
 }

@@ -82,4 +82,10 @@ public class ReservationService implements ReservationInputPort {
     public void deleteReservation(int id) {
      this.reservationRepository.deleteById(id);
     }
+
+    @Override
+    public int getRoomReservationNumberByRoomType(String roomType, String businessUsername) {
+        List<Reservation> reservations = this.reservationRepository.findReservationsByRoomType(roomType,businessUsername);
+        return reservations.size();
+    }
 }

@@ -6,6 +6,7 @@ import com.example.demo.Register.Repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,6 +58,23 @@ public class RoomService implements IRoomService{
 
     @Override
     public void editRoom(int id, int roomNumber, String roomType, boolean isAvailable, Business business) {
+
+    }
+
+    @Override
+    public List<String> getAllRoomTypesByBusinessId(String username) {
+        List<String> roomTypes = new ArrayList<String>();
+        Business business = this.iBusinessService.getBusinessByUsername(username);
+        List<Room> rooms = this.roomRepository.getRoomsByBusinessId(business.getBusiness_ID());
+
+        for(Room r : rooms){
+            String roomType = r.getRoom_type();
+            if(!roomTypes.contains(roomType)) {
+                roomTypes.add(roomType);
+            }
+        }
+            return roomTypes;
+
 
     }
 }

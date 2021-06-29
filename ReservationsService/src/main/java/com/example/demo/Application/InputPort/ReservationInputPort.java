@@ -15,4 +15,5 @@ public interface ReservationInputPort {
     List<Reservation> getReservationsByUsername(String username);
     List<Reservation> getAllReservations();
     void deleteReservation(int id);
+    int getRoomReservationNumberByRoomType(String roomType, String businessUsername);
 }
