@@ -2,6 +2,7 @@ package com.example.demo.Application.InputAdapter;
 import com.example.demo.Application.InputPort.EventInputport;
 import com.example.demo.Core.Entities.Event;
 import com.example.demo.Core.Helper.EventHelper;
+import com.example.demo.Core.Helper.EventParticipantHelper;
 import com.example.demo.Core.Helper.EventStatusHelper;
 import com.example.demo.Core.OutputPort.UserOutputPort;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,5 +59,9 @@ public class EventController {
         return this.eventInputport.getFutureEvents();
     }
 
+    @PostMapping("/create/eventparticipant")
+    public void createEventParticipants(@RequestBody EventParticipantHelper eventParticipantHelper){
+       this.eventInputport.createEventParticipant(eventParticipantHelper.getUsername(),eventParticipantHelper.getId());
+    }
 
 }

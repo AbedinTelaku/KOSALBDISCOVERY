@@ -84,9 +84,9 @@ public class Token {
 
 
     //validate token
-    public Boolean validateToken(String token) {
+    /*public Boolean validateToken(String token) {
         final String username = getUsernameFromToken(token);
-        UserHelper user = this.userService.getUserByUsername(username);
+        //UserHelper user = this.userService.getUserByUsername(username).getData();
 
         if(username.equals(user.getUsername()) && !isTokenExpired(token)) {
             return true;
@@ -94,8 +94,8 @@ public class Token {
             return false;
         }
 
-    }
-
+    }*/
+/*
     public ResponseHelper getResponseHelperFromValidToken(String token){
         if(validateToken(token)){
             String username = getUsernameFromToken(token);
@@ -104,5 +104,5 @@ public class Token {
             throw new AppException("Invalid Token", HttpStatus.BAD_REQUEST);
         }
     }
-
+*/
 }

@@ -2,11 +2,11 @@ package com.example.demo.Core.Services;
 
 import com.example.demo.Application.InputPort.EventInputport;
 import com.example.demo.Core.Domain.EventDomain;
-import com.example.demo.Core.Entities.City;
-import com.example.demo.Core.Entities.Event;
-import com.example.demo.Core.Entities.TouristPlace;
-import com.example.demo.Core.Entities.User;
+import com.example.demo.Core.Entities.*;
+import com.example.demo.Core.Helper.UserHelper;
+import com.example.demo.Core.OutputPort.EventParticipantRepository;
 import com.example.demo.Core.OutputPort.EventRepository;
+import com.example.demo.Core.OutputPort.NotificationOutputPort;
 import com.example.demo.Core.OutputPort.UserOutputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,8 +21,17 @@ public class EventService implements EventInputport {
 
 @Autowired
 private EventRepository eventRepository;
+
 @Autowired
 private UserOutputPort userOutputPort;
+
+@Autowired
+private EventInputport eventInputport;
+
+@Autowired
+private EventParticipantRepository eventParticipantRepository;
+@Autowired
+private NotificationOutputPort notificationOutputPort;
 
 private EventDomain eventDomain;
 
@@ -84,6 +93,16 @@ private EventDomain eventDomain;
     public List<Event> getFutureEvents() {
         String status="Future";
         return this.eventRepository.findByStatus(status);
+    }
+
+    @Override
+    public void createEventParticipant(String username,int eventId) {
+        this.eventDomain=new EventDomain(this.eventRepository);
+        UserHelper userHelper = this.userOutputPort.getUserByUsername(username);
+        Event event=this.eventInputport.getEventById(eventId);
+        EventParticipants eventParticipants =new EventParticipants(userHelper.getName(),userHelper.getUsername(),userHelper.getEmail(),event);
+        this.eventParticipantRepository.save(eventParticipants);
+        this.notificationOutputPort.sendEmail(userHelper.getEmail());
     }
 
 }

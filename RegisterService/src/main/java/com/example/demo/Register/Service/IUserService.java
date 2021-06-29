@@ -9,5 +9,5 @@ public interface IUserService {
 
     boolean checkIfUserIsValid(String username, String password);
 
-    UserHelper getUserByUsername(String username);
+    GeneralResponse<?> getUserByUsername(String username);
 }

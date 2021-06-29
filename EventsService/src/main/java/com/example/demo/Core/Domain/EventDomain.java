@@ -5,6 +5,7 @@ import com.example.demo.Core.Entities.Event;
 import com.example.demo.Core.Entities.TouristPlace;
 import com.example.demo.Core.Entities.User;
 import com.example.demo.Core.OutputPort.EventRepository;
+import com.example.demo.Core.OutputPort.NotificationOutputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.Date;
@@ -14,6 +15,9 @@ public class EventDomain {
 
     @Autowired
     private EventRepository eventRepository;
+
+    @Autowired
+    private NotificationOutputPort notificationOutputPort;
 
     public EventDomain(EventRepository eventRepository) {
         this.eventRepository = eventRepository;
@@ -46,5 +50,9 @@ public class EventDomain {
     public void updateEvent(){
 
         //editEvent();
+    }
+
+    public void sendEmail(String email){
+      this.notificationOutputPort.sendEmail(email);
     }
 }

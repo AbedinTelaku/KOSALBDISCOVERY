@@ -13,7 +13,7 @@ import java.util.Optional;
 public interface TouristRepository extends JpaRepository<Tourist, Integer> {
 
     @Query(value = "select * from tourist where username=?1", nativeQuery = true)
-    public Tourist findTouristByUsername(String username);
+    public Optional<Tourist> findTouristByUsername(String username);
 
     @Query(value = "select * from tourist where username=:username and password=:password", nativeQuery = true)
     public Optional<Tourist> findTouristByUsernameAndPassword(@Param("username") String username, @Param("password") String password);

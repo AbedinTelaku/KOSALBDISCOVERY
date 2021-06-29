@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/email")
 public class EmailController {
+    //asinkron
+
     @Autowired
     private EmailInputPort emailInputPort;
 
@@ -18,9 +20,9 @@ public class EmailController {
         this.emailInputPort=emailInputPort;
     }
 
-    @PostMapping("/message")
-    public String sendEmailMessage(@RequestBody TouristHelper touristHelper){
-        this.emailInputPort.sendMessage(touristHelper.getEmail(), "Confirmation", "By this email we are confirming your participation for event");
+    @PostMapping("/message/{email}")
+    public String sendEmailMessage(@PathVariable("email") String email){
+        this.emailInputPort.sendMessage(email, "Confirmation", "By this email we are confirming your participation for event");
           return "Message is sent";
     }
 

@@ -18,6 +18,7 @@ public interface EventInputport {
     List<Event> getHappeningEvents();
     List<Event> getFinishedEvents();
     List<Event> getFutureEvents();
+    void createEventParticipant(String username, int eventId);
 
 
 }

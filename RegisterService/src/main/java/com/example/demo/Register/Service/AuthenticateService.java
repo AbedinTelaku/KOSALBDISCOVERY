@@ -37,7 +37,7 @@ public class AuthenticateService implements IAuthenticateService {
 
         throw new AppException("Invalid Password or Username", HttpStatus.BAD_REQUEST);
     }
-
+/*
     @Override
     public boolean validateToken(String token) {
         return this.token.validateToken(token);
@@ -46,5 +46,5 @@ public class AuthenticateService implements IAuthenticateService {
     @Override
     public ResponseHelper getResponseHelperFromValidToken(String token) {
         return this.token.getResponseHelperFromValidToken(token);
-    }
+    }*/
 }

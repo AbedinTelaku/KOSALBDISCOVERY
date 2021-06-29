@@ -2,6 +2,7 @@ $("#happeningEventsButton").click(function () {
   getHappeningBusinesses();
 });
 
+
 function getHappeningBusinesses() {
   $.ajax({
     url: "http://localhost:8000/api/event/get/happening/events",
@@ -78,17 +79,35 @@ function showHappeningEvents(eventsH) {
       var descriptionP = document.createElement("p");
       var description = document.createTextNode(event.description);
       descriptionP.appendChild(description);
+      var butDiv=document.createElement("div");
 
+      var but=document.createElement("button");
+      var bd=document.createTextNode("Going");
+      but.classList.add("eventButton");
+      but.appendChild(bd);
       //  descriptionDiv.appendChild(descriptionH4)
-      descriptionDiv.appendChild(descriptionP);
+      descriptionDiv.appendChild(descriptionP)
 
+      descriptionDiv.appendChild(but)
       ////
-      eventDiv.appendChild(imgDiv);
-      eventDiv.appendChild(nameDateDiv);
-      eventDiv.appendChild(descriptionDiv);
+      eventDiv.appendChild(imgDiv)
+      eventDiv.appendChild(nameDateDiv)
+      eventDiv.appendChild(descriptionDiv)
+      eventDiv.appendChild(butDiv)
+      //button
+
+      dateDiv.appendChild(but)
+
 
       allEventsDiv.appendChild(eventDiv);
+
+      $(".eventButton").click(function (){
+
+        happeningEvents.classList.add("hide");
+
+      })
     }
     isexec = true;
   }
 }
+

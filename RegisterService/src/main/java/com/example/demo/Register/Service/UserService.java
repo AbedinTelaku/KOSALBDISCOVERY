@@ -79,8 +79,28 @@ public class UserService implements IUserService{
     }
 
     @Override
-    public UserHelper getUserByUsername(String username) {
-        return null;
+    public GeneralResponse<?> getUserByUsername(String username) {
+        Optional<Business> businessOptional = this.businessRepository.findBusinessByUsername(username);
+        Optional<Tourist> optionalTourist = this.touristRepository.findTouristByUsername(username);
+        Optional<Admin> optionalAdmin = this.adminRepository.findAdminByUsername(username);
+
+        if(!businessOptional.isPresent()){
+
+            if(!optionalTourist.isPresent()){
+
+                if(!optionalAdmin.isPresent()){
+                    return new GeneralResponse.GeneralResponseBuilder(401).setError("User doesn't exist!").build();
+                }else{
+                    return new GeneralResponse.GeneralResponseBuilder(201).setData(optionalAdmin.get()).build();
+                }
+            }else{
+
+                return new GeneralResponse.GeneralResponseBuilder(201).setData(optionalTourist.get()).build();
+            }
+        }else{
+            return new GeneralResponse.GeneralResponseBuilder(201).setData(businessOptional.get()).build();
+        }
+
     }
 
 

@@ -14,7 +14,7 @@ public class EventParticipants {
     private String name;
 
     @Column
-    private String surname;
+    private String username;
 
     @Column
     private String email;
@@ -23,9 +23,9 @@ public class EventParticipants {
     @JoinColumn
     private Event event;
 
-    public EventParticipants(String name,String surname,String email, Event event){
+    public EventParticipants(String name,String username,String email, Event event){
         this.name=name;
-        this.surname=surname;
+        this.username=username;
         this.email=email;
         this.event=event;
     }
@@ -42,8 +42,8 @@ public class EventParticipants {
         return name;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getUsername() {
+        return username;
     }
 
     public String getEmail() {
@@ -62,8 +62,8 @@ public class EventParticipants {
         this.name = name;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setUsername(String surname) {
+        this.username = surname;
     }
 
     public void setEmail(String email) {

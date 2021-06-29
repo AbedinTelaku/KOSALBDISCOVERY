@@ -157,7 +157,7 @@ body {
   width: 98%;
   border-top: 1px solid rgb(218, 218, 218);
   margin-left: 1%;
-  height: 20%;
+  height: 40%;
   font-family: Georgia;
   display: flex;
   flex-direction: column;
@@ -175,7 +175,18 @@ body {
   margin-top: 2%;
   margin-left: 20%;
 }
+.eventButton{
+  margin-left: 200px;
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+   width: 70px;
+  height: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
 
+}
 .modal-body {
   display: flex;
   flex-direction: column;

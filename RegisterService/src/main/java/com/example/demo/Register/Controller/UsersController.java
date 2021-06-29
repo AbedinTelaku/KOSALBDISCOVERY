@@ -1,5 +1,6 @@
 package com.example.demo.Register.Controller;
 
+import com.example.demo.Register.Helper.UserHelper;
 import com.example.demo.Register.Models.Admin;
 import com.example.demo.Register.Models.Business;
 import com.example.demo.Register.Models.Tourist;
@@ -56,29 +57,9 @@ public class UsersController {
         return numbers;
     }
     @GetMapping("/get/user/{username}")
-    public ResponseEntity<?> getUserByUsername(@PathVariable("username") String username) {
-        Business business = this.interfaceBusinessService.getBusinessByUsername(username);
+    public Object getUserByUsername(@PathVariable("username") String username) {
 
-
-
-      if (business == null) {
-          Tourist tourist = this.interfaceTouristService.getTouristByUsername(username);
-            if(tourist == null){
-                Admin admin = this.iAdminService.getAdminByUsername(username);
-                if(admin == null){
-
-                    return  ResponseEntity.notFound().build();
-                }else{
-                    return ResponseEntity.ok(admin);
-                }
-
-            }else{
-           return ResponseEntity.ok(tourist);
-             }
-        } else {
-            return ResponseEntity.ok(business);
-       }
-
+     return this.iUserService.getUserByUsername(username).getData();
     }
 
   //  @GetMapping("/check/user/{username}/{password}")

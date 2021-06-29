@@ -19,4 +19,15 @@ public class UserOutputAdapter implements UserOutputPort {
 
         return name;
     }
+
+    @Override
+    public UserHelper getUserByUsername(String username) {
+        RestTemplate restTemplate =new RestTemplate();
+        String registerServiceURL = "http://localhost:8080/api/register/user/get/user/"+username;
+        ResponseEntity<UserHelper> responseEntity = restTemplate.getForEntity(registerServiceURL,UserHelper.class);
+
+        return responseEntity.getBody();
+
+
+    }
 }

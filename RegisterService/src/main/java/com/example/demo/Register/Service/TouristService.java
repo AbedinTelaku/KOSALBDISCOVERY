@@ -34,9 +34,9 @@ public class TouristService implements ITouristService {
 
     @Override
     public Tourist getTouristByUsername(String username) {
-      Tourist tourist = this.touristRepository.findTouristByUsername(username);
+      Optional<Tourist> tourist = this.touristRepository.findTouristByUsername(username);
 
-      return tourist;
+      return tourist.get();
 
 
     }

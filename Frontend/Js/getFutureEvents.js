@@ -69,7 +69,10 @@ function  showFutureEvents(eventsF){
             var dateH3=document.createElement("h4");
             var date = document.createTextNode("Start: "+event.startDate+"."+"     Time: "+ event.startTime)
 
+
+
             dateH3.appendChild(date)
+
             dateDiv.appendChild(dateH3)
 
             nameDateDiv.appendChild(nameDiv)
@@ -86,18 +89,50 @@ function  showFutureEvents(eventsF){
             var descriptionP=document.createElement("p");
             var description=document.createTextNode(event.description);
             descriptionP.appendChild(description);
+            var butDiv=document.createElement("div");
 
+            var but=document.createElement("button");
+            var bd=document.createTextNode("Going");
+            but.classList.add("eventButton");
+            but.appendChild(bd);
             //  descriptionDiv.appendChild(descriptionH4)
             descriptionDiv.appendChild(descriptionP)
-
+            descriptionDiv.appendChild(but)
             ////
             eventDiv.appendChild(imgDiv)
             eventDiv.appendChild(nameDateDiv)
             eventDiv.appendChild(descriptionDiv)
+            eventDiv.appendChild(butDiv)
+            //button
+
+            dateDiv.appendChild(but)
+
+
 
             allEventsDiv.appendChild(eventDiv)
         }
 
     }
     exec=true;
+}
+
+function createEventParticipant(username){
+    $.ajax({
+        url: "http://localhost:8080/api/business/create/business",
+        type: 'post',
+        contentType: "application/json; charset=utf-8",
+        // dataType: "json",
+        data: JSON.stringify(business),
+        success: function (res) {
+            // localStorage.setItem('kuizi', JSON.stringify(res))
+
+            console.log(business)
+
+
+        },
+        error: function (request, status, error) {
+            console.log(error);
+            console.log(status);
+        }
+    })
 }

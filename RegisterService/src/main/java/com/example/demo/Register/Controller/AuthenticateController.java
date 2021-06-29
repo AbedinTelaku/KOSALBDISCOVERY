@@ -41,13 +41,13 @@ public class AuthenticateController {
         ResponseHelper responseHelper = new ResponseHelper(requestHelper.getUsername(),"token");
         return responseHelper;
     }*/
-
+/*
     @GetMapping("/validate/{token}")
     public ResponseEntity<ResponseHelper> validateToken(@PathVariable("token") String token){
         return ResponseEntity.ok(this.iAuthenticateService.getResponseHelperFromValidToken(token));
     }
 
-
+*/
     /*@GetMapping("/get/user/{username}")
     public UserHelper getUser(@PathVariable("username") String username){
         return this.iUserService.getUserByUsername(username);
