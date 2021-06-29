@@ -20,7 +20,7 @@ function fillFields(business) {
     var idField = document.getElementById("idField").value;
 
     if (idField == "") {
-        alert("please fill id field");
+        alert("Please fill id field");
     } else {
 
 
