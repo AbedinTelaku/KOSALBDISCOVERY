@@ -22,7 +22,7 @@ public class EmailController {
 
     @PostMapping("/message/{email}")
     public String sendEmailMessage(@PathVariable("email") String email){
-        this.emailInputPort.sendMessage(email, "Confirmation", "By this email we are confirming your participation for event");
+        this.emailInputPort.sendMessage(email, "Confirmation", "By this email we are confirming your participation for event.");
           return "Message is sent";
     }
 
