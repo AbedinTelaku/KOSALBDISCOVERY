@@ -9,17 +9,15 @@ public class ReservationHelper implements Serializable {
     private Date date;
     private Date checkInDate;
     private Date checkOutDate;
-    private int roomId;
-    private int businessId;
+    private String businessUsername;
     private String touristUsername;
 
-    public ReservationHelper(Time time, Date date, Date checkInDate, Date checkOutDate, int roomId, int businessId, String touristUsername) {
+    public ReservationHelper(Time time, Date date, Date checkInDate, Date checkOutDate, String businessUsername, String touristUsername) {
         this.time = time;
         this.date = date;
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
-        this.roomId = roomId;
-        this.businessId = businessId;
+        this.businessUsername = businessUsername;
         this.touristUsername = touristUsername;
     }
 
@@ -55,20 +53,12 @@ public class ReservationHelper implements Serializable {
         this.checkOutDate = checkOutDate;
     }
 
-    public int getRoomId() {
-        return roomId;
+    public String getBusinessUsername() {
+        return businessUsername;
     }
 
-    public void setRoomId(int roomId) {
-        this.roomId = roomId;
-    }
-
-    public int getBusinessId() {
-        return businessId;
-    }
-
-    public void setBusinessId(int businessId) {
-        this.businessId = businessId;
+    public void setBusinessUsername(String businessUsername) {
+        this.businessUsername = businessUsername;
     }
 
     public String getTouristUsername() {

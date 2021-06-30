@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
+
+import java.sql.Date;
 import java.util.List;
 
 public interface ReservationRepository extends JpaRepository<Reservation,Integer> {
@@ -18,4 +20,8 @@ public interface ReservationRepository extends JpaRepository<Reservation,Integer
 
     @Query(value = "select * from reservation where room_type=?1 and business_username=?2", nativeQuery = true)
     public List<Reservation> findReservationsByRoomType(String roomType,String businessUsername);
+
+    @Query(value = "select * from reservation where check_out_date<=?1", nativeQuery = true)
+    public List<Reservation> getAllReservationsByCheckoutDate(Date date);
+
 }

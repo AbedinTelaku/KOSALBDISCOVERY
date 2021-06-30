@@ -51,7 +51,7 @@ var toursitPlaceCity = document.getElementById("newTouristPlaceCity");
 
 $("#touristPlaceSaveChangesButton").click(function(){
     if(toursitPlaceCity.value == "" || toursitPlaceName.value == ""){
-        alert("Plase fill all required fields.")
+        alert("Please fill all required fields.")
     }else{
         var tPName=toursitPlaceName.value;
         var tPCity=toursitPlaceCity.value;

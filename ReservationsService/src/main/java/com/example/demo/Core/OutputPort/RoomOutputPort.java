@@ -5,5 +5,8 @@ import com.example.demo.Core.Helper.RoomHelper;
 
 public interface RoomOutputPort {
 
-    RoomHelper getRoomByID(int id);
+    RoomHelper getAvailableRoom();
+    RoomHelper getRoomByRoomNumber(int roomNumber);
+    void setReservedRoomUnavailable(int roomNumber);
+    void setRoomAvailable(int roomNumber);
 }

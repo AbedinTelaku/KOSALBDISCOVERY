@@ -8,7 +8,7 @@ class Room extends Component {
     type: this.props.type,
     price: this.props.price,
     discount: this.props.discount,
-    businessId: this.props.businessId,
+    businessUsername: this.props.businessUsername,
     roomFeatures: [],
     checkinDate: "",
     checkoutDate: "",
@@ -53,8 +53,7 @@ class Room extends Component {
         date: date.getDate(),
         checkInDate: date.getDate(),
         checkOutDate: date.getDate(),
-        roomId: 50,
-        businessId: 20,
+        businessUsername: "empireHotel",
         touristUsername: "abedintelaku",
       },
     });

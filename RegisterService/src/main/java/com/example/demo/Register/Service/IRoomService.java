@@ -10,10 +10,14 @@ public interface IRoomService {
     void createRooms(List<Room> rooms);
     Room getRoomById(int id);
     List<Room> getAllRooms();
-    List<Room> getAllRoomsByBusinessId(int id);
+    List<Room> getAllRoomsByBusinessUsername(String businessUsername);
     void deleteRoomById(int id);
     void editRoom(int id,int roomNumber, String roomType, boolean isAvailable, Business business);
     List<String> getAllRoomTypesByBusinessId(String username);
+    Room getFirstAvailableRoom();
+    void setReservedRoomUnavailable(int roomNumber);
+    void setRoomAvailable(int roomNumber);
+    Room getRoomByRoomNumber(int roomNumber);
 
 
 }

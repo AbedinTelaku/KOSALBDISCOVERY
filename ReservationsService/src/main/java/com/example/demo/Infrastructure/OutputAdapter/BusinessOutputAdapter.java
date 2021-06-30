@@ -10,9 +10,9 @@ import org.springframework.web.client.RestTemplate;
 public class BusinessOutputAdapter implements BusinessOutputPort {
 
     @Override
-    public BusinessHelper getBusinessByID(int id) {
+    public BusinessHelper getBusinessByUsername(String username) {
         RestTemplate restTemplate=new RestTemplate();
-        String registerServiceURL = "http://localhost:8080/api/register/business/get/business/"+id;
+        String registerServiceURL = "http://localhost:8080/api/register/business/get/business/byUsername/"+username;
         ResponseEntity<BusinessHelper> responseEntity = restTemplate.getForEntity(registerServiceURL,BusinessHelper.class);
 
         BusinessHelper businessHelper= responseEntity.getBody();

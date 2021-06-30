@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,12 +48,12 @@ public class ReservationService implements ReservationInputPort {
     }
 
     @Override
-    public void createReservation(Time reservationTime, Date reservationDate, Date checkInDate, Date checkOutDate,  int roomId, int businessId, String touristUsername) {
-       reservationDomain=new ReservationDomain(this.reservationRepository);
+    public void createReservation(Time reservationTime, Date reservationDate, Date checkInDate, Date checkOutDate, String businessUsername, String touristUsername) {
+       reservationDomain=new ReservationDomain(this.reservationRepository,this.roomOutputPort);
 
        TouristHelper touristHelper = this.touristOutputPort.getTouristByUsername(touristUsername);
-        BusinessHelper businessHelper = this.businessOutputPort.getBusinessByID(businessId);
-        RoomHelper roomHelper = this.roomOutputPort.getRoomByID(roomId);
+        BusinessHelper businessHelper = this.businessOutputPort.getBusinessByUsername(businessUsername);
+        RoomHelper roomHelper = this.roomOutputPort.getAvailableRoom();
 
        Tourist tourist = new Tourist(touristHelper.getUsername(),touristHelper.getEmail(),touristHelper.getName());
        Room room = new Room(roomHelper.getRoom_number(),roomHelper.getRoom_type(),roomHelper.getPrice(),roomHelper.getDiscount());
@@ -79,6 +80,11 @@ public class ReservationService implements ReservationInputPort {
     }
 
     @Override
+    public List<Reservation> getAllReservationsByCheckoutDate(Date date) {
+        return this.reservationRepository.getAllReservationsByCheckoutDate(date);
+    }
+
+    @Override
     public void deleteReservation(int id) {
      this.reservationRepository.deleteById(id);
     }
@@ -88,4 +94,34 @@ public class ReservationService implements ReservationInputPort {
         List<Reservation> reservations = this.reservationRepository.findReservationsByRoomType(roomType,businessUsername);
         return reservations.size();
     }
+
+    @Override
+    public List<String> getReservedRoomTypes(String businessUsername){
+        List<Reservation> reservations = this.reservationRepository.findReservationsByBusinessUsername(businessUsername);
+        List<String> roomTypes = new ArrayList<String>();
+        for(Reservation r : reservations){
+            String type = r.getRoom().getRoomType();
+            if(!roomTypes.contains(type)){
+                roomTypes.add(type);
+            }
+        }
+        return roomTypes;
+    }
+
+    @Override
+    public double getAmountOfRoomsByType(String roomType,String businessUsername) {
+        List<Reservation> reservations = this.reservationRepository.findReservationsByRoomType(roomType,businessUsername);
+        double amount =0;
+        for(Reservation r : reservations){
+            amount+=r.getTotalPrice();
+        }
+        return amount;
+    }
+
+    @Override
+    public void  updateRoomAvailability(){
+        reservationDomain = new ReservationDomain(this.reservationRepository,this.roomOutputPort);
+        this.reservationDomain.updateRoomAvailability();
+    }
+
 }

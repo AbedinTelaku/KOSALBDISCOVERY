@@ -59,3 +59,16 @@ function validateCity(){
         return false;
     }
 }
+function validateTourist(){
+    let name = document.forms["Tourist"]["name"].value;
+    let city = document.forms["Tourist"]["newTouristPlaceCity"].value;
+
+    if(name == ""){
+        alert("Name must be filled out")
+        return false;
+    }
+    if(city == ""){
+        alert("City must be filled out");
+        return false;
+    }
+}

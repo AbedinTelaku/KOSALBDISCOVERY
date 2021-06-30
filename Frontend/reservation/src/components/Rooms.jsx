@@ -6,14 +6,14 @@ class Rooms extends Component {
     super(props);
     this.state = {
       rooms: [],
-      businessId: this.props.businessId,
+      businessUsername: this.props.businessUsername,
     };
   }
 
   componentDidMount() {
     fetch(
       "http://localhost:8080/api/register/room/get/all/rooms/" +
-        this.state.businessId
+        this.state.businessUsername
     )
       .then((res) => res.json())
       .then((data) => {
@@ -29,7 +29,7 @@ class Rooms extends Component {
         type={room.room_type}
         price={room.price}
         discount={room.discount}
-        businessId={this.state.businessId}
+        businessUsername={this.state.businessUsername}
       />
     ));
 

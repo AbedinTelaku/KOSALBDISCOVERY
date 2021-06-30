@@ -13,6 +13,7 @@ class UserProfile extends Component {
     reservations: [],
     reservationId: "",
     reservationsProfits: "",
+    bUsername: this.props.match.params.username,
   };
   componentDidMount() {
     fetch(
@@ -44,6 +45,13 @@ class UserProfile extends Component {
       });
   }
 
+  printReservationsStats(username) {
+    window.open(
+      "http://localhost:8008/api/reservation/export/reservations/PDF/" +
+        username
+    );
+  }
+
   render() {
     //  <div className="roomTypeDiv">
     // <p key={i} id={roomType}>
@@ -62,7 +70,7 @@ class UserProfile extends Component {
     ));
     let totalProfits = 0;
     const profit = this.state.reservations.map((reservation) => {
-      totalProfits = totalProfits + reservation.totalPrice;
+      return (totalProfits = totalProfits + reservation.totalPrice);
     });
     return (
       <div className="allContent">
@@ -141,7 +149,12 @@ class UserProfile extends Component {
               </div>
             </div>
             <div className="printProfits">
-              <button className="btn btn-primary">
+              <button
+                className="btn btn-primary"
+                onClick={() =>
+                  this.printReservationsStats(this.props.match.params.username)
+                }
+              >
                 Print Reservations Stats
               </button>
             </div>

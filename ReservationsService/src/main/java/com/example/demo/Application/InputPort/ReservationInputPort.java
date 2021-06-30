@@ -10,10 +10,15 @@ import java.sql.Time;
 import java.util.List;
 
 public interface ReservationInputPort {
-    void createReservation(Time reservationTime, Date reservationDate , Date checkInDate, Date checkOutDate, int roomId, int businessId, String touristUsername);
+    void createReservation(Time reservationTime, Date reservationDate , Date checkInDate, Date checkOutDate, String businessUsername, String touristUsername);
     Reservation getReservationById(int id);
     List<Reservation> getReservationsByUsername(String username);
     List<Reservation> getAllReservations();
+    List<Reservation> getAllReservationsByCheckoutDate(Date date);
     void deleteReservation(int id);
     int getRoomReservationNumberByRoomType(String roomType, String businessUsername);
+    List<String> getReservedRoomTypes(String businessUsername);
+    double getAmountOfRoomsByType(String roomType,String businessUsername);
+    void  updateRoomAvailability();
+
 }
