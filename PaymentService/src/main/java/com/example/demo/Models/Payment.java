@@ -14,14 +14,13 @@ public class Payment {
     private String hotel;
     @Column
     private String roomType;
-    @Column
-    private int roomNumber;
 
-    public Payment(double amount, String hotel, String roomType, int roomNumber) {
+
+    public Payment(double amount, String hotel, String roomType) {
         this.amount = amount;
         this.hotel = hotel;
         this.roomType = roomType;
-        this.roomNumber = roomNumber;
+
     }
 
     public Payment() {
@@ -59,11 +58,5 @@ public class Payment {
         this.roomType = roomType;
     }
 
-    public int getRoomNumber() {
-        return roomNumber;
-    }
 
-    public void setRoomNumber(int roomNumber) {
-        this.roomNumber = roomNumber;
-    }
 }

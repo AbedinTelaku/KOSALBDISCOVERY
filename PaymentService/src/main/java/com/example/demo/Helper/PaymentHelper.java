@@ -6,14 +6,14 @@ public class PaymentHelper implements Serializable {
     private double amount;
     private String hotel;
     private String roomType;
-    private int roomNumber;
 
 
-    public PaymentHelper(double amount, String hotel, String roomType, int roomNumber) {
+
+    public PaymentHelper(double amount, String hotel, String roomType) {
         this.amount = amount;
         this.hotel = hotel;
         this.roomType = roomType;
-        this.roomNumber = roomNumber;
+
     }
 
     public double getAmount() {
@@ -28,7 +28,5 @@ public class PaymentHelper implements Serializable {
         return roomType;
     }
 
-    public int getRoomNumber() {
-        return roomNumber;
-    }
+
 }

@@ -27,8 +27,8 @@ public class PaymentService implements IPaymentService{
     private ReservationHelper reservationHelper;
 
     @Override
-    public void createPayment(double amount, String hotel, String roomType, int roomNumber) {
-        Payment payment = new Payment(amount,hotel,roomType,roomNumber);
+    public void createPayment(double amount, String hotel, String roomType) {
+        Payment payment = new Payment(amount,hotel,roomType);
         this.paymentRepository.save(payment);
     }
 

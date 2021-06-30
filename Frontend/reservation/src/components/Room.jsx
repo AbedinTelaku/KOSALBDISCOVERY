@@ -9,6 +9,7 @@ class Room extends Component {
     price: this.props.price,
     discount: this.props.discount,
     businessUsername: this.props.businessUsername,
+    businessName: this.props.businessName,
     roomFeatures: [],
     checkinDate: "",
     checkoutDate: "",
@@ -24,13 +25,19 @@ class Room extends Component {
       });
   }
   wrapperFunction = () => {};
-  showPayButton() {
+  showPayButton(
+    price,
+    businessName,
+    roomType,
+    businessUsername,
+    checkinDate,
+    checkoutDate
+  ) {
     axios
       .post("http://localhost:7000/payment/get/data", {
-        amount: 250,
-        hotel: "Empire Hotel",
-        roomType: "Suite",
-        roomNumber: 20,
+        amount: price,
+        hotel: businessName,
+        roomType: roomType,
       })
       .then(
         (response) => {
@@ -44,16 +51,31 @@ class Room extends Component {
         }
       );
 
-    var date = new Date();
+    console.log(this.state.checkinDate);
+    //current Date and Time (date/time when reservation is done)
+    let myCurrentDate = new Date();
+    let date = myCurrentDate.getDate();
+    let month = myCurrentDate.getMonth() + 1;
+    let year = myCurrentDate.getFullYear();
+
+    let fullDate = `${year}-${month < 10 ? `0${month}` : `${month}`}-${date}`;
+
+    var currenttime =
+      myCurrentDate.getHours() +
+      ":" +
+      myCurrentDate.getMinutes() +
+      ":" +
+      myCurrentDate.getSeconds();
+
     axios({
       method: "post",
       url: "http://localhost:7000/payment/get/reservation",
       data: {
-        time: "20:00:00",
-        date: date.getDate(),
-        checkInDate: date.getDate(),
-        checkOutDate: date.getDate(),
-        businessUsername: "empireHotel",
+        time: currenttime,
+        date: fullDate,
+        checkInDate: checkinDate,
+        checkOutDate: checkoutDate,
+        businessUsername: businessUsername,
         touristUsername: "abedintelaku",
       },
     });
@@ -120,20 +142,34 @@ class Room extends Component {
             <input
               type="date"
               id="checkInDate"
-              onChange={this.getCheckInDate}
+              onChange={(event) =>
+                this.setState({ checkinDate: event.target.value })
+              }
             />
             <label htmlFor="checkOutDate">Check Out</label>
             <input
               type="date"
               id="checkOutDate"
-              onChange={this.getCheckOutDate}
+              onChange={(event) =>
+                this.setState({ checkoutDate: event.target.value })
+              }
             />
           </div>
           <div className="submit">
             <input
               type="submit"
               value="Book Now"
-              onClick={this.showPayButton}
+              // onClick={this.showPayButton}
+              onClick={() =>
+                this.showPayButton(
+                  this.state.price,
+                  this.state.businessName,
+                  this.state.type,
+                  this.state.businessUsername,
+                  this.state.checkinDate,
+                  this.state.checkoutDate
+                )
+              }
             />
 
             <div></div>

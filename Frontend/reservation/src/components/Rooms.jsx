@@ -30,6 +30,7 @@ class Rooms extends Component {
         price={room.price}
         discount={room.discount}
         businessUsername={this.state.businessUsername}
+        businessName={room.business.name}
       />
     ));
 

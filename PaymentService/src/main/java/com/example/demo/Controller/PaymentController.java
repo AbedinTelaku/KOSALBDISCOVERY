@@ -26,7 +26,7 @@ public class PaymentController {
 
     @PostMapping("/create")
     public void createPayment(@RequestBody PaymentHelper paymentHelper){
-        this.paymentService.createPayment(paymentHelper.getAmount(),paymentHelper.getHotel(),paymentHelper.getRoomType(),paymentHelper.getRoomNumber());
+        this.paymentService.createPayment(paymentHelper.getAmount(),paymentHelper.getHotel(),paymentHelper.getRoomType());
 
     }
 
