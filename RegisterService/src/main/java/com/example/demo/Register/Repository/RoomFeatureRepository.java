@@ -14,7 +14,7 @@ public interface RoomFeatureRepository extends JpaRepository<RoomFeature,Integer
 
     @Modifying
     @Transactional
-    @Query(value = "select * from room_feature r where r.room_id=?1", nativeQuery = true)
-    public List<RoomFeature> getRoomFeaturesByRoomId(int roomId);
+    @Query(value = "select * from room_feature r where r.room_type=?1", nativeQuery = true)
+    public List<RoomFeature> getRoomFeaturesByRoomType(String roomType);
 
 }

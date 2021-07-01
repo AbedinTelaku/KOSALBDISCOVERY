@@ -20,7 +20,9 @@ export default class Reservation extends Component {
 
   render() {
     const sideBarElList = this.state.sidebarElements.map((sideelement, i) => (
-      <li key={i}>{sideelement}</li>
+      <li key={i}>
+        <a href={"#" + sideelement}>{sideelement}</a>
+      </li>
     ));
     console.log(this.props.match.params.username);
     return (

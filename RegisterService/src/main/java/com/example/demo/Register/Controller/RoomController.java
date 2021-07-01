@@ -73,4 +73,9 @@ public class RoomController {
     public Room getRoomsByRoomNumber(@PathVariable("roomNumber") int roomNumber){
        return this.iRoomService.getRoomByRoomNumber(roomNumber);
     }
+
+    @GetMapping("/get/rooms/toshow/{businessUsername}")
+    public List<Room> getRoomsToShow(@PathVariable("businessUsername") String businessUsername){
+      return  this.iRoomService.getRoomsToShow(businessUsername);
+    }
 }

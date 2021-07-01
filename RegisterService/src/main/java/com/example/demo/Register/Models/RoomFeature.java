@@ -9,13 +9,12 @@ public class RoomFeature {
     private int id;
     @Column
     private String feature;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn
-    private Room room;
+    @Column
+    private String room_type;
 
-    public RoomFeature(String feature, Room room) {
+    public RoomFeature(String feature, String roomType) {
         this.feature = feature;
-        this.room = room;
+        this.room_type=roomType;
     }
 
     public RoomFeature() {
@@ -33,11 +32,15 @@ public class RoomFeature {
         this.feature = feature;
     }
 
-    public Room getRoom() {
-        return room;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setRoom(Room room) {
-        this.room = room;
+    public String getRoom_type() {
+        return room_type;
+    }
+
+    public void setRoom_type(String room_type) {
+        this.room_type = room_type;
     }
 }

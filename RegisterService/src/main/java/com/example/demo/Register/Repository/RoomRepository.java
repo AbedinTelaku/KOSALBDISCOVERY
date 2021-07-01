@@ -20,6 +20,9 @@ public interface RoomRepository extends JpaRepository<Room,Integer> {
     @Query(value = "select * from room r where r.is_available=1 and r.room_type=?1", nativeQuery = true)
     public List<Room> findAllAvailableRooms(String roomType);
 
+    @Query(value = "select * from room r where r.room_type=?1", nativeQuery = true)
+    public List<Room> getAllRoomsByType(String roomType);
+
     @Modifying
     @Transactional
     @Query(value = "update room  set is_available=0 where room_number=?1", nativeQuery = true)

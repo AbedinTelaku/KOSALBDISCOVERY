@@ -12,7 +12,7 @@ class Rooms extends Component {
 
   componentDidMount() {
     fetch(
-      "http://localhost:8080/api/register/room/get/all/rooms/" +
+      "http://localhost:8080/api/register/room/get/rooms/toshow/" +
         this.state.businessUsername
     )
       .then((res) => res.json())

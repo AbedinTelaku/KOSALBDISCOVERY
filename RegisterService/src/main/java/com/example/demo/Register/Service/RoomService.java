@@ -53,6 +53,22 @@ public class RoomService implements IRoomService{
     }
 
     @Override
+    public List<Room> getRoomsToShow(String businessUsername) {
+        List<String> roomTypes = this.getAllRoomTypesByBusinessId(businessUsername);
+        List<Room> allRooms = null;
+        List<Room> roomsToShow  = new ArrayList<>();
+       // Room r = allRooms.get(0);
+       // roomsToShow.add(r);
+
+           for(String type : roomTypes){
+               allRooms = this.roomRepository.getAllRoomsByType(type);
+               roomsToShow.add(allRooms.get(0));
+           }
+
+        return roomsToShow;
+    }
+
+    @Override
     public void deleteRoomById(int id) {
       this.roomRepository.deleteById(id);
     }

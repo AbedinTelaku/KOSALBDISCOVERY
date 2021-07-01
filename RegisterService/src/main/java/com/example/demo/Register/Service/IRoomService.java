@@ -11,6 +11,7 @@ public interface IRoomService {
     Room getRoomById(int id);
     List<Room> getAllRooms();
     List<Room> getAllRoomsByBusinessUsername(String businessUsername);
+    List<Room> getRoomsToShow(String businessUsername);
     void deleteRoomById(int id);
     void editRoom(int id,int roomNumber, String roomType, boolean isAvailable, Business business);
     List<String> getAllRoomTypesByBusinessId(String username);

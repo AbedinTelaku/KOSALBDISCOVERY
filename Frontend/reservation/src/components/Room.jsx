@@ -19,7 +19,8 @@ class Room extends Component {
 
   componentDidMount() {
     fetch(
-      "http://localhost:8080/api/register/roomFeature/get/all/" + this.state.id
+      "http://localhost:8080/api/register/roomFeature/get/all/" +
+        this.state.type
     )
       .then((res) => res.json())
       .then((data) => {
@@ -155,7 +156,7 @@ class Room extends Component {
     ));
 
     return (
-      <div className="room">
+      <div className="room" id={this.state.type}>
         <div className="roomPhotos">
           <img
             src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F28%2F2017%2F10%2Fliving-room-hotel-president-wilson-geneva-EXPENSIVESUITE1017.jpg"
@@ -171,7 +172,9 @@ class Room extends Component {
                 this.state.price * (this.state.discount / 100)}
               €
             </h2>
-            <h6 className="firstPrice">{this.state.price}€</h6>
+            <h6 className="firstPrice">
+              {this.state.discount > 0 ? this.state.price + "€" : ""}
+            </h6>
             <h6 className="discount">
               {this.state.discount > 0 ? this.state.discount + "% Off" : ""}
             </h6>
