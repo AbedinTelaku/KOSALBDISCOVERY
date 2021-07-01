@@ -10,6 +10,8 @@ class Room extends Component {
     discount: this.props.discount,
     businessUsername: this.props.businessUsername,
     businessName: this.props.businessName,
+    totalPrice:
+      this.props.price - this.props.price * (this.props.discount / 100),
     roomFeatures: [],
     checkinDate: "",
     checkoutDate: "",
@@ -31,11 +33,21 @@ class Room extends Component {
     roomType,
     businessUsername,
     checkinDate,
-    checkoutDate
+    checkoutDate,
+    roomtype,
+    totalprice
   ) {
+    console.log(checkinDate);
+    let date1 = new Date(checkinDate);
+    let date2 = new Date(checkoutDate);
+    console.log(date1);
+    console.log(date1.getTime());
+    const datesDiference =
+      (date2.getTime() - date1.getTime()) / (1000 * 3600 * 24);
+    console.log(datesDiference);
     axios
       .post("http://localhost:7000/payment/get/data", {
-        amount: price,
+        amount: totalprice * datesDiference,
         hotel: businessName,
         roomType: roomType,
       })
@@ -43,7 +55,30 @@ class Room extends Component {
         (response) => {
           console.log(response);
           if (response.data === true) {
-            window.open("http://localhost:7000/checkout");
+            ///////////check for available room///////////////////////////////
+            axios
+              .get(
+                "http://localhost:8080/api/register/room/get/availableroom/" +
+                  roomType
+              )
+              .then(
+                (response) => {
+                  console.log(response);
+                  if (response.data != "") {
+                    window.open("http://localhost:7000/checkout");
+                  } else {
+                    alert(
+                      "There are no '" +
+                        roomType +
+                        "' rooms available for booking!\n Look for another room type."
+                    );
+                  }
+                },
+                (error) => {
+                  console.log(error);
+                }
+              );
+            ////////////////////////////////////////////////////////////////////
           }
         },
         (error) => {
@@ -52,13 +87,17 @@ class Room extends Component {
       );
 
     console.log(this.state.checkinDate);
+    console.log(this.state.checkoutDate);
+    console.log(this.state.type);
     //current Date and Time (date/time when reservation is done)
     let myCurrentDate = new Date();
     let date = myCurrentDate.getDate();
     let month = myCurrentDate.getMonth() + 1;
     let year = myCurrentDate.getFullYear();
 
-    let fullDate = `${year}-${month < 10 ? `0${month}` : `${month}`}-${date}`;
+    let fullDate = `${year}-${month < 10 ? `0${month}` : `${month}`}-${
+      date < 10 ? `0${date}` : `${date}`
+    }`;
 
     var currenttime =
       myCurrentDate.getHours() +
@@ -77,11 +116,12 @@ class Room extends Component {
         checkOutDate: checkoutDate,
         businessUsername: businessUsername,
         touristUsername: "abedintelaku",
+        roomType: roomtype,
       },
     });
   }
 
-  sendReservationData() {
+  /* sendReservationData() {
     var date = new Date();
     axios({
       method: "post",
@@ -96,15 +136,15 @@ class Room extends Component {
         touristUsername: "abedintelaku",
       },
     });
-  }
-  getCheckInDate = (event) => {
+  }*/
+  /* getCheckInDate = (event) => {
     let val = event.target.value;
     this.setState({ checkinDate: val });
   };
   getCheckOutDate = (event) => {
     let val = event.target.value;
     this.setState({ checkoutDate: val });
-  };
+  };*/
 
   render() {
     const roomF = this.state.roomFeatures.map((element, i) => (
@@ -167,7 +207,9 @@ class Room extends Component {
                   this.state.type,
                   this.state.businessUsername,
                   this.state.checkinDate,
-                  this.state.checkoutDate
+                  this.state.checkoutDate,
+                  this.state.type,
+                  this.state.totalPrice
                 )
               }
             />

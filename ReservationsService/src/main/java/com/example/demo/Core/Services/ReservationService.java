@@ -48,12 +48,12 @@ public class ReservationService implements ReservationInputPort {
     }
 
     @Override
-    public void createReservation(Time reservationTime, Date reservationDate, Date checkInDate, Date checkOutDate, String businessUsername, String touristUsername) {
+    public void createReservation(Time reservationTime, Date reservationDate, Date checkInDate, Date checkOutDate, String businessUsername, String touristUsername,String roomType) {
        reservationDomain=new ReservationDomain(this.reservationRepository,this.roomOutputPort);
 
        TouristHelper touristHelper = this.touristOutputPort.getTouristByUsername(touristUsername);
         BusinessHelper businessHelper = this.businessOutputPort.getBusinessByUsername(businessUsername);
-        RoomHelper roomHelper = this.roomOutputPort.getAvailableRoom();
+        RoomHelper roomHelper = this.roomOutputPort.getAvailableRoom(roomType);
 
        Tourist tourist = new Tourist(touristHelper.getUsername(),touristHelper.getEmail(),touristHelper.getName());
        Room room = new Room(roomHelper.getRoom_number(),roomHelper.getRoom_type(),roomHelper.getPrice(),roomHelper.getDiscount());

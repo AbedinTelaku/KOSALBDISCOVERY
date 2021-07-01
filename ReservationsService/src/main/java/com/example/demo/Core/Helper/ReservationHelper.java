@@ -14,14 +14,16 @@ public class ReservationHelper implements Serializable {
     private Date checkOutDate;
     private String businessUsername;
     private String touristUsername;
+    private String roomType;
 
-    public ReservationHelper(Time time, Date date, Date checkInDate, Date checkOutDate, String businessUsername, String touristUsername) {
+    public ReservationHelper(Time time, Date date, Date checkInDate, Date checkOutDate, String businessUsername, String touristUsername, String roomType) {
         this.time = time;
         this.date = date;
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
         this.businessUsername = businessUsername;
         this.touristUsername = touristUsername;
+        this.roomType=roomType;
     }
 
     public Time getTime() {
@@ -70,5 +72,13 @@ public class ReservationHelper implements Serializable {
 
     public void setTouristUsername(String touristUsername) {
         this.touristUsername = touristUsername;
+    }
+
+    public String getRoomType() {
+        return roomType;
+    }
+
+    public void setRoomType(String roomType) {
+        this.roomType = roomType;
     }
 }

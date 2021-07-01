@@ -80,8 +80,8 @@ public class RoomService implements IRoomService{
     }
 
     @Override
-    public Room getFirstAvailableRoom() {
-        List<Room> availableRooms = this.roomRepository.findAllAvailableRooms();
+    public Room getFirstAvailableRoom(String roomType) {
+        List<Room> availableRooms = this.roomRepository.findAllAvailableRooms(roomType);
         if(availableRooms.size() > 0){
             return availableRooms.get(0);
         }else{

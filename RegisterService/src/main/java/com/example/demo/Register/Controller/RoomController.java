@@ -54,9 +54,9 @@ public class RoomController {
         return this.iRoomService.getAllRoomTypesByBusinessId(username);
     }
 
-    @GetMapping("/get/availableroom")
-    public Room getAvailableRoom(){
-        return this.iRoomService.getFirstAvailableRoom();
+    @GetMapping("/get/availableroom/{roomType}")
+    public Room getAvailableRoom(@PathVariable("roomType") String roomType){
+        return this.iRoomService.getFirstAvailableRoom(roomType);
     }
 
     @PostMapping("/set/room/unavailable/{roomNumber}")

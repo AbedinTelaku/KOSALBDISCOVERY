@@ -11,9 +11,9 @@ import org.springframework.web.client.RestTemplate;
 public class RoomOutputAdapter implements RoomOutputPort {
 
     @Override
-    public RoomHelper getAvailableRoom() {
+    public RoomHelper getAvailableRoom(String type) {
         RestTemplate restTemplate=new RestTemplate();
-        String registerServiceURL = "http://localhost:8080/api/register/room/get/availableroom";
+        String registerServiceURL = "http://localhost:8080/api/register/room/get/availableroom/"+type;
         ResponseEntity<RoomHelper> responseEntity = restTemplate.getForEntity(registerServiceURL,RoomHelper.class);
 
         if(responseEntity.getBody() != null){
@@ -48,7 +48,7 @@ public class RoomOutputAdapter implements RoomOutputPort {
         HttpEntity<Integer> request = new HttpEntity<Integer>(roomNumber);
 
         String reservationServiceURL = "http://localhost:8080/api/register/room/set/room/unavailable/"+roomNumber;
-        ResponseEntity<Integer> responseEntity = restTemplate.postForEntity(reservationServiceURL,request,Integer.class);
+        ResponseEntity<Void> responseEntity = restTemplate.postForEntity(reservationServiceURL,request,Void.class);
 
     }
 
@@ -61,6 +61,6 @@ public class RoomOutputAdapter implements RoomOutputPort {
         HttpEntity<Integer> request = new HttpEntity<Integer>(roomNumber);
 
         String reservationServiceURL = "http://localhost:8080/api/register/room/set/room/available/"+roomNumber;
-        ResponseEntity<Integer> responseEntity = restTemplate.postForEntity(reservationServiceURL,request,Integer.class);
+        ResponseEntity<Void> responseEntity = restTemplate.postForEntity(reservationServiceURL,request,Void.class);
     }
 }

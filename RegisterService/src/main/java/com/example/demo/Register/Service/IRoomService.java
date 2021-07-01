@@ -14,7 +14,7 @@ public interface IRoomService {
     void deleteRoomById(int id);
     void editRoom(int id,int roomNumber, String roomType, boolean isAvailable, Business business);
     List<String> getAllRoomTypesByBusinessId(String username);
-    Room getFirstAvailableRoom();
+    Room getFirstAvailableRoom(String roomType);
     void setReservedRoomUnavailable(int roomNumber);
     void setRoomAvailable(int roomNumber);
     Room getRoomByRoomNumber(int roomNumber);

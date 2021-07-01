@@ -63,7 +63,7 @@ public class PaymentService implements IPaymentService{
         HttpEntity<ReservationHelper> request = new HttpEntity<ReservationHelper>(reservationHelper);
 
         String reservationServiceURL = "http://localhost:8008/api/reservation/create/reservation";
-        ResponseEntity<ReservationHelper> responseEntity = restTemplate.postForEntity(reservationServiceURL,request,ReservationHelper.class);
+        ResponseEntity<Void> responseEntity = restTemplate.postForEntity(reservationServiceURL,request,Void.class);
 
     }
 
