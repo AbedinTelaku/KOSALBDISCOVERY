@@ -4,11 +4,11 @@ import java.io.Serializable;
 
 public class RoomFeatureHelper implements Serializable {
     private String feature;
-    private int roomId;
+    private String roomType;
 
-    public RoomFeatureHelper(String feature, int roomId) {
+    public RoomFeatureHelper(String feature, String roomType) {
         this.feature = feature;
-        this.roomId = roomId;
+        this.roomType = roomType;
     }
 
     public String getFeature() {
@@ -19,11 +19,11 @@ public class RoomFeatureHelper implements Serializable {
         this.feature = feature;
     }
 
-    public int getRoomId() {
-        return roomId;
+    public String getRoomType() {
+        return roomType;
     }
 
-    public void setRoomId(int roomId) {
-        this.roomId = roomId;
+    public void setRoomType(String roomType) {
+        this.roomType = roomType;
     }
 }

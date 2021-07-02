@@ -36,6 +36,15 @@ public class RoomService implements IRoomService{
     }
 
     @Override
+    public void createRoomWithNumberAndType(String roomType, int roomNumber,String username) {
+        List<Room> rooms = this.roomRepository.getAllRoomsByType(roomType);
+        double roomPrice = rooms.get(0).getPrice();
+        double discount = rooms.get(0).getDiscount();
+
+        this.createRoom(roomNumber,roomType,true,roomPrice,discount,username);
+    }
+
+    @Override
     public Room getRoomById(int id) {
         Optional<Room> roomOptional = this.roomRepository.findById(id);
         return roomOptional.get();
@@ -50,6 +59,22 @@ public class RoomService implements IRoomService{
     public List<Room> getAllRoomsByBusinessUsername(String businessUsername) {
         Business business = this.iBusinessService.getBusinessByUsername(businessUsername);
         return this.roomRepository.getRoomsByBusinessId(business.getBusiness_ID());
+    }
+
+    @Override
+    public List<Room> getRoomsToShow(String businessUsername) {
+        List<String> roomTypes = this.getAllRoomTypesByBusinessId(businessUsername);
+        List<Room> allRooms = null;
+        List<Room> roomsToShow  = new ArrayList<>();
+       // Room r = allRooms.get(0);
+       // roomsToShow.add(r);
+
+           for(String type : roomTypes){
+               allRooms = this.roomRepository.getAllRoomsByType(type);
+               roomsToShow.add(allRooms.get(0));
+           }
+
+        return roomsToShow;
     }
 
     @Override
@@ -80,8 +105,8 @@ public class RoomService implements IRoomService{
     }
 
     @Override
-    public Room getFirstAvailableRoom() {
-        List<Room> availableRooms = this.roomRepository.findAllAvailableRooms();
+    public Room getFirstAvailableRoom(String roomType) {
+        List<Room> availableRooms = this.roomRepository.findAllAvailableRooms(roomType);
         if(availableRooms.size() > 0){
             return availableRooms.get(0);
         }else{

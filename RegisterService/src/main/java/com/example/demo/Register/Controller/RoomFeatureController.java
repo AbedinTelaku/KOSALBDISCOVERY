@@ -18,11 +18,11 @@ public class RoomFeatureController {
 
     @PostMapping("/create")
     public void createRoomFeature(@RequestBody RoomFeatureHelper roomFeatureHelper){
-        this.iRoomFeatureService.createRoomFeature(roomFeatureHelper.getFeature(),roomFeatureHelper.getRoomId());
+        this.iRoomFeatureService.createRoomFeature(roomFeatureHelper.getFeature(),roomFeatureHelper.getRoomType());
     }
 
-    @GetMapping("/get/all/{roomId}")
-    public List<RoomFeature> getAllByRoomId(@PathVariable("roomId") int roomId){
-        return this.iRoomFeatureService.getAllRoomFeaturesByRoomId(roomId);
+    @GetMapping("/get/all/{roomType}")
+    public List<RoomFeature> getAllByRoomId(@PathVariable("roomType") String roomType){
+        return this.iRoomFeatureService.getAllRoomFeaturesByRoomType(roomType);
     }
 }

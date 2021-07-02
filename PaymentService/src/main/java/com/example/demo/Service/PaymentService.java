@@ -27,8 +27,8 @@ public class PaymentService implements IPaymentService{
     private ReservationHelper reservationHelper;
 
     @Override
-    public void createPayment(double amount, String hotel, String roomType, int roomNumber) {
-        Payment payment = new Payment(amount,hotel,roomType,roomNumber);
+    public void createPayment(double amount, String hotel, String roomType) {
+        Payment payment = new Payment(amount,hotel,roomType);
         this.paymentRepository.save(payment);
     }
 
@@ -63,7 +63,7 @@ public class PaymentService implements IPaymentService{
         HttpEntity<ReservationHelper> request = new HttpEntity<ReservationHelper>(reservationHelper);
 
         String reservationServiceURL = "http://localhost:8008/api/reservation/create/reservation";
-        ResponseEntity<ReservationHelper> responseEntity = restTemplate.postForEntity(reservationServiceURL,request,ReservationHelper.class);
+        ResponseEntity<Void> responseEntity = restTemplate.postForEntity(reservationServiceURL,request,Void.class);
 
     }
 

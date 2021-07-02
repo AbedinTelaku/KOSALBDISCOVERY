@@ -75,6 +75,14 @@
   color: rgb(255, 123, 0);
   cursor: pointer;
 }
+.sideNav li a {
+  color: black;
+  text-decoration: none;
+}
+.sideNav li a:hover {
+  color: orange;
+  text-decoration: none;
+}
 .roomDiv {
   width: 100%;
   height: 100%;
@@ -292,9 +300,7 @@
 .userProfileData {
   width: 97.5%;
   height: 60%;
-  box-shadow: 3px 5px gray;
   margin-top: 3.5%;
-  background: white;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -319,20 +325,18 @@
 .userProfilePicture {
   width: 40%;
   height: 100%;
-
+  box-shadow: 3px 5px gray;
   text-align: center;
   background-color: white;
 }
 .profilePicture {
-  width: 65%;
-  height: 95%;
-  margin-top: 2.5%;
-  border-radius: 70%;
+  width: 100%;
+  height: 100%;
 }
 .userProfileInfo {
   padding-top: 2.5%;
   text-align: center;
-
+  box-shadow: 3px 5px gray;
   width: 40%;
   background-color: white;
 }
@@ -404,6 +408,7 @@
   height: 10%;
   padding-top: 2%;
   color: rgb(0, 179, 211);
+  margin-left: 2.5%;
 }
 .pieChart {
   width: 100%;
@@ -443,6 +448,7 @@
   height: 10%;
   padding-top: 2%;
   color: rgb(0, 179, 211);
+  margin-left: 7%;
 }
 .profitsData {
   width: 95%;
@@ -506,4 +512,84 @@
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px #cedce4;
+}
+.rooms {
+  border-left: 1px solid rgb(211, 211, 211);
+  border-top: 1px solid rgb(211, 211, 211);
+  width: 95%;
+  height: 22.5%;
+  margin-left: 2.5%;
+  margin-top: 2.5%;
+  box-shadow: 3px 5px gray;
+  display: flex;
+}
+.newRoomDiv {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  height: 90%;
+  margin-left: 2.5%;
+  margin-top: 2.5%;
+  background-color: white;
+  box-shadow: 3px 5px gray;
+}
+.newRoomDiv label {
+  width: 95%;
+  margin-left: 2.5%;
+}
+.newRoomDiv h4 {
+  width: 95%;
+  margin-left: 2.5%;
+}
+.newRoomDiv input {
+  width: 95%;
+  margin-left: 2.5%;
+}
+.newRoomDiv select {
+  width: 95%;
+  margin-left: 2.5%;
+}
+.newRoomButtons {
+  width: 95%;
+  height: 10%;
+  margin-left: 2.5%;
+  margin-top: 18.5%;
+}
+.newRoomAndType {
+  width: 30%;
+  height: 90%;
+  margin-left: 2.5%;
+  margin-top: 2.5%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 3px 5px gray;
+}
+.newRoomAndTypeContent {
+  width: 95%;
+  margin-left: 2.5%;
+}
+.newRoomAndTypeButtons {
+  width: 95%;
+  margin-left: 2.5%;
+  margin-top: 5%;
+}
+.editRoom {
+  width: 30%;
+  height: 90%;
+  margin-left: 2.5%;
+  margin-top: 2.5%;
+  box-shadow: 3px 5px gray;
+  background: white;
+  display: flex;
+  flex-direction: column;
+}
+.editRoomContent {
+  width: 95%;
+  margin-left: 2.5%;
+}
+.editRoomButtons {
+  width: 95%;
+  margin-left: 2.5%;
+  margin-top: 5%;
 }

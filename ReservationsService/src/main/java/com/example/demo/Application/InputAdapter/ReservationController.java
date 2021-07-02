@@ -19,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("api/reservation")
 public class ReservationController {
 
@@ -34,7 +35,7 @@ public class ReservationController {
 
     @PostMapping("/create/reservation")
     public void createReservation(@RequestBody ReservationHelper reservationHelper){
-        this.reservationInputPort.createReservation(reservationHelper.getTime(),reservationHelper.getDate(),reservationHelper.getCheckInDate(),reservationHelper.getCheckOutDate(),reservationHelper.getBusinessUsername(),reservationHelper.getTouristUsername());
+        this.reservationInputPort.createReservation(reservationHelper.getTime(),reservationHelper.getDate(),reservationHelper.getCheckInDate(),reservationHelper.getCheckOutDate(),reservationHelper.getBusinessUsername(),reservationHelper.getTouristUsername(), reservationHelper.getRoomType());
 
     }
 

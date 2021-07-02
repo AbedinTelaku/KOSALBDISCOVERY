@@ -9,6 +9,9 @@ class Room extends Component {
     price: this.props.price,
     discount: this.props.discount,
     businessUsername: this.props.businessUsername,
+    businessName: this.props.businessName,
+    totalPrice:
+      this.props.price - this.props.price * (this.props.discount / 100),
     roomFeatures: [],
     checkinDate: "",
     checkoutDate: "",
@@ -16,7 +19,8 @@ class Room extends Component {
 
   componentDidMount() {
     fetch(
-      "http://localhost:8080/api/register/roomFeature/get/all/" + this.state.id
+      "http://localhost:8080/api/register/roomFeature/get/all/" +
+        this.state.type
     )
       .then((res) => res.json())
       .then((data) => {
@@ -24,19 +28,58 @@ class Room extends Component {
       });
   }
   wrapperFunction = () => {};
-  showPayButton() {
+  showPayButton(
+    price,
+    businessName,
+    roomType,
+    businessUsername,
+    checkinDate,
+    checkoutDate,
+    roomtype,
+    totalprice
+  ) {
+    console.log(checkinDate);
+    let date1 = new Date(checkinDate);
+    let date2 = new Date(checkoutDate);
+    console.log(date1);
+    console.log(date1.getTime());
+    const datesDiference =
+      (date2.getTime() - date1.getTime()) / (1000 * 3600 * 24);
+    console.log(datesDiference);
     axios
       .post("http://localhost:7000/payment/get/data", {
-        amount: 250,
-        hotel: "Empire Hotel",
-        roomType: "Suite",
-        roomNumber: 20,
+        amount: totalprice * datesDiference,
+        hotel: businessName,
+        roomType: roomType,
       })
       .then(
         (response) => {
           console.log(response);
           if (response.data === true) {
-            window.open("http://localhost:7000/checkout");
+            ///////////check for available room///////////////////////////////
+            axios
+              .get(
+                "http://localhost:8080/api/register/room/get/availableroom/" +
+                  roomType
+              )
+              .then(
+                (response) => {
+                  console.log(response);
+                  if (response.data !== "") {
+                    window.open("http://localhost:7000/checkout");
+                  } else {
+                    alert(
+                      "There are no '" +
+                        roomType +
+                        "' rooms available for booking!\n Look for another room type."
+                    );
+                  }
+                },
+                (error) => {
+                  console.log(error);
+                }
+              );
+            ////////////////////////////////////////////////////////////////////
           }
         },
         (error) => {
@@ -44,22 +87,42 @@ class Room extends Component {
         }
       );
 
-    var date = new Date();
+    console.log(this.state.checkinDate);
+    console.log(this.state.checkoutDate);
+    console.log(this.state.type);
+    //current Date and Time (date/time when reservation is done)
+    let myCurrentDate = new Date();
+    let date = myCurrentDate.getDate();
+    let month = myCurrentDate.getMonth() + 1;
+    let year = myCurrentDate.getFullYear();
+
+    let fullDate = `${year}-${month < 10 ? `0${month}` : `${month}`}-${
+      date < 10 ? `0${date}` : `${date}`
+    }`;
+
+    var currenttime =
+      myCurrentDate.getHours() +
+      ":" +
+      myCurrentDate.getMinutes() +
+      ":" +
+      myCurrentDate.getSeconds();
+
     axios({
       method: "post",
       url: "http://localhost:7000/payment/get/reservation",
       data: {
-        time: "20:00:00",
-        date: date.getDate(),
-        checkInDate: date.getDate(),
-        checkOutDate: date.getDate(),
-        businessUsername: "empireHotel",
+        time: currenttime,
+        date: fullDate,
+        checkInDate: checkinDate,
+        checkOutDate: checkoutDate,
+        businessUsername: businessUsername,
         touristUsername: "abedintelaku",
+        roomType: roomtype,
       },
     });
   }
 
-  sendReservationData() {
+  /* sendReservationData() {
     var date = new Date();
     axios({
       method: "post",
@@ -74,15 +137,15 @@ class Room extends Component {
         touristUsername: "abedintelaku",
       },
     });
-  }
-  getCheckInDate = (event) => {
+  }*/
+  /* getCheckInDate = (event) => {
     let val = event.target.value;
     this.setState({ checkinDate: val });
   };
   getCheckOutDate = (event) => {
     let val = event.target.value;
     this.setState({ checkoutDate: val });
-  };
+  };*/
 
   render() {
     const roomF = this.state.roomFeatures.map((element, i) => (
@@ -93,7 +156,7 @@ class Room extends Component {
     ));
 
     return (
-      <div className="room">
+      <div className="room" id={this.state.type}>
         <div className="roomPhotos">
           <img
             src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F28%2F2017%2F10%2Fliving-room-hotel-president-wilson-geneva-EXPENSIVESUITE1017.jpg"
@@ -109,7 +172,9 @@ class Room extends Component {
                 this.state.price * (this.state.discount / 100)}
               €
             </h2>
-            <h6 className="firstPrice">{this.state.price}€</h6>
+            <h6 className="firstPrice">
+              {this.state.discount > 0 ? this.state.price + "€" : ""}
+            </h6>
             <h6 className="discount">
               {this.state.discount > 0 ? this.state.discount + "% Off" : ""}
             </h6>
@@ -120,20 +185,36 @@ class Room extends Component {
             <input
               type="date"
               id="checkInDate"
-              onChange={this.getCheckInDate}
+              onChange={(event) =>
+                this.setState({ checkinDate: event.target.value })
+              }
             />
             <label htmlFor="checkOutDate">Check Out</label>
             <input
               type="date"
               id="checkOutDate"
-              onChange={this.getCheckOutDate}
+              //onChange={(event) =>
+              // this.setState({ checkoutDate: event.target.value })
+              //}
             />
           </div>
           <div className="submit">
             <input
               type="submit"
               value="Book Now"
-              onClick={this.showPayButton}
+              // onClick={this.showPayButton}
+              onClick={() =>
+                this.showPayButton(
+                  this.state.price,
+                  this.state.businessName,
+                  this.state.type,
+                  this.state.businessUsername,
+                  this.state.checkinDate,
+                  this.state.checkoutDate,
+                  this.state.type,
+                  this.state.totalPrice
+                )
+              }
             />
 
             <div></div>

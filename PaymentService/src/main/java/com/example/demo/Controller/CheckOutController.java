@@ -30,7 +30,6 @@ public class CheckOutController {
         model.addAttribute("stripePublicKey", stripePublicKey);
         model.addAttribute("currency", ChargeRequest.Currency.EUR);
         model.addAttribute("roomType",paymentHelper.getRoomType());
-        model.addAttribute("roomNumber",paymentHelper.getRoomNumber());
         model.addAttribute("hotelName",paymentHelper.getHotel());
 
 

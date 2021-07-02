@@ -1,6 +1,7 @@
 package com.example.demo.Register.Controller;
 
 import com.example.demo.Register.Helper.CreateRoomsHelper;
+import com.example.demo.Register.Helper.NewRoomHelper;
 import com.example.demo.Register.Helper.RoomHelper;
 import com.example.demo.Register.Models.Room;
 import com.example.demo.Register.Service.IRoomService;
@@ -23,6 +24,11 @@ public class RoomController {
     @PostMapping("/create/room/{businessUsername}")
     public void createRoom(@RequestBody RoomHelper roomHelper,@PathVariable("businessUsername") String businessUsername){
         this.iRoomService.createRoom(roomHelper.getRoomNumber(),roomHelper.getRoomType(),roomHelper.isAvailable(),roomHelper.getPrice(), roomHelper.getDiscount(),businessUsername);
+
+    }
+    @PostMapping("/create/new/room")
+    public void createRoomWithNumberAndType(@RequestBody NewRoomHelper newRoomHelper){
+        this.iRoomService.createRoomWithNumberAndType(newRoomHelper.getRoomType(),newRoomHelper.getRoomNumber(),newRoomHelper.getUsername());
 
     }
     @PostMapping("/create/rooms")
@@ -54,9 +60,9 @@ public class RoomController {
         return this.iRoomService.getAllRoomTypesByBusinessId(username);
     }
 
-    @GetMapping("/get/availableroom")
-    public Room getAvailableRoom(){
-        return this.iRoomService.getFirstAvailableRoom();
+    @GetMapping("/get/availableroom/{roomType}")
+    public Room getAvailableRoom(@PathVariable("roomType") String roomType){
+        return this.iRoomService.getFirstAvailableRoom(roomType);
     }
 
     @PostMapping("/set/room/unavailable/{roomNumber}")
@@ -72,5 +78,10 @@ public class RoomController {
     @GetMapping("/get/room/by/roomNumber/{roomNumber}")
     public Room getRoomsByRoomNumber(@PathVariable("roomNumber") int roomNumber){
        return this.iRoomService.getRoomByRoomNumber(roomNumber);
+    }
+
+    @GetMapping("/get/rooms/toshow/{businessUsername}")
+    public List<Room> getRoomsToShow(@PathVariable("businessUsername") String businessUsername){
+      return  this.iRoomService.getRoomsToShow(businessUsername);
     }
 }

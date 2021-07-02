@@ -10,6 +10,7 @@ import com.example.demo.Core.OutputPort.RoomOutputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 
 import java.sql.Date;
 import java.sql.Time;
@@ -21,7 +22,7 @@ import java.util.List;
 import java.util.TimerTask;
 
 
-@EnableScheduling
+@Component
 public class ReservationDomain extends TimerTask {
 
     @Autowired
@@ -62,6 +63,7 @@ public class ReservationDomain extends TimerTask {
     }
 
 
+    @Scheduled(fixedRate = 1000*60*60*12)
     public void updateRoomAvailability(){
 
         LocalDate localDate = LocalDate.now(ZoneId.of("GMT+02:30"));

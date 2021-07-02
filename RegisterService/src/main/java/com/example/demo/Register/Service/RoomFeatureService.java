@@ -19,10 +19,9 @@ public class RoomFeatureService implements IRoomFeatureService{
     }
 
     @Override
-    public void createRoomFeature(String feature, int roomId) {
-        Room room=this.iRoomService.getRoomById(roomId);
+    public void createRoomFeature(String feature, String roomType) {
 
-        RoomFeature roomFeature = new RoomFeature(feature,room);
+        RoomFeature roomFeature = new RoomFeature(feature,roomType);
         this.roomFeatureRepository.save(roomFeature);
 
     }
@@ -40,7 +39,7 @@ public class RoomFeatureService implements IRoomFeatureService{
     }
 
     @Override
-    public List<RoomFeature> getAllRoomFeaturesByRoomId(int roomId) {
-        return this.roomFeatureRepository.getRoomFeaturesByRoomId(roomId);
+    public List<RoomFeature> getAllRoomFeaturesByRoomType(String roomType) {
+        return this.roomFeatureRepository.getRoomFeaturesByRoomType(roomType);
     }
 }

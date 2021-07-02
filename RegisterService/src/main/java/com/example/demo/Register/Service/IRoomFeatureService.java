@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface IRoomFeatureService {
 
-    void createRoomFeature(String feature, int roomId);
+    void createRoomFeature(String feature, String roomType);
     void deleteRoomFeature(int id);
     RoomFeature getRoomFeature(int id);
-    List<RoomFeature> getAllRoomFeaturesByRoomId(int roomId);
+    List<RoomFeature> getAllRoomFeaturesByRoomType(String roomType);
 }

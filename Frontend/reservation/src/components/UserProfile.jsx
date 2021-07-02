@@ -4,6 +4,8 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { FaAt } from "react-icons/fa";
 import ReservationsTable from "./ReservationsTable";
 import RoomType from "./RoomType";
+import Select from "react-select";
+import axios from "axios";
 
 class UserProfile extends Component {
   state = {
@@ -14,6 +16,10 @@ class UserProfile extends Component {
     reservationId: "",
     reservationsProfits: "",
     bUsername: this.props.match.params.username,
+    selectedOption: "",
+    selectedFromAllTypes: "",
+    selectedFromEdit: "",
+    newRoomNumber: 0,
   };
   componentDidMount() {
     fetch(
@@ -51,7 +57,34 @@ class UserProfile extends Component {
         username
     );
   }
+  handleChange = (selectedOption) => {
+    this.setState({ selectedOption });
+    console.log(`Option selected From New Room:`, selectedOption);
+  };
+  handleChangeAllTypes = (selectedFromAllTypes) => {
+    this.setState({ selectedFromAllTypes });
+    console.log(`Option selected From All Types:`, selectedFromAllTypes);
+  };
+  handleChangeEdit = (selectedFromEdit) => {
+    this.setState({ selectedFromEdit });
+    console.log(`Option selected From Edit:`, selectedFromEdit);
+  };
 
+  addNewRoom(roomtype, roomnumber, username) {
+    console.log(roomnumber);
+    console.log(roomtype);
+    console.log(username);
+
+    axios({
+      method: "post",
+      url: "http://localhost:8080/api/register/room/create/new/room",
+      data: {
+        roomType: roomtype,
+        roomNumber: roomnumber,
+        username: username,
+      },
+    });
+  }
   render() {
     //  <div className="roomTypeDiv">
     // <p key={i} id={roomType}>
@@ -61,6 +94,7 @@ class UserProfile extends Component {
 
     console.log(this.props.match.params.username);
     console.log(this.state.roomTypes);
+
     const roomTypesList = this.state.roomTypes.map((roomType, i) => (
       <RoomType
         key={i}
@@ -72,6 +106,36 @@ class UserProfile extends Component {
     const profit = this.state.reservations.map((reservation) => {
       return (totalProfits = totalProfits + reservation.totalPrice);
     });
+
+    const selectedOption = this.state.selectedOption;
+    const selectedFromAllTypes = this.state.selectedFromAllTypes;
+    const selectedFromEdit = this.selectedFromEdit;
+    const options = [
+      { value: "chocolate", label: "Chocolate" },
+      { value: "strawberry", label: "Strawberry" },
+      { value: "vanilla", label: "Vanilla" },
+    ];
+    const allTypesOfRooms = [
+      { value: "Single", label: "Single" },
+      { value: "Double", label: "Double" },
+      { value: "Triple", label: "Triple" },
+      { value: "Quad", label: "Quad" },
+      { value: "Twin", label: "Twin" },
+      { value: "Double-Double", label: "Double-Double" },
+      { value: "Suite", label: "Suite" },
+      { value: "Mini Suite", label: "Mini Suite" },
+      { value: "President Suite", label: "President Suite" },
+      { value: "Apartament", label: "Apartament" },
+      { value: "Villa", label: "Villa" },
+    ];
+
+    const selectRoomTypes = this.state.roomTypes.map((roomType) => ({
+      value: roomType,
+      label: roomType,
+    }));
+
+    console.log(options);
+    console.log(selectRoomTypes);
     return (
       <div className="allContent">
         <div className="userProfileContent">
@@ -81,10 +145,10 @@ class UserProfile extends Component {
                 <a href="#reservationsTableDiv">Reservations</a>
               </li>
               <li>
-                <a href="#reports">Stats</a>
+                <a href="#reports">Stats & Profits</a>
               </li>
               <li>
-                <a href="#reservationsTableDiv">Reservations</a>
+                <a href="#addRoom">Rooms</a>
               </li>
               <li>
                 <a href="#reservationsTableDiv">Reservations</a>
@@ -103,7 +167,7 @@ class UserProfile extends Component {
               <div className="userProfilePicture">
                 <img
                   className="profilePicture"
-                  src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/8e/d9/d8/hotel-presidente.jpg?w=1200&h=-1&s=1"
+                  src="https://www.casy.ch/wp-content/uploads/2021/01/hotel-agencies-2.jpg"
                   alt=""
                 />
               </div>
@@ -127,7 +191,6 @@ class UserProfile extends Component {
             </div>
           </div>
         </div>
-
         <div className="tableDiv" id="reservationsTableDiv">
           <ReservationsTable username={this.props.match.params.username} />
         </div>
@@ -145,7 +208,7 @@ class UserProfile extends Component {
                 <h5>Reservations</h5>
               </div>
               <div className="profitsAmount">
-                <h1>{totalProfits}$</h1>
+                <h1>{totalProfits}€</h1>
               </div>
             </div>
             <div className="printProfits">
@@ -157,6 +220,116 @@ class UserProfile extends Component {
               >
                 Print Reservations Stats
               </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="rooms" id="addRoom">
+          <div className="newRoomDiv">
+            <h4>New Room</h4>
+            <label htmlFor="">Room Number</label>
+            <input
+              id="roomNumberInput"
+              type="number"
+              min="1"
+              onChange={(event) =>
+                this.setState({ newRoomNumber: event.target.value })
+              }
+            />
+
+            <label htmlFor="roomTypesSelect">Select Room Type</label>
+            <Select
+              name=""
+              id="roomTypesSelect"
+              className="roomTypesSelect"
+              value={selectedOption}
+              onChange={this.handleChange}
+              options={selectRoomTypes}
+            />
+
+            <div className="newRoomButtons">
+              <button
+                className="btn btn-primary"
+                onClick={() =>
+                  this.addNewRoom(
+                    selectedOption.value,
+                    this.state.newRoomNumber,
+                    this.state.bUsername
+                  )
+                }
+              >
+                Add
+              </button>
+            </div>
+          </div>
+
+          <div className="newRoomAndType">
+            <h4 className="newRoomAndTypeContent">New Room & Type</h4>
+
+            <label htmlFor="" className="newRoomAndTypeContent">
+              Room Type
+            </label>
+            <Select
+              name=""
+              id="roomTypesSelect"
+              className="newRoomAndTypeContent"
+              value={selectedFromAllTypes}
+              onChange={this.handleChangeAllTypes}
+              options={allTypesOfRooms}
+            />
+
+            <label htmlFor="" className="newRoomAndTypeContent">
+              Room Number
+            </label>
+            <input
+              id="roomNumberInput"
+              type="number"
+              className="newRoomAndTypeContent"
+              min="1"
+            />
+
+            <label htmlFor="" className="newRoomAndTypeContent">
+              Room Price
+            </label>
+            <input
+              id="roomNumberInput"
+              type="number"
+              className="newRoomAndTypeContent"
+              min="1"
+            />
+
+            <div className="newRoomAndTypeButtons">
+              <button className="btn btn-primary">Add</button>
+            </div>
+          </div>
+
+          <div className="editRoom">
+            <h4 className="editRoomContent">Edit Room</h4>
+
+            <label htmlFor="roomTypesEdit" className="editRoomContent">
+              Room Type
+            </label>
+            <Select
+              name=""
+              id="roomTypesEdit"
+              className="roomTypesSelect editRoomContent"
+              value={selectedFromEdit}
+              onChange={this.handleChangeEdit}
+              options={selectRoomTypes}
+            />
+
+            <label htmlFor="roomNumberEdit" className="editRoomContent">
+              Room Price
+            </label>
+            <input type="number" min="1" className="editRoomContent" />
+
+            <label htmlFor="roomNumberEdit" className="editRoomContent">
+              Room Discount
+            </label>
+            <input type="number" min="1" className="editRoomContent" />
+
+            <div className="editRoomButtons">
+              <button className="btn btn-primary">Edit</button>
             </div>
           </div>
         </div>
