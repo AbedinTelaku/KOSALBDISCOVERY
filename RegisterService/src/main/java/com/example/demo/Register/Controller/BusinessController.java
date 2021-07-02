@@ -11,6 +11,7 @@ import java.util.List;
 
 
 @RestController
+@CrossOrigin
 @RequestMapping("api/register/business")
 public class BusinessController {
     private IBusinessService interfaceBusinessService;

@@ -8,6 +8,7 @@ import java.util.List;
 public interface IRoomService {
     void createRoom(int roomNumber, String roomType, boolean isAvailable,double price, double discount ,String businessUsername);
     void createRooms(List<Room> rooms);
+    void createRoomWithNumberAndType(String roomType, int roomNumber,String username);
     Room getRoomById(int id);
     List<Room> getAllRooms();
     List<Room> getAllRoomsByBusinessUsername(String businessUsername);

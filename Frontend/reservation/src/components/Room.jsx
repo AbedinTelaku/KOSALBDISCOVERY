@@ -65,7 +65,7 @@ class Room extends Component {
               .then(
                 (response) => {
                   console.log(response);
-                  if (response.data != "") {
+                  if (response.data !== "") {
                     window.open("http://localhost:7000/checkout");
                   } else {
                     alert(
@@ -193,9 +193,9 @@ class Room extends Component {
             <input
               type="date"
               id="checkOutDate"
-              onChange={(event) =>
-                this.setState({ checkoutDate: event.target.value })
-              }
+              //onChange={(event) =>
+              // this.setState({ checkoutDate: event.target.value })
+              //}
             />
           </div>
           <div className="submit">

@@ -105,4 +105,10 @@ private EventDomain eventDomain;
         this.notificationOutputPort.sendEmail(userHelper.getEmail());
     }
 
+    @Override
+    public int getAllEventsNumber() {
+        List<Event> events = this.getAllEvents();
+        return events.size();
+    }
+
 }

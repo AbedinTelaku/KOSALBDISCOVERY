@@ -36,6 +36,15 @@ public class RoomService implements IRoomService{
     }
 
     @Override
+    public void createRoomWithNumberAndType(String roomType, int roomNumber,String username) {
+        List<Room> rooms = this.roomRepository.getAllRoomsByType(roomType);
+        double roomPrice = rooms.get(0).getPrice();
+        double discount = rooms.get(0).getDiscount();
+
+        this.createRoom(roomNumber,roomType,true,roomPrice,discount,username);
+    }
+
+    @Override
     public Room getRoomById(int id) {
         Optional<Room> roomOptional = this.roomRepository.findById(id);
         return roomOptional.get();

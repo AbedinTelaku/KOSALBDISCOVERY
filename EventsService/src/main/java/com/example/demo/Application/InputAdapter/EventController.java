@@ -64,4 +64,9 @@ public class EventController {
        this.eventInputport.createEventParticipant(eventParticipantHelper.getUsername(),eventParticipantHelper.getId());
     }
 
+    @GetMapping("get/events/number")
+    public int getEventsNumber(){
+       return this.eventInputport.getAllEventsNumber();
+    }
+
 }
