@@ -13,6 +13,8 @@ public interface IAdminService {
 
     List<Admin> getAllAdmin();
 
+    List<Admin> getAllAdmins();
+
     void createAdmin(String name, String email, String surname, String username, String password, char gender);
 
     void deleteAdmin(int id);

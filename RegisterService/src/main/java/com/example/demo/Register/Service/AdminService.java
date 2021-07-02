@@ -4,7 +4,6 @@ import com.example.demo.Register.Models.Admin;
 import com.example.demo.Register.Repository.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -38,6 +37,11 @@ public class AdminService implements IAdminService {
 
     @Override
     public List<Admin> getAllAdmin() {
+        return this.adminRepository.findAll();
+    }
+
+    @Override
+    public List<Admin> getAllAdmins() {
         return this.adminRepository.findAll();
     }
 
