@@ -20,6 +20,10 @@ class UserProfile extends Component {
     selectedFromAllTypes: "",
     selectedFromEdit: "",
     newRoomNumber: 0,
+    newRoomAndTypeNumber: 0,
+    newRoomAndTypePrice: 0,
+    editRoomPrice: 0,
+    editRoomDiscount: 0,
   };
   componentDidMount() {
     fetch(
@@ -74,16 +78,69 @@ class UserProfile extends Component {
     console.log(roomnumber);
     console.log(roomtype);
     console.log(username);
-
-    axios({
-      method: "post",
-      url: "http://localhost:8080/api/register/room/create/new/room",
-      data: {
-        roomType: roomtype,
-        roomNumber: roomnumber,
-        username: username,
-      },
-    });
+    if (roomtype == "" || roomnumber == "") {
+      alert("Please fill all required data.");
+    } else {
+      axios({
+        method: "post",
+        url: "http://localhost:8080/api/register/room/create/new/room",
+        data: {
+          roomType: roomtype,
+          roomNumber: roomnumber,
+          username: username,
+        },
+      });
+    }
+  }
+  addNewRoomAndType(roomtype, roomnumber, roomprice, username) {
+    console.log(roomtype);
+    console.log(roomnumber);
+    console.log(roomprice);
+    console.log(username);
+    if (
+      roomtype == "" ||
+      roomnumber == "" ||
+      roomprice == "" ||
+      username == ""
+    ) {
+      alert("Please fill all required fields.");
+    } else {
+      axios({
+        method: "post",
+        url: "http://localhost:8080/api/register/room/create/room/and/type",
+        data: {
+          roomType: roomtype,
+          roomNumber: roomnumber,
+          username: username,
+          roomPrice: roomprice,
+        },
+      });
+    }
+  }
+  editRoom(roomtype, roomprice, roomdiscount, username) {
+    console.log(roomtype);
+    console.log(roomdiscount);
+    console.log(roomprice);
+    console.log(username);
+    if (
+      roomtype == "" ||
+      roomdiscount == "" ||
+      roomprice == "" ||
+      username == ""
+    ) {
+      alert("Please fill all required fields.");
+    } else {
+      axios({
+        method: "post",
+        url: "http://localhost:8080/api/register/room/edit/room",
+        data: {
+          roomType: roomtype,
+          roomDiscount: roomdiscount,
+          username: username,
+          roomPrice: roomprice,
+        },
+      });
+    }
   }
   render() {
     //  <div className="roomTypeDiv">
@@ -109,7 +166,7 @@ class UserProfile extends Component {
 
     const selectedOption = this.state.selectedOption;
     const selectedFromAllTypes = this.state.selectedFromAllTypes;
-    const selectedFromEdit = this.selectedFromEdit;
+    const selectedFromEdit = this.state.selectedFromEdit;
     const options = [
       { value: "chocolate", label: "Chocolate" },
       { value: "strawberry", label: "Strawberry" },
@@ -149,15 +206,6 @@ class UserProfile extends Component {
               </li>
               <li>
                 <a href="#addRoom">Rooms</a>
-              </li>
-              <li>
-                <a href="#reservationsTableDiv">Reservations</a>
-              </li>
-              <li>
-                <a href="#reservationsTableDiv">Reservations</a>
-              </li>
-              <li>
-                <a href="#reservationsTableDiv">Reservations</a>
               </li>
             </ul>
           </div>
@@ -286,6 +334,9 @@ class UserProfile extends Component {
               type="number"
               className="newRoomAndTypeContent"
               min="1"
+              onChange={(event) =>
+                this.setState({ newRoomAndTypeNumber: event.target.value })
+              }
             />
 
             <label htmlFor="" className="newRoomAndTypeContent">
@@ -296,10 +347,25 @@ class UserProfile extends Component {
               type="number"
               className="newRoomAndTypeContent"
               min="1"
+              onChange={(event) =>
+                this.setState({ newRoomAndTypePrice: event.target.value })
+              }
             />
 
             <div className="newRoomAndTypeButtons">
-              <button className="btn btn-primary">Add</button>
+              <button
+                className="btn btn-primary"
+                onClick={() => {
+                  this.addNewRoomAndType(
+                    selectedFromAllTypes.value,
+                    this.state.editRoomPrice,
+                    this.state.editRoomDiscount,
+                    this.state.bUsername
+                  );
+                }}
+              >
+                Add
+              </button>
             </div>
           </div>
 
@@ -321,15 +387,41 @@ class UserProfile extends Component {
             <label htmlFor="roomNumberEdit" className="editRoomContent">
               Room Price
             </label>
-            <input type="number" min="1" className="editRoomContent" />
+            <input
+              type="number"
+              min="1"
+              className="editRoomContent"
+              onChange={(event) =>
+                this.setState({ editRoomPrice: event.target.value })
+              }
+            />
 
             <label htmlFor="roomNumberEdit" className="editRoomContent">
               Room Discount
             </label>
-            <input type="number" min="1" className="editRoomContent" />
+            <input
+              type="number"
+              min="0"
+              className="editRoomContent"
+              onChange={(event) =>
+                this.setState({ editRoomDiscount: event.target.value })
+              }
+            />
 
             <div className="editRoomButtons">
-              <button className="btn btn-primary">Edit</button>
+              <button
+                className="btn btn-primary"
+                onClick={() => {
+                  this.editRoom(
+                    selectedFromEdit.value,
+                    this.state.editRoomPrice,
+                    this.state.editRoomDiscount,
+                    this.state.bUsername
+                  );
+                }}
+              >
+                Edit
+              </button>
             </div>
           </div>
         </div>

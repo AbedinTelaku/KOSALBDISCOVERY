@@ -33,6 +33,11 @@ public interface RoomRepository extends JpaRepository<Room,Integer> {
     @Query(value = "update room  set is_available=1 where room_number=?1", nativeQuery = true)
     public void setRoomAvailable(int roomNumber);
 
+    @Modifying
+    @Transactional
+    @Query(value = "update room  set price=?2,discount=?3 where room_type=?1 and business_id=?4", nativeQuery = true)
+    public void updateRoomPriceAndDiscount(String roomType, int roomPrice, int roomDiscount,int businessId);
+
     @Query(value = "select * from room r where r.room_number=?1", nativeQuery = true)
     public Room getRoomByRoomNumber(int roomNumber);
 }
