@@ -45,6 +45,11 @@ public class RoomService implements IRoomService{
     }
 
     @Override
+    public void createRoomAndType(String roomType, int roomNumber, int roomPrice, String username) {
+        this.createRoom(roomNumber,roomType,true,roomPrice,0,username);
+    }
+
+    @Override
     public Room getRoomById(int id) {
         Optional<Room> roomOptional = this.roomRepository.findById(id);
         return roomOptional.get();
@@ -85,6 +90,12 @@ public class RoomService implements IRoomService{
     @Override
     public void editRoom(int id, int roomNumber, String roomType, boolean isAvailable, Business business) {
 
+    }
+
+    @Override
+    public void editRoomPriceAndDiscount(int roomPrice, int roomDiscount, String roomType, String username) {
+        Business business = this.iBusinessService.getBusinessByUsername(username);
+        this.roomRepository.updateRoomPriceAndDiscount(roomType,roomPrice,roomDiscount,business.getBusiness_ID());
     }
 
     @Override

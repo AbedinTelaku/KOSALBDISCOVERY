@@ -31,9 +31,18 @@ public class RoomController {
         this.iRoomService.createRoomWithNumberAndType(newRoomHelper.getRoomType(),newRoomHelper.getRoomNumber(),newRoomHelper.getUsername());
 
     }
+    @PostMapping("/create/room/and/type")
+    public void createRoomAndType(@RequestBody NewRoomHelper newRoomHelper){
+        this.iRoomService.createRoomAndType(newRoomHelper.getRoomType(),newRoomHelper.getRoomNumber(),newRoomHelper.getRoomPrice(),newRoomHelper.getUsername());
+    }
     @PostMapping("/create/rooms")
     public void createRooms(@RequestBody CreateRoomsHelper createRoomsHelper){
         this.iRoomService.createRooms(createRoomsHelper.getRooms());
+    }
+
+    @PostMapping("/edit/room")
+    public void editRoomPriceAndDiscount(@RequestBody NewRoomHelper newRoomHelper){
+          this.iRoomService.editRoomPriceAndDiscount(newRoomHelper.getRoomPrice(),newRoomHelper.getRoomDiscount(),newRoomHelper.getRoomType(),newRoomHelper.getUsername());
     }
     @GetMapping("/get/room/{id}")
     public Room getRoomById(@PathVariable("id") int id){
