@@ -105,11 +105,18 @@ function  showFutureEvents(eventsF){
             eventDiv.appendChild(butDiv)
             //button
 
+
             dateDiv.appendChild(but)
 
 
 
             allEventsDiv.appendChild(eventDiv)
+
+            $(".eventButton").click(function (){
+
+                //createEventParticipant();
+
+            });
         }
 
     }
@@ -118,15 +125,15 @@ function  showFutureEvents(eventsF){
 
 function createEventParticipant(username){
     $.ajax({
-        url: "http://localhost:8080/api/business/create/business",
+        url: "http://localhost:8000/api/event/create/eventparticipant",
         type: 'post',
         contentType: "application/json; charset=utf-8",
         // dataType: "json",
-        data: JSON.stringify(business),
+        data: JSON.stringify(username),
         success: function (res) {
             // localStorage.setItem('kuizi', JSON.stringify(res))
 
-            console.log(business)
+            console.log(username)
 
 
         },
@@ -136,3 +143,5 @@ function createEventParticipant(username){
         }
     })
 }
+
+//
