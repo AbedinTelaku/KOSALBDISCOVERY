@@ -7,10 +7,16 @@ import com.example.demo.Core.Entities.User;
 import com.example.demo.Core.OutputPort.EventRepository;
 import com.example.demo.Core.OutputPort.NotificationOutputPort;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.List;
 
+@Component
 public class EventDomain {
 
     @Autowired
@@ -40,17 +46,34 @@ public class EventDomain {
         if(endDate.before(currentDate)){
             return "finished";
         }else if(startDate.after(currentDate)){
-            return "starting";
+            return "future";
         }else{
             return "happening";
         }
 
     }
 
-    public void updateEvent(){
+    @Scheduled(fixedRate = 1000*60*60*24)
+    public void updateEventStatus(){
+        List<Event> eventList = this.eventRepository.findAll();
+        LocalDate localDate = LocalDate.now(ZoneId.of("GMT+02:30"));
+        Date currentDate = Date.valueOf(localDate);
 
-        //editEvent();
+        for(Event event : eventList){
+            if(event.getEndDate().before(currentDate)){
+                this.eventRepository.updateEventStatus(event.getId(),"finished");
+
+            }else if(event.getEndDate().after(currentDate)){
+                this.eventRepository.updateEventStatus(event.getId(),"future");
+            }else{
+                this.eventRepository.updateEventStatus(event.getId(),"happening");
+            }
+
+        }
+
     }
+
+
 
     public void sendEmail(String email){
       this.notificationOutputPort.sendEmail(email);

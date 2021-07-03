@@ -6,6 +6,7 @@ import com.example.demo.Core.Domain.ReservationInvoice;
 import com.example.demo.Core.Entities.Reservation;
 import com.example.demo.Core.Helper.BusinessHelper;
 import com.example.demo.Core.Helper.ReservationHelper;
+import com.example.demo.Core.Helper.RoomHelper;
 import com.example.demo.Core.OutputPort.BusinessOutputPort;
 import com.lowagie.text.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -98,8 +99,8 @@ public class ReservationController {
         this.reservationInputPort.updateRoomAvailability();
     }
 
-    @GetMapping("/check/for/available/room")
-    public boolean checkForAvailableRoom(){
-        return true;
+    @PostMapping("/check/for/available/room")
+    public RoomHelper checkForAvailableRoom(@RequestBody ReservationHelper reservationHelper){
+        return this.reservationInputPort.checkForAvailableRoom(reservationHelper.getCheckInDate(),reservationHelper.getCheckOutDate(),reservationHelper.getBusinessUsername(),reservationHelper.getRoomType());
     }
 }
