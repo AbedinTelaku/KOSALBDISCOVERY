@@ -1,19 +1,23 @@
 package com.example.demo.Infrastructure.OutputAdapter;
 
 import com.example.demo.Core.Helper.RoomHelper;
+import com.example.demo.Core.Helper.RoomsHelper;
 import com.example.demo.Core.OutputPort.RoomOutputPort;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
+
 @Service
 public class RoomOutputAdapter implements RoomOutputPort {
 
     @Override
-    public RoomHelper getAvailableRoom(String type) {
+    public RoomHelper getAvailableRoom(String type,String businessUsername) {
         RestTemplate restTemplate=new RestTemplate();
-        String registerServiceURL = "http://localhost:8080/api/register/room/get/availableroom/"+type;
+        String registerServiceURL = "http://localhost:8080/api/register/room/get/availableroom/"+type+"/"+businessUsername;
         ResponseEntity<RoomHelper> responseEntity = restTemplate.getForEntity(registerServiceURL,RoomHelper.class);
 
         if(responseEntity.getBody() != null){
@@ -24,6 +28,28 @@ public class RoomOutputAdapter implements RoomOutputPort {
 
 
 
+    }
+
+    @Override
+    public RoomsHelper getAvailableRooms(String type, String businessUsername) {
+        RestTemplate restTemplate=new RestTemplate();
+        String registerServiceURL = "http://localhost:8080/api/register/room/get/all/available/rooms/"+type+"/"+businessUsername;
+        ResponseEntity<RoomsHelper> responseEntity = restTemplate.getForEntity(registerServiceURL,RoomsHelper.class);
+        return responseEntity.getBody();
+    }
+
+    @Override
+    public List<RoomHelper> getAllAvailableRooms(String type, String businessUsername) {
+        RestTemplate restTemplate=new RestTemplate();
+        String registerServiceURL = "http://localhost:8080/api/register/room/get/all/available/rooms/"+type+"/"+businessUsername;
+        ResponseEntity<List<RoomHelper>> responseEntity =  restTemplate.exchange(
+                registerServiceURL,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<RoomHelper>>() {}
+        );
+
+        return responseEntity.getBody();
     }
 
     @Override

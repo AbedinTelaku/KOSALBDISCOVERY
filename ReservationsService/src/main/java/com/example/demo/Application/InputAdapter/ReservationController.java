@@ -97,4 +97,9 @@ public class ReservationController {
     public void updateAvailability(){
         this.reservationInputPort.updateRoomAvailability();
     }
+
+    @GetMapping("/check/for/available/room")
+    public boolean checkForAvailableRoom(){
+        return true;
+    }
 }

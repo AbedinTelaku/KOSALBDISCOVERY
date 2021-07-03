@@ -43,6 +43,8 @@ class Room extends Component {
     let date2 = new Date(checkoutDate);
     console.log(date1);
     console.log(date1.getTime());
+    console.log(date2.getTime());
+    console.log(date2.getTime() - date1.getTime());
     const datesDiference =
       (date2.getTime() - date1.getTime()) / (1000 * 3600 * 24);
     console.log(datesDiference);
@@ -60,7 +62,9 @@ class Room extends Component {
             axios
               .get(
                 "http://localhost:8080/api/register/room/get/availableroom/" +
-                  roomType
+                  roomType +
+                  "/" +
+                  this.state.businessUsername
               )
               .then(
                 (response) => {
@@ -193,9 +197,9 @@ class Room extends Component {
             <input
               type="date"
               id="checkOutDate"
-              //onChange={(event) =>
-              // this.setState({ checkoutDate: event.target.value })
-              //}
+              onChange={(event) =>
+                this.setState({ checkoutDate: event.target.value })
+              }
             />
           </div>
           <div className="submit">

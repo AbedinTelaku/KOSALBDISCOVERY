@@ -83,6 +83,12 @@ public class RoomService implements IRoomService{
     }
 
     @Override
+    public List<Room> getAllAvailableRooms(String roomType, String businessUsername) {
+        Business business = this.iBusinessService.getBusinessByUsername(businessUsername);
+        return this.roomRepository.findAllAvailableRooms(roomType,business.getBusiness_ID());
+    }
+
+    @Override
     public void deleteRoomById(int id) {
       this.roomRepository.deleteById(id);
     }
@@ -116,8 +122,9 @@ public class RoomService implements IRoomService{
     }
 
     @Override
-    public Room getFirstAvailableRoom(String roomType) {
-        List<Room> availableRooms = this.roomRepository.findAllAvailableRooms(roomType);
+    public Room getFirstAvailableRoom(String roomType,String businessUsername) {
+        Business business = this.iBusinessService.getBusinessByUsername(businessUsername);
+        List<Room> availableRooms = this.roomRepository.findAllAvailableRooms(roomType,business.getBusiness_ID());
         if(availableRooms.size() > 0){
             return availableRooms.get(0);
         }else{

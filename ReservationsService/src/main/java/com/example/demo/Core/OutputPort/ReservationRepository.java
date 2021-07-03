@@ -21,7 +21,12 @@ public interface ReservationRepository extends JpaRepository<Reservation,Integer
     @Query(value = "select * from reservation where room_type=?1 and business_username=?2", nativeQuery = true)
     public List<Reservation> findReservationsByRoomType(String roomType,String businessUsername);
 
+    @Query(value = "select * from reservation where room_number=?1 and business_username=?2 and check_in_date<?3 and check_in_date>?4", nativeQuery = true)
+    public Reservation findReservationByRoomNumber(int roomNumber,String businessUsername, Date date, Date currentDate);
+
     @Query(value = "select * from reservation where check_out_date=?1", nativeQuery = true)
     public List<Reservation> getAllReservationsByCheckoutDate(Date date);
 
+    @Query(value = "select * from reservation where check_in_date=?1", nativeQuery = true)
+    public List<Reservation> getAllReservationsByCheckinDate(Date date);
 }

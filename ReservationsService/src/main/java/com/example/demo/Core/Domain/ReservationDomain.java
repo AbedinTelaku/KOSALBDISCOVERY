@@ -5,12 +5,15 @@ import com.example.demo.Core.Entities.Reservation;
 import com.example.demo.Core.Entities.Room;
 import com.example.demo.Core.Entities.Tourist;
 import com.example.demo.Core.Helper.RoomHelper;
+import com.example.demo.Core.Helper.RoomsHelper;
 import com.example.demo.Core.OutputPort.ReservationRepository;
 import com.example.demo.Core.OutputPort.RoomOutputPort;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.HttpServerErrorException;
 
 import java.sql.Date;
 import java.sql.Time;
@@ -23,7 +26,7 @@ import java.util.TimerTask;
 
 
 @Component
-public class ReservationDomain extends TimerTask {
+public class ReservationDomain {
 
     @Autowired
     private ReservationRepository reservationRepository;
@@ -44,7 +47,8 @@ public class ReservationDomain extends TimerTask {
 
         Reservation reservation = new Reservation(reservationTime,reservationDate,checkInDate,checkOutDate,totalPrice,room.getRoomDiscount(),room,business,tourist);
 
-        setRoomUnavailable(room.getRoomNumber());
+        setRoomUnavailable(room.getRoomNumber(),checkInDate);
+
         this.reservationRepository.save(reservation);
     }
 
@@ -58,12 +62,31 @@ public class ReservationDomain extends TimerTask {
        return Math.abs(numOfDays);
     }
 
-    public void setRoomUnavailable(int roomNumber){
-        this.roomOutputPort.setReservedRoomUnavailable(roomNumber);
+    public void setRoomUnavailable(int roomNumber, Date checkindate){
+
+        LocalDate localDate = LocalDate.now(ZoneId.of("GMT+02:30"));
+        Date currentDate = Date.valueOf(localDate);
+        if(checkindate==currentDate){
+            this.roomOutputPort.setReservedRoomUnavailable(roomNumber);
+        }
+
     }
 
+    public RoomHelper getFirstAvailableRoom(Date newReservationCheckoutDate, List<RoomHelper> roomHelpers, String businessUsername){
+        LocalDate localDate = LocalDate.now(ZoneId.of("GMT+02:30"));
+        Date currentDate = Date.valueOf(localDate);
+       for(RoomHelper roomHelper : roomHelpers){
+           Reservation reservation = this.reservationRepository.findReservationByRoomNumber(roomHelper.getRoom_number(),businessUsername, newReservationCheckoutDate, currentDate);
+           if(reservation == null){
+               return roomHelper;
+           }
+       }
 
-    @Scheduled(fixedRate = 1000*60*60*12)
+
+        return null;
+    }
+
+    @Scheduled(fixedRate = 1000*60*60*6)
     public void updateRoomAvailability(){
 
         LocalDate localDate = LocalDate.now(ZoneId.of("GMT+02:30"));
@@ -80,9 +103,19 @@ public class ReservationDomain extends TimerTask {
 
 
     }
+    @Scheduled(fixedRate = 1000*60*60*6)
+    public void updateRoomUnavailability(){
+        LocalDate localDate = LocalDate.now(ZoneId.of("GMT+02:30"));
+        Date currentDate = Date.valueOf(localDate);
 
-    @Override
-    public void run() {
-        updateRoomAvailability();
+        List<Reservation> reservations=this.reservationRepository.getAllReservationsByCheckinDate(currentDate);
+        for(Reservation r : reservations){
+            RoomHelper roomHelper = this.roomOutputPort.getRoomByRoomNumber(r.getRoom().getRoomNumber());
+            if(roomHelper.getIs_available()==true){
+                this.roomOutputPort.setReservedRoomUnavailable(roomHelper.getRoom_number());
+            }
+        }
     }
+
+
 }
