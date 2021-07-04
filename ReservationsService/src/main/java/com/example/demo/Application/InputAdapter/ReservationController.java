@@ -21,7 +21,6 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 @RestController
-@CrossOrigin
 @RequestMapping("api/reservation")
 public class ReservationController {
 
@@ -76,7 +75,7 @@ public class ReservationController {
     }
 
     @GetMapping("/get/reservations/{username}")
-    public List<Reservation> getAllReservationsBy(@PathVariable("username") String username, HttpServletRequest request){
+    public List<Reservation> getAllReservationsBy(@PathVariable("username") String username){
         return this.reservationInputPort.getReservationsByUsername(username);
     }
 

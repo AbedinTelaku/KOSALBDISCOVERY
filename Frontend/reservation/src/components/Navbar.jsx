@@ -8,6 +8,10 @@ class Navbar extends Component {
       username: this.props.username,
     };
   }
+
+  logout() {
+    sessionStorage.removeItem("token");
+  }
   render() {
     // const list = this.state.elements.map((element, i) => (
     //  <li key={i}>{element}</li>
@@ -34,6 +38,7 @@ class Navbar extends Component {
               to={"/"}
               params={{ authenticated: false }}
               className="navBarProfileBtn"
+              onclick={this.logout}
             >
               <li>Log out</li>
             </Link>
