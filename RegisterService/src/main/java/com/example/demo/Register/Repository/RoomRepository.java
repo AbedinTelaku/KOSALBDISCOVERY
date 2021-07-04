@@ -17,7 +17,7 @@ public interface RoomRepository extends JpaRepository<Room,Integer> {
     @Query(value = "select * from room r where r.business_id=?1", nativeQuery = true)
     public List<Room> getRoomsByBusinessId(int businessId);
 
-    @Query(value = "select * from room r where r.is_available=1 and r.room_type=?1 and r.business_id=?2", nativeQuery = true)
+    @Query(value = "select * from room r where r.room_type=?1 and r.business_id=?2", nativeQuery = true)
     public List<Room> findAllAvailableRooms(String roomType, int businessId);
 
     @Query(value = "select * from room r where r.room_type=?1", nativeQuery = true)

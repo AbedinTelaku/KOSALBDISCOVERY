@@ -1,9 +1,7 @@
 package com.example.demo.Application.InputPort;
 
-import com.example.demo.Core.Entities.Business;
 import com.example.demo.Core.Entities.Reservation;
-import com.example.demo.Core.Entities.Room;
-import com.example.demo.Core.Entities.Tourist;
+import com.example.demo.Core.Helper.RoomHelper;
 
 import java.sql.Date;
 import java.sql.Time;
@@ -20,6 +18,6 @@ public interface ReservationInputPort {
     List<String> getReservedRoomTypes(String businessUsername);
     double getAmountOfRoomsByType(String roomType,String businessUsername);
     void  updateRoomAvailability();
-    boolean checkForAvailableRoom();
+    RoomHelper checkForAvailableRoom(Date checkInDate, Date checkOutDate, String businessUsername, String roomType);
 
 }

@@ -38,94 +38,107 @@ class Room extends Component {
     roomtype,
     totalprice
   ) {
-    console.log(checkinDate);
-    let date1 = new Date(checkinDate);
-    let date2 = new Date(checkoutDate);
-    console.log(date1);
-    console.log(date1.getTime());
-    console.log(date2.getTime());
-    console.log(date2.getTime() - date1.getTime());
-    const datesDiference =
-      (date2.getTime() - date1.getTime()) / (1000 * 3600 * 24);
-    console.log(datesDiference);
-    axios
-      .post("http://localhost:7000/payment/get/data", {
-        amount: totalprice * datesDiference,
-        hotel: businessName,
-        roomType: roomType,
-      })
-      .then(
-        (response) => {
-          console.log(response);
-          if (response.data === true) {
-            ///////////check for available room///////////////////////////////
-            axios
-              .get(
-                "http://localhost:8080/api/register/room/get/availableroom/" +
-                  roomType +
-                  "/" +
-                  this.state.businessUsername
-              )
-              .then(
-                (response) => {
-                  console.log(response);
-                  if (response.data !== "") {
-                    window.open("http://localhost:7000/checkout");
-                  } else {
-                    alert(
-                      "There are no '" +
-                        roomType +
-                        "' rooms available for booking!\n Look for another room type."
-                    );
+    if (checkinDate === "" || checkoutDate === "") {
+      alert("Please fill Check In Date & Check Out Date.");
+    } else {
+      console.log(checkinDate);
+      let date1 = new Date(checkinDate);
+      let date2 = new Date(checkoutDate);
+      console.log(date1);
+      console.log(date1.getTime());
+      console.log(date2.getTime());
+      console.log(date2.getTime() - date1.getTime());
+      const datesDiference =
+        (date2.getTime() - date1.getTime()) / (1000 * 3600 * 24);
+      console.log(datesDiference);
+
+      axios
+        .post("http://localhost:7000/payment/get/data", {
+          amount: totalprice * datesDiference,
+          hotel: businessName,
+          roomType: roomType,
+        })
+        .then(
+          (response) => {
+            console.log(response);
+            if (response.data === true) {
+              ///////////check for available room///////////////////////////////
+              axios
+                .post(
+                  "http://localhost:8008/api/reservation/check/for/available/room",
+                  {
+                    checkInDate: checkinDate,
+                    checkOutDate: checkoutDate,
+                    businessUsername: businessUsername,
+                    roomType: roomType,
                   }
-                },
-                (error) => {
-                  console.log(error);
-                }
-              );
-            ////////////////////////////////////////////////////////////////////
+                )
+                .then(
+                  (response) => {
+                    console.log(response);
+                    if (response.data == "") {
+                      alert(
+                        "There are no '" +
+                          roomType +
+                          "' rooms available for booking in your selected dates!\n Look for another room type or choose other dates."
+                      );
+                    } else {
+                      window.open("http://localhost:7000/checkout");
+                    }
+                  },
+                  (error) => {
+                    console.log(error);
+                  }
+                );
+              ////////////////////////////////////////////////////////////////////
+            }
+          },
+          (error) => {
+            console.log(error);
           }
+        );
+
+      console.log(this.state.checkinDate);
+      console.log(this.state.checkoutDate);
+      console.log(this.state.type);
+      //current Date and Time (date/time when reservation is done)
+      let myCurrentDate = new Date();
+      let date = myCurrentDate.getDate();
+      let month = myCurrentDate.getMonth() + 1;
+      let year = myCurrentDate.getFullYear();
+
+      let fullDate = `${year}-${month < 10 ? `0${month}` : `${month}`}-${
+        date < 10 ? `0${date}` : `${date}`
+      }`;
+
+      var currenttime =
+        myCurrentDate.getHours() +
+        ":" +
+        myCurrentDate.getMinutes() +
+        ":" +
+        myCurrentDate.getSeconds();
+
+      axios({
+        method: "post",
+        url: "http://localhost:7000/payment/get/reservation",
+        data: {
+          time: currenttime,
+          date: fullDate,
+          checkInDate: checkinDate,
+          checkOutDate: checkoutDate,
+          businessUsername: businessUsername,
+          touristUsername: "abedintelaku",
+          roomType: roomtype,
         },
-        (error) => {
-          console.log(error);
-        }
-      );
-
-    console.log(this.state.checkinDate);
-    console.log(this.state.checkoutDate);
-    console.log(this.state.type);
-    //current Date and Time (date/time when reservation is done)
-    let myCurrentDate = new Date();
-    let date = myCurrentDate.getDate();
-    let month = myCurrentDate.getMonth() + 1;
-    let year = myCurrentDate.getFullYear();
-
-    let fullDate = `${year}-${month < 10 ? `0${month}` : `${month}`}-${
-      date < 10 ? `0${date}` : `${date}`
-    }`;
-
-    var currenttime =
-      myCurrentDate.getHours() +
-      ":" +
-      myCurrentDate.getMinutes() +
-      ":" +
-      myCurrentDate.getSeconds();
-
-    axios({
-      method: "post",
-      url: "http://localhost:7000/payment/get/reservation",
-      data: {
-        time: currenttime,
-        date: fullDate,
-        checkInDate: checkinDate,
-        checkOutDate: checkoutDate,
-        businessUsername: businessUsername,
-        touristUsername: "abedintelaku",
-        roomType: roomtype,
-      },
-    });
+      });
+    }
   }
 
+  chooseCheckinFirst(checkindate) {
+    if (checkindate === "") {
+      alert("Please choose Check In date first.");
+    }
+  }
   /* sendReservationData() {
     var date = new Date();
     axios({
@@ -159,6 +172,15 @@ class Room extends Component {
       </p>
     ));
 
+    let myCurrentDate = new Date();
+    let date = myCurrentDate.getDate();
+    let month = myCurrentDate.getMonth() + 1;
+    let year = myCurrentDate.getFullYear();
+
+    let fullDate = `${year}-${month < 10 ? `0${month}` : `${month}`}-${
+      date < 10 ? `0${date}` : `${date}`
+    }`;
+    console.log(fullDate);
     return (
       <div className="room" id={this.state.type}>
         <div className="roomPhotos">
@@ -192,6 +214,7 @@ class Room extends Component {
               onChange={(event) =>
                 this.setState({ checkinDate: event.target.value })
               }
+              min={fullDate}
             />
             <label htmlFor="checkOutDate">Check Out</label>
             <input
@@ -200,6 +223,8 @@ class Room extends Component {
               onChange={(event) =>
                 this.setState({ checkoutDate: event.target.value })
               }
+              onClick={() => this.chooseCheckinFirst(this.state.checkinDate)}
+              min={this.state.checkinDate}
             />
           </div>
           <div className="submit">

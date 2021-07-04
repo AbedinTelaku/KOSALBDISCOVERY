@@ -6,7 +6,6 @@ import com.example.demo.Core.Entities.Business;
 import com.example.demo.Core.Entities.Reservation;
 import com.example.demo.Core.Entities.Room;
 import com.example.demo.Core.Entities.Tourist;
-import com.example.demo.Core.Helper.RoomsHelper;
 import com.example.demo.Core.Helper.TouristHelper;
 import com.example.demo.Core.Helper.BusinessHelper;
 import com.example.demo.Core.Helper.RoomHelper;
@@ -55,7 +54,7 @@ public class ReservationService implements ReservationInputPort {
        TouristHelper touristHelper = this.touristOutputPort.getTouristByUsername(touristUsername);
         BusinessHelper businessHelper = this.businessOutputPort.getBusinessByUsername(businessUsername);
       List<RoomHelper> roomHelpers = this.roomOutputPort.getAllAvailableRooms(roomType,businessUsername);
-        RoomHelper roomHelper = reservationDomain.getFirstAvailableRoom(checkOutDate,roomHelpers,businessUsername);
+        RoomHelper roomHelper = reservationDomain.getFirstAvailableRoom(checkOutDate,checkInDate,roomHelpers,businessUsername);
 
        Tourist tourist = new Tourist(touristHelper.getUsername(),touristHelper.getEmail(),touristHelper.getName());
        Room room = new Room(roomHelper.getRoom_number(),roomHelper.getRoom_type(),roomHelper.getPrice(),roomHelper.getDiscount());
@@ -124,6 +123,16 @@ public class ReservationService implements ReservationInputPort {
     public void  updateRoomAvailability(){
         reservationDomain = new ReservationDomain(this.reservationRepository,this.roomOutputPort);
         this.reservationDomain.updateRoomAvailability();
+    }
+
+    @Override
+    public RoomHelper checkForAvailableRoom(Date checkInDate, Date checkOutDate, String businessUsername, String roomType) {
+        reservationDomain = new ReservationDomain(this.reservationRepository,this.roomOutputPort);
+        List<RoomHelper> roomHelpers = this.roomOutputPort.getAllAvailableRooms(roomType,businessUsername);
+        RoomHelper roomHelper=reservationDomain.getFirstAvailableRoom(checkOutDate,checkInDate,roomHelpers,businessUsername);
+
+       return roomHelper;
+
     }
 
 }
