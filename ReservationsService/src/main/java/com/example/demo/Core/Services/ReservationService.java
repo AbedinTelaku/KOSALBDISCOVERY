@@ -119,11 +119,11 @@ public class ReservationService implements ReservationInputPort {
         return amount;
     }
 
- /*   @Override
+    @Override
     public void  updateRoomAvailability(){
         reservationDomain = new ReservationDomain(this.reservationRepository,this.roomOutputPort);
         this.reservationDomain.updateRoomAvailability();
-    }*/
+    }
 
     @Override
     public RoomHelper checkForAvailableRoom(Date checkInDate, Date checkOutDate, String businessUsername, String roomType) {

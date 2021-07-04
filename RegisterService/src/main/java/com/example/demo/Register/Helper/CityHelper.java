@@ -6,10 +6,10 @@ public class CityHelper implements Serializable {
     private String name;
     private String zipCode;
 
-    public CityHelper(String name, String zipCode) {
-        this.name = name;
-        this.zipCode = zipCode;
-    }
+//    public CityHelper(String name, String zipCode) {
+//        this.name = name;
+//        this.zipCode = zipCode;
+//    }
 
     public String getName() {
         return name;

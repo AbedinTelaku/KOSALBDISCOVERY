@@ -18,7 +18,7 @@ public class EventHelper implements Serializable {
     private String username;
 
 
-    public EventHelper(String name, String description, Date startDate, Date endDate,Time startTime,String photoPath ,String cityName, String touristPlaceName, String username) {
+ /*   public EventHelper(String name, String description, Date startDate, Date endDate,Time startTime,String photoPath ,String cityName, String touristPlaceName, String username) {
         this.name = name;
         this.description = description;
         this.startDate = startDate;
@@ -28,7 +28,7 @@ public class EventHelper implements Serializable {
         this.cityName = cityName;
         this.touristPlaceName = touristPlaceName;
         this.username=username;
-    }
+    }*/
 
     public String getName() {
         return name;

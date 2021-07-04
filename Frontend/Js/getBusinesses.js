@@ -34,6 +34,7 @@ function showBusinesses(businesses) {
 
       for (j in business) {
         var tableData = document.createElement("td");
+
         var text = document.createTextNode(business[j]);
         tableData.appendChild(text);
         tableRow.appendChild(tableData);
@@ -52,7 +53,9 @@ $("#deleteBusinessButton").click(function (event) {
 
 function deleteBusiness(businessId) {
   $.ajax({
-    url: "http://localhost:9000/api/register/business/delete/business/by/" + businessId,
+    url:
+      "http://localhost:9000/api/register/business/delete/business/by/" +
+      businessId,
     type: "post",
     contentType: "application/json; charset=utf-8",
     // dataType: "json",

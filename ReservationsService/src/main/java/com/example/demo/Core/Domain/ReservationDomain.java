@@ -64,7 +64,7 @@ public class ReservationDomain {
        return Math.abs(numOfDays);
     }
 
- /*   public void setRoomUnavailable(int roomNumber, Date checkindate){
+    public void setRoomUnavailable(int roomNumber, Date checkindate){
 
         LocalDate localDate = LocalDate.now(ZoneId.of("GMT+02:30"));
         Date currentDate = Date.valueOf(localDate);
@@ -73,76 +73,76 @@ public class ReservationDomain {
         }
 
     }
-*/
-    public RoomHelper getFirstAvailableRoom(Date newReservationCheckoutDate,Date newReservationCheckinDate ,List<RoomHelper> roomHelpers, String businessUsername){
+
+    public RoomHelper getFirstAvailableRoom(Date newReservationCheckoutDate,Date newReservationCheckinDate ,List<RoomHelper> roomHelpers, String businessUsername) {
         LocalDate localDate = LocalDate.now(ZoneId.of("GMT+02:30"));
         Date currentDate = Date.valueOf(localDate);
-        if(roomHelpers.size()>0){
-       for(RoomHelper roomHelper : roomHelpers){
-           List<Reservation> reservations = this.reservationRepository.findReservationByRoomNumber(roomHelper.getRoom_number(),businessUsername,currentDate);
+        if (roomHelpers.size() > 0) {
+            for (RoomHelper roomHelper : roomHelpers) {
+                List<Reservation> reservations = this.reservationRepository.findReservationByRoomNumber(roomHelper.getRoom_number(), businessUsername, currentDate);
 
-           if(reservations.size()==0){
-               return roomHelper;
-           }
-           for(Reservation r : reservations){
-             //  if((r.getCheckInDate().before(newReservationCheckinDate) && r.getCheckOutDate().before(newReservationCheckoutDate)) || ((r.getCheckInDate().after(newReservationCheckinDate) && r.getCheckInDate().before(newReservationCheckoutDate)) && (r.getCheckOutDate().after(newReservationCheckoutDate)))
-             //  || (r.getCheckInDate().before(newReservationCheckinDate) && r.getCheckOutDate().after(newReservationCheckoutDate)) || (r.getCheckInDate().after(newReservationCheckinDate) && r.getCheckOutDate().before(newReservationCheckoutDate)) || ((r.getCheckInDate()==newReservationCheckinDate) && (r.getCheckOutDate() == newReservationCheckoutDate)))
-             //  {
-               System.out.println(newReservationCheckinDate +"-------------" +r.getCheckInDate());
-               System.out.println(newReservationCheckoutDate +"-------------" +r.getCheckOutDate());
-             ////  if(( (newReservationCheckinDate.before(r.getCheckInDate()) || newReservationCheckinDate == r.getCheckInDate()) && (newReservationCheckoutDate.before(r.getCheckInDate()) || newReservationCheckoutDate == r.getCheckInDate())) ||
-                //       ((newReservationCheckinDate.after(r.getCheckOutDate()) || newReservationCheckinDate == r.getCheckOutDate()) && (newReservationCheckoutDate.after(r.getCheckOutDate()))) ){
-               //    return roomHelper;
-            //   }
-               if(newReservationCheckinDate.before(r.getCheckInDate()) || newReservationCheckinDate == r.getCheckInDate()){
-                   if(newReservationCheckoutDate.before(r.getCheckInDate()) || newReservationCheckoutDate == r.getCheckInDate()){
-                       return roomHelper;
-                   }
+                if (reservations.size() == 0) {
+                    return roomHelper;
+                }
+                for (Reservation r : reservations) {
+                    if ((r.getCheckInDate().before(newReservationCheckinDate) && r.getCheckOutDate().before(newReservationCheckoutDate)) || ((r.getCheckInDate().after(newReservationCheckinDate) && r.getCheckInDate().before(newReservationCheckoutDate)) && (r.getCheckOutDate().after(newReservationCheckoutDate)))
+                            || (r.getCheckInDate().before(newReservationCheckinDate) && r.getCheckOutDate().after(newReservationCheckoutDate)) || (r.getCheckInDate().after(newReservationCheckinDate) && r.getCheckOutDate().before(newReservationCheckoutDate)) || ((r.getCheckInDate() == newReservationCheckinDate) && (r.getCheckOutDate() == newReservationCheckoutDate))) {
+                        System.out.println(newReservationCheckinDate + "-------------" + r.getCheckInDate());
+                        System.out.println(newReservationCheckoutDate + "-------------" + r.getCheckOutDate());
+                        if (((newReservationCheckinDate.before(r.getCheckInDate()) || newReservationCheckinDate == r.getCheckInDate()) && (newReservationCheckoutDate.before(r.getCheckInDate()) || newReservationCheckoutDate == r.getCheckInDate())) ||
+                                ((newReservationCheckinDate.after(r.getCheckOutDate()) || newReservationCheckinDate == r.getCheckOutDate()) && (newReservationCheckoutDate.after(r.getCheckOutDate())))) {
+                            return roomHelper;
+                        }
+                    }
+                        if (newReservationCheckinDate.before(r.getCheckInDate()) || newReservationCheckinDate == r.getCheckInDate()) {
+                            if (newReservationCheckoutDate.before(r.getCheckInDate()) || newReservationCheckoutDate == r.getCheckInDate()) {
+                                return roomHelper;
+                            }
 
-               }else if(newReservationCheckinDate.after(r.getCheckOutDate()) || newReservationCheckinDate == r.getCheckOutDate()){
-                   if(newReservationCheckoutDate.after(r.getCheckOutDate())){
-                       return roomHelper;
-                   }
-               }else{
-                   return null;
-               }
-           }
-       }
+                        } else if (newReservationCheckinDate.after(r.getCheckOutDate()) || newReservationCheckinDate == r.getCheckOutDate()) {
+                            if (newReservationCheckoutDate.after(r.getCheckOutDate())) {
+                                return roomHelper;
+                            }
+                        } else {
+                            return null;
+                        }
+                    }
+                }
 
+            }
+            return null;
         }
-        return null;
-    }
 
- /*   @Scheduled(fixedRate = 1000*60*60*6)
-    public void updateRoomAvailability(){
+        @Scheduled(fixedRate = 1000 * 60 * 60 * 6)
+        public void updateRoomAvailability () {
 
-        LocalDate localDate = LocalDate.now(ZoneId.of("GMT+02:30"));
-        Date currentDate = Date.valueOf(localDate);
-        System.out.println("Current Date is: "+currentDate);
-        List<Reservation> reservations = this.reservationRepository.getAllReservationsByCheckoutDate(currentDate);
-        for(Reservation r : reservations){
-            RoomHelper roomHelper = this.roomOutputPort.getRoomByRoomNumber(r.getRoom().getRoomNumber());
-            if(roomHelper.getIs_available()==false){
-                this.roomOutputPort.setRoomAvailable(roomHelper.getRoom_number());
+            LocalDate localDate = LocalDate.now(ZoneId.of("GMT+02:30"));
+            Date currentDate = Date.valueOf(localDate);
+            System.out.println("Current Date is: " + currentDate);
+            List<Reservation> reservations = this.reservationRepository.getAllReservationsByCheckoutDate(currentDate);
+            for (Reservation r : reservations) {
+                RoomHelper roomHelper = this.roomOutputPort.getRoomByRoomNumber(r.getRoom().getRoomNumber());
+                if (roomHelper.getIs_available() == false) {
+                    this.roomOutputPort.setRoomAvailable(roomHelper.getRoom_number());
+                }
+
             }
 
+
         }
+        @Scheduled(fixedRate = 1000 * 60 * 60 * 6)
+        public void updateRoomUnavailability () {
+            LocalDate localDate = LocalDate.now(ZoneId.of("GMT+02:30"));
+            Date currentDate = Date.valueOf(localDate);
 
-
-    }
-    @Scheduled(fixedRate = 1000*60*60*6)
-    public void updateRoomUnavailability(){
-        LocalDate localDate = LocalDate.now(ZoneId.of("GMT+02:30"));
-        Date currentDate = Date.valueOf(localDate);
-
-        List<Reservation> reservations=this.reservationRepository.getAllReservationsByCheckinDate(currentDate);
-        for(Reservation r : reservations){
-            RoomHelper roomHelper = this.roomOutputPort.getRoomByRoomNumber(r.getRoom().getRoomNumber());
-            if(roomHelper.getIs_available()==true){
-                this.roomOutputPort.setReservedRoomUnavailable(roomHelper.getRoom_number());
+            List<Reservation> reservations = this.reservationRepository.getAllReservationsByCheckinDate(currentDate);
+            for (Reservation r : reservations) {
+                RoomHelper roomHelper = this.roomOutputPort.getRoomByRoomNumber(r.getRoom().getRoomNumber());
+                if (roomHelper.getIs_available() == true) {
+                    this.roomOutputPort.setReservedRoomUnavailable(roomHelper.getRoom_number());
+                }
             }
         }
-    }
-*/
 
-}
+    }
+

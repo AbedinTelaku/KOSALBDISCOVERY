@@ -3,7 +3,7 @@ window.onload = function WindowLoad(event) {
   getTouristsNumber();
   getAllUsersNumber();
   getEventsNumber();
-  getReservationsNumber()
+  getReservationsNumber();
 };
 
 //show businesses number
@@ -89,9 +89,6 @@ function getAllUsersNumber() {
   });
 }
 
-
-
-
 //show event number
 
 var eventNumberP = document.getElementById("eventsNumberP");
@@ -120,9 +117,6 @@ function getEventsNumber() {
   });
 }
 
-
-
-
 //show reservations number
 
 var reservationNumberP = document.getElementById("reservationsNumberP");
@@ -150,5 +144,3 @@ function getReservationsNumber() {
     },
   });
 }
-
-
