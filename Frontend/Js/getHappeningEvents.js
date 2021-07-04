@@ -5,7 +5,7 @@ $("#happeningEventsButton").click(function () {
 
 function getHappeningBusinesses() {
   $.ajax({
-    url: "http://localhost:8000/api/event/get/happening/events",
+    url: "http://localhost:9000/api/event/get/happening/events",
     type: "GET",
     contentType: "application/json; charset=utf-8",
     dataType: "JSON",

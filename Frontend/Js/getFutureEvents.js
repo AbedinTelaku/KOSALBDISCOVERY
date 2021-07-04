@@ -9,7 +9,7 @@ $("#futureEventsButton").click(function(){
 function getFutureBusinesses() {
 
     $.ajax({
-        url: "http://localhost:8000/api/event/get/future/events",
+        url: "http://localhost:9000/api/event/get/future/events",
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         dataType: "JSON",
@@ -125,7 +125,7 @@ function  showFutureEvents(eventsF){
 
 function createEventParticipant(username){
     $.ajax({
-        url: "http://localhost:8000/api/event/create/eventparticipant",
+        url: "http://localhost:9000/api/event/create/eventparticipant",
         type: 'post',
         contentType: "application/json; charset=utf-8",
         // dataType: "json",

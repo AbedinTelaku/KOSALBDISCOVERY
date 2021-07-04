@@ -4,7 +4,7 @@ $("#touristsButton").click(function (event) {
 
 function getTourists() {
   $.ajax({
-    url: "http://localhost:8080/api/register/tourist/get/all/tourists",
+    url: "http://localhost:9000/api/register/tourist/get/all/tourists",
     type: "GET",
     contentType: "application/json; charset=utf-8",
     dataType: "JSON",

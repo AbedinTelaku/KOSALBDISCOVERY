@@ -29,7 +29,7 @@ $("#crEventSaveChangesButton").click(function () {
 
 function createEvent(event) {
   $.ajax({
-    url: "http://localhost:8000/api/event/create",
+    url: "http://localhost:9000/api/event/create",
     type: "post",
     contentType: "application/json; charset=utf-8",
     // dataType: "json",

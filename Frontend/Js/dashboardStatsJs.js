@@ -42,7 +42,7 @@ function showTouristsNum(num) {
 
 function getTouristsNumber() {
   $.ajax({
-    url: "http://localhost:8080/api/register/tourist/get/tourists/number",
+    url: "http://localhost:9000/api/register/tourist/get/tourists/number",
     type: "GET",
     contentType: "application/json; charset=utf-8",
     dataType: "JSON",
@@ -70,7 +70,7 @@ function showAllUsersNumber(num) {
 
 function getAllUsersNumber() {
   $.ajax({
-    url: "http://localhost:8080/api/register/user/get/users/number",
+    url: "http://localhost:9000/api/register/user/get/users/number",
     type: "GET",
     contentType: "application/json; charset=utf-8",
     dataType: "JSON",
