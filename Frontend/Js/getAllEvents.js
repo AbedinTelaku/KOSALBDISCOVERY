@@ -60,8 +60,14 @@ function showEvents(events) {
       dateDiv.classList.add("eventDate");
 
       var dateH3 = document.createElement("h4");
+      var time = event.startDate;
+      var startdate = new Date(time);
       var date = document.createTextNode(
-        "Start: " + event.startDate + "." + "     Time: " + event.startTime
+        "Start: " +
+          startdate.toDateString() +
+          "." +
+          "     Time: " +
+          event.startTime
       );
 
       dateH3.appendChild(date);

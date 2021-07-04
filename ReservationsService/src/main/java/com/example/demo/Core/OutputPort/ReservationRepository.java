@@ -13,10 +13,10 @@ import java.util.List;
 
 public interface ReservationRepository extends JpaRepository<Reservation,Integer> {
 
-    @Modifying
-    @Transactional
-    @Query(value = "select * from reservation where business_username=:username", nativeQuery = true)
-    public List<Reservation> findReservationsByBusinessUsername(@Param("username") String username);
+  //  @Modifying
+   // @Transactional
+    @Query(value = "select * from reservation where business_username=?1", nativeQuery = true)
+    public List<Reservation> findReservationsByBusinessUsername(String username);
 
     @Query(value = "select * from reservation where room_type=?1 and business_username=?2", nativeQuery = true)
     public List<Reservation> findReservationsByRoomType(String roomType,String businessUsername);

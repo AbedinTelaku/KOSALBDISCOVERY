@@ -2,7 +2,6 @@ $("#happeningEventsButton").click(function () {
   getHappeningBusinesses();
 });
 
-
 function getHappeningBusinesses() {
   $.ajax({
     url: "http://localhost:9000/api/event/get/happening/events",
@@ -58,8 +57,14 @@ function showHappeningEvents(eventsH) {
       dateDiv.classList.add("eventDate");
 
       var dateH3 = document.createElement("h4");
+      var time = event.startDate;
+      var startdate = new Date(time);
       var date = document.createTextNode(
-        "Start: " + event.startDate + "." + "     Time: " + event.startTime
+        "Start: " +
+          startdate.toDateString() +
+          "." +
+          "     Time: " +
+          event.startTime
       );
 
       dateH3.appendChild(date);
@@ -79,35 +84,31 @@ function showHappeningEvents(eventsH) {
       var descriptionP = document.createElement("p");
       var description = document.createTextNode(event.description);
       descriptionP.appendChild(description);
-      var butDiv=document.createElement("div");
+      var butDiv = document.createElement("div");
 
-      var but=document.createElement("button");
-      var bd=document.createTextNode("Going");
+      var but = document.createElement("button");
+      var bd = document.createTextNode("Going");
       but.classList.add("eventButton");
       but.appendChild(bd);
       //  descriptionDiv.appendChild(descriptionH4)
-      descriptionDiv.appendChild(descriptionP)
+      descriptionDiv.appendChild(descriptionP);
 
-      descriptionDiv.appendChild(but)
+      descriptionDiv.appendChild(but);
       ////
-      eventDiv.appendChild(imgDiv)
-      eventDiv.appendChild(nameDateDiv)
-      eventDiv.appendChild(descriptionDiv)
-      eventDiv.appendChild(butDiv)
+      eventDiv.appendChild(imgDiv);
+      eventDiv.appendChild(nameDateDiv);
+      eventDiv.appendChild(descriptionDiv);
+      eventDiv.appendChild(butDiv);
       //button
 
-      dateDiv.appendChild(but)
-
+      dateDiv.appendChild(but);
 
       allEventsDiv.appendChild(eventDiv);
 
-      $(".eventButton").click(function (){
-
+      $(".eventButton").click(function () {
         happeningEvents.classList.add("hide");
-
-      })
+      });
     }
     isexec = true;
   }
 }
-

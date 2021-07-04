@@ -16,7 +16,7 @@ public class ReservationHelper implements Serializable {
     private String touristUsername;
     private String roomType;
 
-    public ReservationHelper(Time time, Date date, Date checkInDate, Date checkOutDate, String businessUsername, String touristUsername, String roomType) {
+  /*  public ReservationHelper(Time time, Date date, Date checkInDate, Date checkOutDate, String businessUsername, String touristUsername, String roomType) {
         this.time = time;
         this.date = date;
         this.checkInDate = checkInDate;
@@ -24,7 +24,7 @@ public class ReservationHelper implements Serializable {
         this.businessUsername = businessUsername;
         this.touristUsername = touristUsername;
         this.roomType=roomType;
-    }
+    }*/
 
     public Time getTime() {
         return time;

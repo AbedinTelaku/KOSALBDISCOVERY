@@ -94,10 +94,10 @@ public class ReservationController {
        return this.reservationInputPort.getReservedRoomTypes("empireHotel");
     }
 
-    @PostMapping("/update")
+  /*  @PostMapping("/update")
     public void updateAvailability(){
         this.reservationInputPort.updateRoomAvailability();
-    }
+    }*/
 
     @PostMapping("/check/for/available/room")
     public RoomHelper checkForAvailableRoom(@RequestBody ReservationHelper reservationHelper){

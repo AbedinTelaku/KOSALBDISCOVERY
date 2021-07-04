@@ -39,42 +39,53 @@ class ReservationsTable extends Component {
 
   render() {
     console.log(this.state.reservations);
-
-    const reservationsList = this.state.reservations.map((reservation) => (
-      <tbody>
-        <tr>
-          <td style={{ "border-left": "1px solid lightgray" }}>
-            {reservation.id}
-          </td>
-          <td>{reservation.checkInDate}</td>
-          <td>{reservation.checkOutDate}</td>
-          <td>{reservation.room.roomType}</td>
-          <td>{reservation.room.roomNumber}</td>
-          <td>{reservation.room.roomPrice}€</td>
-          <td>{reservation.room.roomDiscount}%</td>
-          <td>{reservation.totalPrice}€</td>
-          <td>{reservation.tourist.touristName}</td>
-          <td>{reservation.tourist.touristUsername}</td>
-          <td>{reservation.tourist.touristEmail}</td>
-          <td>
-            <button
-              key={reservation.id}
-              className="btn btn-primary"
-              onClick={() => this.printReservationInvoice(reservation.id)}
-            >
-              Print
-            </button>
-          </td>
-          <td>
-            <button className="btn btn-warning">Edit</button>
-          </td>
-          <td>
-            <button className="btn btn-danger">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-      //</table>
-    ));
+    let checkindate;
+    let checkoutdate;
+    const reservationsList = this.state.reservations.map(
+      (reservation) => (
+        (checkindate = new Date(reservation.checkInDate).toLocaleDateString(
+          "en-US"
+        )),
+        (checkoutdate = new Date(reservation.checkOutDate).toLocaleDateString(
+          "en-US"
+        )),
+        (
+          <tbody>
+            <tr>
+              <td style={{ "border-left": "1px solid lightgray" }}>
+                {reservation.id}
+              </td>
+              <td>{checkindate}</td>
+              <td>{checkoutdate}</td>
+              <td>{reservation.room.roomType}</td>
+              <td>{reservation.room.roomNumber}</td>
+              <td>{reservation.room.roomPrice}€</td>
+              <td>{reservation.room.roomDiscount}%</td>
+              <td>{reservation.totalPrice}€</td>
+              <td>{reservation.tourist.touristName}</td>
+              <td>{reservation.tourist.touristUsername}</td>
+              <td>{reservation.tourist.touristEmail}</td>
+              <td>
+                <button
+                  key={reservation.id}
+                  className="btn btn-primary"
+                  onClick={() => this.printReservationInvoice(reservation.id)}
+                >
+                  Print
+                </button>
+              </td>
+              <td>
+                <button className="btn btn-warning">Edit</button>
+              </td>
+              <td>
+                <button className="btn btn-danger">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        )
+        //</table>
+      )
+    );
     return (
       <div>
         <h5>Reservations</h5>
