@@ -3,6 +3,7 @@ package com.example.demo.Core.Entities;
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
 
 
 @Entity
@@ -74,7 +75,8 @@ public class Reservation {
     }
 
     public Date getCheckOutDate() {
-        return checkOutDate;
+
+        return  checkOutDate;
     }
 
     public void setCheckOutDate(Date checkOutDate) {

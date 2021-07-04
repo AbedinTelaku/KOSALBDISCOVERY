@@ -64,7 +64,7 @@ public class ReservationDomain {
        return Math.abs(numOfDays);
     }
 
-    public void setRoomUnavailable(int roomNumber, Date checkindate){
+ /*   public void setRoomUnavailable(int roomNumber, Date checkindate){
 
         LocalDate localDate = LocalDate.now(ZoneId.of("GMT+02:30"));
         Date currentDate = Date.valueOf(localDate);
@@ -73,7 +73,7 @@ public class ReservationDomain {
         }
 
     }
-
+*/
     public RoomHelper getFirstAvailableRoom(Date newReservationCheckoutDate,Date newReservationCheckinDate ,List<RoomHelper> roomHelpers, String businessUsername){
         LocalDate localDate = LocalDate.now(ZoneId.of("GMT+02:30"));
         Date currentDate = Date.valueOf(localDate);
@@ -113,7 +113,7 @@ public class ReservationDomain {
         return null;
     }
 
-    @Scheduled(fixedRate = 1000*60*60*6)
+ /*   @Scheduled(fixedRate = 1000*60*60*6)
     public void updateRoomAvailability(){
 
         LocalDate localDate = LocalDate.now(ZoneId.of("GMT+02:30"));
@@ -143,6 +143,6 @@ public class ReservationDomain {
             }
         }
     }
-
+*/
 
 }

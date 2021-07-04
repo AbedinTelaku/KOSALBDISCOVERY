@@ -17,7 +17,7 @@ public interface ReservationInputPort {
     int getRoomReservationNumberByRoomType(String roomType, String businessUsername);
     List<String> getReservedRoomTypes(String businessUsername);
     double getAmountOfRoomsByType(String roomType,String businessUsername);
-    void  updateRoomAvailability();
+    //void  updateRoomAvailability();
     RoomHelper checkForAvailableRoom(Date checkInDate, Date checkOutDate, String businessUsername, String roomType);
     int getAllReservationsNumber();
 

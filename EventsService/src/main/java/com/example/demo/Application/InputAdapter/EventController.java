@@ -4,6 +4,7 @@ import com.example.demo.Core.Entities.Event;
 import com.example.demo.Core.Helper.EventHelper;
 import com.example.demo.Core.Helper.EventParticipantHelper;
 import com.example.demo.Core.Helper.EventStatusHelper;
+import com.example.demo.Core.Helper.UserHelper;
 import com.example.demo.Core.OutputPort.UserOutputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -64,9 +65,13 @@ public class EventController {
        this.eventInputport.createEventParticipant(eventParticipantHelper.getUsername(),eventParticipantHelper.getId());
     }
 
-    @GetMapping("get/events/number")
+    @GetMapping("/get/events/number")
     public int getEventsNumber(){
        return this.eventInputport.getAllEventsNumber();
     }
 
+    @GetMapping("/get/user/by/username/{username}")
+    public UserHelper getUser(@PathVariable("username") String username){
+        return this.userOutputPort.getUserByUsername(username);
+    }
 }
