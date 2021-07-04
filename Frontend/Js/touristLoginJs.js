@@ -21,7 +21,7 @@ function touristLogin(tourist) {
 
 
     $.ajax({
-        url: "http://localhost:9000/api/register/tourist/create/tourist",
+        url: "http://localhost:9000/api/tourist/create/tourist",
         type: 'post',
         contentType: "application/json; charset=utf-8",
         // dataType: "json",
