@@ -14,7 +14,7 @@ class Login extends Component {
       alert("Please fill required fields.");
     } else {
       axios
-        .post("http://localhost:8080/api/register/authenticate/signIn", {
+        .post("http://localhost:9000/api/register/authenticate/signIn", {
           username: usern,
           password: passw,
         })
@@ -22,10 +22,19 @@ class Login extends Component {
           (response) => {
             if (response.data.username === "not found") {
               console.log(this.state.authenticated);
+
               alert("Username or Password is incorrect.");
             } else {
               this.setState({ authenticated: true });
               console.log(this.state.authenticated);
+              console.log(response.data.username);
+              console.log(response.data.token);
+              const token = response.data.token;
+
+              document.cookie = "token=" + token + "; HttpOnly";
+              localStorage.setItem("token", token);
+              sessionStorage.setItem("token", token);
+              console.log(document.cookie);
             }
           },
           (error) => {

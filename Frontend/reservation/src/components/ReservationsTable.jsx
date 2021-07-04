@@ -23,7 +23,11 @@ class ReservationsTable extends Component {
     )
       .then((res) => res.json())
       .then((data) => {
-        this.setState({ reservations: data, id: data.id });
+        this.setState({
+          reservations: data,
+          id: data.id,
+        });
+        console.log(data);
       });
   }
 
@@ -37,8 +41,6 @@ class ReservationsTable extends Component {
     console.log(this.state.reservations);
 
     const reservationsList = this.state.reservations.map((reservation) => (
-      // <table className="table table-striped reservationsTable">
-
       <tbody>
         <tr>
           <td style={{ "border-left": "1px solid lightgray" }}>
