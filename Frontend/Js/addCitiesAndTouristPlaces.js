@@ -22,7 +22,7 @@ $("#citySaveChangesButton").click(function(){
 
 function createCity(city){
     $.ajax({
-        url:"http://localhost:8080/api/city/create",
+        url:"http://localhost:9000/api/register/city/create",
         type:"post",
         contentType:"application/json; charset=utf-8",
         data: JSON.stringify(city),
@@ -70,7 +70,7 @@ $("#touristPlaceSaveChangesButton").click(function(){
 
 function createTouristPlace(touristPlace,cityName){
     $.ajax({
-        url:"http://localhost:8080/api/touristPlace/create/touristPlace/"+cityName,
+        url:"http://localhost:9000/api/register/touristPlace/create/touristPlace/"+cityName,
         type:"post",
         contentType:"application/json; charset=utf-8",
         data: JSON.stringify(touristPlace),

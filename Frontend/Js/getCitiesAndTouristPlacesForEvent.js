@@ -5,7 +5,7 @@ $("#createEventButton").click(function () {
 
 function getCities() {
   $.ajax({
-    url: "http://localhost:8080/api/city/get/all/cities",
+    url: "http://localhost:9000/api/register/city/get/all/cities",
     type: "GET",
     contentType: "application/json; charset=utf-8",
     dataType: "JSON",
@@ -47,7 +47,7 @@ function showCitiesForEvent(cities) {
 
 function getTouristPlaces() {
   $.ajax({
-    url: "http://localhost:8080/api/register/touristPlace/get/all",
+    url: "http://localhost:9000/api/register/touristPlace/get/all",
     type: "GET",
     contentType: "application/json; charset=utf-8",
     dataType: "JSON",

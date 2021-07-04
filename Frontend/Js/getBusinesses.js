@@ -4,7 +4,7 @@ $("#businessesButton").click(function (event) {
 
 function getBusinesses() {
   $.ajax({
-    url: "http://localhost:8080/api/register/business/get/all/businesses",
+    url: "http://localhost:9000/api/register/business/get/all/businesses",
     type: "GET",
     contentType: "application/json; charset=utf-8",
     dataType: "JSON",
@@ -52,7 +52,7 @@ $("#deleteBusinessButton").click(function (event) {
 
 function deleteBusiness(businessId) {
   $.ajax({
-    url: "http://localhost:8080/api/business/delete/business/by/" + businessId,
+    url: "http://localhost:9000/api/register/business/delete/business/by/" + businessId,
     type: "post",
     contentType: "application/json; charset=utf-8",
     // dataType: "json",

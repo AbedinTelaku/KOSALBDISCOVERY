@@ -43,7 +43,7 @@ function fillFields(business) {
 function getBusiness(id) {
 
     $.ajax({
-        url: "http://localhost:8080/api/business/get/business/" + id,
+        url: "http://localhost:9000/api/register/business/get/business/" + id,
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         dataType: "JSON",
@@ -103,7 +103,7 @@ $("#saveChangesButton").click(function (event) {
 function editBusiness(business) {
     console.log(business)
     $.ajax({
-        url: "http://localhost:8080/api/business/edit/business",
+        url: "http://localhost:9000/api/register/business/edit/business",
         type: 'post',
         contentType: "application/json; charset=utf-8",
         // dataType: "json",
