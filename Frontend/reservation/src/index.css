@@ -8,7 +8,7 @@
 }
 .appContent {
   width: 100%;
-  height: 90%;
+  height: 100%;
 }
 .pageMainDiv {
   width: 100%;
@@ -186,10 +186,13 @@
 .submit div form {
   border: 1px solid red;
 }
-
+.businessesAllContent {
+  width: 100;
+  height: 100%;
+}
 .businessesContent {
   width: 100%;
-  height: 100%;
+  height: 90%;
   display: flex;
   flex-direction: row;
 }
@@ -272,13 +275,13 @@
 }
 .allContent {
   width: 100%;
-  height: 400%;
+  height: 450%;
   background-color: rgb(238, 238, 238);
   border: 1px solid red;
 }
 .userProfileContent {
   width: 100%;
-  height: 20%;
+  height: 15%;
   display: flex;
   flex-direction: row;
   background-color: rgb(238, 238, 238);
@@ -511,7 +514,7 @@
 
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 6px #cedce4;
+  -webkit-box-shadow: inset 0 0 6px #a8a8a8;
 }
 .rooms {
   border-left: 1px solid rgb(211, 211, 211);
@@ -596,4 +599,58 @@
   width: 95%;
   margin-left: 2.5%;
   margin-top: 5%;
+}
+.loginContent {
+  width: 100%;
+  height: 100%;
+  background: rgb(231, 231, 231);
+}
+.loginForm {
+  width: 25%;
+  height: 50%;
+  margin-top: 0%;
+  margin-left: 37.5%;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 2px 4px 4px 2px gray;
+}
+.inputs {
+  width: 80%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10%;
+  border-bottom: 1px solid rgb(219, 219, 219);
+}
+.inputs input {
+  width: 100%;
+  height: 25%;
+  margin-top: 8%;
+  border-radius: 5px;
+  border: 2px solid gray;
+  font-weight: normal;
+  color: gray;
+}
+.buttons {
+  width: 80%;
+  height: 20%;
+  margin-top: 10%;
+  margin-left: 10%;
+}
+.buttons button {
+  width: 100%;
+  height: 70%;
+  border: 2px solid gray;
+  font-weight: bold;
+  border-radius: 5px;
+}
+.loginImg {
+  width: 30%;
+  height: 30%;
+  padding-top: 1%;
+  text-align: center;
+}
+.appNameTitle {
+  text-shadow: 1px 3px gray;
+  font-size: xx-large;
 }

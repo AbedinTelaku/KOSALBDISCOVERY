@@ -12,6 +12,7 @@ import com.lowagie.text.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
@@ -75,7 +76,7 @@ public class ReservationController {
     }
 
     @GetMapping("/get/reservations/{username}")
-    public List<Reservation> getAllReservationsBy(@PathVariable("username") String username){
+    public List<Reservation> getAllReservationsBy(@PathVariable("username") String username, HttpServletRequest request){
         return this.reservationInputPort.getReservationsByUsername(username);
     }
 

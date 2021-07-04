@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping("api/register/authenticate")
 public class AuthenticateController {
@@ -29,7 +30,7 @@ public class AuthenticateController {
     //user gets token from responseHelper
     @PostMapping("/signIn")
     public ResponseEntity<ResponseHelper> signIn(@RequestBody RequestHelper requestHelper){
-        return ResponseEntity.ok(this.iAuthenticateService.signIn(requestHelper));
+        return this.iAuthenticateService.signIn(requestHelper);
     }
    /* @PostMapping("/checkUser")
     public boolean checkIfUserExist(@RequestBody UserHelper userhelper){
@@ -41,13 +42,13 @@ public class AuthenticateController {
         ResponseHelper responseHelper = new ResponseHelper(requestHelper.getUsername(),"token");
         return responseHelper;
     }*/
-/*
-    @GetMapping("/validate/{token}")
+
+    @PostMapping("/validate/{token}")
     public ResponseEntity<ResponseHelper> validateToken(@PathVariable("token") String token){
         return ResponseEntity.ok(this.iAuthenticateService.getResponseHelperFromValidToken(token));
     }
 
-*/
+
     /*@GetMapping("/get/user/{username}")
     public UserHelper getUser(@PathVariable("username") String username){
         return this.iUserService.getUserByUsername(username);

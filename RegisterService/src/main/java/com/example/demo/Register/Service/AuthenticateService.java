@@ -1,11 +1,10 @@
 package com.example.demo.Register.Service;
-import com.example.demo.Register.Exception.AppException;
 import com.example.demo.Register.Helper.RequestHelper;
 import com.example.demo.Register.Helper.ResponseHelper;
 import com.example.demo.Register.Helper.UserHelper;
 import com.example.demo.Register.JWT.Token;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -29,15 +28,20 @@ public class AuthenticateService implements IAuthenticateService {
     }
 
     @Override
-    public ResponseHelper signIn(RequestHelper requestHelper) {
+    public ResponseEntity<ResponseHelper> signIn(RequestHelper requestHelper) {
         if(checkIfUserExist(requestHelper.getUsername(),requestHelper.getPassword())){
-            return new ResponseHelper(requestHelper.getUsername(),generateToken(requestHelper));
+             ResponseHelper responseHelper = new ResponseHelper (requestHelper.getUsername(),generateToken(requestHelper));
 
+             return  ResponseEntity.ok(responseHelper);
+
+        }else{
+            ResponseHelper responseHelper = new ResponseHelper("not found","not found");
+            return  ResponseEntity.ok(responseHelper);
         }
 
-        throw new AppException("Invalid Password or Username", HttpStatus.BAD_REQUEST);
+
     }
-/*
+
     @Override
     public boolean validateToken(String token) {
         return this.token.validateToken(token);
@@ -46,5 +50,5 @@ public class AuthenticateService implements IAuthenticateService {
     @Override
     public ResponseHelper getResponseHelperFromValidToken(String token) {
         return this.token.getResponseHelperFromValidToken(token);
-    }*/
+    }
 }

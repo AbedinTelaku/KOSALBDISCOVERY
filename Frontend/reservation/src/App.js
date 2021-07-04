@@ -3,12 +3,12 @@ import Navbar from "./components/Navbar";
 import Businesses from "./components/Businesses";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import UserProfile from "./components/UserProfile";
+import Login from "./components/Login";
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar username="empireHotel" />
         <div className="appContent">
           <Switch>
             <Route
@@ -26,6 +26,9 @@ function App() {
               name="UserProfile"
               component={UserProfile}
             ></Route>
+            <Route path="/">
+              <Login />
+            </Route>
           </Switch>
         </div>
       </div>

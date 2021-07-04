@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Business from "./Business";
+import Navbar from "./Navbar";
 
 class Businesses extends Component {
   constructor(props) {
@@ -11,13 +12,13 @@ class Businesses extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:8080/api/register/business/get/all/businesses")
+    fetch("http://localhost:9000/api/register/business/get/all/businesses")
       .then((res) => res.json())
       .then((data) => {
         this.setState({ businesses: data });
       });
 
-    fetch("http://localhost:8080/api/register/city/get/all/cities")
+    fetch("http://localhost:9000/api/register/city/get/all/cities")
       .then((res) => res.json())
       .then((data) => {
         this.setState({ cities: data });
@@ -55,10 +56,14 @@ class Businesses extends Component {
     ));
     console.log(this.state.businesses);
     return (
-      <div className="businessesContent">
-        <div className="businessesSideNavBar">{allCities}</div>
+      <div className="businessesAllContent">
+        <Navbar username={"empireHotel"} />
 
-        <div className="businesses">{allBusinesses}</div>
+        <div className="businessesContent">
+          <div className="businessesSideNavBar">{allCities}</div>
+
+          <div className="businesses">{allBusinesses}</div>
+        </div>
       </div>
     );
   }

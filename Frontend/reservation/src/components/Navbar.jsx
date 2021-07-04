@@ -29,7 +29,14 @@ class Navbar extends Component {
             </Link>
 
             <li>Reservations</li>
-            <li>Events</li>
+
+            <Link
+              to={"/"}
+              params={{ authenticated: false }}
+              className="navBarProfileBtn"
+            >
+              <li>Log out</li>
+            </Link>
           </div>
         </div>
       </div>

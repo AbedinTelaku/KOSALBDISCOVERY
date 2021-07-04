@@ -29,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         CorsConfiguration corsConfiguration = new CorsConfiguration().applyPermitDefaultValues();
         corsConfiguration.setAllowedOrigins(Arrays.asList("*"));
         corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
-        corsConfiguration.setAllowedHeaders(Arrays.asList("authorization", "content-type", "x-auth-token"));
+        corsConfiguration.setAllowedHeaders(Arrays.asList("authorization", "content-type", "x-auth-token","access-control-allow-origin","origin"));
         source.registerCorsConfiguration("/**", corsConfiguration);
 
         return source;

@@ -3,6 +3,7 @@ package com.example.demo.Register.JWT;
 import com.example.demo.Register.Exception.AppException;
 import com.example.demo.Register.Helper.ResponseHelper;
 import com.example.demo.Register.Helper.UserHelper;
+import com.example.demo.Register.Models.Tourist;
 import com.example.demo.Register.Service.UserService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -84,9 +85,10 @@ public class Token {
 
 
     //validate token
-    /*public Boolean validateToken(String token) {
+    public Boolean validateToken(String token) {
         final String username = getUsernameFromToken(token);
-        //UserHelper user = this.userService.getUserByUsername(username).getData();
+        Tourist user= (Tourist) this.userService.getUserByUsername(username).getData();
+       // UserHelper user = (UserHelper) object;
 
         if(username.equals(user.getUsername()) && !isTokenExpired(token)) {
             return true;
@@ -94,8 +96,8 @@ public class Token {
             return false;
         }
 
-    }*/
-/*
+    }
+
     public ResponseHelper getResponseHelperFromValidToken(String token){
         if(validateToken(token)){
             String username = getUsernameFromToken(token);
@@ -104,5 +106,5 @@ public class Token {
             throw new AppException("Invalid Token", HttpStatus.BAD_REQUEST);
         }
     }
-*/
+
 }

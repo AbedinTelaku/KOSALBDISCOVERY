@@ -1,4 +1,4 @@
-package com.example.demo.Register.config;
+package com.example.demo.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;

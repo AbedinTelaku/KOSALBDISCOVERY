@@ -1,24 +1,17 @@
 package com.example.demo.Register.Controller;
 
-import com.example.demo.Register.Helper.UserHelper;
-import com.example.demo.Register.Models.Admin;
-import com.example.demo.Register.Models.Business;
-import com.example.demo.Register.Models.Tourist;
 import com.example.demo.Register.Service.IAdminService;
 import com.example.demo.Register.Service.IBusinessService;
 import com.example.demo.Register.Service.ITouristService;
 import com.example.demo.Register.Service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("api/register/user")
 public class UsersController {
 

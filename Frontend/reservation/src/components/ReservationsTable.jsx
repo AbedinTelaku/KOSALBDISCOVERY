@@ -18,7 +18,7 @@ class ReservationsTable extends Component {
 
   componentDidMount() {
     fetch(
-      "http://localhost:8008/api/reservation/get/reservations/" +
+      "http://localhost:9000/api/reservation/get/reservations/" +
         this.props.username
     )
       .then((res) => res.json())
@@ -29,7 +29,7 @@ class ReservationsTable extends Component {
 
   printReservationInvoice(reservationId) {
     window.open(
-      "http://localhost:8008/api/reservation/export/PDF/" + reservationId
+      "http://localhost:9000/api/reservation/export/PDF/" + reservationId
     );
   }
 

@@ -6,6 +6,7 @@ import ReservationsTable from "./ReservationsTable";
 import RoomType from "./RoomType";
 import Select from "react-select";
 import axios from "axios";
+import Navbar from "./Navbar";
 
 class UserProfile extends Component {
   state = {
@@ -27,7 +28,7 @@ class UserProfile extends Component {
   };
   componentDidMount() {
     fetch(
-      "http://localhost:8080/api/register/business/get/business/byUsername/" +
+      "http://localhost:9000/api/register/business/get/business/byUsername/" +
         this.props.match.params.username
     )
       .then((res) => res.json())
@@ -37,7 +38,7 @@ class UserProfile extends Component {
       });
 
     fetch(
-      "http://localhost:8008/api/reservation/get/reservations/" +
+      "http://localhost:9000/api/reservation/get/reservations/" +
         this.props.match.params.username
     )
       .then((res) => res.json())
@@ -46,7 +47,7 @@ class UserProfile extends Component {
       });
 
     fetch(
-      "http://localhost:8080/api/register/room/get/roomtypes/" +
+      "http://localhost:9000/api/register/room/get/roomtypes/" +
         this.props.match.params.username
     )
       .then((res) => res.json())
@@ -57,7 +58,7 @@ class UserProfile extends Component {
 
   printReservationsStats(username) {
     window.open(
-      "http://localhost:8008/api/reservation/export/reservations/PDF/" +
+      "http://localhost:9000/api/reservation/export/reservations/PDF/" +
         username
     );
   }
@@ -83,7 +84,7 @@ class UserProfile extends Component {
     } else {
       axios({
         method: "post",
-        url: "http://localhost:8080/api/register/room/create/new/room",
+        url: "http://localhost:9000/api/register/room/create/new/room",
         data: {
           roomType: roomtype,
           roomNumber: roomnumber,
@@ -107,7 +108,7 @@ class UserProfile extends Component {
     } else {
       axios({
         method: "post",
-        url: "http://localhost:8080/api/register/room/create/room/and/type",
+        url: "http://localhost:9000/api/register/room/create/room/and/type",
         data: {
           roomType: roomtype,
           roomNumber: roomnumber,
@@ -132,7 +133,7 @@ class UserProfile extends Component {
     } else {
       axios({
         method: "post",
-        url: "http://localhost:8080/api/register/room/edit/room",
+        url: "http://localhost:9000/api/register/room/edit/room",
         data: {
           roomType: roomtype,
           roomDiscount: roomdiscount,
@@ -195,6 +196,7 @@ class UserProfile extends Component {
     console.log(selectRoomTypes);
     return (
       <div className="allContent">
+        <Navbar username={this.state.bUsername} />
         <div className="userProfileContent">
           <div className="userProfileSideNav">
             <ul>

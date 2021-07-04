@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.header;
+
 @Component
 public class AuthFilter extends AbstractGatewayFilterFactory<AuthFilter.Config> {
 
@@ -40,7 +42,7 @@ public class AuthFilter extends AbstractGatewayFilterFactory<AuthFilter.Config> 
                     .map(responseHelper -> {
                         exchange.getRequest()
                                 .mutate()
-                                .header("X-auth-username", String.valueOf(responseHelper.getUsername()));
+                                .header("X-auth-token", String.valueOf(responseHelper.getUsername()));
                         return exchange;
                     }).flatMap(chain::filter);
         };

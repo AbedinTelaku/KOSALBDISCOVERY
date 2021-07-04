@@ -65,7 +65,7 @@ class Room extends Component {
               ///////////check for available room///////////////////////////////
               axios
                 .post(
-                  "http://localhost:8008/api/reservation/check/for/available/room",
+                  "http://localhost:9000/api/reservation/check/for/available/room",
                   {
                     checkInDate: checkinDate,
                     checkOutDate: checkoutDate,
