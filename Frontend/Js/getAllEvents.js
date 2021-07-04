@@ -7,7 +7,7 @@ window.onload = (event) => {
 
 function getAllBusinesses() {
   $.ajax({
-    url: "http://localhost:8000/api/event/get/all/events",
+    url: "http://localhost:9000/api/event/get/all/events",
     type: "GET",
     contentType: "application/json; charset=utf-8",
     dataType: "JSON",

@@ -14,7 +14,7 @@ function showBusinessesNum(num) {
 
 function getBusinessNumber() {
   $.ajax({
-    url: "http://localhost:8080/api/register/business/get/businesses/number",
+    url: "http://localhost:9000/api/register/business/get/businesses/number",
     type: "GET",
     contentType: "application/json; charset=utf-8",
     dataType: "JSON",

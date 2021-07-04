@@ -1,102 +1,94 @@
-
-$("#finishedEventsButton").click(function(){
-    getFinishedBusinesses()
+$("#finishedEventsButton").click(function () {
+  getFinishedBusinesses();
 });
 
-
-
-
 function getFinishedBusinesses() {
+  $.ajax({
+    url: "http://localhost:9000/api/event/get/finished/events",
+    type: "GET",
+    contentType: "application/json; charset=utf-8",
+    dataType: "JSON",
+    //data: JSON.stringify(user),
+    success: function (data) {
+      var events = JSON.parse(JSON.stringify(data));
 
-    $.ajax({
-        url: "http://localhost:8000/api/event/get/finished/events",
-        type: 'GET',
-        contentType: "application/json; charset=utf-8",
-        dataType: "JSON",
-        //data: JSON.stringify(user),
-        success: function (data) {
-            var events = JSON.parse(JSON.stringify(data));
-
-            console.log(events)
-            showFinishedEvents(events)
-
-        },
-        error: function (request, status, error) {
-            console.log(error);
-            console.log(status);
-        }
-    });
-
+      console.log(events);
+      showFinishedEvents(events);
+    },
+    error: function (request, status, error) {
+      console.log(error);
+      console.log(status);
+    },
+  });
 }
-var isexecut=false;
-function  showFinishedEvents(events){
-    if(isexecut==false){
+var isexecut = false;
+function showFinishedEvents(events) {
+  if (isexecut == false) {
+    var allEventsDiv = document.getElementById("finishedEventsDiv");
 
+    for (i in events) {
+      var event = events[i];
 
-        var allEventsDiv = document.getElementById("finishedEventsDiv");
+      var eventDiv = document.createElement("div");
+      eventDiv.classList.add("event");
 
-        for(i in events){
-            var event = events[i];
+      //img div
+      var imgDiv = document.createElement("div"); //
+      imgDiv.classList.add("eventImg");
 
-            var eventDiv = document.createElement("div");
-            eventDiv.classList.add("event");
+      var img = document.createElement("img");
+      img.src = event.photoPath;
 
+      imgDiv.appendChild(img);
+      //
+      var nameDateDiv = document.createElement("div"); //
+      nameDateDiv.classList.add("nameAndDate");
 
-            //img div
-            var imgDiv = document.createElement("div");//
-            imgDiv.classList.add("eventImg");
+      var nameDiv = document.createElement("div");
+      nameDiv.classList.add("eventName");
 
-            var img = document.createElement("img");
-            img.src=event.photoPath;
+      var nameH3 = document.createElement("h4");
+      var name = document.createTextNode(event.name);
 
-            imgDiv.appendChild(img);
-            //
-            var nameDateDiv = document.createElement("div");//
-            nameDateDiv.classList.add("nameAndDate");
+      nameH3.appendChild(name);
+      nameDiv.appendChild(nameH3);
+      //date
+      var dateDiv = document.createElement("div");
+      dateDiv.classList.add("eventDate");
 
-            var nameDiv = document.createElement("div");
-            nameDiv.classList.add("eventName");
+      var dateH3 = document.createElement("h4");
+      var date = document.createTextNode(
+        "Start: " + event.startDate + "." + "     Time: " + event.startTime
+      );
 
-            var nameH3=document.createElement("h4");
-            var name = document.createTextNode(event.name)
+      dateH3.appendChild(date);
+      dateDiv.appendChild(dateH3);
 
-            nameH3.appendChild(name)
-            nameDiv.appendChild(nameH3)
-            //date
-            var dateDiv = document.createElement("div");
-            dateDiv.classList.add("eventDate");
+      nameDateDiv.appendChild(nameDiv);
+      nameDateDiv.appendChild(dateDiv);
 
-            var dateH3=document.createElement("h4");
-            var date = document.createTextNode("Start: "+event.startDate+"."+"     Time: "+ event.startTime)
+      //description
+      var descriptionDiv = document.createElement("div");
+      descriptionDiv.classList.add("eventDescription");
 
-            dateH3.appendChild(date)
-            dateDiv.appendChild(dateH3)
+      //  var descriptionH4 = document.createElement("h4");
+      //  var descriptionTitle = document.createTextNode("Description");
+      // descriptionH4.appendChild(descriptionTitle);
 
-            nameDateDiv.appendChild(nameDiv)
-            nameDateDiv.appendChild(dateDiv)
+      var descriptionP = document.createElement("p");
+      var description = document.createTextNode(event.description);
+      descriptionP.appendChild(description);
 
-            //description
-            var descriptionDiv=document.createElement("div");
-            descriptionDiv.classList.add("eventDescription");
+      //  descriptionDiv.appendChild(descriptionH4)
+      descriptionDiv.appendChild(descriptionP);
 
-            //  var descriptionH4 = document.createElement("h4");
-            //  var descriptionTitle = document.createTextNode("Description");
-            // descriptionH4.appendChild(descriptionTitle);
+      ////
+      eventDiv.appendChild(imgDiv);
+      eventDiv.appendChild(nameDateDiv);
+      eventDiv.appendChild(descriptionDiv);
 
-            var descriptionP=document.createElement("p");
-            var description=document.createTextNode(event.description);
-            descriptionP.appendChild(description);
-
-            //  descriptionDiv.appendChild(descriptionH4)
-            descriptionDiv.appendChild(descriptionP)
-
-            ////
-            eventDiv.appendChild(imgDiv)
-            eventDiv.appendChild(nameDateDiv)
-            eventDiv.appendChild(descriptionDiv)
-
-            allEventsDiv.appendChild(eventDiv)
-        }
-        isexecut=true;
+      allEventsDiv.appendChild(eventDiv);
     }
+    isexecut = true;
+  }
 }
