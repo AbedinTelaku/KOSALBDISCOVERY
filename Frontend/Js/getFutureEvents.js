@@ -125,7 +125,7 @@ function  showFutureEvents(eventsF){
 
 function createEventParticipant(username){
     $.ajax({
-        url: "http://localhost:9000/api/event/create/eventparticipant",
+        url: "http://localhost:9000/api/event/create/eventparticipant"+username,
         type: 'post',
         contentType: "application/json; charset=utf-8",
         // dataType: "json",
