@@ -3,6 +3,7 @@ window.onload = function WindowLoad(event) {
   getTouristsNumber();
   getAllUsersNumber();
   getEventsNumber();
+  getReservationsNumber()
 };
 
 //show businesses number
@@ -91,7 +92,7 @@ function getAllUsersNumber() {
 
 
 
-//show businesses number
+//show event number
 
 var eventNumberP = document.getElementById("eventsNumberP");
 
@@ -118,4 +119,36 @@ function getEventsNumber() {
     },
   });
 }
+
+
+
+
+//show reservations number
+
+var reservationNumberP = document.getElementById("reservationsNumberP");
+
+function showReservationsNum(num) {
+  var reservationsNumber = document.createTextNode(num);
+  reservationNumberP.appendChild(reservationsNumber);
+}
+
+function getReservationsNumber() {
+  $.ajax({
+    url: "http://localhost:9000/api/reservation/get/reservations/number",
+    type: "GET",
+    contentType: "application/json; charset=utf-8",
+    dataType: "JSON",
+    //data: JSON.stringify(user),
+    success: function (data) {
+      var reservationsNumber = JSON.parse(JSON.stringify(data));
+
+      showReservationsNum(reservationsNumber);
+    },
+    error: function (request, status, error) {
+      console.log(error);
+      console.log(status);
+    },
+  });
+}
+
 

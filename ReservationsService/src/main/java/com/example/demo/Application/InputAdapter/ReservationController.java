@@ -104,4 +104,9 @@ public class ReservationController {
     public RoomHelper checkForAvailableRoom(@RequestBody ReservationHelper reservationHelper){
         return this.reservationInputPort.checkForAvailableRoom(reservationHelper.getCheckInDate(),reservationHelper.getCheckOutDate(),reservationHelper.getBusinessUsername(),reservationHelper.getRoomType());
     }
+
+    @GetMapping("get/reservations/number")
+    public int getReservationsNumber(){
+        return this.reservationInputPort.getAllReservationsNumber();
+    }
 }

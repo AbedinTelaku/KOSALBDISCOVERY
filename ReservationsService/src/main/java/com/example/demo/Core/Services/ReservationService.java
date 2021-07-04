@@ -135,4 +135,11 @@ public class ReservationService implements ReservationInputPort {
 
     }
 
+    @Override
+    public int getAllReservationsNumber() {
+        List<Reservation> reservations = this.getAllReservations();
+        return reservations.size();
+    }
+
+
 }
