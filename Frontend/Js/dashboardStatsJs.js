@@ -2,6 +2,7 @@ window.onload = function WindowLoad(event) {
   getBusinessNumber();
   getTouristsNumber();
   getAllUsersNumber();
+  getEventsNumber();
 };
 
 //show businesses number
@@ -86,3 +87,35 @@ function getAllUsersNumber() {
     },
   });
 }
+
+
+
+
+//show businesses number
+
+var eventNumberP = document.getElementById("eventsNumberP");
+
+function showEventsNum(num) {
+  var eventsNumber = document.createTextNode(num);
+  eventNumberP.appendChild(eventsNumber);
+}
+
+function getEventsNumber() {
+  $.ajax({
+    url: "http://localhost:9000/api/event/get/events/number",
+    type: "GET",
+    contentType: "application/json; charset=utf-8",
+    dataType: "JSON",
+    //data: JSON.stringify(user),
+    success: function (data) {
+      var eventsNumber = JSON.parse(JSON.stringify(data));
+
+      showEventsNum(eventsNumber);
+    },
+    error: function (request, status, error) {
+      console.log(error);
+      console.log(status);
+    },
+  });
+}
+
