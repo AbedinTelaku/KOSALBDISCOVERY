@@ -31,7 +31,7 @@ function registerTourist(tourist) {
 
 
     $.ajax({
-        url: "http://localhost:8080/api/tourist/create/tourist",
+        url: "http://localhost:9000/api/tourist/create/tourist",
         type: 'post',
         contentType: "application/json; charset=utf-8",
         // dataType: "json",
